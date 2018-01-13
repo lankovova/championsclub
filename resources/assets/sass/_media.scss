@@ -1,0 +1,219 @@
+@media(width: 1600px) and (height: 1200px) {
+    .panel {
+        transform: scale(1.12);
+        bottom: 13px;
+        left: -40px;
+    }
+    .slider {
+        height: 570px;
+    }
+    .slide__part {
+        width: 500px;
+        height: 234px;
+    }
+    .slider__counter {
+        right: 5px;
+    }
+    .history-presenter {
+        top: -373%;
+    }
+}
+
+@media(width: 1440px) and (height: 900px) {
+    .panel {
+        transform: scale(0.86);
+        bottom: -16px;
+        left: -119px;
+    }
+    .slider {
+        height: 433px;
+    }
+    .slide__part {
+        width: 370px;
+        height: 175px;
+        margin: 6px;
+    }
+    .slider__counter {
+        right: 125px;
+        font-size: 18px;
+    }
+    .history-presenter {
+        top: -366%;
+    }
+}
+
+@media(width: 1400px) and (height: 1050px) {
+    .panel {
+        transform: scale(0.97);
+        left: -137px;
+        bottom: -4px;    
+    }
+    .slider__counter {
+        right: 10px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1366px) and (height: 768px) {
+    .panel {
+        transform: scale(0.73);
+        left: -317px;
+        bottom: -30px;
+        width: 2000px;  
+    }
+    .slider {
+        height: 378px;
+    }
+    .slide__part {
+        width: 322px;
+        height: 151px;
+        margin: 10px;
+    }
+    .slider__counter {
+        font-size: 15px;
+        right: 189px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1280px) and (height: 1024px) {
+    .panel {
+        transform: scale(0.9);
+        left: -200px;
+        bottom: -11px;
+    }
+    .slide__part {
+        width: 393px;
+        height: 186px;    
+    }
+    .slider__counter {
+        right: 12px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1280px) and (height: 960px) {
+    .panel {
+        transform: scale(0.9);
+        left: -200px;
+        bottom: -11px;
+    }
+    .slider {
+        height: 469px;
+    }
+    .slide__part {
+        width: 393px;
+        height: 186px;    
+    }
+    .slider__counter {
+        right: 12px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1280px) and (height: 800px) {
+    .panel {
+        transform: scale(0.76);
+        left: -209px;
+        width: 1700px;
+        bottom: -26px;
+    }
+    .slider {
+        height: 388px;
+    }
+    .slide__part {
+        width: 332px;
+        height: 157px;
+    }
+    .slider__counter {
+        right: 110px;
+        font-size: 15px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1280px) and (height: 768px) {
+    .panel {
+        transform: scale(0.76);
+        left: -209px;
+        width: 1700px;
+        bottom: -26px;
+    }
+    .slider {
+        height: 363px;
+    }
+    .slide__part {
+        width: 332px;
+        height: 157px;
+    }
+    .slider__counter {
+        right: 120px;
+    }
+    .history-presenter {
+        top: -356%;
+    }
+}
+@media(width: 1280px) and (height: 720px) {
+    .panel {
+        transform: scale(0.69);
+        bottom: -34px;
+        left: -301px;
+        width: 1877px;
+    }
+    .slider {
+        height: 348px;
+    }
+    .slide__part {
+        width: 301px;
+        height: 142px;    
+    }
+    .slider__counter {
+        right: 165px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1152px) and (height: 864px) {
+    .panel {
+        transform: scale(0.8);
+        left: -263px;
+        bottom: -22px;
+    }
+    .slide__part {
+        width: 353px;
+        height: 167px;
+    }
+    .slider {
+        height: 430px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}
+@media(width: 1024px) and (height: 768px) {
+    .panel {
+        transform: scale(0.72);
+        left: -328px;
+        bottom: -33px;
+    }
+    .slider {
+        height: 384px;
+    }
+    .slide__part {
+        width: 320px;
+        height: 150px;
+    }
+    .slider__counter {
+        right: 5px; 
+        font-size: 15px;
+    }
+    .history-presenter {
+        top: -378%;
+    }
+}

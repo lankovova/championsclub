@@ -1,0 +1,107 @@
+.slider {
+    display: block;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: -9%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 500px;
+
+    &__tracker {
+        display: flex;
+        flex-direction: row;
+    }
+    &__counter {
+        color: rgba(255, 255, 255, 0.3);
+        position: absolute;
+        bottom: 0;
+        right: 10%;
+        font-family: "Oswald";
+        font-size: 21px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+.slide {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+}
+.slide__part-container {
+    max-width: 1722px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+.slide__part {
+    background-size: contain;
+    width: 431px;
+    height: 203px;
+    margin: 10px;
+}
+.slide__part--book-of-winner {
+    background-image: url("../img/slider/book_of_winner.gif"); 
+    order: 5;
+}
+.slide__part--kings-of-jewels {
+    background-image: url("../img/slider/kings_of_jewels.gif");
+    order: 4;
+}
+.slide__part--crazy-barmen {
+    background-image: url("../img/slider/crazy_barmen.gif");
+    order: 3;
+}
+.slide__part--scatter-wins {
+    background-image: url("../img/slider/scatter_wins.gif");
+    order: 2; 
+}
+.slide__part--computer-world {
+    background-image: url("../img/slider/computer_world.gif");
+    order: 1;
+}
+.slide__part--gates-of-avalon {
+    background-image: url("../img/slider/gates_of_avalon.gif");
+    order: 5;
+}
+.slide__part--money {
+    background-image: url("../img/slider/money.gif");
+    order: 4;
+}
+.slide__part--nautilus {
+    background-image: url("../img/slider/nautilus.gif");
+    order: 3;
+}
+.slide__part--golden-harvest {
+    background-image: url("../img/slider/golden_harvest.gif");
+    order: 2;
+}
+.slide__part--bananas {
+    background-image: url("../img/slider/bananas.gif");
+    order: 1;
+}
+.slide__part--mariner {
+    background-image: url("../img/slider/mariner.gif");
+    order: 5;
+}
+.slide__part--riddle-of-the-sphinx {
+    background-image: url("../img/slider/riddle_of_the_sphinx.gif");
+    order: 4;
+}
+.slide__part--roll-of-ramses {
+    background-image: url("../img/slider/roll_of_ramses.gif");
+    order: 3;
+}
+.slide__part--snow-white {
+    background-image: url("../img/slider/snow_white.gif");
+    order: 2;
+}
+.slide__part--tropical-fruit {
+    background-image: url("../img/slider/tropical_fruit.gif");
+    order: 1;
+}

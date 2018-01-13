@@ -1,0 +1,16 @@
+export default {
+    "next": "далее",
+    "back": "назад",
+    "exit": "выход",
+    "history": "история",
+    "credit": "кредит",
+    "insurance": "страховка",
+    "select_game": "выберите игру",
+    "slide_count": "Страница {current} из {amount}",
+    "time": "время",
+    "event": "событие",
+    "value": "значение",
+    "game": "игра",
+    "denomination_choose_header": "выберите стоимость одного кредита",
+    "lang_choose_header": "выберите язык",
+}

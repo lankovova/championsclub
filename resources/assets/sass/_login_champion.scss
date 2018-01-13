@@ -1,0 +1,134 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+}
+.error-modal {
+    background: url('../img/calculator/error_bg.png');
+    width: 577px;
+    height: 289px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.error-modal__button {
+    background: url('../img/calculator/error_btn_bg.png');
+    width: 165px;
+    height: 63px;
+    margin-bottom: 19px;
+    margin-right: 3px;
+}
+.calculator {
+    background: url('../img/calculator/champion/calculator_bg.png');
+    width: 288px;
+    height: 427px;
+    padding: 40px 15px 0 20px;
+    box-sizing: border-box;
+}
+.calculator__input {
+    background: url('../img/calculator/champion/input_bg.png');
+    box-sizing: border-box;
+    width: 249px;
+    height: 62px;
+    border: none;
+    color: #46ed0a;
+    font: 400 24px 'digital-7';
+    padding-left: 7px;
+    padding-top: 33px;
+    display: flex;
+    
+    .number {
+        width: 10px;
+        height: 17px;
+        margin-left: 1px;
+        text-align: right;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    .divider {
+        margin-left: 3.5px;
+    }
+    .caret {
+        margin-left: 1px;
+        width: 10px;
+        height: 17px;
+        background: #46ed0a;
+        animation: blink-animation 1s steps(5, start) infinite;
+    }
+}
+.calculator__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+.calculator__button {
+    width: 67px;
+    height: 58px;
+    cursor: pointer;
+    border: none;
+    margin: 7.5px;
+    margin-bottom: 4px;
+}
+.calculator__button:focus {
+    outline: none;
+}
+.calculator__button:hover {
+    background-position: top right; 
+}
+.calculator__button--pressed {
+    /* to rewrite hover effect */
+    background-position: bottom left !important;
+}
+.calculator__button--disabled {
+    /* to rewrite hover effect */
+    background-position: bottom right !important;
+}
+
+.calculator__button-1 {
+    background: url('../img/calculator/champion/btn_1_bg.png');
+}
+.calculator__button-2 {
+    background: url('../img/calculator/champion/btn_2_bg.png');
+}
+.calculator__button-3 {
+    background: url('../img/calculator/champion/btn_3_bg.png');
+}
+.calculator__button-4 {
+    background: url('../img/calculator/champion/btn_4_bg.png');
+}
+.calculator__button-5 {
+    background: url('../img/calculator/champion/btn_5_bg.png');
+}
+.calculator__button-6 {
+    background: url('../img/calculator/champion/btn_6_bg.png');
+}
+.calculator__button-7 {
+    background: url('../img/calculator/champion/btn_7_bg.png');
+}
+.calculator__button-8 {
+    background: url('../img/calculator/champion/btn_8_bg.png');
+}
+.calculator__button-9 {
+    background: url('../img/calculator/champion/btn_9_bg.png');
+}
+.calculator__button-0 {
+    background: url('../img/calculator/champion/btn_0_bg.png');
+}
+.calculator__button-delete {
+    background: url('../img/calculator/champion/btn_delete_bg.png');
+}
+.calculator__button-ok {
+    background: url('../img/calculator/champion/btn_ok_bg.png');
+}
+
+@keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+}

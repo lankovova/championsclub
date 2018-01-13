@@ -1,0 +1,16 @@
+export default {
+    "next": "next",
+    "back": "back",
+    "exit": "exit",
+    "history": "history",
+    "credit": "creadit",
+    "insurance": "insurance",
+    "select_game": "select game",
+    "slide_count": "Page {current} of {amount}",
+    "time": "time",
+    "event": "event",
+    "value": "value",
+    "game": "game",
+    "denomination_choose_header": "select denomination",
+    "lang_choose_header": "select language",
+}

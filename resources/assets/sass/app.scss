@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    overflow: hidden;
+}
+.app {
+    display: flex;
+    flex-direction: column;
+}
+.game-chooser--champion {
+    background: #000 url("../img/champion_bg.gif") center top no-repeat;
+    height: 100vh;
+    position: relative;
+    background-size: contain;
+}
+
+@import "fonts";
+@import "transitions";
+@import "buttons";
+@import "panel";
+@import "slider";
+@import "login_champion";
+@import "media";

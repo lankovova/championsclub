@@ -1,0 +1,118 @@
+.button {
+    background-position: top left;
+    background-size: 200%;
+    text-transform: uppercase;
+    font-size: 28px;
+    text-align: center;
+    position: absolute;
+}
+.button:focus {
+    outline: none;
+}
+.button:hover {
+    background-position: top right;
+}
+.button--down {
+    /* rewrite hover effect */
+    background-position: bottom left !important;
+}
+.button--disabled {
+    background-position: bottom right !important;
+}
+.button--denomination {
+    background-image: url("../img/denomination_btn_bg.png");
+    position: absolute;
+    left: 12px;
+    top: 23px;
+    width: 91px;
+    height: 79px;
+    text-align: center;
+    position: relative;
+
+    .text-1 {
+        font-size: 14px;
+        color: #052d56;
+        position: absolute;
+        top: 2px;
+        text-transform: lowercase;
+        width: 100%;
+        font-weight: 500;
+    }
+    .text-2 {
+        font-weight: 600;
+        font-size: 26px;
+        color: #faf8f6;
+        position: absolute;
+        top: 18px;
+        width: 100%;
+    }
+    .text-3 {
+        font-weight: 400;
+        font-size: 13px;
+        color: #cdc700;;
+        text-transform: capitalize;
+        position: absolute;
+        bottom: 7px;
+        width: 100%;
+        letter-spacing: 2px;
+    }
+}
+.button--next-slide {
+    background-image: url("../img/next_btn_bg.png");
+    width: 156px;
+    height: 146px;
+    bottom: 0;
+    right: 0;
+    line-height: 158px;
+    text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
+    color: rgba(5, 4, 36, 0.8);
+    font-weight: 700;
+    font-size: 36px;
+}
+.button--previous-slide {
+    background-image: url("../img/previous_btn_bg.png");
+    width: 129px;
+    height: 89px;
+    right: 163px;
+    top: 21px;
+    line-height: 90px;
+    font-size: 23px;
+    text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
+    color: rgba(5, 4, 36, 0.8);
+    font-weight: 700;
+}
+.button--history {
+    background-image: url("../img/history_btn_bg.png");
+    width: 112px;
+    height: 45px;
+    right: 16px;
+    top: 16px;
+    font-size: 22px;
+    line-height: 45px;
+    color: #faf8f6;
+}
+.button--lang {
+    background-image: url("../img/lang_btn_bg.png");
+    width: 53px;
+    height: 45px;
+    top: 16px;
+    left: 16px;
+}
+.button--help {
+    background-image: url("../img/help_btn_bg.png");
+    background-position: bottom right;
+    width: 56px;
+    height: 46px;
+    left: 79px;
+    top: 16px;
+}
+.button--exit {
+    background-image: url("../img/exit_btn_bg.png");
+    position: absolute;
+    top: 11px;
+    width: 122px;
+    height: 90px;
+    line-height: 84px;
+    text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
+    color: rgba(5, 4, 36, 0.8);
+}
