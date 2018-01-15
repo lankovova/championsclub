@@ -1,6 +1,5 @@
 const path = require('path');
 
-/*global __dirname:true*/
 const config = {
 	devtool: 'source-map',
 	entry: ['babel-polyfill', './resources/assets/divslot/js/index.js'],
