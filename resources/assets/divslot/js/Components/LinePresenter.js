@@ -5,11 +5,13 @@ class LinePresenter {
      */
     constructor(line, color) {
         this.line = line;
+
+        this.color = color;
         // Create node
         this.node = document.createElement('div');
-        this.node.style.backgroundColor = color;
         this.node.text = '';
         this.node.className += 'line_presenter';
+
         // Init listners
         this.node.onmousedown = () => this.line.show();
         this.node.onmouseup = () => this.line.hide();
@@ -17,6 +19,8 @@ class LinePresenter {
     }
 
     set text(text) {
+        this.node.style.backgroundColor = (!text || text === '') ? '' : this.color;
+
         this.node.innerText = text;
     }
 }
