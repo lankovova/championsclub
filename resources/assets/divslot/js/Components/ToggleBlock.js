@@ -20,9 +20,9 @@ class ToggleBlock {
             // Init element properties
             const item = document.createElement('div');
             item.className = 'item';
-            item.style.width = `${options.itemParams.width}px`;
-            item.style.height = `${options.itemParams.height}px`;
-            item.style.margin = `${options.itemParams.margin}px`;
+            // item.style.width = `${options.itemParams.width}px`;
+            // item.style.height = `${options.itemParams.height}px`;
+            // item.style.margin = `${options.itemParams.margin}px`;
             item.innerHTML = value;
 
             // Add click event on item
@@ -36,9 +36,9 @@ class ToggleBlock {
         });
 
         // Set block width depending on item width
-        const itemRealWidth = options.itemParams.width + options.itemParams.margin * 2;
-        const maxItemsInRow = (reversedItems.length >= 10) ? Math.ceil(reversedItems.length / 2) : reversedItems.length;
-        this.node.style.width = `${10 + itemRealWidth * maxItemsInRow}px`;
+        // const itemRealWidth = options.itemParams.width + options.itemParams.margin * 2;
+        // const maxItemsInRow = (reversedItems.length >= 10) ? Math.ceil(reversedItems.length / 2) : reversedItems.length;
+        // this.node.style.width = `${10 + itemRealWidth * maxItemsInRow}px`;
 
         this._initListeners();
     }

@@ -307,12 +307,7 @@ class InterfaceController {
     _initTogglingBlocks() {
         this.linesBlock = new ToggleBlock({
             node: document.querySelector('#linesBlock'),
-            items: settings.lines,
-            itemParams: {
-                width: 50,
-                height: 50,
-                margin: 5
-            }
+            items: settings.lines
         }, {
             setValue: this.setLines,
             enableSelf: this.enableLines,
@@ -322,12 +317,7 @@ class InterfaceController {
 
         this.betPerLineBlock = new ToggleBlock({
             node: document.querySelector('#betPerLineBlock'),
-            items: settings.betPerLine,
-            itemParams: {
-                width: 50,
-                height: 50,
-                margin: 5
-            }
+            items: settings.betPerLine
         }, {
             setValue: this.setBerPerLine,
             enableSelf: this.enableBetPerLines,
@@ -337,12 +327,7 @@ class InterfaceController {
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
-            items: settings.denominations,
-            itemParams: {
-                width: 80,
-                height: 80,
-                margin: 5
-            }
+            items: settings.denominations
         }, {
             setValue: this.setDenomination,
             enableSelf: this.enableDenomination,
