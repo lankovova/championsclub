@@ -20,8 +20,8 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-    "symbolsImagesPath": "./assets/images/symbols/",
-    "symbolsAnimationsPath": "./assets/images/symbols/animations/",
+    "symbolsImagesPath": "public/img/bookofwinner/symbols/",
+    "symbolsAnimationsPath": "public/img/bookofwinner/symbols/animations/",
 
     "symbols": [
         {"image": "1.png"},

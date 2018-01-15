@@ -1,7 +1,7 @@
-@import "reset";
-@import "animation";
-@import "media";
-@import "preloader";
+@import "../reset";
+@import "../animations";
+@import "../media";
+@import "../preloader";
 
 * {
     -webkit-user-select: none;
@@ -51,7 +51,7 @@ body {
 
     width: 1680px;
     height: 731px;
-    background: url('../img/game_bg.png') center center;
+    background: url('../img/games/bookofwinner/game_bg.png') center center;
     background-size: contain;
     position: absolute;
 }
@@ -93,7 +93,7 @@ body {
 }
 
 .reel_wrapper {
-    background: url('../img/reel_bg.png');
+    background: url('../img/games/bookofwinner/reel_bg.png');
     background-size: cover;
     position: relative;
     overflow: hidden;
@@ -131,12 +131,12 @@ body {
 }
 .panel_row-top {
     height: 98px;
-    background: url('../img/panel/panel_top.png');
+    background: url('../img/panel_top_bg.png');
     position: relative;
 }
 .panel_row-bot {
     height: 115px;
-    background: url('../img/panel/panel_bot.png');
+    background: url('../img/panel_bottom_bg.png');
     position: relative;
 }
 .panel-bottom__container,
@@ -188,7 +188,7 @@ body {
     justify-content: center;
 }
 .panel_row-top .menu_btn {
-    background: url('../img/panel/menu_btn.png');
+    background: url('../img/exit_btn_bg.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -207,7 +207,7 @@ body {
 .text_number_button {
     margin-top: 15px;
     display: flex;
-    background: url('../img/panel/button_with_number.png');
+    background: url('../img/button_with_number.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -252,7 +252,7 @@ body {
 .panel_row-top .jackpot_bonus {
     width: 809px;
     height: 98px;
-    background: url('../img/panel/jackpot_bg.png');
+    background: url('../img/jackpot_bonus_bg.png');
     background-size: 100% 100%;
     display: flex;
     flex-direction: column;
@@ -279,7 +279,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../img/panel/jackpot_grid.png');
+    background: url('../img/notifier_grid_bg.png');
     background-size: 100% 100%;
 }
 .panel_row-top .jackpot_bonus .text_block .title {
@@ -297,7 +297,7 @@ body {
     top: 1px;
     width: 100%;
     height: 44%;
-    background: url('../img/panel/notifier.png');
+    background: url('../img/notifier_field_bg.png');
     background-size: 100% 100%;
     border-radius: 5px;
     color: #d4e7f0;
@@ -306,7 +306,7 @@ body {
     text-transform: uppercase;
 }
 .panel_row-top .auto_btn {
-    background: url('../img/panel/auto_btn.png');
+    // background: url('../img/auto_btn.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -325,7 +325,7 @@ body {
 .panel_row-bot .denomination_btn {
     flex-direction: column;
     justify-content: space-around;
-    background: url('../img/panel/denomination_btn.png');
+    background: url('../img/denomination_btn_bg.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -351,7 +351,7 @@ body {
 }
 
 .panel_row-bot .user_cash {
-    background: url('../img/panel/user_cash_bg.png');
+    background: url('../img/cash_presenter_bg.png');
     background-size: 100% 100%;
     margin-top: 6px;
     width: 307px;
@@ -367,7 +367,7 @@ body {
     align-items: center;
 }
 .panel_row-bot .user_cash .fields_wrapper .field {
-    background: url('../img/panel/user_cash_field_bg.png');
+    background: url('../img/cash_presenter_field.png');
     background-size: 100% 100%;
 
     width: 100%;
@@ -408,7 +408,7 @@ body {
     margin-top: 17px;
 }
 .tnblock_bet {
-    background: url('../img/panel/bet_field.png');
+    background: url('../img/bet_field.png');
     background-size: 100% 100%;
     width: 91px;
     left: 442px;
@@ -416,7 +416,7 @@ body {
 .tnblock_bet .numbers .points { color: #75cdff; }
 .tnblock_bet .numbers .kups { color: #7994a2; }
 .tnblock_win {
-    background: url('../img/panel/win_field.png');
+    background: url('../img/win_field.png');
     background-size: 100% 100%;
     width: 112px;
     left: 560px;
@@ -451,7 +451,7 @@ body {
     font-weight: 900;
 }
 .panel_row-bot .lhh_panel {
-    background: url('../img/panel/lhh_panel_bg.png');
+    background: url('../img/help_panel_bg.png');
     background-size: 100% 100%;
     height: 91px;
     width: 276px;
@@ -461,7 +461,7 @@ body {
     position: relative;
 }
 .panel_row-bot .lhh_panel  .language_btn {
-    background: url('../img/lang_btns/en.png');
+    background: url('../img/lang_flags/en_btn_bg.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -472,7 +472,7 @@ body {
     cursor: pointer;
 }
 .panel_row-bot .lhh_panel  .help_btn {
-    background: url('../img/panel/help_btn.png');
+    background: url('../img/help_btn_bg.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -483,7 +483,7 @@ body {
     cursor: pointer;
 }
 .panel_row-bot .lhh_panel  .history_btn {
-    background: url('../img/panel/history_btn.png');
+    background: url('../img/history_btn_bg.png');
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -499,7 +499,7 @@ body {
 
 .button {
     margin-top: 16px;
-    background: url('../img/panel/button.png');
+    background: url('../img/previous_btn_bg.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -522,7 +522,7 @@ body {
     margin-top: -30px;
     width: 156px;
     height: 144px;
-    background: url('../img/panel/start_btn.png');
+    background: url('../img/next_btn_bg.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
