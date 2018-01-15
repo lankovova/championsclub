@@ -1,42 +1,42 @@
 import Notifier from '../Components/Notifier';
 import JackpotBonus from './JackpotBonus';
-import {SSTBtn, MaxBetBtn, LinesBtn, BetPerLineBtn, DenominationBtn, MenuBtn, GambleBtn, AutoBtn, LanguageBtn} from './buttons';
+import * as Buttons from './buttons';
 
 class Panel {
     constructor(node, props) {
         this.node = node;
         this.props = props;
 
-        this.SSTBtn = new SSTBtn({
+        this.SSTBtn = new Buttons.SSTBtn({
             node: document.querySelector('#SSTBtn'),
             spinStopTake: this.props.spinStopTake
         });
-        this.maxBetBtn = new MaxBetBtn({
+        this.maxBetBtn = new Buttons.MaxBetBtn({
             node: document.querySelector('#maxBetBtn'),
             setMaxBet: this.props.setMaxBet
         });
-        this.linesBtn = new LinesBtn({
+        this.linesBtn = new Buttons.LinesBtn({
             node: document.querySelector('#linesBtn'),
             toggleLinesBlock: this.props.toggleLinesBlock
         });
-        this.betPerLineBtn = new BetPerLineBtn({
+        this.betPerLineBtn = new Buttons.BetPerLineBtn({
             node: document.querySelector('#betPerLineBtn'),
             toggleBetPerLineBlock: this.props.toggleBetPerLineBlock
         });
-        this.denominationBtn = new DenominationBtn({
+        this.denominationBtn = new Buttons.DenominationBtn({
             node: document.querySelector('#denominationBtn'),
             toggleDenominationBlock: this.props.toggleDenominationBlock
         });
-        this.menuBtn = new MenuBtn({
+        this.menuBtn = new Buttons.MenuBtn({
             node: document.querySelector('#menuBtn'),
         });
-        this.gambleBtn = new GambleBtn({
+        this.gambleBtn = new Buttons.GambleBtn({
             node: document.querySelector('#gambleBtn'),
         });
-        this.autoBtn = new AutoBtn({
+        this.autoBtn = new Buttons.AutoBtn({
             node: document.querySelector('#autoBtn'),
         });
-        this.languageBtn = new LanguageBtn({
+        this.languageBtn = new Buttons.LanguageBtn({
             node: document.querySelector('#languageBtn'),
             toggleLanguageBlock: this.props.toggleLanguageBlock
         });
