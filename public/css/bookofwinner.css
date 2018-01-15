@@ -72,6 +72,12 @@ table {
   font-weight: 700;
 }
 
+@font-face {
+  font-family: "Fira Mono";
+  src: url("../fonts/Fira_Mono/FiraMono-Bold.ttf");
+  font-weight: 700;
+}
+
 @-webkit-keyframes symbolAnimation {
   0% {
     background-position: 0;
@@ -444,6 +450,7 @@ table {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 2px;
+  font-family: "Fira Mono", monospace;
 }
 
 .jackpot_bonus .text_block .text_part {
