@@ -9,6 +9,8 @@ export default class Button {
     constructor(props) {
         this.node = props.node;
 
+        this._state = false;
+
         this._initEffects();
     }
 
@@ -43,6 +45,17 @@ export default class Button {
     enable() {
         this.node.style.backgroundPosition = spriteParts.enabled;
         this.node.style.cursor = '';
+    }
+
+    get state() { return this._state; }
+    set state(newState) {
+        if (newState) {
+            this.enable();
+        } else {
+            this.disable();
+        }
+
+        this._state = newState;
     }
 
     set text(newText) {

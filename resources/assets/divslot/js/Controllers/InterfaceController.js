@@ -78,74 +78,42 @@ class InterfaceController {
             get speedUpTakeWin() { return this._speedUpTakeWin; },
 
             set denomination(newState) {
-                if (newState)
-                    that.panel.denominationBtn.enable();
-                else
-                    that.panel.denominationBtn.disable();
-
+                that.panel.denominationBtn.state = newState;
                 this._denomination = newState;
             },
             get denomination() { return this._denomination; },
             set lines(newState) {
-                if (newState)
-                    that.panel.linesBtn.enable();
-                else
-                    that.panel.linesBtn.disable();
-
+                that.panel.linesBtn.state = newState;
                 this._lines = newState;
             },
             get lines() { return this._lines; },
             set betPerLine(newState) {
-                if (newState)
-                    that.panel.betPerLineBtn.enable();
-                else
-                    that.panel.betPerLineBtn.disable();
-
+                that.panel.betPerLineBtn.state = newState;
                 this._betPerLine = newState;
             },
             get betPerLine() { return this._betPerLine; },
             set maxBet(newState) {
-                if (newState)
-                    that.panel.maxBetBtn.enable();
-                else
-                    that.panel.maxBetBtn.disable();
-
+                that.panel.maxBetBtn.state = newState;
                 this._maxBet = newState;
             },
             get maxBet() { return this._maxBet; },
             set menu(newState) {
-                if (newState)
-                    that.panel.menuBtn.enable();
-                else
-                    that.panel.menuBtn.disable();
-
+                that.panel.menuBtn.state = newState;
                 this._menu = newState;
             },
             get menu() { return this._menu; },
             set gamble(newState) {
-                if (newState)
-                    that.panel.gambleBtn.enable();
-                else
-                    that.panel.gambleBtn.disable();
-
+                that.panel.gambleBtn.state = newState;
                 this._gamble = newState;
             },
             get gamble() { return this._gamble; },
             set auto(newState) {
-                if (newState)
-                    that.panel.autoBtn.enable();
-                else
-                    that.panel.autoBtn.disable();
-
+                that.panel.autoBtn.state = newState;
                 this._auto = newState;
             },
             get auto() { return this._auto; },
             set language(newState) {
-                if (newState)
-                    that.panel.autoBtn.enable();
-                else
-                    that.panel.autoBtn.disable();
-
+                that.panel.autoBtn.state = newState;
                 this._language = newState;
             },
             get language() { return this._language; }
@@ -275,6 +243,7 @@ class InterfaceController {
         this.state.takeWin = true;
     }
 
+    // FIXME: Handle separate state
     disableInterface = () => {
         for (const stateKey of Object.keys(this.state)) {
             // Skip private properties
@@ -283,7 +252,7 @@ class InterfaceController {
             this.state[stateKey] = false;
         }
     }
-
+    // FIXME: Handle separate state
     enableInterface = () => {
         for (const stateKey of Object.keys(this.state)) {
             // Skip private properties
@@ -344,7 +313,7 @@ class InterfaceController {
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
-            items: settings.denominations
+            items: settings.denominations.map(item => (item / 100).toFixed(2))
         }, {
             setValue: this.setDenomination,
             enableSelf: this.enableDenomination,
