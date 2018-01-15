@@ -294,6 +294,10 @@ table {
       justify-content: space-around;
   -ms-flex-wrap: wrap-reverse;
       flex-wrap: wrap-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
 .toggle_block .content--lines {
