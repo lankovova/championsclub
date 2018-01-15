@@ -7,6 +7,9 @@ class ToggleBlock {
         this.node = options.node;
         this.isToggled = false;
 
+        this.items = [];
+        this.activeItem;
+
         this.init(options);
     }
 
@@ -22,11 +25,7 @@ class ToggleBlock {
             item.className = 'item';
             item.innerHTML = value;
 
-            // Add click event on item
-            item.onclick = () => {
-                this.props.setValue(value);
-                this.toggle();
-            }
+            this.items.push(item);
 
             // Add item to content element
             blockContent.appendChild(item);
@@ -36,6 +35,24 @@ class ToggleBlock {
     }
 
     _initListeners() {
+        this.items.forEach(item => {
+            // Add click event on item
+            item.onclick = () => {
+                // If there is active item
+                if (this.activeItem) {
+                    // Remove active highlight
+                    this.activeItem.classList.remove('item--active');
+                }
+
+                // Add highlight to new item
+                item.classList.add('item--active');
+                this.props.setValue(+item.innerHTML);
+                this.activeItem = item;
+
+                this.toggle();
+            }
+        });
+
         this.node.addEventListener(transitionEnd, (event) => {
             if (this.isToggled) {
                 this.props.disableInterface();
