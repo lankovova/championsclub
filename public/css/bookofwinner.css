@@ -292,24 +292,42 @@ table {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-      -ms-flex-flow: row-reverse wrap-reverse;
-          flex-flow: row-reverse wrap-reverse;
-  padding: 5px;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.toggle_block .content--lines {
+  max-width: 980px;
+}
+
+.toggle_block .content--betperline {
+  max-width: 1078px;
 }
 
 .toggle_block .content .item {
+  color: #dbdbdb;
+  font-size: 32px;
+  font-weight: 700;
   cursor: pointer;
   -webkit-box-shadow: #286da1 0 0 12px 5px;
           box-shadow: #286da1 0 0 12px 5px;
-  background: url("../img/choose_btn_bg.png") left;
-  width: 115px;
-  height: 106px;
-  line-height: 106px;
+  background-image: url("../img/button_bg.png");
+  background-position: left;
+  width: 78px;
+  height: 73px;
+  line-height: 73px;
   margin: 10px;
-  border-radius: 15px;
+  border-radius: 7px;
   text-align: center;
+}
+
+.toggle_block .content .item--active {
+  color: rgba(5, 4, 36, 0.8);
+  background-position: right;
 }
 
 .lang_block {
@@ -398,25 +416,16 @@ table {
           flex-direction: column;
 }
 
-.panel_row-top .jackpot_bonus {
-  width: 809px;
+.jackpot_bonus {
+  width: 785px;
   height: 98px;
   background: url("../img/jackpot_bonus_bg.png");
   background-size: 100% 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   padding: 0 10px;
+  position: relative;
 }
 
-.panel_row-top .jackpot_bonus .text_block {
+.jackpot_bonus .text_block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -426,23 +435,27 @@ table {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  position: relative;
-  top: 5px;
+  position: absolute;
+  top: 11px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 768px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
-.panel_row-top .jackpot_bonus .text_block .text_part {
-  font-size: 24px;
-  font-weight: 900;
+.jackpot_bonus .text_block .text_part {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  letter-spacing: 1px;
 }
 
-.panel_row-top .jackpot_bonus .text_block .grid {
+.jackpot_bonus .text_block .grid {
   position: absolute;
   top: 0;
   left: 0;
@@ -452,37 +465,41 @@ table {
   background-size: 100% 100%;
 }
 
-.panel_row-top .jackpot_bonus .text_block .title {
+.jackpot_bonus .text_block .title {
   text-transform: uppercase;
 }
 
-.panel_row-top .jackpot_bonus .text_block .title::after {
+.jackpot_bonus .text_block .title::after {
   content: ':';
   margin-right: 10px;
 }
 
-.panel_row-top .jackpot_bonus .text_block .jackpot {
+.jackpot_bonus .text_block .jackpot {
   color: #f74747;
+  text-shadow: 0 0 10px #f74747;
 }
 
-.panel_row-top .jackpot_bonus .text_block .bonus {
+.jackpot_bonus .text_block .bonus {
   color: #74f465;
+  text-shadow: 0 0 10px #74f465;
 }
 
-.panel_row-top .jackpot_bonus .notifier {
-  margin: 0 auto;
-  position: relative;
-  top: 1px;
-  width: 100%;
-  height: 44%;
+.jackpot_bonus .notifier {
+  margin: auto;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  width: 786px;
+  height: 50px;
   background: url("../img/notifier_field_bg.png");
   background-size: 100% 100%;
   border-radius: 5px;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
@@ -586,6 +603,7 @@ table {
 }
 
 .panel_row-bot .user_cash .fields_wrapper .field .title {
+  font-size: 20px;
   color: white;
   text-transform: uppercase;
 }
@@ -605,13 +623,13 @@ table {
 .panel_row-bot .user_cash .fields_wrapper .field .numbers .points {
   color: white;
   text-align: end;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .panel_row-bot .user_cash .fields_wrapper .field .numbers .kups {
   color: #cdc700;
   text-align: end;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .tnblock {
@@ -668,6 +686,7 @@ table {
 }
 
 .tnblock .title {
+  font-size: 20px;
   color: white;
   text-transform: uppercase;
 }
@@ -685,13 +704,13 @@ table {
 }
 
 .tnblock .numbers .points {
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .tnblock .numbers .kups {
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .panel_row-bot .lhh_panel {
@@ -890,9 +909,9 @@ body {
 
 .line_presenter {
   background-image: url("../img/line_presenter_glare.png");
-  background-color: grey;
+  background-color: #686890;
   background-size: 100% 100%;
-  font-size: 18px;
+  font-size: 32px;
   width: 54px;
   height: 54px;
   border-radius: 5px;

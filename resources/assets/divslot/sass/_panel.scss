@@ -86,19 +86,34 @@
 .toggle_block .content {
     display: flex;
     justify-content: space-around;
-    flex-flow: row-reverse wrap-reverse;
-    padding: 5px;
+    flex-wrap: wrap-reverse;
+    flex-direction: row-reverse;
+}
+.toggle_block .content--lines {
+    max-width: 980px;
+}
+.toggle_block .content--betperline {
+    max-width: 1078px;
 }
 .toggle_block .content .item {
+    color: #dbdbdb;
+    font-size: 32px;
+    font-weight: 700;
     cursor: pointer;
     box-shadow: #286da1 0 0 12px 5px;
-    background: url("../img/choose_btn_bg.png") left;
-    width: 115px;
-    height: 106px;
-    line-height: 106px;
+    background-image: url("../img/button_bg.png");
+    background-position: left;
+    width: 78px;
+    height: 73px;
+    line-height: 73px;
     margin: 10px;
-    border-radius: 15px;
+    border-radius: 7px;
     text-align: center;
+
+    &--active {
+        color: rgba(5, 4, 36, 0.8);
+        background-position: right;
+    }
 }
 .lang_block {
     left: 30%;
@@ -167,31 +182,33 @@
 .panel_row-top .betperline_btn .title {
     flex-direction: column;
 }
-.panel_row-top .jackpot_bonus {
-    width: 809px;
+.jackpot_bonus {
+    width: 785px;
     height: 98px;
     background: url('../img/jackpot_bonus_bg.png');
     background-size: 100% 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 0 10px;
+    position: relative
 }
-.panel_row-top .jackpot_bonus .text_block {
+.jackpot_bonus .text_block {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    position: relative;
-    top: 5px;
+    position: absolute;
+    top: 11px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 768px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
-.panel_row-top .jackpot_bonus .text_block .text_part {
-    font-size: 24px;
-    font-weight: 900;
+.jackpot_bonus .text_block .text_part {
     display: flex;
     align-items: center;
-    letter-spacing: 1px;
 }
-.panel_row-top .jackpot_bonus .text_block .grid {
+.jackpot_bonus .text_block .grid {
     position: absolute;
     top: 0;
     left: 0;
@@ -200,26 +217,34 @@
     background: url('../img/notifier_grid_bg.png');
     background-size: 100% 100%;
 }
-.panel_row-top .jackpot_bonus .text_block .title {
+.jackpot_bonus .text_block .title {
     text-transform: uppercase;
 }
-.panel_row-top .jackpot_bonus .text_block .title::after {
+.jackpot_bonus .text_block .title::after {
     content: ':';
     margin-right: 10px;
 }
-.panel_row-top .jackpot_bonus .text_block .jackpot { color: #f74747 }
-.panel_row-top .jackpot_bonus .text_block .bonus { color: #74f465 }
-.panel_row-top .jackpot_bonus .notifier {
-    margin: 0 auto;
-    position: relative;
-    top: 1px;
-    width: 100%;
-    height: 44%;
+.jackpot_bonus .text_block .jackpot { 
+    color: #f74747;
+    text-shadow: 0 0 10px #f74747;
+}
+.jackpot_bonus .text_block .bonus { 
+    color: #74f465;
+    text-shadow: 0 0 10px #74f465;
+}
+.jackpot_bonus .notifier {
+    margin: auto;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    width: 786px;
+    height: 50px;
     background: url('../img/notifier_field_bg.png');
     background-size: 100% 100%;
     border-radius: 5px;
     color: rgba(255, 255, 255, 0.8);
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 400;
     text-transform: uppercase;
     text-shadow:
@@ -306,6 +331,7 @@
     margin-bottom: 5px;
 }
 .panel_row-bot .user_cash .fields_wrapper .field .title {
+    font-size: 20px;
     color: white;
     text-transform: uppercase;
 }
@@ -317,14 +343,12 @@
 .panel_row-bot .user_cash .fields_wrapper .field .numbers .points {
     color: white;
     text-align: end;
-
-    font-size: 17px;
+    font-size: 20px;
 }
 .panel_row-bot .user_cash .fields_wrapper .field .numbers .kups {
     color: #cdc700;
     text-align: end;
-
-    font-size: 11px;
+    font-size: 12px;
 }
 .tnblock {
     height: 89px;
@@ -356,6 +380,7 @@
     height: 45%;
 }
 .tnblock .title {
+    font-size: 20px;
     color: white;
     text-transform: uppercase;
 }
@@ -366,12 +391,12 @@
     justify-content: flex-start;
 }
 .tnblock .numbers .points {
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 700;
 }
 .tnblock .numbers .kups {
-    font-size: 11px;
-    font-weight: 900;
+    font-size: 16px;
+    font-weight: 400;
 }
 .panel_row-bot .lhh_panel {
     background: url('../img/help_panel_bg.png');
