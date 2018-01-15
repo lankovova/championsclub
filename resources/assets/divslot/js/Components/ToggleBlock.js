@@ -41,18 +41,7 @@ class ToggleBlock {
         this.itemsNodes.forEach(item => {
             // Add click event on item
             item.onclick = () => {
-                // If there is active item
-                if (this.activeItem) {
-                    // Remove active highlight
-                    this.activeItem.classList.remove('item--active');
-                }
-
-                // Add highlight to new item
-                item.classList.add('item--active');
-                this.props.setValue(item.getAttribute('data-value'));
-
-                // Remember active item
-                this.activeItem = item;
+                this.props.setValue(+item.getAttribute('data-value'));
 
                 // Toggle(hide) block itself
                 this.toggle();
@@ -70,6 +59,24 @@ class ToggleBlock {
                 this.props.setInterfaceIdle();
             }
         });
+    }
+
+    highlightItem(itemValue) {
+        // If there is active item
+        if (this.activeItem) {
+            // Remove active highlight
+            this.activeItem.classList.remove('item--active');
+        }
+
+        // Add highlight to new item
+        this.itemsNodes.forEach(item => {
+            if (+item.getAttribute('data-value') === itemValue) {
+                item.classList.add('item--active');
+                // Remember active item
+                this.activeItem = item;
+            }
+        });
+
     }
 
     toggle() {

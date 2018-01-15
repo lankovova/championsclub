@@ -159,8 +159,9 @@ class InterfaceController {
     }
 
     setLines = (lines) => {
-        if (this.state.lines)
+        if (this.state.lines) {
             this.props.setLines(lines);
+        }
     }
 
     setBerPerLine = (betPerLine) => {
@@ -274,6 +275,7 @@ class InterfaceController {
                     this.spinStopTake();
                     break;
                 case 188: // <
+
                     this.setLines();
                     break;
                 case 190: // >
@@ -313,7 +315,9 @@ class InterfaceController {
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
-            items: settings.denominations.map(item => (item / 100).toFixed(2))
+            items: settings.denominations
+            // FIXME: Not working
+            // items: settings.denominations.map(item => (item / 100).toFixed(2))
         }, {
             setValue: this.setDenomination,
             enableSelf: this.enableDenomination,

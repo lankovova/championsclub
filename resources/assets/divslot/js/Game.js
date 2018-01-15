@@ -57,7 +57,10 @@ export default class Game {
 
             this.pointsController = new PointsController({
                 panel: this.interfaceController.panel,
-                linePresenters: this.interfaceController.linePresenters
+                linePresenters: this.interfaceController.linePresenters,
+                linesBlock: this.interfaceController.linesBlock,
+                betPerLineBlock: this.interfaceController.betPerLineBlock,
+                denominationBlock: this.interfaceController.denominationBlock,
             }, {
                 userCash: userCash,
                 denomination: 1,
@@ -93,6 +96,7 @@ export default class Game {
     setLines = newLines => {
         const newValue = newLines ? newLines : getNextArrayItem(settings.lines, this.pointsController.lines);
         this.pointsController.setLines(newValue);
+
         this.setSpinPossibility();
 
         this.linesController.showAndHideLines(newValue);

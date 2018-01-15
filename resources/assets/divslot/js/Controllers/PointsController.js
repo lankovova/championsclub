@@ -16,6 +16,7 @@ class PointsController {
     _init({lines = settings.lines[0], betPerLine = settings.betPerLine[0], denomination = settings.denominations[0], userCash = 0, userWin = 0}) {
         // Init denom
         this._denomination = denomination;
+        this.props.denominationBlock.highlightItem(this._denomination);
         this.props.panel.setDenomination(this._denomination);
 
         this.setLines(lines);
@@ -54,6 +55,8 @@ class PointsController {
     setDenomination = denomination => {
         this._denomination = denomination;
 
+        this.props.denominationBlock.highlightItem(denomination);
+
         // Update panel value
         this.props.panel.setDenomination(this._denomination);
 
@@ -64,6 +67,8 @@ class PointsController {
     get lines() { return this._linesAmount };
     setLines = linesAmount => {
         this._linesAmount = linesAmount;
+
+        this.props.linesBlock.highlightItem(linesAmount);
 
         // Update panel value
         this.props.panel.setLinesAmount(this._linesAmount);
@@ -77,6 +82,8 @@ class PointsController {
     get betPerLine() { return this._betPerLine };
     setBetPerLine = betPerLine => {
         this._betPerLine = betPerLine;
+
+        this.props.betPerLineBlock.highlightItem(betPerLine);
 
         // Update panel value
         this.props.panel.setBetPerLine(this._betPerLine);
