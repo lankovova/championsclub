@@ -29,6 +29,7 @@ class InterfaceController {
             toggleLinesBlock: this.toggleLinesBlock,
             toggleBetPerLineBlock: this.toggleBetPerLineBlock,
             toggleDenominationBlock: this.toggleDenominationBlock,
+            toggleLanguageBlock: this.toggleLanguageBlock,
         });
 
         this.state = {
@@ -43,6 +44,7 @@ class InterfaceController {
             _menu: false,
             _gamble: false,
             _auto: false,
+            _language: false,
 
             // TODO: Maybe segregate this states into buttons components
             set spin(newState) {
@@ -138,6 +140,15 @@ class InterfaceController {
                 this._auto = newState;
             },
             get auto() { return this._auto; },
+            set language(newState) {
+                if (newState)
+                    that.panel.autoBtn.enable();
+                else
+                    that.panel.autoBtn.disable();
+
+                this._language = newState;
+            },
+            get language() { return this._language; }
         };
 
         this._initKeyboardListeners();
@@ -214,6 +225,11 @@ class InterfaceController {
             this.denominationBlock.toggle();
     }
 
+    toggleLanguageBlock = () => {
+        if (this.state.language)
+            this.langBlock.toggle();
+    }
+
     showAlert = (alertText) => {
         this.alertWindow.text = alertText;
         this.alertWindow.show();
@@ -247,6 +263,7 @@ class InterfaceController {
     enableLines = () => this.state.lines = true;
     enableBetPerLines = () => this.state.betPerLine = true;
     enableDenomination = () => this.state.denomination = true;
+    enableLanguage = () => this.state.language = true;
 
     setIdle = () => {
         this.enableInterface();
@@ -331,6 +348,16 @@ class InterfaceController {
         }, {
             setValue: this.setDenomination,
             enableSelf: this.enableDenomination,
+            setInterfaceIdle: this.setIdle,
+            disableInterface: this.disableInterface,
+        });
+
+        this.langBlock = new ToggleBlock({
+            node: document.querySelector('#languageBlock'),
+            items: ['hyi', 'lol', 'kek']
+        }, {
+            setValue: this.setLanguage,
+            enableSelf: this.enableLanguage,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
         });

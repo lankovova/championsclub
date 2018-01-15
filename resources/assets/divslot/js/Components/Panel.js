@@ -1,6 +1,6 @@
 import Notifier from '../Components/Notifier';
 import JackpotBonus from './JackpotBonus';
-import {SSTBtn, MaxBetBtn, LinesBtn, BetPerLineBtn, DenominationBtn, MenuBtn, GambleBtn, AutoBtn} from './buttons';
+import {SSTBtn, MaxBetBtn, LinesBtn, BetPerLineBtn, DenominationBtn, MenuBtn, GambleBtn, AutoBtn, LanguageBtn} from './buttons';
 
 class Panel {
     constructor(node, props) {
@@ -35,6 +35,10 @@ class Panel {
         });
         this.autoBtn = new AutoBtn({
             node: document.querySelector('#autoBtn'),
+        });
+        this.languageBtn = new LanguageBtn({
+            node: document.querySelector('#languageBtn'),
+            toggleLanguageBlock: this.props.toggleLanguageBlock
         });
 
         this.notifier = new Notifier();
