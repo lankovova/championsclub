@@ -1,0 +1,539 @@
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.game_wrapper {
+    position: fixed;
+    width: 1680px;
+    height: 1050px;
+}
+
+#game {
+    width: 1680px;
+    height: 1050px;
+    background: #080200;
+    overflow: hidden;
+    position: absolute;
+}
+.alert {
+    display: none;
+
+    position: absolute;
+    z-index: 600;
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+}
+.alert .content {
+    width: 50%;
+    min-width: 300px;
+    height: 50%;
+    min-height: 200px;
+    background: lightseagreen;
+    border-radius: 10px;
+}
+.main {
+
+    width: 1680px;
+    height: 731px;
+    background: url('./../assets/images/game_bg.png') center center;
+    background-size: contain;
+    position: absolute;
+}
+
+.reels_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.line_presenters_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 4px 13px 0;
+    height: 692px;
+}
+
+.line_presenter {
+    background-image: url('./../assets/images/line_presenter_glare.png');
+    background-size: 100% 100%;
+    font-size: 18px;
+    width: 54px;
+    height: 54px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reels_container {
+    display: flex;
+    position: relative;
+}
+
+.reel_wrapper {
+    background: url('./../assets/images/reel_bg.png');
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.reel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.header {
+    width: 100%;
+    height: 105px;
+    line-height: 0;
+}
+.header .header_bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.panel {
+    position: absolute;
+    bottom: 0;
+    width: 1680px;
+    z-index: 2;
+}
+.panel .panel_row {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    background-size: 100% 100%;
+    z-index: 1;
+}
+.panel_row-top {
+    height: 98px;
+    background: url('./../assets/images/panel/panel_top.png');
+    position: relative;
+}
+.panel_row-bot {
+    height: 115px;
+    background: url('./../assets/images/panel/panel_bot.png');
+    position: relative;
+}
+.panel-bottom__container,
+.panel-top__container {
+    position: relative;
+    width: 1370px;
+    right: 0;
+    left: 0;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.panel-top__container {
+    padding-right: 25px;
+}
+.panel-bottom__container {
+    padding-left: 25px;
+}
+
+.toggle_block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    min-width: 300px;
+    display: none;
+    background: darkcyan;
+    transition: .3s cubic-bezier(.79,1.51,.74,.84);
+}
+.toggle_block .content {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row-reverse wrap-reverse;
+    padding: 5px;
+}
+.toggle_block .content .item {
+    background: lightgreen;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.panel_row-top .menu_btn {
+    background: url('./../assets/images/panel/menu_btn.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 113px;
+    height: 84px;
+    margin-top: 11px;
+    line-height: 84px;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
+    color: rgba(5, 4, 36, 0.8);
+}
+
+.text_number_button {
+    margin-top: 15px;
+    display: flex;
+    background: url('./../assets/images/panel/button_with_number.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    padding-left: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.text_number_button .title {
+    height: 100%;
+    width: 65%;
+    color: #222a54;
+}
+.text_number_button .number {
+    height: 100%;
+    width: 35%;
+    color: white;
+}
+
+.panel_row-top .lines_btn {
+    text-transform: uppercase;
+    width: 143px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
+    color: rgba(5, 4, 36, 0.8);
+}
+.panel_row-top .betperline_btn {
+    text-transform: uppercase;
+    width: 143px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
+    color: rgba(5, 4, 36, 0.8);
+}
+.panel_row-top .betperline_btn .title {
+    flex-direction: column;
+}
+.panel_row-top .jackpot_bonus {
+    width: 809px;
+    height: 98px;
+    background: url('./../assets/images/panel/jackpot_bg.png');
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.panel_row-top .jackpot_bonus .text_block {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    position: relative;
+    top: 5px;
+}
+.panel_row-top .jackpot_bonus .text_block .text_part {
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+}
+.panel_row-top .jackpot_bonus .text_block .grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./../assets/images/panel/jackpot_grid.png');
+    background-size: 100% 100%;
+}
+.panel_row-top .jackpot_bonus .text_block .title {
+    text-transform: uppercase;
+}
+.panel_row-top .jackpot_bonus .text_block .title::after {
+    content: ':';
+    margin-right: 10px;
+}
+.panel_row-top .jackpot_bonus .text_block .jackpot { color: #f74747 }
+.panel_row-top .jackpot_bonus .text_block .bonus { color: #74f465 }
+.panel_row-top .jackpot_bonus .notifier {
+    margin: 0 auto;
+    position: relative;
+    top: 1px;
+    width: 100%;
+    height: 44%;
+    background: url('./../assets/images/panel/notifier.png');
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: #d4e7f0;
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.panel_row-top .auto_btn {
+    background: url('./../assets/images/panel/auto_btn.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 43px;
+    color: white;
+    cursor: pointer;
+    width: 115px;
+    height: 47px;
+    height: 43px;
+    margin-top: 10px;
+
+}
+.panel_row-bot .denomination_btn {
+    flex-direction: column;
+    justify-content: space-around;
+    background: url('./../assets/images/panel/denomination_btn.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    padding: 5px 0 10px 0;
+    box-sizing: border-box;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 90px;
+    height: 77px;
+}
+.panel_row-bot .denomination_btn .text {
+    color: #052d56;
+    font-size: 12px;
+}
+.panel_row-bot .denomination_btn .number {
+    color: white;
+    font-size: 20px;
+}
+.panel_row-bot .denomination_btn .currency {
+    color: #cdc700;
+    font-size: 14px;
+}
+
+.panel_row-bot .user_cash {
+    background: url('./../assets/images/panel/user_cash_bg.png');
+    background-size: 100% 100%;
+    margin-top: 6px;
+    width: 307px;
+    height: 109px;
+    padding: 10px 10px 5px 10px;
+    box-sizing: border-box;
+}
+.panel_row-bot .fields_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.panel_row-bot .user_cash .fields_wrapper .field {
+    background: url('./../assets/images/panel/user_cash_field_bg.png');
+    background-size: 100% 100%;
+
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 5px;
+    box-sizing: border-box;
+}
+.panel_row-bot .user_cash .fields_wrapper .credit {
+    margin-bottom: 5px;
+}
+.panel_row-bot .user_cash .fields_wrapper .field .title {
+    color: white;
+    text-transform: uppercase;
+}
+.panel_row-bot .user_cash .fields_wrapper .field .numbers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.panel_row-bot .user_cash .fields_wrapper .field .numbers .points {
+    color: white;
+    text-align: end;
+
+    font-size: 17px;
+}
+.panel_row-bot .user_cash .fields_wrapper .field .numbers .kups {
+    color: #cdc700;
+    text-align: end;
+
+    font-size: 11px;
+}
+.tnblock {
+    height: 89px;
+    margin-top: 17px;
+}
+.tnblock_bet {
+    background: url('./../assets/images/panel/bet_field.png');
+    background-size: 100% 100%;
+    width: 91px;
+    left: 442px;
+}
+.tnblock_bet .numbers .points { color: #75cdff; }
+.tnblock_bet .numbers .kups { color: #7994a2; }
+.tnblock_win {
+    background: url('./../assets/images/panel/win_field.png');
+    background-size: 100% 100%;
+    width: 112px;
+    left: 560px;
+}
+.tnblock_win .numbers .points { color: #448604; }
+.tnblock_win .numbers .kups { color: #39472a; }
+.tnblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.tnblock .title_wrapper {
+    height: 45%;
+}
+.tnblock .title {
+    color: white;
+    text-transform: uppercase;
+}
+.tnblock .numbers {
+    color: white;
+    height: 55%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.tnblock .numbers .points {
+    font-size: 22px;
+    font-weight: 900;
+}
+.tnblock .numbers .kups {
+    font-size: 11px;
+    font-weight: 900;
+}
+.panel_row-bot .lhh_panel {
+    background: url('./../assets/images/panel/lhh_panel_bg.png');
+    background-size: 100% 100%;
+    height: 91px;
+    width: 276px;
+    margin-top: 24px;
+    padding-top: 16px;
+    box-sizing: border-box;
+    position: relative;
+}
+.panel_row-bot .lhh_panel  .language_btn {
+    background: url('./../assets/images/lang_btns/en.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    position: absolute;
+    left: 18px;
+    height: 47px;
+    width: 54px;
+    cursor: pointer;
+}
+.panel_row-bot .lhh_panel  .help_btn {
+    background: url('./../assets/images/panel/help_btn.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    position: absolute;
+    left: 76px;
+    height: 46px;
+    width: 59px;
+    cursor: pointer;
+}
+.panel_row-bot .lhh_panel  .history_btn {
+    background: url('./../assets/images/panel/history_btn.png');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    position: absolute;
+    right: 16px;
+    width: 116px;
+    height: 49px;
+    box-sizing: border-box;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.button {
+    margin-top: 16px;
+    background: url('./../assets/images/panel/button.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    top: 22px;
+    width: 134px;
+    height: 91px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+
+    cursor: pointer;
+}
+.button--gamble {
+  
+}
+.button--max {
+
+}
+
+.panel_row-bot .start_btn {
+    margin-top: -30px;
+    width: 156px;
+    height: 144px;
+    background: url('./../assets/images/panel/start_btn.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 24px;
+    cursor: pointer;
+}
