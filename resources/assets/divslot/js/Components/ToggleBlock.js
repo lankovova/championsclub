@@ -7,7 +7,7 @@ class ToggleBlock {
         this.node = options.node;
         this.isToggled = false;
 
-        this.items = [];
+        this.itemsNodes = [];
         this.activeItem;
 
         this.init(options);
@@ -23,9 +23,12 @@ class ToggleBlock {
             // Init element properties
             const item = document.createElement('div');
             item.className = 'item';
+            item.setAttribute('data-value', value);
+
+            // Place value from options.items to element innerHTML
             item.innerHTML = value;
 
-            this.items.push(item);
+            this.itemsNodes.push(item);
 
             // Add item to content element
             blockContent.appendChild(item);
@@ -35,7 +38,7 @@ class ToggleBlock {
     }
 
     _initListeners() {
-        this.items.forEach(item => {
+        this.itemsNodes.forEach(item => {
             // Add click event on item
             item.onclick = () => {
                 // If there is active item
@@ -46,9 +49,12 @@ class ToggleBlock {
 
                 // Add highlight to new item
                 item.classList.add('item--active');
-                this.props.setValue(+item.innerHTML);
+                this.props.setValue(item.getAttribute('data-value'));
+
+                // Remember active item
                 this.activeItem = item;
 
+                // Toggle(hide) block itself
                 this.toggle();
             }
         });
