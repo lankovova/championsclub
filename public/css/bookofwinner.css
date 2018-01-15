@@ -326,6 +326,10 @@ table {
   background-position: right;
 }
 
+.lang_block {
+  left: 30%;
+}
+
 .flex_center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -491,7 +495,7 @@ table {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd,  -1px -1px 0px #2178cd,  1px -1px 0px #2178cd,  -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {

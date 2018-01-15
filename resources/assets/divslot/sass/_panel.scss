@@ -53,15 +53,15 @@
     box-sizing: border-box;
     border-radius: 45px 45px 0 0;
     background-clip: padding-box;
-    background-image: 
-        url(../img/choose/topLeft.png), 
-        url(../img/choose/bottomLeft.png), 
-        url(../img/choose/topRight.png), 
-        url(../img/choose/bottomRight.png), 
-        url(../img/choose/left.png), 
-        url(../img/choose/right.png), 
-        url(../img/choose/top.png), 
-        url(../img/choose/bottom.png), 
+    background-image:
+        url(../img/choose/topLeft.png),
+        url(../img/choose/bottomLeft.png),
+        url(../img/choose/topRight.png),
+        url(../img/choose/bottomRight.png),
+        url(../img/choose/left.png),
+        url(../img/choose/right.png),
+        url(../img/choose/top.png),
+        url(../img/choose/bottom.png),
         url(../img/choose/middlePart.png);
     background-position: top left, bottom left, top right, bottom right, left, right, top, bottom, center;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-y, repeat-y, repeat-x, repeat-x, repeat;
@@ -113,6 +113,9 @@
         color: rgba(5, 4, 36, 0.8);
         background-position: right;
     }
+}
+.lang_block {
+    left: 30%;
 }
 .flex_center {
     display: flex;
@@ -243,10 +246,10 @@
     font-size: 22px;
     font-weight: 400;
     text-transform: uppercase;
-    text-shadow: 
-        1px 1px 0px #2178cd, 
-        -1px -1px 0px #2178cd, 
-        1px -1px 0px #2178cd, 
+    text-shadow:
+        1px 1px 0px #2178cd,
+        -1px -1px 0px #2178cd,
+        1px -1px 0px #2178cd,
         -1px 1px 0px #2178cd;
 }
 .panel_row-top .auto_btn {
