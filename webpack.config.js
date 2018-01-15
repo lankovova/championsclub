@@ -20,9 +20,10 @@ const config = {
 		]
 	},
 	devServer: {
-		contentBase: path.join(__dirname, './'),
+		contentBase: path.join(__dirname, ''),
+		publicPath: "/public/js/",
 		compress: true,
-		port: 8080
+		port: 9000
 	}
 };
 
