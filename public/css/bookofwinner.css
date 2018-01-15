@@ -48,6 +48,30 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: "Oswald";
+  src: url("../fonts/Oswald/Oswald-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../fonts/Oswald/Oswald-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../fonts/Oswald/Oswald-SemiBold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../fonts/Oswald/Oswald-Bold.ttf");
+  font-weight: 700;
+}
+
 @-webkit-keyframes symbolAnimation {
   0% {
     background-position: 0;
@@ -169,143 +193,6 @@ table {
   background: url("../img/games/bookofwinner/symbols/1.png"), url("../img/games/bookofwinner/symbols/2.png"), url("../img/games/bookofwinner/symbols/3.png"), url("../img/games/bookofwinner/symbols/4.png"), url("../img/games/bookofwinner/symbols/5.png"), url("../img/games/bookofwinner/symbols/6.png"), url("../img/games/bookofwinner/symbols/7.png"), url("../img/games/bookofwinner/symbols/8.png"), url("../img/games/bookofwinner/symbols/9.png"), url("../img/games/bookofwinner/symbols/10.png"), url("../img/games/bookofwinner/symbols/animations/4Anim.png");
 }
 
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  overflow: hidden;
-}
-
-.game_wrapper {
-  position: fixed;
-  width: 1680px;
-  height: 1050px;
-}
-
-#game {
-  width: 1680px;
-  height: 1050px;
-  background: #080200;
-  overflow: hidden;
-  position: absolute;
-}
-
-.alert {
-  display: none;
-  position: absolute;
-  z-index: 600;
-  width: 100%;
-  height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.alert .content {
-  width: 50%;
-  min-width: 300px;
-  height: 50%;
-  min-height: 200px;
-  background: lightseagreen;
-  border-radius: 10px;
-}
-
-.main {
-  width: 1680px;
-  height: 731px;
-  background: url("../img/games/bookofwinner/game_bg.png") center center;
-  background-size: contain;
-  position: absolute;
-}
-
-.reels_wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  z-index: 1;
-  padding-top: 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.line_presenters_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 4px 13px 0;
-  height: 692px;
-}
-
-.line_presenter {
-  background-image: url("../img/line_presenter_glare.png");
-  background-size: 100% 100%;
-  font-size: 18px;
-  width: 54px;
-  height: 54px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.reels_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-}
-
-.reel_wrapper {
-  background: url("../img/games/bookofwinner/reel_bg.png");
-  background-size: cover;
-  position: relative;
-  overflow: hidden;
-}
-
-.reel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.header {
-  width: 100%;
-  height: 105px;
-  background: url("../img/games/bookofwinner/header.png");
-  background-size: 100% 100%;
-}
-
 .panel {
   position: absolute;
   bottom: 0;
@@ -372,6 +259,31 @@ body {
   background: darkcyan;
   -webkit-transition: 0.3s cubic-bezier(0.79, 1.51, 0.74, 0.84);
   transition: 0.3s cubic-bezier(0.79, 1.51, 0.74, 0.84);
+  padding: 50px 44px 30px 44px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 45px 45px 0 0;
+  background-clip: padding-box;
+  background-image: url(../img/choose/topLeft.png), url(../img/choose/bottomLeft.png), url(../img/choose/topRight.png), url(../img/choose/bottomRight.png), url(../img/choose/left.png), url(../img/choose/right.png), url(../img/choose/top.png), url(../img/choose/bottom.png), url(../img/choose/middlePart.png);
+  background-position: top left, bottom left, top right, bottom right, left, right, top, bottom, center;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-y, repeat-y, repeat-x, repeat-x, repeat;
+}
+
+.toggle_block__header {
+  background: url(../img/choose/header_bg.png) no-repeat;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  font-size: 15px;
+  width: 248px;
+  height: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 35px;
+  color: #cdc700;
 }
 
 .toggle_block .content {
@@ -388,18 +300,16 @@ body {
 }
 
 .toggle_block .content .item {
-  background: lightgreen;
-  border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   cursor: pointer;
+  -webkit-box-shadow: #286da1 0 0 12px 5px;
+          box-shadow: #286da1 0 0 12px 5px;
+  background: url("../img/choose_btn_bg.png") left;
+  width: 115px;
+  height: 106px;
+  line-height: 106px;
+  margin: 10px;
+  border-radius: 15px;
+  text-align: center;
 }
 
 .flex_center {
@@ -425,10 +335,9 @@ body {
   height: 84px;
   margin-top: 11px;
   line-height: 84px;
-  font-size: 28px;
+  font-size: 22px;
   text-align: center;
-  text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
-  color: rgba(5, 4, 36, 0.8);
+  color: #050424;
 }
 
 .text_number_button {
@@ -449,13 +358,15 @@ body {
 .text_number_button .title {
   height: 100%;
   width: 65%;
-  color: #222a54;
+  color: #050424;
+  font-size: 22px;
 }
 
 .text_number_button .number {
   height: 100%;
   width: 35%;
   color: white;
+  font-size: 20px;
 }
 
 .panel_row-top .lines_btn {
@@ -465,8 +376,6 @@ body {
   line-height: 75px;
   font-size: 28px;
   text-align: center;
-  text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
-  color: rgba(5, 4, 36, 0.8);
 }
 
 .panel_row-top .betperline_btn {
@@ -476,8 +385,6 @@ body {
   line-height: 75px;
   font-size: 28px;
   text-align: center;
-  text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
-  color: rgba(5, 4, 36, 0.8);
 }
 
 .panel_row-top .betperline_btn .title {
@@ -567,10 +474,11 @@ body {
   background: url("../img/notifier_field_bg.png");
   background-size: 100% 100%;
   border-radius: 5px;
-  color: #d4e7f0;
-  font-size: 16px;
-  font-weight: 900;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 19px;
+  font-weight: 400;
   text-transform: uppercase;
+  text-shadow: 1px 1px 0px #2178cd,  -1px -1px 0px #2178cd,  1px -1px 0px #2178cd,  -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
@@ -827,9 +735,10 @@ body {
   right: 16px;
   width: 116px;
   height: 49px;
+  line-height: 49px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: white;
+  color: rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -853,8 +762,9 @@ body {
       -ms-flex-align: center;
           align-items: center;
   text-transform: uppercase;
-  font-weight: 900;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 25px;
+  text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
   cursor: pointer;
 }
 
@@ -879,7 +789,146 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-transform: uppercase;
-  font-weight: 900;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 35px;
+  text-shadow: 0.5px 0.5px 0.5px #def, 0 0 0 #000, 0px 0px 0px #def;
   cursor: pointer;
+}
+
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  font-family: "Oswald",  sans-serif;
+  overflow: hidden;
+}
+
+.game_wrapper {
+  position: fixed;
+  width: 1680px;
+  height: 1050px;
+}
+
+#game {
+  width: 1680px;
+  height: 1050px;
+  background: #080200;
+  overflow: hidden;
+  position: absolute;
+}
+
+.alert {
+  display: none;
+  position: absolute;
+  z-index: 600;
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.alert .content {
+  width: 50%;
+  min-width: 300px;
+  height: 50%;
+  min-height: 200px;
+  background: lightseagreen;
+  border-radius: 10px;
+}
+
+.main {
+  width: 1680px;
+  height: 731px;
+  background: url("../img/games/bookofwinner/game_bg.png") center center;
+  background-size: contain;
+  position: absolute;
+}
+
+.reels_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1;
+  padding-top: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.line_presenters_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 4px 13px 0;
+  height: 692px;
+}
+
+.line_presenter {
+  background-image: url("../img/line_presenter_glare.png");
+  background-color: grey;
+  background-size: 100% 100%;
+  font-size: 18px;
+  width: 54px;
+  height: 54px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reels_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.reel_wrapper {
+  background: url("../img/games/bookofwinner/reel_bg.png");
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.reel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.header {
+  width: 100%;
+  height: 105px;
+  background: url("../img/games/bookofwinner/header.png");
+  background-size: 100% 100%;
 }
