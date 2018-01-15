@@ -219,7 +219,7 @@ class InterfaceController {
         this.alertWindow.show();
     }
 
-    hideAlert = (bonusSpinsAmount) => {
+    hideAlert = () => {
         this.alertWindow.hide();
     }
 

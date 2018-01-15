@@ -1,5 +1,7 @@
 import Line from '../Components/Line';
 
+let showHideLinesTimeoutId;
+
 class LinesController {
     /**
      * @param {HTMLElement} gameWrapperNode
@@ -87,6 +89,26 @@ class LinesController {
                 resolve();
             }, settings.delayBetweenShowingWinningLines);
         });
+    }
+
+    showAndHideLines(linesAmount) {
+        // Hide all lines
+        this.lines.forEach(line => line.hide());
+
+        if (typeof showHideLinesTimeoutId !== 'undefined')
+            clearTimeout(showHideLinesTimeoutId);
+
+        // Show selected lines
+        for (let i = 0; i < linesAmount; i++) {
+            this.lines[i].show();
+        }
+
+        // Hide after delay
+        showHideLinesTimeoutId = setTimeout(() => {
+            for (let i = 0; i < linesAmount; i++) {
+                this.lines[i].hide();
+            }
+        }, 1000);
     }
 
     /**

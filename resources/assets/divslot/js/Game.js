@@ -80,9 +80,6 @@ export default class Game {
     }
 
     setBerPerLine = newBetPerLine => this.setBetRelatedValue(settings.betPerLine, this.pointsController.betPerLine, this.pointsController.setBetPerLine)(newBetPerLine);
-
-    setLines = newLines => this.setBetRelatedValue(settings.lines, this.pointsController.lines, this.pointsController.setLines)(newLines);
-
     setDenomination = newDenom => this.setBetRelatedValue(settings.denominations, this.pointsController.denomination, this.pointsController.setDenomination)(newDenom);
 
     setBetRelatedValue = (array, currentValue, setNewValue) => {
@@ -91,6 +88,14 @@ export default class Game {
             setNewValue.call(null, newValue);
             this.setSpinPossibility();
         }
+    }
+
+    setLines = newLines => {
+        const newValue = newLines ? newLines : getNextArrayItem(settings.lines, this.pointsController.lines);
+        this.pointsController.setLines(newValue);
+        this.setSpinPossibility();
+
+        this.linesController.showAndHideLines(newValue);
     }
 
     // Disables/enables spin possibility depending on user's bet/cash

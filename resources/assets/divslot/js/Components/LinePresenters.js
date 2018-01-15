@@ -16,9 +16,11 @@ class LinePresenters {
      * @param {Number} betPerLine Bet per line to set in presenters
      */
     setText = (linesAmount, betPerLine) => {
-        for (const linePresenter of this.linePresenters) {
-            linePresenter.text = (linePresenter.line.lineTypeNumber < linesAmount) ? betPerLine : '';
-        }
+        this.linePresenters.forEach(presenter => {
+            presenter.text = (presenter.line.lineTypeNumber < linesAmount)
+                                ? betPerLine
+                                : '';
+        });
     }
 
     _init() {
