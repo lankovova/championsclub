@@ -22,7 +22,7 @@ const config = {
 	devServer: {
 		contentBase: path.join(__dirname, './'),
 		compress: true,
-		port: 8087
+		port: 8080
 	}
 };
 

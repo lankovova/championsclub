@@ -1,5 +1,4 @@
 var settings = {
-    // "symbolSize": 354,
     "symbolSize": 233,
     "spaceBetweenReels": 23,
 
@@ -10,7 +9,7 @@ var settings = {
 
     "numOfSpinsBeforeStop": 3,
 
-    "delayBetweenShowingWinningLines": 2000,
+    "delayBetweenShowingWinningLines": 700,
     "delayBetweenReelsSpin": 200,
     "delayBetweenFallingSymbols": 300,
     // Do not set this delay lower than 50 ms
