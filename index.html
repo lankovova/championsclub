@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 	<!-- Reset browsers default styles -->
-	<link rel="stylesheet" href="css/bookofwinner.css">
+	<link rel="stylesheet" href="public/css/bookofwinner.css">
 
 	<link href="./favicon.ico" rel="icon" type="image/x-icon"/>
 </head>
@@ -21,7 +21,6 @@
 		<div id="game">
 			<!-- <div class="header"></div> -->
 			<div class="header">
-				<img class="header_bg" src="./../assets/images/header.png" alt="">
 			</div>
 
 
@@ -163,16 +162,13 @@
 	</div>
 
 	<!-- Global settings -->
-	<script src="js/bookofwinner_settings.js"></script>
+	<script src="public/js/bookofwinner_settings.js"></script>
 	<!-- Js bundle from webpack -->
-	<script src="js/game.js"></script>
+	<script src="public/js/game.js"></script>
 	<script>
 		window.onload = function () {
-			var game = new divSlot.Game("BookOfWinenr");
+			var game = new divSlot.Game("Bananas");
 		};
-		// (function() {
-		// 	var game = new divSlot.Game('Bananas');
-		//   })();
 	</script>
 </body>
 </html>

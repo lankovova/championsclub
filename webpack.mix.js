@@ -17,3 +17,6 @@ let mix = require('laravel-mix');
 //     });
 
 mix.sass('resources/assets/divslot/sass/games/bookofwinner.scss', 'public/css')
+    .options({
+        processCssUrls: false
+    });

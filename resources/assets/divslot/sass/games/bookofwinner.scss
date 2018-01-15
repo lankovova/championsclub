@@ -108,12 +108,8 @@ body {
 .header {
     width: 100%;
     height: 105px;
-    line-height: 0;
-}
-.header .header_bg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background: url('../img/games/bookofwinner/header.png');
+    background-size: 100% 100%;
 }
 
 .panel {
@@ -306,7 +302,7 @@ body {
     text-transform: uppercase;
 }
 .panel_row-top .auto_btn {
-    // background: url('../img/auto_btn.png');
+    background: url('../img/auto_btn.png');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;
@@ -367,7 +363,7 @@ body {
     align-items: center;
 }
 .panel_row-bot .user_cash .fields_wrapper .field {
-    background: url('../img/cash_presenter_field.png');
+    background: url('../img/cash_presenter_field_bg.png');
     background-size: 100% 100%;
 
     width: 100%;
