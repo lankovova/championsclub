@@ -3,8 +3,6 @@ import Panel from '../Components/Panel';
 import ToggleBlock from './../Components/ToggleBlock';
 import Alert from './../Components/Alert';
 
-const SSTButtonStates = ['spin', 'stop', 'takeWin', 'speedUpTakeWin'];
-
 class InterfaceController {
     constructor(props) {
         this.props = props;
@@ -13,15 +11,18 @@ class InterfaceController {
         // DEV TEMP
         this._showControls();
 
+        // Init toggling blocks like lines, betPerLine, denomination and language
+        this._initTogglingBlocks();
+
+        // Init handler on keyboard actions
+        this._initKeyboardListeners();
+
         this.linePresenters = new LinePresenters({
             lines: this.props.lines,
             containerNode: this.props.containerNode
         });
 
         this.alertWindow = new Alert({ node: document.querySelector('#alert') });
-
-        // Init toggling blocks like lines, betPerLine and denomination
-        this._initTogglingBlocks();
 
         this.panel = new Panel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
@@ -31,108 +32,6 @@ class InterfaceController {
             toggleDenominationBlock: this.toggleDenominationBlock,
             toggleLanguageBlock: this.toggleLanguageBlock,
         });
-
-        this.state = {
-            _spin: false,
-            _stop: false,
-            _takeWin: false,
-            _speedUpTakeWin: false,
-            _denomination: false,
-            _lines: false,
-            _betPerLine: false,
-            _maxBet: false,
-            _menu: false,
-            _gamble: false,
-            _auto: false,
-            _language: false,
-
-            // TODO: Maybe segregate this states into buttons components
-            set spin(newState) {
-                if (newState)
-                    that.panel.SSTBtn.text = 'Start';
-
-                this._spin = newState;
-                that._handleDisablingSSTBtn();
-            },
-            get spin() { return this._spin; },
-            set stop(newState) {
-                if (newState)
-                    that.panel.SSTBtn.text = 'Stop';
-
-                this._stop = newState;
-                that._handleDisablingSSTBtn();
-            },
-            get stop() { return this._stop; },
-            set takeWin(newState) {
-                if (newState)
-                    that.panel.SSTBtn.text = 'Take';
-
-                this._takeWin = newState;
-                that._handleDisablingSSTBtn();
-            },
-            get takeWin() { return this._takeWin; },
-            set speedUpTakeWin(newState) {
-                this._speedUpTakeWin = newState;
-                that._handleDisablingSSTBtn();
-            },
-            get speedUpTakeWin() { return this._speedUpTakeWin; },
-
-            set denomination(newState) {
-                that.panel.denominationBtn.state = newState;
-                this._denomination = newState;
-            },
-            get denomination() { return this._denomination; },
-            set lines(newState) {
-                that.panel.linesBtn.state = newState;
-                this._lines = newState;
-            },
-            get lines() { return this._lines; },
-            set betPerLine(newState) {
-                that.panel.betPerLineBtn.state = newState;
-                this._betPerLine = newState;
-            },
-            get betPerLine() { return this._betPerLine; },
-            set maxBet(newState) {
-                that.panel.maxBetBtn.state = newState;
-                this._maxBet = newState;
-            },
-            get maxBet() { return this._maxBet; },
-            set menu(newState) {
-                that.panel.menuBtn.state = newState;
-                this._menu = newState;
-            },
-            get menu() { return this._menu; },
-            set gamble(newState) {
-                that.panel.gambleBtn.state = newState;
-                this._gamble = newState;
-            },
-            get gamble() { return this._gamble; },
-            set auto(newState) {
-                that.panel.autoBtn.state = newState;
-                this._auto = newState;
-            },
-            get auto() { return this._auto; },
-            set language(newState) {
-                that.panel.autoBtn.state = newState;
-                this._language = newState;
-            },
-            get language() { return this._language; }
-        };
-
-        this._initKeyboardListeners();
-    }
-
-    // Disables sst button if all of its states is set to false
-    _handleDisablingSSTBtn() {
-        let noAvailableState = true;
-        SSTButtonStates.forEach(SSTBtnState => {
-            if (this.state[SSTBtnState]) noAvailableState = false;
-        });
-
-        if (noAvailableState)
-            this.panel.SSTBtn.disable();
-        else
-            this.panel.SSTBtn.enable();
     }
 
     _showControls() {
@@ -147,55 +46,55 @@ class InterfaceController {
     }
 
     spinStopTake = () => {
-        if (this.state.spin) {
+        if (this.panel.btns.SST.state.spin) {
             this.props.spinReels();
-        } else if (this.state.stop) {
+        } else if (this.panel.btns.SST.state.stop) {
             this.props.stopReels();
-        } else if (this.state.takeWin) {
+        } else if (this.panel.btns.SST.state.takeWin) {
             this.props.takeWin();
-        } else if (this.state.speedUpTakeWin) {
+        } else if (this.panel.btns.SST.state.speedUpTakeWin) {
             this.props.speedUpTakeWin();
         }
     }
 
     setLines = (lines) => {
-        if (this.state.lines) {
+        if (this.panel.btns.lines.state) {
             this.props.setLines(lines);
         }
     }
 
     setBerPerLine = (betPerLine) => {
-        if (this.state.betPerLine)
+        if (this.panel.btns.betPerLine.state)
             this.props.setBerPerLine(betPerLine);
     }
 
     setDenomination = (denomination) => {
-        if (this.state.denomination)
+        if (this.panel.btns.denomination.state)
             this.props.setDenomination(denomination);
     }
 
     setMaxBet = () => {
-        if (this.state.maxBet)
+        if (this.panel.btns.maxBet.state)
             this.props.setMaxBet();
     }
 
     toggleLinesBlock = () => {
-        if (this.state.lines)
+        if (this.panel.btns.lines.state)
             this.linesBlock.toggle();
     }
 
     toggleBetPerLineBlock = () => {
-        if (this.state.betPerLine)
+        if (this.panel.btns.betPerLine.state)
             this.betPerLineBlock.toggle();
     }
 
     toggleDenominationBlock = () => {
-        if (this.state.denomination)
+        if (this.panel.btns.denomination.state)
             this.denominationBlock.toggle();
     }
 
     toggleLanguageBlock = () => {
-        if (this.state.language)
+        if (this.panel.btns.language.state)
             this.langBlock.toggle();
     }
 
@@ -208,62 +107,50 @@ class InterfaceController {
         this.alertWindow.hide();
     }
 
-    enableSpin = () => this.state.spin = true;
-    disableSpin = () => this.state.spin = false;
+    enableSpin = () => this.panel.btns.SST.state.spin = true;
+    disableSpin = () => this.panel.btns.SST.state.spin = false;
 
     enableSpinAndAuto = () => {
-        this.state.spin = true;
-        this.state.auto = true;
+        this.panel.btns.SST.state.spin = true;
+        this.panel.btns.auto.state = true;
     }
     disableSpinAndAuto = () => {
-        this.state.spin = false;
-        this.state.auto = false;
+        this.panel.btns.SST.state.spin = false;
+        this.panel.btns.auto.state = false;
     }
 
-    enableStop = () => this.state.stop = true;
-    disableStop = () => this.state.stop = false;
+    enableStop = () => this.panel.btns.SST.state.stop = true;
+    disableStop = () => this.panel.btns.SST.state.stop = false;
 
-    enableTakeWin = () => this.state.takeWin = true;
-    disableTakeWin = () => this.state.takeWin = false;
+    enableTakeWin = () => this.panel.btns.SST.state.takeWin = true;
+    disableTakeWin = () => this.panel.btns.SST.state.takeWin = false;
 
-    enableSpeedUpTransferWin = () => this.state.speedUpTakeWin = true;
-    disableSpeedUpTransferWin = () => this.state.speedUpTakeWin = false;
+    enableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = true;
+    disableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = false;
 
-    enableLines = () => this.state.lines = true;
-    enableBetPerLines = () => this.state.betPerLine = true;
-    enableDenomination = () => this.state.denomination = true;
-    enableLanguage = () => this.state.language = true;
+    enableLines = () => this.panel.btns.lines.state = true;
+    enableBetPerLines = () => this.panel.btns.betPerLine.state = true;
+    enableDenomination = () => this.panel.btns.denomination.state = true;
+    enableLanguage = () => this.panel.btns.language.state = true;
 
     setIdle = () => {
         this.enableInterface();
-        this.state.spin = true;
+        this.panel.btns.SST.state.spin = true;
     }
 
     setTakeWin = () => {
-        this.state.gamble = true;
-        this.state.takeWin = true;
+        this.panel.btns.gamble.state = true;
+        this.panel.btns.SST.state.takeWin = true;
     }
 
-    // FIXME: Handle separate state
+    // Disable each btn of panel btns
     disableInterface = () => {
-        for (const stateKey of Object.keys(this.state)) {
-            // Skip private properties
-            if (stateKey.charAt(0) === '_') continue;
-
-            this.state[stateKey] = false;
-        }
+        Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].disable());
     }
-    // FIXME: Handle separate state
+
+    // Enable each btn of panel btns
     enableInterface = () => {
-        for (const stateKey of Object.keys(this.state)) {
-            // Skip private properties
-            if (stateKey.charAt(0) === '_') continue;
-
-            // Skip if state is in SSTButtonStates array
-            if (SSTButtonStates.includes(stateKey)) continue;
-
-            this.state[stateKey] = true;
-        }
+        Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
     }
 
     _initKeyboardListeners() {

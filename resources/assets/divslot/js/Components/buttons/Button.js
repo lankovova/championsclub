@@ -37,24 +37,22 @@ export default class Button {
         };
     }
 
-    disable() {
-        this.node.style.backgroundPosition = spriteParts.disabled;
-        this.node.style.cursor = 'default';
-    }
+    enable() { this.state = true; }
+    disable() { this.state = false; }
 
-    enable() {
+    enableView() {
         this.node.style.backgroundPosition = spriteParts.enabled;
         this.node.style.cursor = '';
     }
 
+    disableView() {
+        this.node.style.backgroundPosition = spriteParts.disabled;
+        this.node.style.cursor = 'default';
+    }
+
     get state() { return this._state; }
     set state(newState) {
-        if (newState) {
-            this.enable();
-        } else {
-            this.disable();
-        }
-
+        (newState) ? this.enableView() : this.disableView();
         this._state = newState;
     }
 

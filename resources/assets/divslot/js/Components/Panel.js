@@ -7,39 +7,35 @@ class Panel {
         this.node = node;
         this.props = props;
 
-        this.SSTBtn = new Buttons.SSTBtn({
-            node: document.querySelector('#SSTBtn'),
-            spinStopTake: this.props.spinStopTake
-        });
-        this.maxBetBtn = new Buttons.MaxBetBtn({
-            node: document.querySelector('#maxBetBtn'),
-            setMaxBet: this.props.setMaxBet
-        });
-        this.linesBtn = new Buttons.LinesBtn({
-            node: document.querySelector('#linesBtn'),
-            toggleLinesBlock: this.props.toggleLinesBlock
-        });
-        this.betPerLineBtn = new Buttons.BetPerLineBtn({
-            node: document.querySelector('#betPerLineBtn'),
-            toggleBetPerLineBlock: this.props.toggleBetPerLineBlock
-        });
-        this.denominationBtn = new Buttons.DenominationBtn({
-            node: document.querySelector('#denominationBtn'),
-            toggleDenominationBlock: this.props.toggleDenominationBlock
-        });
-        this.menuBtn = new Buttons.MenuBtn({
-            node: document.querySelector('#menuBtn'),
-        });
-        this.gambleBtn = new Buttons.GambleBtn({
-            node: document.querySelector('#gambleBtn'),
-        });
-        this.autoBtn = new Buttons.AutoBtn({
-            node: document.querySelector('#autoBtn'),
-        });
-        this.languageBtn = new Buttons.LanguageBtn({
-            node: document.querySelector('#languageBtn'),
-            toggleLanguageBlock: this.props.toggleLanguageBlock
-        });
+        this.btns = {
+            SST: new Buttons.SSTBtn({
+                node: document.querySelector('#SSTBtn'),
+                spinStopTake: this.props.spinStopTake
+            }),
+            maxBet: new Buttons.MaxBetBtn({
+                node: document.querySelector('#maxBetBtn'),
+                setMaxBet: this.props.setMaxBet
+            }),
+            lines: new Buttons.LinesBtn({
+                node: document.querySelector('#linesBtn'),
+                toggleLinesBlock: this.props.toggleLinesBlock
+            }),
+            betPerLine: new Buttons.BetPerLineBtn({
+                node: document.querySelector('#betPerLineBtn'),
+                toggleBetPerLineBlock: this.props.toggleBetPerLineBlock
+            }),
+            denomination: new Buttons.DenominationBtn({
+                node: document.querySelector('#denominationBtn'),
+                toggleDenominationBlock: this.props.toggleDenominationBlock
+            }),
+            menu: new Buttons.MenuBtn({node: document.querySelector('#menuBtn')}),
+            gamble: new Buttons.GambleBtn({node: document.querySelector('#gambleBtn')}),
+            auto: new Buttons.AutoBtn({node: document.querySelector('#autoBtn')}),
+            language: new Buttons.LanguageBtn({
+                node: document.querySelector('#languageBtn'),
+                toggleLanguageBlock: this.props.toggleLanguageBlock
+            })
+        };
 
         this.notifier = new Notifier();
 
@@ -48,6 +44,7 @@ class Panel {
             document.querySelector('#bonusNumber'),
             {jValue: 7765.90, bValue: 6403.83}
         );
+        // Start jackpot bonus counter
         this.jb.run();
 
         this.linesAmountField = document.querySelector('#linesAmountField');
@@ -79,13 +76,13 @@ class Panel {
     }
 
     setDenomination(denom) {
-        this.denominationBtn.number = denom.toFixed(2);
+        this.btns.denomination.number = denom.toFixed(2);
     }
     setLinesAmount(lines) {
-        this.linesBtn.number = lines;
+        this.btns.lines.number = lines;
     }
     setBetPerLine(betPerLine) {
-        this.betPerLineBtn.number = betPerLine;
+        this.btns.betPerLine.number = betPerLine;
     }
 
     setUserCash({points, kups}) {
