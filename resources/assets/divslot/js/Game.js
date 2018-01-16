@@ -71,6 +71,9 @@ export default class Game {
             // And enable game to play
             this.interfaceController.setIdle();
             this.interfaceController.panel.notifier.text = 'Press start to spin';
+
+            // Remove preloader
+            window.onGameLoaded();
         })();
     }
 
