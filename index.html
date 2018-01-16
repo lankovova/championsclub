@@ -18,6 +18,9 @@
 	<div id="preloader"></div>
 
 	<div class="game_wrapper" id="game_wrapper">
+		<div id="loading">
+				<div id="loading__block"></div>
+		</div>
 		<div id="game">
 			<!-- <div class="header"></div> -->
 			<div class="header">
@@ -169,6 +172,23 @@
 		</div>
 	</div>
 
+	<script>
+		var loadingBlockLength = 21;
+		var loadingBlockCount = 0;
+		var maxLoadingBlockAmount = 28;
+
+		var loading = setInterval(function() {
+			if (loadingBlockCount === maxLoadingBlockAmount) {
+				clearInterval(loading);
+			}
+			document.getElementById("loading__block").style.width = 21 * loadingBlockCount + "px";
+			loadingBlockCount++;
+		}, 500)
+		
+		function onGameLoaded () {
+
+		}
+	</script>
 	<!-- Global settings -->
 	<script src="./public/js/bookofwinner_settings.js"></script>
 	<!-- Js bundle from webpack -->
