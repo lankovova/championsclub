@@ -249,9 +249,6 @@ export default class Game {
 
             // Spin reels to given final symbols
             this.startReels(this.spinResponse.final_symbols);
-
-            // Enable stop
-            this.interfaceController.enableStop();
         });
     }
 
@@ -262,9 +259,6 @@ export default class Game {
 
         // Spin reels to given final symbols
         this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
-
-        // Enable stop
-        this.interfaceController.enableStop();
     }
 
     /**
@@ -276,6 +270,9 @@ export default class Game {
         this.linesController.hideAllLines();
 
         this.reelsController.startReels(finalSymbols);
+
+        // Enable stop
+        this.interfaceController.enableStop();
     }
 
     stop = () => {
