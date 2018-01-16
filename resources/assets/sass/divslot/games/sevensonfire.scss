@@ -5,6 +5,7 @@
 @import "../media";
 @import "../preloader";
 @import "../panel";
+@import "../borders";
 
 * {
     -webkit-user-select: none;
@@ -54,7 +55,7 @@ body {
 
     width: 1680px;
     height: 731px;
-    background: url('../img/games/bookofwinner/game_bg.gif') center center;
+    background: url('../img/games/bookofwinner/game_bg.png') center center;
     background-size: contain;
     position: absolute;
 }
@@ -115,4 +116,3 @@ body {
     background: url('../img/games/bookofwinner/header.gif');
     background-size: 100% 100%;
 }
-

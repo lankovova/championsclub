@@ -17,6 +17,7 @@ let mix = require('laravel-mix');
 //     });
 
 mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
+    .sass('resources/assets/sass/divslot/games/sevensonfire.scss', 'public/css')
     .options({
         processCssUrls: false
     });
