@@ -9,10 +9,19 @@ class Symbol {
 
     initSymbol() {
         this.symbolNode = document.createElement('div');
+        this.symbolNode.style.position = 'relative';
         this.symbolNode.style.width = `${settings.symbolSize}px`;
         this.symbolNode.style.height = `${settings.symbolSize}px`;
-        this.symbolNode.style.background = `url('${settings.symbolsImagesPath + settings.symbols[this.symbolNum].image}')`;
+        this.symbolNode.style.backgroundImage = `url('${settings.symbolsImagesPath + settings.symbols[this.symbolNum].image}')`;
         this.symbolNode.style.backgroundSize = 'contain';
+
+        this.overflowLayer = document.createElement('div');
+        this.overflowLayer.style.position = 'absolute';
+        this.overflowLayer.style.top = '0';
+        this.overflowLayer.style.left = '0';
+        this.overflowLayer.style.width = '100%';
+        this.overflowLayer.style.height = '100%';
+        this.symbolNode.appendChild(this.overflowLayer);
     }
 
     animate() {
@@ -21,6 +30,13 @@ class Symbol {
             this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + settings.symbols[this.symbolNum].animation}')`;
             this.symbolNode.style.animation = 'symbolAnimation 1s steps(15) infinite';
         }
+    }
+
+    blurDark() {
+        this.overflowLayer.style.backgroundColor = 'rgba(0,0,0,0.6)';
+    }
+    unblur() {
+        this.overflowLayer.style.backgroundColor = '';
     }
 
     get node() {

@@ -44,8 +44,8 @@ class Line {
     }
     /**
      * Create highlite around symbol
-     * @param {Number} x symbols` position x
-     * @param {Number} y symbols` position y
+     * @param {Number} x symbols position x
+     * @param {Number} y symbols position y
      */
     addSymbolHighlite(reel, symbol) {
         let rectNode = document.createElementNS(this.namespaceURI, 'rect');
@@ -84,7 +84,6 @@ class Line {
                 sPrev = this.reels[rMap].finalSymbols[this.reels[rMap].finalSymbols.length - 1 - sMap];
                 sPrev.reelIndex = rMap;
                 sPrev.symbolIndex = sMap;
-                symbol
 
                 this._createConnection(sPrev, symbol);
             }
@@ -122,12 +121,12 @@ class Line {
         let start = {};
         let end = {};
 
-        start.x = sPrev.highlighted ? 
-            ((sPrev.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels : 
+        start.x = sPrev.highlighted ?
+            ((sPrev.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels :
             ((sPrev.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize / 2;
 
-        end.x = symbol.highlighted ? 
-            ((symbol.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize: 
+        end.x = symbol.highlighted ?
+            ((symbol.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize:
             ((symbol.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize / 2;
 
         start.y = sPrev.symbolIndex * settings.symbolSize + settings.symbolSize / 2;

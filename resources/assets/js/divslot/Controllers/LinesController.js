@@ -22,6 +22,11 @@ class LinesController {
     createWinningLines(gameResult) {
         let winningLines = [];
 
+        // TODO: Activate dark layer on all symbols
+        this.props.reels.forEach(reel => {
+            reel.finalSymbols.forEach(symbol => symbol.blurDark());
+        });
+
         for (const res of gameResult) {
             const lineColor = this._getLineColorBasedOnItsIndex(res.line_index);
             const line = new Line(this.gameWrapperNode, lineColor, res.line_index, res.points, this.props.reels);
@@ -36,6 +41,10 @@ class LinesController {
                 symbol.highlighted = true;
                 symbol.animate();
                 highlightedSymbols.push(symbol);
+
+                // reel.finalSymbols[symbol].blurDark();
+                symbol.unblur();
+
                 // Add symbol highlite to line
                 line.addSymbolHighlite(sCoor.col, sCoor.row);
             }
@@ -56,6 +65,13 @@ class LinesController {
         return winningLines;
     }
 
+    // Remove dark blur layer when all lines has showed
+    unblurAllSymbols() {
+        this.props.reels.forEach(reel => {
+            reel.finalSymbols.forEach(symbol => symbol.unblur());
+        });
+    }
+
     /**
      * Show all winning lines
      * @param {Number[][]} gameResult Game result
@@ -70,6 +86,9 @@ class LinesController {
 
             await this.showWinningLine(line);
         }
+
+        // FIXME: Consider cycle show win lines
+        this.unblurAllSymbols();
 
         // Resolve promise when all lines has shown
         return new Promise(resolve => resolve());
