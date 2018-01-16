@@ -206,10 +206,10 @@
 				clearInterval(loadingPersent);
 				return;
 			}
-			setTimeout(function () {removeLoading();}, 100);
+			setTimeout(removeLoading, 100);
 		}
 
-		function onGameLoaded () {
+		function onGameLoaded() {
 			removeLoading();
 		}
 	</script>
