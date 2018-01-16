@@ -33,10 +33,10 @@ class PointsController {
     }
 
     coinsToPoints(coins) {
-        return Math.floor(coins / this._denomination);
+        return Math.floor(coins / (this._denomination * 100));
     }
     kupsToPoints(kups) {
-        return Math.floor(kups * 100 / this._denomination);
+        return Math.floor(kups/ this._denomination);
     }
     kupsToCoins(kups) {
         return kups * 100;
@@ -45,10 +45,10 @@ class PointsController {
         return coins / 100;
     }
     pointsToCoins(points) {
-        return points * this._denomination;
+        return points * this._denomination * 100;
     }
     pointsToKups(points) {
-        return points * this._denomination / 100;
+        return points * this._denomination;
     }
 
     get denomination() { return this._denomination };
@@ -126,7 +126,7 @@ class PointsController {
 
     /**
      * Set user win
-     * @param {String|Number} win New win to set
+     * @param {String|Number} win New win to set in points
      */
     set userWin(win) {
         this._userWin = win;

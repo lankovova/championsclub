@@ -275,7 +275,6 @@ class InterfaceController {
                     this.spinStopTake();
                     break;
                 case 188: // <
-
                     this.setLines();
                     break;
                 case 190: // >

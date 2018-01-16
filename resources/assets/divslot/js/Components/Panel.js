@@ -79,7 +79,7 @@ class Panel {
     }
 
     setDenomination(denom) {
-        this.denominationBtn.number = (denom / 100).toFixed(2);
+        this.denominationBtn.number = denom.toFixed(2);
     }
     setLinesAmount(lines) {
         this.linesBtn.number = lines;

@@ -63,7 +63,7 @@ export default class Game {
                 denominationBlock: this.interfaceController.denominationBlock,
             }, {
                 userCash: userCash,
-                denomination: 1,
+                denomination: 0.01,
                 lines: 1,
                 betPerLine: 1,
             });
@@ -122,7 +122,7 @@ export default class Game {
             this.interfaceController.hideAlert();
 
         // Wait transfering win
-        await this.transferUserWin(this.pointsController.userWin);
+        await this.transferUserWin();
 
         // Disable transfer speed up if money already transfered
         this.interfaceController.disableSpeedUpTransferWin();
@@ -133,7 +133,7 @@ export default class Game {
     }
 
     // Transfer win cash to user's cash
-    transferUserWin = (wonPoints) => {
+    transferUserWin = () => {
         return new Promise(resolve => {
             // Transfer duration in ms
             const transferDuration = 2000;
@@ -144,13 +144,13 @@ export default class Game {
             const iterationsAmount = transferDuration / delayBetweenIteration;
 
             // Delta of user cash between iterations
-            userWinTransferDelta = Math.ceil(wonPoints / iterationsAmount);
+            userWinTransferDelta = Math.ceil(this.pointsController.userWin / iterationsAmount);
 
             const intervalId = setInterval(() => {
                 // If last transfer iteration
                 if (this.pointsController.userWin - userWinTransferDelta <= 0) {
                     // Transfer rest userWin pooint to userCash
-                    this.pointsController.userCash += this.pointsController.userWin;
+                    this.pointsController.userCash += this.pointsController.pointsToCoins(this.pointsController.userWin);
 
                     // Reset user win
                     this.pointsController.userWin = 0;
@@ -161,7 +161,7 @@ export default class Game {
                     resolve();
                 } else {
                     // Change values on delta
-                    this.pointsController.userCash += userWinTransferDelta;
+                    this.pointsController.userCash += this.pointsController.pointsToCoins(userWinTransferDelta);
                     this.pointsController.userWin -= userWinTransferDelta;
                 }
             }, delayBetweenIteration);
@@ -187,7 +187,7 @@ export default class Game {
             const response = await axios.post('http://admin.chcgreen.org/spin', {
                 lines_amount: this.pointsController.lines,
                 bet_per_line: this.pointsController.betPerLine,
-                denomination: this.pointsController.denomination,
+                denomination: this.pointsController.denomination * 100,
                 game: this.gameName
             });
 
@@ -291,7 +291,7 @@ export default class Game {
 
                 this.interfaceController.enableSpeedUpTransferWin();
                 // Transfer user regular spin win
-                await this.transferUserWin(this.pointsController.userWin);
+                await this.transferUserWin();
 
                 this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.totalSpins} free spins`;
 

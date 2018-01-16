@@ -22,7 +22,7 @@
     .game_wrapper {
         transform: scale(0.8145);
         transform-origin: 0% -45%;
-        left: initial;   
+        left: initial;
     }
 }
 @media(max-width: 1280px) and (max-height: 1024px) {
@@ -52,13 +52,13 @@
 @media(max-width: 1280px) and (max-height: 720px) {
     .game_wrapper {
         transform: scale(0.767);
-        transform-origin: 0% -34%;    
+        transform-origin: 0% -34%;
     }
 }
 @media(max-width: 1152px) and (max-height: 864px) {
     .game_wrapper {
         transform: scale(0.823);
-        transform-origin: 8% 0%;    
+        transform-origin: 8% 0%;
     }
 }
 @media(max-width: 1024px) and (max-height: 768px) {
