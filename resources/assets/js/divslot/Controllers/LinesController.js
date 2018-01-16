@@ -130,6 +130,15 @@ class LinesController {
         }, 1000);
     }
 
+    hideAllLines() {
+        if (typeof showHideLinesTimeoutId !== 'undefined')
+            clearTimeout(showHideLinesTimeoutId);
+
+        for (let i = 0; i < this.lines.length; i++) {
+            this.lines[i].hide();
+        }
+    }
+
     /**
      * Show line by index
      * @param {Number} lineIndex lineIndex

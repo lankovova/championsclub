@@ -195,9 +195,9 @@ export default class Game {
             });
 
             return response.data;
-            // return mockResponseFreeSpin;
         } catch(err) {
             console.log(err);
+            return mockResponseFreeSpin;
         }
     }
 
@@ -248,7 +248,7 @@ export default class Game {
             this.interfaceController.panel.notifier.clear();
 
             // Spin reels to given final symbols
-            this.reelsController.startReels(this.spinResponse.final_symbols);
+            this.startReels(this.spinResponse.final_symbols);
 
             // Enable stop
             this.interfaceController.enableStop();
@@ -261,10 +261,21 @@ export default class Game {
         this.interfaceController.panel.notifier.text = `Free spin #${this.bonusSpins.currentSpinIndex}`;
 
         // Spin reels to given final symbols
-        this.reelsController.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
+        this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
 
         // Enable stop
         this.interfaceController.enableStop();
+    }
+
+    /**
+     * Start reels
+     * @param {Array<Number>} finalSymbols Two dimensional array of final symbol
+     */
+    startReels(finalSymbols) {
+        // Hide all lines
+        this.linesController.hideAllLines();
+
+        this.reelsController.startReels(finalSymbols);
     }
 
     stop = () => {
