@@ -322,6 +322,7 @@ table {
   -webkit-box-shadow: #286da1 0 0 12px 5px;
           box-shadow: #286da1 0 0 12px 5px;
   background-image: url("../img/button_bg.png");
+  background-size: 200% 100%;
   background-position: left;
   width: 78px;
   height: 73px;
@@ -334,6 +335,12 @@ table {
 .toggle_block .content .item--active {
   color: rgba(5, 4, 36, 0.8);
   background-position: right;
+}
+
+.toggle_block.toggle_block--denom .item {
+  width: 110px;
+  height: 100px;
+  line-height: 100px;
 }
 
 .lang_block {

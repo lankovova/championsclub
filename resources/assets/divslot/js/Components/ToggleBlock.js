@@ -11,6 +11,7 @@ class ToggleBlock {
         this.activeItem;
 
         this.init(options);
+        this._initListeners();
     }
 
     init(options) {
@@ -33,8 +34,6 @@ class ToggleBlock {
             // Add item to content element
             blockContent.appendChild(item);
         });
-
-        this._initListeners();
     }
 
     _initListeners() {

@@ -102,6 +102,7 @@
     cursor: pointer;
     box-shadow: #286da1 0 0 12px 5px;
     background-image: url("../img/button_bg.png");
+    background-size: 200% 100%;
     background-position: left;
     width: 78px;
     height: 73px;
@@ -113,6 +114,13 @@
     &--active {
         color: rgba(5, 4, 36, 0.8);
         background-position: right;
+    }
+}
+.toggle_block.toggle_block--denom {
+    .item {
+        width: 110px;
+        height: 100px;
+        line-height: 100px;
     }
 }
 .lang_block {
@@ -225,11 +233,11 @@
     content: ':';
     margin-right: 10px;
 }
-.jackpot_bonus .text_block .jackpot { 
+.jackpot_bonus .text_block .jackpot {
     color: #f74747;
     text-shadow: 0 0 10px #f74747;
 }
-.jackpot_bonus .text_block .bonus { 
+.jackpot_bonus .text_block .bonus {
     color: #74f465;
     text-shadow: 0 0 10px #74f465;
 }

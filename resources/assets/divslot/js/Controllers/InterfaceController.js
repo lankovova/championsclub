@@ -314,9 +314,7 @@ class InterfaceController {
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
-            items: settings.denominations
-            // FIXME: Not working
-            // items: settings.denominations.map(item => (item / 100).toFixed(2))
+            items: settings.denominations.map(item => item.toFixed(2))
         }, {
             setValue: this.setDenomination,
             enableSelf: this.enableDenomination,
