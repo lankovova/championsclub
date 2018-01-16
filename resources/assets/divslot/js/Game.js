@@ -1,4 +1,4 @@
-import {getNextArrayItem, getMultiplyNearestLowerNumbers} from './Helpers/ArrayMethods';
+import {getNextArrayItem, getMultiplyNearestLowerNumbers} from './Helpers/arrayHelp';
 import PointsController from './Controllers/PointsController';
 import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';

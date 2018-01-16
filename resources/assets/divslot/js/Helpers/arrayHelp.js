@@ -4,7 +4,7 @@
  * @param {Number} item Current item
  * @returns {Number} Next item
  */
-function getNextArrayItem(array, item) {
+export function getNextArrayItem(array, item) {
     const currentIndex = array.indexOf(item);
     const newIndex = (currentIndex === array.length - 1) ? 0 : currentIndex + 1;
 
@@ -19,7 +19,7 @@ function getNextArrayItem(array, item) {
  * @param {Array<Number>} secondArr Array where to find second value
  * @returns {Object} Return object with two best numbers
  */
-function getMultiplyNearestLowerNumbers(value, firstArr, secondArr) {
+export function getMultiplyNearestLowerNumbers(value, firstArr, secondArr) {
     // Init first values
     let best = {
         firstNumber: firstArr[0],
@@ -44,5 +44,3 @@ function getMultiplyNearestLowerNumbers(value, firstArr, secondArr) {
 
     return best;
 }
-
-export {getNextArrayItem, getMultiplyNearestLowerNumbers};
