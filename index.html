@@ -188,7 +188,8 @@
 		}, 500)
 
 		function onGameLoaded () {
-
+			document.getElementById("game_wrapper").removeChild(document.getElementById("loading"));
+			clearInterval(loading);
 		}
 	</script>
 	<!-- Global settings -->
