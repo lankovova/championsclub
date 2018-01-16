@@ -21,6 +21,7 @@
 
 	<div class="game_wrapper" id="game_wrapper">
 		<div id="loading">
+				<div class="loading__text">please wait. loading <span id="loading__persent">100.00</span> %</div>
 				<div id="loading__block"></div>
 		</div>
 		<div id="game">
@@ -178,6 +179,7 @@
 		var loadingBlockLength = 21;
 		var loadingBlockCount = 0;
 		var maxLoadingBlockAmount = 28;
+		var loadingPersentCount = 0;
 
 		var loading = setInterval(function() {
 			if (loadingBlockCount === maxLoadingBlockAmount) {
@@ -185,7 +187,12 @@
 			}
 			document.getElementById("loading__block").style.width = 21 * loadingBlockCount + "px";
 			loadingBlockCount++;
-		}, 500)
+		}, 500);
+
+		var loadingPersent = setInterval(function() {
+			document.getElementById("loading__persent").innerText = loadingPersentCount.toFixed(2);
+			loadingPersentCount += 0.11;
+		}, 10);
 
 		function onGameLoaded () {
 			// document.getElementById("game_wrapper").removeChild(document.getElementById("loading"));
