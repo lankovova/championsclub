@@ -1,0 +1,23 @@
+.border-right {
+    background: url('../img/border_right.png');
+    position: absolute;
+    right: -92px;
+    bottom: 0;
+    z-index: 3;
+    background-size: 100%;
+    background-position-y: 30px;
+    width: 208px;
+    height: 1050px;
+}
+
+.border-left {
+    background: url('../img/border_left.png');
+    position: absolute;
+    left: -92px;
+    bottom: 0;
+    z-index: 3;
+    background-size: 100%;
+    background-position-y: 30px;
+    width: 208px;
+    height: 1050px;
+}

@@ -873,6 +873,30 @@ table {
   cursor: pointer;
 }
 
+.border-right {
+  background: url("../img/border_right.png");
+  position: absolute;
+  right: -92px;
+  bottom: 0;
+  z-index: 3;
+  background-size: 100%;
+  background-position-y: 30px;
+  width: 208px;
+  height: 1050px;
+}
+
+.border-left {
+  background: url("../img/border_left.png");
+  position: absolute;
+  left: -92px;
+  bottom: 0;
+  z-index: 3;
+  background-size: 100%;
+  background-position-y: 30px;
+  width: 208px;
+  height: 1050px;
+}
+
 * {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -925,7 +949,7 @@ body {
 .main {
   width: 1680px;
   height: 731px;
-  background: url("../img/games/bookofwinner/game_bg.gif") center center;
+  background: url("../img/games/bookofwinner/game_bg.png") center center;
   background-size: contain;
   position: absolute;
 }
