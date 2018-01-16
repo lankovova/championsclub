@@ -127,6 +127,9 @@ export default class Game {
         // Wait transfering win
         await this.transferUserWin();
 
+        // Notify lines controller that user has took win
+        this.linesController.userHasTookWin();
+
         // Disable transfer speed up if money already transfered
         this.interfaceController.disableSpeedUpTransferWin();
 
@@ -362,6 +365,8 @@ export default class Game {
             // Enable possibility to take win or gamble
             this.interfaceController.setTakeWin();
             this.interfaceController.panel.notifier.text = 'Take win or gamble';
+
+            this.linesController.cycleShowingWinningLines();
         } else { // Lose case
             this.interfaceController.enableInterface();
             this.setSpinPossibility();

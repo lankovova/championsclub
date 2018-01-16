@@ -12,6 +12,9 @@ class LinesController {
         this.gameWrapperNode = gameWrapperNode;
         this.props = props;
 
+        this.winningLines;
+        this.needToShowWinLines = false;
+
         this._createStaticLines();
     }
 
@@ -72,29 +75,51 @@ class LinesController {
         });
     }
 
+    // Deletes all lines, stops infinity show winning lines loop and unblurs all symbols
+    userHasTookWin() {
+        // Stop showing winning lines check var
+        this.needToShowWinLines = false;
+
+        // Delete all lines
+        this.winningLines.forEach(line => line.remove());
+
+        // Unblur symbols after user took win
+        this.unblurAllSymbols();
+    }
+
+    // Cycle showing winnning lines until user has took win
+    async cycleShowingWinningLines() {
+        let iterator = 0;
+
+        while(this.needToShowWinLines) {
+            const line = this.winningLines[iterator++];
+            await this.showWinningLine(line);
+
+            if (iterator === this.winningLines.length) iterator = 0;
+        }
+    }
+
     /**
      * Show all winning lines
      * @param {Number[][]} gameResult Game result
      * @param {Function} addUserWin Function
      */
     async showWinningLines(gameResult, addUserWin) {
-        const winningLines = this.createWinningLines(gameResult);
+        this.winningLines = this.createWinningLines(gameResult);
 
-        for (const line of winningLines) {
+        for (const line of this.winningLines) {
             // Add new win points for each line
             addUserWin(line.points);
 
             await this.showWinningLine(line);
         }
 
-        // FIXME: Consider cycle show win lines
-        this.unblurAllSymbols();
+        this.needToShowWinLines = true;
 
         // Resolve promise when all lines has shown
         return new Promise(resolve => resolve());
     }
 
-    // TODO: Cycle showing lines if no free spin
     /**
      * Show specific line and hide after delay
      * @param {Line} line Line to show
@@ -104,7 +129,7 @@ class LinesController {
 
         return new Promise(resolve => {
             setTimeout(() => {
-                line.remove();
+                line.hide();
                 resolve();
             }, settings.delayBetweenShowingWinningLines);
         });
