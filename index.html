@@ -176,6 +176,7 @@
 	</div>
 
 	<script>
+		var loadingTime = 2000;
 		var loadingBlockLength = 21;
 		var loadingBlockCount = 0;
 		var maxLoadingBlockAmount = 28;
@@ -187,16 +188,29 @@
 			}
 			document.getElementById("loading__block").style.width = 21 * loadingBlockCount + "px";
 			loadingBlockCount++;
-		}, 500);
+		}, loadingTime/maxLoadingBlockAmount);
 
 		var loadingPersent = setInterval(function() {
+			loadingPersentCount += 1.11;
+			if (loadingPersentCount >= 100.00) {
+				loadingPersentCount = 100;
+				clearInterval(loadingPersent);
+			}
 			document.getElementById("loading__persent").innerText = loadingPersentCount.toFixed(2);
-			loadingPersentCount += 0.11;
-		}, 10);
+		}, loadingTime / 100); // 100%
+
+		function removeLoading() {
+			if (loadingPersentCount === 100) {
+				document.getElementById("game_wrapper").removeChild(document.getElementById("loading"));
+				clearInterval(loading);
+				clearInterval(loadingPersent);
+				return;
+			}
+			setTimeout(function () {removeLoading();}, 100);
+		}
 
 		function onGameLoaded () {
-			// document.getElementById("game_wrapper").removeChild(document.getElementById("loading"));
-			// clearInterval(loading);
+			removeLoading();
 		}
 	</script>
 	<!-- Global settings -->
