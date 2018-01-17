@@ -127,8 +127,8 @@ export default class Game {
         // Wait transfering win
         await this.transferUserWin();
 
-        // Notify lines controller that user has took win
-        this.linesController.userHasTookWin();
+        // Unblur symbols after user took win
+        this.linesController.unblurAllSymbols();
 
         // Disable transfer speed up if money already transfered
         this.interfaceController.disableSpeedUpTransferWin();
@@ -207,23 +207,25 @@ export default class Game {
     spin = () => {
         // FIXME: Rethink about it
         if (this.interfaceController.alertWindow.isOn) {
-            console.log('hide alert');
+            console.log('Hide bonus spins result alert');
             this.interfaceController.hideAlert();
 
             return;
         }
 
         if (this.bonusSpins.on) {
-            console.log('Start bonus spins');
+            console.log('Bonus spins starts');
 
             // Hide alert when bonus spins starts
             this.interfaceController.hideAlert();
 
             this.interfaceController.disableInterface();
 
+            // Start bonus spin
             this.bonusSpin();
         } else {
-            console.log('normal spin');
+            console.log('Normal spin');
+
             this.getDataAndSpin();
         }
     }
@@ -249,6 +251,9 @@ export default class Game {
 
             // Clear notifier
             this.interfaceController.panel.notifier.clear();
+
+            // Stop showing win lines
+            this.linesController.stopCyclingWinningLines();
 
             // Spin reels to given final symbols
             this.startReels(this.spinResponse.final_symbols);
@@ -306,6 +311,9 @@ export default class Game {
                 this.interfaceController.enableSpeedUpTransferWin();
                 // Transfer user regular spin win
                 await this.transferUserWin();
+
+                // Unblur all symbols
+                this.linesController.unblurAllSymbols();
 
                 this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.totalSpins} free spins`;
 

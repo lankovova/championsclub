@@ -13,7 +13,7 @@ class LinesController {
         this.props = props;
 
         this.winningLines;
-        this.needToShowWinLines = false;
+        this.cycleWinningLines = false;
 
         this._createStaticLines();
     }
@@ -75,27 +75,26 @@ class LinesController {
         });
     }
 
-    // Deletes all lines, stops infinity show winning lines loop and unblurs all symbols
-    userHasTookWin() {
+    // Deletes all lines and stops infinity show winning lines loop
+    stopCyclingWinningLines() {
+        // If win lines is not showing do nothing
+        if (!this.cycleWinningLines) return;
+
         // Stop showing winning lines check var
-        this.needToShowWinLines = false;
+        this.cycleWinningLines = false;
 
         // Delete all lines
         this.winningLines.forEach(line => line.remove());
-
-        // Unblur symbols after user took win
-        this.unblurAllSymbols();
     }
 
     // Cycle showing winnning lines until user has took win
     async cycleShowingWinningLines() {
         let iterator = 0;
+        this.cycleWinningLines = true;
 
-        while(this.needToShowWinLines) {
-            const line = this.winningLines[iterator++];
+        while(this.cycleWinningLines) {
+            const line = this.winningLines[iterator++ % this.winningLines.length];
             await this.showWinningLine(line);
-
-            if (iterator === this.winningLines.length) iterator = 0;
         }
     }
 
@@ -113,8 +112,6 @@ class LinesController {
 
             await this.showWinningLine(line);
         }
-
-        this.needToShowWinLines = true;
 
         // Resolve promise when all lines has shown
         return new Promise(resolve => resolve());
