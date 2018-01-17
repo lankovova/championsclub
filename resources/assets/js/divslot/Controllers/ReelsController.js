@@ -2,7 +2,7 @@ import Reel from '../Components/ReelPicker';
 
 let stoppedReelsCounter = 0;
 
-class ReelsContorller {
+export default class ReelsContorller {
     /**
      * Creates reel controller in specific node
      * @param {HTMLElement} containerNode HTMLNode to place reel in
@@ -139,5 +139,3 @@ class ReelsContorller {
         return resultArray;
     }
 }
-
-export default ReelsContorller;

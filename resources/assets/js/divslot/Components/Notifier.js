@@ -1,4 +1,4 @@
-class Notifier {
+export default class Notifier {
     constructor() {
         this._node = document.querySelector('#notifier');
         this._node.innerText = 'Welcome';
@@ -16,5 +16,3 @@ class Notifier {
         return this._node;
     }
 }
-
-export default Notifier;

@@ -1,6 +1,6 @@
 import { transitionEnd } from './../events';
 
-class ToggleBlock {
+export default class ToggleBlock {
     constructor(options, props) {
         this.props = props;
 
@@ -92,5 +92,3 @@ class ToggleBlock {
         this.props.disableInterface();
     }
 }
-
-export default ToggleBlock;

@@ -1,7 +1,7 @@
 import Symbol from './Symbol';
 import {transitionEnd} from '../events';
 
-class Reel {
+export default class Reel {
     /**
      * Create reel with starting symbols in it
      * @param {Number} reelIndex Index of reel in Game
@@ -124,5 +124,3 @@ class Reel {
         }, 0);
     }
 }
-
-export default Reel;

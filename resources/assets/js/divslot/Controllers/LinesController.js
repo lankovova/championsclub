@@ -2,7 +2,7 @@ import Line from '../Components/Line';
 
 let showHideLinesTimeoutId;
 
-class LinesController {
+export default class LinesController {
     /**
      * @param {HTMLElement} gameWrapperNode
      * @param {Array<Reel>} reels Reels array
@@ -203,5 +203,3 @@ class LinesController {
         return 'rgb(255, 255, 255)';
     }
 }
-
-export default LinesController;

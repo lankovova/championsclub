@@ -1,4 +1,4 @@
-class PointsController {
+export default class PointsController {
     constructor(props, options) {
         this._userCash; // In coins
         this._userWin; // In points
@@ -137,5 +137,3 @@ class PointsController {
     }
     get userWin() { return this._userWin; }
 }
-
-export default PointsController;

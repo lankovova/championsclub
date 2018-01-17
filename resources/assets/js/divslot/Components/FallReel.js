@@ -1,6 +1,6 @@
 import Symbol from './SymbolFallAnimation';
 
-class FallReel {
+export default class FallReel {
     /**
      * Create reel with starting symbols in it
      * @param {Number} reelIndex Index of reel in Game
@@ -95,5 +95,3 @@ class FallReel {
         }
     }
 }
-
-export default FallReel;

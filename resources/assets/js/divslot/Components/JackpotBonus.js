@@ -1,4 +1,4 @@
-class JackpotBonus {
+export default class JackpotBonus {
     constructor(jElement, bElement, initValues = {jValue: 2000, bValue: 1000}) {
         if (!jElement || !bElement) {
             console.error('Jackpot or bonus element is not defined in constructor');
@@ -45,5 +45,3 @@ class JackpotBonus {
         this.bNode.innerText = value.toFixed(2);
     }
 }
-
-export default JackpotBonus;

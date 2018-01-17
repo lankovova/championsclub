@@ -3,7 +3,7 @@ import Panel from '../Components/Panel';
 import ToggleBlock from './../Components/ToggleBlock';
 import Alert from './../Components/Alert';
 
-class InterfaceController {
+export default class InterfaceController {
     constructor(props) {
         this.props = props;
         const that = this;
@@ -256,5 +256,3 @@ class InterfaceController {
     }
 
 }
-
-export default InterfaceController;

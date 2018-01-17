@@ -1,9 +1,10 @@
 import Buttons from './buttons/Button';
 
-class GambleModal {
+export default class GambleModal {
     constructor(props) {
         this.node = props.node;
 
+        // TODO: Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
             red: {},
             heart: {},

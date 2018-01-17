@@ -1,4 +1,4 @@
-class Line {
+export default class Line {
     /**
      * @param {HTMLElement} containerNode node of element where svg will be appended
      * @param {String} strokeColor color of the line
@@ -179,5 +179,3 @@ class Line {
         return this.container.offsetHeight;
     }
 }
-
-export default Line

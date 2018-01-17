@@ -1,4 +1,4 @@
-class Symbol {
+export default class Symbol {
     constructor(symbolNumber) {
         this.symbolNum = symbolNumber;
         this.highlighted = false;
@@ -51,5 +51,3 @@ class Symbol {
         return this.symbolNode.getBoundingClientRect().top - document.querySelector('#reels_container').getBoundingClientRect().top;
     }
 }
-
-export default Symbol;

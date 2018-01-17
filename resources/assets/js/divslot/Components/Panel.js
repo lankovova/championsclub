@@ -2,7 +2,7 @@ import Notifier from '../Components/Notifier';
 import JackpotBonus from './JackpotBonus';
 import * as Buttons from './buttons';
 
-class Panel {
+export default class Panel {
     constructor(node, props) {
         this.node = node;
         this.props = props;
@@ -113,5 +113,3 @@ class Panel {
     }
 
 }
-
-export default Panel;

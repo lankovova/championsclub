@@ -1,6 +1,6 @@
 import LinePresenter from './LinePresenter';
 
-class LinePresenters {
+export default class LinePresenters {
     constructor({lines, containerNode}) {
         this.linePresenters = [];
 
@@ -46,5 +46,3 @@ class LinePresenters {
     }
 
 }
-
-export default LinePresenters;

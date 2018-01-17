@@ -1,8 +1,4 @@
-class LinePresenter {
-    /**
-     * Show/hide line
-     * @param {Line} line Line that will be show/hide
-     */
+export default class LinePresenter {
     constructor(line, color) {
         this.line = line;
 
@@ -24,5 +20,3 @@ class LinePresenter {
         this.node.innerText = text;
     }
 }
-
-export default LinePresenter;
