@@ -554,7 +554,7 @@ table {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
@@ -958,7 +958,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 4px 13px 0;
+  margin: 6px 13px 0;
   height: 692px;
 }
 

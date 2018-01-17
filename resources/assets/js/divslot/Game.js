@@ -239,7 +239,9 @@ export default class Game {
             console.log(result);
             this.spinResponse = result;
 
+            // If bonus spins dropped
             if (this.spinResponse.bonus_spins) {
+                // Init bonus spins vars
                 this.bonusSpins.on = true;
                 this.bonusSpins.spins = this.spinResponse.bonus_spins.spins;
                 this.bonusSpins.currentSpinIndex = 0;
