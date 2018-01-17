@@ -2,9 +2,9 @@
 @import "../fonts";
 @import "../loading";
 @import "../animations";
-@import "../media";
 @import "../preloader";
 @import "../panel";
+@import "../media/media_with_border.scss";
 @import "../borders";
 
 * {
@@ -21,13 +21,13 @@ body {
 
 .game_wrapper {
     position: fixed;
-    width: 1680px;
+    width: 1870px;
     height: 1050px;
 }
 
 #game {
-    width: 1680px;
-    height: 1050px;
+    width: 100%;
+    height: 100%;
     background: #080200;
     overflow: hidden;
     position: absolute;
@@ -52,12 +52,14 @@ body {
     border-radius: 10px;
 }
 .main {
-
-    width: 1680px;
-    height: 731px;
-    background: url('../img/games/bookofwinner/game_bg.png') center center;
+    width: 1482px;
+    height: 684px;
+    background: url('../img/games/sevensonfire/game_bg.png') center center;
     background-size: contain;
     position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
 }
 
 .reels_wrapper {
@@ -70,11 +72,9 @@ body {
 }
 
 .line_presenters_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 4px 13px 0;
-    height: 692px;
+    margin: 0 13px;
+    height: 100%;
+    margin-top: 38px;
 }
 
 .line_presenter {
@@ -82,14 +82,19 @@ body {
     background-color: #686890;
     background-size: 100% 100%;
     font-size: 32px;
-    width: 54px;
-    height: 54px;
-    border-radius: 5px;
+    width: 59px;
+    height: 36px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 22px;
+
+    &:nth-child(3),
+    &:nth-child(7) {
+        margin-bottom: 48px;
+    }
 }
 
 .reels_container {
@@ -111,8 +116,11 @@ body {
 }
 
 .header {
-    width: 100%;
-    height: 105px;
-    background: url('../img/games/bookofwinner/header.gif');
+    width: 1531px;
+    height: 150px;
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    background: url('../img/games/sevensonfire/header.png');
     background-size: 100% 100%;
 }

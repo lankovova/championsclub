@@ -85,7 +85,7 @@ table {
   left: 0;
   top: 0;
   bottom: 0;
-  background: #000 url("../img/loading/loading_bg.png");
+  background: #000 url("../img/loading/loading_bg.png") center center;
 }
 
 #loading__block {
@@ -131,111 +131,6 @@ table {
   }
 }
 
-@media (max-width: 1600px) and (max-height: 1200px) {
-  .game_wrapper {
-    -webkit-transform: scale(1.143);
-            transform: scale(1.143);
-    -webkit-transform-origin: 67% 0%;
-            transform-origin: 67% 0%;
-  }
-}
-
-@media (max-width: 1440px) and (max-height: 900px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.857);
-            transform: scale(0.857);
-    -webkit-transform-origin: 0% 0%;
-            transform-origin: 0% 0%;
-  }
-}
-
-@media (max-width: 1400px) and (max-height: 1050px) {
-  .game_wrapper {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    left: -140px;
-  }
-}
-
-@media (max-width: 1366px) and (max-height: 768px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.8145);
-            transform: scale(0.8145);
-    -webkit-transform-origin: 0% -45%;
-            transform-origin: 0% -45%;
-    left: initial;
-  }
-  .panel {
-    -webkit-transform: scale(0.92);
-            transform: scale(0.92);
-    -webkit-transform-origin: 50% 91%;
-            transform-origin: 50% 91%;
-  }
-}
-
-@media (max-width: 1280px) and (max-height: 1024px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.915, 0.98);
-            transform: scale(0.915, 0.98);
-    -webkit-transform-origin: 7% 0%;
-            transform-origin: 7% 0%;
-  }
-}
-
-@media (max-width: 1280px) and (max-height: 960px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.91, 0.92);
-            transform: scale(0.91, 0.92);
-    -webkit-transform-origin: 10% 0%;
-            transform-origin: 10% 0%;
-  }
-}
-
-@media (max-width: 1280px) and (max-height: 800px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.762);
-            transform: scale(0.762);
-    -webkit-transform-origin: 35% 0%;
-            transform-origin: 35% 0%;
-  }
-}
-
-@media (max-width: 1280px) and (max-height: 768px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.762, 0.732);
-            transform: scale(0.762, 0.732);
-    -webkit-transform-origin: 0% 0%;
-            transform-origin: 0% 0%;
-  }
-}
-
-@media (max-width: 1280px) and (max-height: 720px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.767);
-            transform: scale(0.767);
-    -webkit-transform-origin: 0% -34%;
-            transform-origin: 0% -34%;
-  }
-}
-
-@media (max-width: 1152px) and (max-height: 864px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.823);
-            transform: scale(0.823);
-    -webkit-transform-origin: 8% 0%;
-            transform-origin: 8% 0%;
-  }
-}
-
-@media (max-width: 1024px) and (max-height: 768px) {
-  .game_wrapper {
-    -webkit-transform: scale(0.732);
-            transform: scale(0.732);
-    -webkit-transform-origin: -23% 0%;
-            transform-origin: -23% 0%;
-  }
-}
-
 #preloader {
   background: url("../img/games/bookofwinner/symbols/1.png"), url("../img/games/bookofwinner/symbols/2.png"), url("../img/games/bookofwinner/symbols/3.png"), url("../img/games/bookofwinner/symbols/4.png"), url("../img/games/bookofwinner/symbols/5.png"), url("../img/games/bookofwinner/symbols/6.png"), url("../img/games/bookofwinner/symbols/7.png"), url("../img/games/bookofwinner/symbols/8.png"), url("../img/games/bookofwinner/symbols/9.png"), url("../img/games/bookofwinner/symbols/10.png"), url("../img/games/bookofwinner/symbols/animations/4Anim.png");
 }
@@ -243,7 +138,10 @@ table {
 .panel {
   position: absolute;
   bottom: 0;
-  width: 1680px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
   z-index: 2;
 }
 
@@ -253,6 +151,16 @@ table {
           box-sizing: border-box;
   width: 100%;
   background-size: 100% 100%;
+  z-index: 1;
+}
+
+.panel__background {
+  background: url("../img/panel_bg.png");
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  height: 215px;
+  bottom: 0;
   z-index: 1;
 }
 
@@ -554,7 +462,7 @@ table {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
@@ -871,28 +779,135 @@ table {
   cursor: pointer;
 }
 
+@media (max-width: 1600px) and (max-height: 1200px) {
+  .game_wrapper {
+    -webkit-transform: scale(1.143);
+            transform: scale(1.143);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+  }
+}
+
+@media (max-width: 1440px) and (max-height: 900px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.857);
+            transform: scale(0.857);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+}
+
+@media (max-width: 1400px) and (max-height: 1050px) {
+  .game_wrapper {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    left: -140px;
+  }
+}
+
+@media (max-width: 1366px) and (max-height: 768px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.8145);
+            transform: scale(0.8145);
+    -webkit-transform-origin: 0% -45%;
+            transform-origin: 0% -45%;
+    left: initial;
+  }
+}
+
+@media (max-width: 1280px) and (max-height: 1024px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.915, 0.98);
+            transform: scale(0.915, 0.98);
+    -webkit-transform-origin: 7% 0%;
+            transform-origin: 7% 0%;
+  }
+}
+
+@media (max-width: 1280px) and (max-height: 960px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.91, 0.92);
+            transform: scale(0.91, 0.92);
+    -webkit-transform-origin: 10% 0%;
+            transform-origin: 10% 0%;
+  }
+}
+
+@media (max-width: 1280px) and (max-height: 800px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.762);
+            transform: scale(0.762);
+    -webkit-transform-origin: 35% 0%;
+            transform-origin: 35% 0%;
+  }
+}
+
+@media (max-width: 1280px) and (max-height: 768px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.732);
+            transform: scale(0.732);
+    -webkit-transform-origin: -9% 0%;
+            transform-origin: -9% 0%;
+  }
+}
+
+@media (max-width: 1280px) and (max-height: 720px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.686);
+            transform: scale(0.686);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+}
+
+@media (max-width: 1152px) and (max-height: 864px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.823);
+            transform: scale(0.823);
+    -webkit-transform-origin: -16% 0%;
+            transform-origin: -16% 0%;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 768px) {
+  .game_wrapper {
+    -webkit-transform: scale(0.732);
+            transform: scale(0.732);
+    -webkit-transform-origin: -34.5% 0%;
+            transform-origin: -34.5% 0%;
+  }
+}
+
 .border-right {
   background: url("../img/border_right.png");
   position: absolute;
-  right: -92px;
+  right: 0;
   bottom: 0;
-  z-index: 3;
-  background-size: 100%;
-  background-position-y: 30px;
-  width: 208px;
+  z-index: 1;
+  width: 215px;
   height: 1050px;
 }
 
 .border-left {
   background: url("../img/border_left.png");
   position: absolute;
-  left: -92px;
+  left: 0;
   bottom: 0;
-  z-index: 3;
-  background-size: 100%;
-  background-position-y: 30px;
-  width: 208px;
+  z-index: 1;
+  width: 215px;
   height: 1050px;
+}
+
+.panel_row-top {
+  background: none;
+}
+
+.panel_row-bot {
+  background: none;
+}
+
+#loading__block {
+  left: 639px;
 }
 
 * {
@@ -909,13 +924,13 @@ body {
 
 .game_wrapper {
   position: fixed;
-  width: 1680px;
+  width: 1870px;
   height: 1050px;
 }
 
 #game {
-  width: 1680px;
-  height: 1050px;
+  width: 100%;
+  height: 100%;
   background: #080200;
   overflow: hidden;
   position: absolute;
@@ -945,11 +960,14 @@ body {
 }
 
 .main {
-  width: 1680px;
-  height: 731px;
-  background: url("../img/games/bookofwinner/game_bg.png") center center;
+  width: 1482px;
+  height: 684px;
+  background: url("../img/games/sevensonfire/game_bg.png") center center;
   background-size: contain;
   position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
 }
 
 .reels_wrapper {
@@ -970,18 +988,9 @@ body {
 }
 
 .line_presenters_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 4px 13px 0;
-  height: 692px;
+  margin: 0 13px;
+  height: 100%;
+  margin-top: 38px;
 }
 
 .line_presenter {
@@ -989,9 +998,8 @@ body {
   background-color: #686890;
   background-size: 100% 100%;
   font-size: 32px;
-  width: 54px;
-  height: 54px;
-  border-radius: 5px;
+  width: 59px;
+  height: 36px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
           box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
@@ -1004,6 +1012,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 22px;
+}
+
+.line_presenter:nth-child(3), .line_presenter:nth-child(7) {
+  margin-bottom: 48px;
 }
 
 .reels_container {
@@ -1027,8 +1040,11 @@ body {
 }
 
 .header {
-  width: 100%;
-  height: 105px;
-  background: url("../img/games/bookofwinner/header.gif");
+  width: 1531px;
+  height: 150px;
+  position: relative;
+  z-index: 2;
+  margin: auto;
+  background: url("../img/games/sevensonfire/header.png");
   background-size: 100% 100%;
 }

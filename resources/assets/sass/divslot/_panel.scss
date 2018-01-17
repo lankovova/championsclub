@@ -1,7 +1,10 @@
 .panel {
     position: absolute;
     bottom: 0;
-    width: 1680px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
     z-index: 2;
 }
 .panel .panel_row {
@@ -9,6 +12,15 @@
     box-sizing: border-box;
     width: 100%;
     background-size: 100% 100%;
+    z-index: 1;
+}
+.panel__background {
+    background: url("../img/panel_bg.png");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    height: 215px;
+    bottom: 0;
     z-index: 1;
 }
 .panel_row-top {
