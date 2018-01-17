@@ -405,6 +405,7 @@ export default class Game {
                 } else {
                     this.autoSpin();
                 }
+
                 return;
             }
 

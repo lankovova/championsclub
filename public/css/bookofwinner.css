@@ -573,11 +573,9 @@ table {
           box-sizing: border-box;
   text-transform: uppercase;
   font-size: 14px;
-  line-height: 43px;
   color: white;
   cursor: pointer;
   width: 115px;
-  height: 47px;
   height: 43px;
   margin-top: 10px;
 }
