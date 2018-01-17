@@ -11,6 +11,8 @@ export default class Button {
 
         this._state = false;
 
+        this.node.onclick = () => props.onClick();
+
         this._initEffects();
     }
 

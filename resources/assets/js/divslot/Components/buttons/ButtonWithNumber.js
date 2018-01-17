@@ -1,13 +1,13 @@
 import Button from './Button';
 
-export default class DenominationBtn extends Button {
+export default class ButtonWithNumber extends Button {
     constructor(props) {
         super(props);
 
-        this.props = props;
-
         this.numberField = this.node.querySelector('.number');
-        this.node.onclick = () => this.props.toggleDenominationBlock();
+        if (!this.numberField) console.warn('No .number element in ButtonWithNumber component');
+
+        this.node.onclick = () => props.onClick();
     }
 
     set number(newNumber) {

@@ -6,6 +6,6 @@ export default class GambleBtn extends Button {
 
         this.props = props;
 
-        this.node.onclick = () => console.log('Gamble clicked');
+        this.node.onclick = () => this.props.gambleClick();
     }
 }

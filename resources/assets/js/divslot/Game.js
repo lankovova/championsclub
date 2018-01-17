@@ -50,7 +50,8 @@ export default class Game {
             setDenomination: this.setDenomination,
             setLines: this.setLines,
             setBerPerLine: this.setBerPerLine,
-            setMaxBet: this.setMaxBet
+            setMaxBet: this.setMaxBet,
+            startGamble: this.startGamble
         });
 
         this.interfaceController.panel.notifier.text = 'Loading...';
@@ -120,6 +121,31 @@ export default class Game {
         }
     }
 
+    getPlayerData = async () => {
+        try {
+            return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    // Getting spin data
+    getSpinResponse = async () => {
+        try {
+            const response = await axios.post('http://admin.chcgreen.org/spin', {
+                lines_amount: this.pointsController.lines,
+                bet_per_line: this.pointsController.betPerLine,
+                denomination: this.pointsController.denomination * 100,
+                game: this.gameName
+            });
+
+            return response.data;
+        } catch(err) {
+            console.log(err);
+            return mockResponseFreeSpin;
+        }
+    }
+
     takeWin = async () => {
         this.interfaceController.disableInterface();
         this.interfaceController.enableSpeedUpTransferWin();
@@ -183,29 +209,28 @@ export default class Game {
         this.interfaceController.disableSpeedUpTransferWin();
     }
 
-    getPlayerData = async () => {
-        try {
-            return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
-        } catch(err) {
-            console.log(err);
-        }
-    }
+    startGamble = () => {
+        console.log('Start gamble');
 
-    // Getting spin data
-    getSpinResponse = async () => {
-        try {
-            const response = await axios.post('http://admin.chcgreen.org/spin', {
-                lines_amount: this.pointsController.lines,
-                bet_per_line: this.pointsController.betPerLine,
-                denomination: this.pointsController.denomination * 100,
-                game: this.gameName
-            });
+        // TODO: Show gamble modal
 
-            return response.data;
-        } catch(err) {
-            console.log(err);
-            return mockResponseFreeSpin;
+        // FIXME: Move to initGamble
+        const cardsSuits = [
+            'heart',
+            'diamond',
+            'club',
+            'spade'
+        ];
+
+        // Randomize initial previous cards
+        let randomedPreviousCards = [];
+        for (let i = 0; i < settings.gamblePreviousCardsAmount; i++) {
+            const randomedCardSuitIndex = Math.floor(Math.random() * cardsSuits.length);
+            randomedPreviousCards.push(cardsSuits[randomedCardSuitIndex]);
         }
+        // FIXME:END
+
+        // TODO:
     }
 
     spin = () => {
@@ -361,6 +386,7 @@ export default class Game {
                 // Show alert
                 this.interfaceController.showAlert(`Free spins ended, you won ${this.pointsController.userWin} points in ${this.bonusSpins.totalSpins} spins`);
 
+                // Tun off bonus spins
                 this.bonusSpins.on = false;
 
                 // Check if user won

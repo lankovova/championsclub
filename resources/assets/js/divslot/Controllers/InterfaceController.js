@@ -29,6 +29,7 @@ class InterfaceController {
             autoSpinClick: this.autoSpinClick,
             stopAutoSpinning: this.props.stopAutoSpinning,
             setMaxBet: this.setMaxBet,
+            gambleClick: this.gambleClick,
             toggleLinesBlock: this.toggleLinesBlock,
             toggleBetPerLineBlock: this.toggleBetPerLineBlock,
             toggleDenominationBlock: this.toggleDenominationBlock,
@@ -91,6 +92,12 @@ class InterfaceController {
             this.props.setMaxBet();
     }
 
+    gambleClick = () => {
+        if (this.panel.btns.gamble.state) {
+            this.props.startGamble();
+        }
+    }
+
     toggleLinesBlock = () => {
         if (this.panel.btns.lines.state)
             this.linesBlock.toggle();
@@ -126,6 +133,9 @@ class InterfaceController {
     enableAuto = () => this.panel.btns.auto.state = true;
     disableAuto = () => this.panel.btns.auto.state = false;
 
+    enableGamble = () => this.panel.btns.gamble.state = true;
+    disableGamble = () => this.panel.btns.gamble.state = false;
+
     enableSpinAndAuto = () => {
         this.panel.btns.SST.state.spin = true;
         this.panel.btns.auto.state = true;
@@ -155,8 +165,13 @@ class InterfaceController {
     }
 
     setTakeWin = () => {
-        this.panel.btns.gamble.state = true;
         this.panel.btns.SST.state.takeWin = true;
+        this.panel.btns.gamble.state = true;
+    }
+
+    setGamble = () => {
+        // Enable all gamble buttons
+        Object.keys(this.panel.btns.gambleModal).forEach(btnKey => this.panel.btns.gambleModal[btnKey].enable());
     }
 
     // Disable each btn of panel btns
@@ -164,9 +179,13 @@ class InterfaceController {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].disable());
     }
 
+    // FIXME: Get rid of this func, intead use smth like setGamble, setIdle, etc...
     // Enable each btn of panel btns
     enableInterface = () => {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
+
+        // Also disable gamble btn
+        this.panel.btns.gamble.state = false;
     }
 
     _initKeyboardListeners() {

@@ -12,31 +12,37 @@ class Panel {
                 node: document.querySelector('#SSTBtn'),
                 spinStopTake: this.props.spinStopTake
             }),
-            maxBet: new Buttons.MaxBetBtn({
+            maxBet: new Buttons.Button({
                 node: document.querySelector('#maxBetBtn'),
-                setMaxBet: this.props.setMaxBet
+                onClick: this.props.setMaxBet
             }),
-            lines: new Buttons.LinesBtn({
+            lines: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#linesBtn'),
-                toggleLinesBlock: this.props.toggleLinesBlock
+                onClick: this.props.toggleLinesBlock
             }),
-            betPerLine: new Buttons.BetPerLineBtn({
+            betPerLine: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#betPerLineBtn'),
-                toggleBetPerLineBlock: this.props.toggleBetPerLineBlock
+                onClick: this.props.toggleBetPerLineBlock
             }),
-            denomination: new Buttons.DenominationBtn({
+            denomination: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#denominationBtn'),
-                toggleDenominationBlock: this.props.toggleDenominationBlock
+                onClick: this.props.toggleDenominationBlock
             }),
             auto: new Buttons.AutoBtn({
                 node: document.querySelector('#autoBtn'),
-                autoSpinClick: this.props.autoSpinClick
+                onClick: this.props.autoSpinClick
             }),
-            menu: new Buttons.MenuBtn({node: document.querySelector('#menuBtn')}),
-            gamble: new Buttons.GambleBtn({node: document.querySelector('#gambleBtn')}),
-            language: new Buttons.LanguageBtn({
+            menu: new Buttons.Button({
+                node: document.querySelector('#menuBtn'),
+                onClick: () => console.log('Menu clicked')
+            }),
+            language: new Buttons.Button({
                 node: document.querySelector('#languageBtn'),
-                toggleLanguageBlock: this.props.toggleLanguageBlock
+                onClick: this.props.toggleLanguageBlock
+            }),
+            gamble: new Buttons.GambleBtn({
+                node: document.querySelector('#gambleBtn'),
+                gambleClick: this.props.gambleClick
             })
         };
 
