@@ -1,23 +1,30 @@
 .border-right {
     background: url('../img/border_right.png');
     position: absolute;
-    right: -92px;
+    right: 0;
     bottom: 0;
-    z-index: 3;
-    background-size: 100%;
-    background-position-y: 30px;
-    width: 208px;
+    z-index: 1;
+    width: 215px;
     height: 1050px;
 }
 
 .border-left {
     background: url('../img/border_left.png');
     position: absolute;
-    left: -92px;
+    left: 0;
     bottom: 0;
-    z-index: 3;
-    background-size: 100%;
-    background-position-y: 30px;
-    width: 208px;
+    z-index: 1;
+    width: 215px;
     height: 1050px;
+}
+
+.panel_row-top {
+    background: none;
+}
+.panel_row-bot {
+    background: none;
+}
+
+#loading__block {
+    left: 639px;
 }

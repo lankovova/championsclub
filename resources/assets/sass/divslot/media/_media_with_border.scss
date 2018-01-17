@@ -1,7 +1,7 @@
 @media(max-width: 1600px) and (max-height: 1200px) {
     .game_wrapper {
         transform: scale(1.143);
-        transform-origin: 67% 0%;
+        transform-origin: 100% 0%;
     }
 }
 
@@ -20,7 +20,7 @@
 }
 @media(max-width: 1366px) and (max-height: 768px) {
     .game_wrapper {
-        transform: scale(0.815);
+        transform: scale(0.8145);
         transform-origin: 0% -45%;
         left: initial;
     }
@@ -45,25 +45,25 @@
 }
 @media(max-width: 1280px) and (max-height: 768px) {
     .game_wrapper {
-        transform: scale(0.762, 0.732);
-        transform-origin: 0% 0%;
+        transform: scale(0.732);
+        transform-origin: -9% 0%;
     }
 }
 @media(max-width: 1280px) and (max-height: 720px) {
     .game_wrapper {
-        transform: scale(0.767);
-        transform-origin: 0% -34%;
+        transform: scale(0.686);
+        transform-origin: 0% 0%;
     }
 }
 @media(max-width: 1152px) and (max-height: 864px) {
     .game_wrapper {
         transform: scale(0.823);
-        transform-origin: 8% 0%;
+        transform-origin: -16% 0%;
     }
 }
 @media(max-width: 1024px) and (max-height: 768px) {
     .game_wrapper {
         transform: scale(0.732);
-        transform-origin: -23% 0%;
+        transform-origin: -34.5% 0%;
     }
 }
