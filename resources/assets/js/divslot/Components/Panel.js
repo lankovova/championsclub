@@ -28,9 +28,12 @@ class Panel {
                 node: document.querySelector('#denominationBtn'),
                 toggleDenominationBlock: this.props.toggleDenominationBlock
             }),
+            auto: new Buttons.AutoBtn({
+                node: document.querySelector('#autoBtn'),
+                autoSpinClick: this.props.autoSpinClick
+            }),
             menu: new Buttons.MenuBtn({node: document.querySelector('#menuBtn')}),
             gamble: new Buttons.GambleBtn({node: document.querySelector('#gambleBtn')}),
-            auto: new Buttons.AutoBtn({node: document.querySelector('#autoBtn')}),
             language: new Buttons.LanguageBtn({
                 node: document.querySelector('#languageBtn'),
                 toggleLanguageBlock: this.props.toggleLanguageBlock

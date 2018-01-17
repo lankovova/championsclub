@@ -16,7 +16,7 @@ export default class SSTBtn extends Button {
             get spin() { return this._spin; },
             set spin(newState) {
                 if (newState)
-                    self.text = 'Spin';
+                    self.text = 'Start';
 
                 this._spin = newState;
                 self._handleDisabling();

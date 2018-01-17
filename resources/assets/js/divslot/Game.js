@@ -26,6 +26,8 @@ export default class Game {
             totalSpins: 0
         };
 
+        this.autoSpinIsOn = false;
+
         this.reelsController = new ReelsController(
             document.querySelector('#reels_wrapper'),
             { reelsHasStopped: this.reelsHasStopped }
@@ -43,6 +45,8 @@ export default class Game {
             stopReels: this.stop,
             takeWin: this.takeWin,
             speedUpTakeWin: this.speedUpTakeWin,
+            autoSpin: this.autoSpin,
+            stopAutoSpinning: this.stopAutoSpinning,
             setDenomination: this.setDenomination,
             setLines: this.setLines,
             setBerPerLine: this.setBerPerLine,
@@ -235,6 +239,9 @@ export default class Game {
         // Disable whole interface
         this.interfaceController.disableInterface();
 
+        // Enable auto btn if auto spins is on
+        if (this.autoSpinIsOn) this.interfaceController.enableAuto();
+
         this.getSpinResponse().then(result => {
             console.log(result);
             this.spinResponse = result;
@@ -260,6 +267,18 @@ export default class Game {
             // Spin reels to given final symbols
             this.startReels(this.spinResponse.final_symbols);
         });
+    }
+
+    autoSpin = () => {
+        // If no auto spin, turn it on
+        if (!this.autoSpinIsOn) this.autoSpinIsOn = true;
+
+        // Start normal spin
+        this.getDataAndSpin();
+    }
+
+    stopAutoSpinning = () => {
+        this.autoSpinIsOn = false;
     }
 
     bonusSpin = () => {
@@ -363,7 +382,7 @@ export default class Game {
             return;
         }
 
-        // Regular spin ended
+        // Spin ended
         if (this.spinResponse.won) { // Win case
             // Show all winning lines
             // and update user win line by line in callback
@@ -372,12 +391,35 @@ export default class Game {
                 this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
             });
 
+            if (this.autoSpinIsOn) {
+                // Transfer user regular spin win
+                await this.transferUserWin();
+
+                // Unblur all symbols
+                this.linesController.unblurAllSymbols();
+
+                // If auto spins was disabled while transfering money
+                if (!this.autoSpinIsOn) {
+                    this.interfaceController.enableInterface();
+                    this.setSpinPossibility();
+                } else {
+                    this.autoSpin();
+                }
+                return;
+            }
+
             // Enable possibility to take win or gamble
             this.interfaceController.setTakeWin();
             this.interfaceController.panel.notifier.text = 'Take win or gamble';
 
             this.linesController.cycleShowingWinningLines();
         } else { // Lose case
+            // If auto spin enabled
+            if (this.autoSpinIsOn) {
+                this.autoSpin();
+                return;
+            }
+
             this.interfaceController.enableInterface();
             this.setSpinPossibility();
         }

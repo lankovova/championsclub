@@ -25,11 +25,6 @@ class LinesController {
     createWinningLines(gameResult) {
         let winningLines = [];
 
-        // TODO: Activate dark layer on all symbols
-        this.props.reels.forEach(reel => {
-            reel.finalSymbols.forEach(symbol => symbol.blurDark());
-        });
-
         for (const res of gameResult) {
             const lineColor = this._getLineColorBasedOnItsIndex(res.line_index);
             const line = new Line(this.gameWrapperNode, lineColor, res.line_index, res.points, this.props.reels);
@@ -68,6 +63,13 @@ class LinesController {
         return winningLines;
     }
 
+    // Activate dark layer on all symbols
+    blurAllSymbols() {
+        this.props.reels.forEach(reel => {
+            reel.finalSymbols.forEach(symbol => symbol.blurDark());
+        });
+    }
+
     // Remove dark blur layer when all lines has showed
     unblurAllSymbols() {
         this.props.reels.forEach(reel => {
@@ -104,6 +106,9 @@ class LinesController {
      * @param {Function} addUserWin Function
      */
     async showWinningLines(gameResult, addUserWin) {
+        // Activate dark layer on all symbols
+        this.blurAllSymbols();
+
         this.winningLines = this.createWinningLines(gameResult);
 
         for (const line of this.winningLines) {

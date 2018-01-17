@@ -26,6 +26,8 @@ class InterfaceController {
 
         this.panel = new Panel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
+            autoSpinClick: this.autoSpinClick,
+            stopAutoSpinning: this.props.stopAutoSpinning,
             setMaxBet: this.setMaxBet,
             toggleLinesBlock: this.toggleLinesBlock,
             toggleBetPerLineBlock: this.toggleBetPerLineBlock,
@@ -54,6 +56,17 @@ class InterfaceController {
             this.props.takeWin();
         } else if (this.panel.btns.SST.state.speedUpTakeWin) {
             this.props.speedUpTakeWin();
+        }
+    }
+
+    autoSpinClick = () => {
+        if (this.panel.btns.auto.state) {
+            if (!this.panel.btns.auto.isOn) {
+                this.props.autoSpin();
+            } else {
+                this.props.stopAutoSpinning();
+            }
+            this.panel.btns.auto.isOn = !this.panel.btns.auto.isOn;
         }
     }
 
@@ -109,6 +122,9 @@ class InterfaceController {
 
     enableSpin = () => this.panel.btns.SST.state.spin = true;
     disableSpin = () => this.panel.btns.SST.state.spin = false;
+
+    enableAuto = () => this.panel.btns.auto.state = true;
+    disableAuto = () => this.panel.btns.auto.state = false;
 
     enableSpinAndAuto = () => {
         this.panel.btns.SST.state.spin = true;

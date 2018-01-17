@@ -6,6 +6,8 @@ export default class AutoBtn extends Button {
 
         this.props = props;
 
-        this.node.onclick = () => console.log('Auto clicked');
+        this.isOn = false;
+
+        this.node.onclick = () => this.props.autoSpinClick();
     }
 }
