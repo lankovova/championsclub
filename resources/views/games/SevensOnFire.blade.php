@@ -4,7 +4,6 @@
     <link href="{{asset('css/sevensonfire.css')}}" rel=stylesheet type=text/css>
 @endsection
     
-
 @section('js')
     @parent
     <script src="{{asset('js/sevensonfire_settings.js')}}"></script>
