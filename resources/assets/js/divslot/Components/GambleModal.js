@@ -1,13 +1,16 @@
 import Button from './buttons/Button';
 
+import axios from 'axios';
+
 export default class GambleModal {
     constructor(props) {
-        this.node = props.node;
+        this.props = props;
+        this.node = this.props.node;
 
         this.previousCards = {
             node: this.node.querySelector('#previousCardsSuits'),
             _cards: [],
-            addCard(cardSuit) {
+            add(cardSuit) {
                 // Push card suit name to store
                 this._cards.push(card);
 
@@ -18,31 +21,32 @@ export default class GambleModal {
             }
         }
 
+        // TODO: Handle if gamble is extended
         // Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
             red: new Button({
                 node: this.node.querySelector('#red'),
-                onClick: () => console.log('Pick red')
+                onClick: () => this.pickCard('red')
             }),
             heart: new Button({
                 node: this.node.querySelector('#heart'),
-                onClick: () => console.log('Pick heart')
+                onClick: () => this.pickCard('heart')
             }),
             diamond: new Button({
                 node: this.node.querySelector('#diamond'),
-                onClick: () => console.log('Pick diamond')
+                onClick: () => this.pickCard('diamond')
             }),
             black: new Button({
                 node: this.node.querySelector('#black'),
-                onClick: () => console.log('Pick black')
+                onClick: () => this.pickCard('black')
             }),
             club: new Button({
                 node: this.node.querySelector('#club'),
-                onClick: () => console.log('Pick club')
+                onClick: () => this.pickCard('club')
             }),
             spade: new Button({
                 node: this.node.querySelector('#spade'),
-                onClick: () => console.log('Pick spade')
+                onClick: () => this.pickCard('spade')
             }),
         }
 
@@ -60,7 +64,7 @@ export default class GambleModal {
         // Randomize initial previous cards
         for (let i = 0; i < settings.gamblePreviousCardsAmount; i++) {
             const randomedCardSuitIndex = Math.floor(Math.random() * cardsSuits.length);
-            this.previousCards.addCard(cardsSuits[randomedCardSuitIndex]);
+            this.previousCards.add(cardsSuits[randomedCardSuitIndex]);
         }
     }
 
@@ -72,5 +76,19 @@ export default class GambleModal {
         this.node.style.display = 'none';
     }
 
-    
+    async getGambleResponse(cardSuit) {
+        try {
+            return (await axios.post('http://admin.chcgreen.org/gamble', {
+                card: cardSuit
+            })).data;
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    pickCard = async(cardSuit) => {
+        const gambleResponse = await this.getGambleResponse(cardSuit);
+
+        console.log(gambleResponse);
+    }
 }

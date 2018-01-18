@@ -27,7 +27,11 @@ export default class Reel {
 
         // Init starting symbols
         for (let i = 0; i < settings.numOfRows; i++) {
-            const symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+            let symbol;
+            // Generate no scatters at all
+            do {
+                symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+            } while (symbol.isScatter);
 
             this.finalSymbols.push(symbol);
             // Add symbol into reel node
@@ -72,7 +76,12 @@ export default class Reel {
         let spinningSymbolsArr = [];
 
         for (let i = 0; i < settings.numOfSpinsBeforeStop * settings.numOfRows; i++) {
-            const symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+            let symbol;
+            // Generate no scatters at all while spinning
+            do {
+                symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+            } while (symbol.isScatter);
+
             spinningSymbolsArr.push(symbol);
         }
 

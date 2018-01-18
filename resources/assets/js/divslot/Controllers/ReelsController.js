@@ -27,7 +27,7 @@ export default class ReelsContorller {
         this.container.appendChild(reelsContainer);
 
         for (let i = 0; i < settings.numOfReels; i++) {
-            // Fill created reel with random symbols
+            // Add reels to store
             this.reels.push(new Reel(i, this.onReelStop));
         }
     }
