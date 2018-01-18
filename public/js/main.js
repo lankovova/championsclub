@@ -14018,9 +14018,20 @@ exports.default = {
 
         // Clear handlers
         showLangChooseHandler: function showLangChooseHandler() {},
-        hideLangChooseHandler: function hideLangChooseHandler() {}
+        hideLangChooseHandler: function hideLangChooseHandler() {},
+        setLang: function setLang(lang) {
+            this.$el.style.backgroundImage = "url('img/lang_flags/mini/" + lang + ".png')";
+        }
     },
-    mixins: [_mixins.buttonEvents]
+    mixins: [_mixins.buttonEvents],
+
+    mounted: function mounted() {
+        var _this = this;
+
+        _eventBus2.default.$on("lang-choose", function (lang) {
+            return _this.setLang(lang);
+        });
+    }
 };
 
 /***/ }),
@@ -14193,18 +14204,15 @@ exports.default = {
 
     methods: {
         choose: function choose(lang, $event) {
-            var langs = this.$el.childNodes;
-
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = langs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for (var _iterator = this.langs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var _lang = _step.value;
 
-                    if (!_lang.hasOwnProperty("classList")) continue;
-                    _lang.classList.remove("lang-active");
+                    this.$refs[_lang][0].classList.remove("lang-active");
                 }
             } catch (err) {
                 _didIteratorError = true;
@@ -14223,6 +14231,7 @@ exports.default = {
 
             $event.currentTarget.classList.add("lang-active");
             this.$i18n.locale = lang;
+            _eventBus2.default.$emit("lang-choose", lang);
             this.hide();
         },
         show: function show() {
@@ -15851,7 +15860,7 @@ exports.default = {
             start: 1,
             current: 1,
             trasitionTime: 500,
-            slides: [[{ class: 'book-of-winner' }, { class: 'sevens-on-fire-plus' }, { class: 'sevens-on-fire' }, { class: 'fire-rage-plus' }, { class: 'triple-diamond' }], [{ class: 'king-of-jewels' }, { class: 'crazy-barmen' }, { class: 'scatter-wins' }, { class: 'computer-world' }, { class: 'hearts' }], [{ class: 'gates-of-avalon' }, { class: 'money' }, { class: 'nautilus' }, { class: 'golden-harvest' }, { class: 'bananas' }], [{ class: 'mariner' }, { class: 'riddle-of-the-sphinx' }, { class: 'roll-of-ramses' }, { class: 'snow-white' }, { class: 'tropical-fruit' }], [{ class: 'billiard-world' }, { class: 'ultra-seven-hot' }, { class: 'hit-jewels' }, { class: 'robinson' }, { class: 'fire-rage' }], [{ class: 'book-of-wins' }, { class: 'casino-world' }, { class: 'pepper-seven' }, { class: 'magic-secret' }, { class: 'casino-and-stars' }], [{ class: 'beauty-dolphins' }, { class: 'savanna-queen' }, { class: 'hot-sevens' }, { class: 'ice-legend' }, { class: 'golden-scatter' }], [{ class: 'lucky-ladys-glamor' }, { class: 'capitan' }, { class: 'hot-slot' }, { class: 'always-cherry' }, { class: 'dolphins-pearl' }], [{ class: 'queen-of-hearts' }, { class: 'bananas-go-bahamas' }, { class: 'the-money-game' }, { class: 'lucky-ladys-charm' }, { class: 'venetiam-carnival' }], [{ class: 'sea-light' }, { class: 'columbus' }, { class: 'sharky' }, { class: 'fire-frenzy' }, { class: 'golden-harvest' }], [{ class: 'alice-in-wonderland' }, { class: 'sizzling-hot' }, { class: 'gryphons-gold' }, { class: 'book-of-ra' }, { class: 'crazy-barmen-old' }], [{ class: 'cinema' }, { class: 'computer-world-old' }, { class: 'nautilus-old' }, { class: '' }, { class: 'gulliver' }]]
+            slides: [[{ class: 'book-of-winner', url: 'bookofwinner' }, { class: 'sevens-on-fire-plus', url: 'sevensonfireplus' }, { class: 'sevens-on-fire', url: 'sevensonfire' }, { class: 'fire-rage-plus', url: 'firerageplus' }, { class: 'triple-diamond', url: 'triplediamond' }], [{ class: 'kings-of-jewels', url: 'kingsofjewels' }, { class: 'crazy-barmen', url: 'crazybarmen' }, { class: 'scatter-wins', url: 'scatterwins' }, { class: 'computer-world', url: 'computerworld' }, { class: 'hearts', url: 'hearts' }], [{ class: 'gates-of-avalon', url: 'gatesofavalon' }, { class: 'money', url: 'money' }, { class: 'nautilus', url: 'nautilus' }, { class: 'golden-harvest', url: 'golden-harvest' }, { class: 'bananas', url: 'bananas' }], [{ class: 'mariner', url: 'mariner' }, { class: 'riddle-of-the-sphinx', url: 'riddleofthesphinx' }, { class: 'roll-of-ramses', url: 'rolloframses' }, { class: 'snow-white', url: 'snowwhite' }, { class: 'tropical-fruit', url: 'tropicalfruit' }], [{ class: 'billiard-world', url: 'billiardworld' }, { class: 'ultra-seven-hot', url: 'ultrasevenhot' }, { class: 'hit-jewels', url: 'hitjewels' }, { class: 'robinson', url: 'robinson' }, { class: 'fire-rage', url: 'firerage' }], [{ class: 'book-of-wins', url: 'bookofwins' }, { class: 'casino-world', url: 'casinoworld' }, { class: 'pepper-seven', url: 'pepperseven' }, { class: 'magic-secret', url: 'magicsecret' }, { class: 'casino-and-stars', url: 'casinoandstars' }], [{ class: 'beauty-dolphins', url: 'beautydolphins' }, { class: 'savanna-queen', url: 'savannaqueen' }, { class: 'hot-sevens', url: 'hotsevens' }, { class: 'ice-legend', url: 'icelegend' }, { class: 'golden-scatter', url: 'goldenscatter' }], [{ class: 'lucky-ladys-glamor', url: 'luckyladysglamor' }, { class: 'captain', url: 'captain' }, { class: 'hot-slot', url: 'hotslot' }, { class: 'always-cherry', url: 'alwayscherry' }, { class: 'dolphins-pearl', url: 'dolphinspearl' }], [{ class: 'queen-of-hearts', url: 'queenofhearts' }, { class: 'bananas-go-bahamas', url: 'bananasgobahamas' }, { class: 'the-money-game', url: 'themoneygame' }, { class: 'lucky-ladys-charm', url: 'luckyladyscharm' }, { class: 'venetiam-carnival', url: 'venetiamcarnival' }], [{ class: 'sea-light', url: 'sealight' }, { class: 'columbus', url: 'columbus' }, { class: 'sharky', url: 'sharky' }, { class: 'fire-frenzy', url: 'firefrenzy' }, { class: 'golden-harvest', url: 'goldenharvest' }], [{ class: 'alice-in-wonderland', url: 'aliceinwonderland' }, { class: 'sizzling-hot', url: 'sizzlinghot' }, { class: 'gryphons-gold', url: 'gryphonsgold' }, { class: 'book-of-ra', url: 'bookofra' }, { class: 'crazy-barmen-old', url: 'crazybarmenold' }], [{ class: 'cinema', url: 'cinema' }, { class: 'computer-world-old', url: 'computerworldold' }, { class: 'nautilus-old', url: 'nautilusold' }, { class: '', url: '' }, { class: 'gulliver', url: 'gulliver' }]]
         };
     },
 
@@ -15971,7 +15980,7 @@ var render = function() {
               return _c("a", {
                 key: key,
                 class: "slide__part slide__part--" + item.class,
-                attrs: { href: "/" + item.class }
+                attrs: { href: "/" + item.url }
               })
             })
           )

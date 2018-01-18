@@ -3,10 +3,7 @@
 @section('css')
     <link href="{{asset('css/bookofwinner.css')}}" rel=stylesheet type=text/css>
 @endsection
-    
-@section('content')
-    @parent
-@endsection
+
 
 @section('js')
     @parent
