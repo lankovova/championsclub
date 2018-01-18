@@ -28,10 +28,14 @@ export default class FallReel {
 
         // Init starting symbols
         for (let i = 0; i < settings.numOfRows; i++) {
-            const symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+            let symbol;
+            // Generate no scatters at all
+            do {
+                symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+            } while (symbol.isScatter);
+
             symbol.node.style.transform = `translateY(${settings.symbolSize * (settings.numOfRows - i)}px)`;
 
-            // FIXME: Remove this useless shit
             this.finalSymbols.unshift(symbol);
             // Add symbol into reel node
             this.reelNode.prepend(symbol.node);

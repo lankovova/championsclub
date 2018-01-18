@@ -197,6 +197,8 @@ export default class Game {
         // TODO:
     }
 
+    
+
     spin = () => {
         // FIXME: Rethink about it
         if (this.interfaceController.alertWindow.isOn) {
