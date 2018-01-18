@@ -4,7 +4,21 @@ export default class GambleModal {
     constructor(props) {
         this.node = props.node;
 
-        // TODO: Init gamble modal btns here with passed nodes and click handlers
+        this.previousCards = {
+            node: this.node.querySelector('#previousCardsSuits'),
+            _cards: [],
+            addCard(cardSuit) {
+                // Push card suit name to store
+                this._cards.push(card);
+
+                // Add to markup
+                const cardToInsert = document.createElement('div');
+                cardToInsert.className = `suit-${cardSuit}`;
+                this.node.appendChild(cardToInsert);
+            }
+        }
+
+        // Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
             red: new Button({
                 node: this.node.querySelector('#red'),
@@ -32,10 +46,10 @@ export default class GambleModal {
             }),
         }
 
-        this.init();
+        this._initializePreviousCards();
     }
 
-    init() {
+    _initializePreviousCards() {
         const cardsSuits = [
             'heart',
             'diamond',
@@ -44,13 +58,10 @@ export default class GambleModal {
         ];
 
         // Randomize initial previous cards
-        let randomedPreviousCards = [];
         for (let i = 0; i < settings.gamblePreviousCardsAmount; i++) {
             const randomedCardSuitIndex = Math.floor(Math.random() * cardsSuits.length);
-            randomedPreviousCards.push(cardsSuits[randomedCardSuitIndex]);
+            this.previousCards.addCard(cardsSuits[randomedCardSuitIndex]);
         }
-
-        // TODO: Place randomedPreviousCards in previous cards element in modal
     }
 
     show() {
