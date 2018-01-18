@@ -1086,16 +1086,35 @@ body {
   color: #fef669;
   width: 50%;
   position: absolute;
-  left: 50px;
-  top: 50px;
+  left: 107px;
+  top: 56px;
+  text-transform: uppercase;
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px #000;
+}
+
+.gamble__amount-value {
+  width: 230px;
+  text-align: center;
+  margin-top: 18px;
 }
 
 .gamble__to-win {
   width: 50%;
   position: absolute;
-  right: 50px;
-  top: 50px;
+  right: 85px;
+  top: 56px;
   color: #fef669;
+  text-transform: uppercase;
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px #000;
+  text-align: right;
+}
+
+.gamble__to-win-color {
+  margin-top: 18px;
 }
 
 .card {
@@ -1136,10 +1155,10 @@ body {
   background: url("../img/games/bookofwinner/gamble/cards/diamond.png");
 }
 
-.last-cards {
+.previous-cards {
   width: 1084px;
   height: 86px;
-  background: url("../img/games/bookofwinner/gamble/last_cards.png");
+  background: url("../img/games/bookofwinner/gamble/previous_cards.png");
   position: absolute;
   bottom: 89px;
   right: 0;
@@ -1147,7 +1166,7 @@ body {
   margin: auto;
 }
 
-.last-cards__text {
+.previous-cards__text {
   height: 100%;
   width: 50%;
   font-size: 33px;
@@ -1167,7 +1186,7 @@ body {
           box-sizing: border-box;
 }
 
-.last-cards__suits {
+.previous-cards__suits {
   height: 100%;
   width: 50%;
   display: -webkit-box;
