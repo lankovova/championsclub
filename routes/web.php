@@ -14,4 +14,12 @@ Route::post("/gamble", "GameController@gamble")->name("gamble");
 Route::post("/getplayerinfo", "InfoController@getPlayerInfo")->name("getplayerinfo");
 Route::post("/gethistory", "InfoController@getHistory")->name("gethistory");
 
-Route::view('/book-of-winner', 'games.BookOfWinner');
+// Route::view('/book-of-winner', 'games.BookOfWinner');
+Route::get('/{game}', function ($game) {
+
+    if (view()->exists("games.$game")) {
+        return view("games.$game");
+    }
+    
+    return redirect('/');
+});
