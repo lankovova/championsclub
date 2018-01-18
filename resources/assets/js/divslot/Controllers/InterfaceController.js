@@ -24,7 +24,7 @@ export default class InterfaceController {
         });
 
         this.gambleModal = new GambleModal({
-            node: document.querySelector('#gambleModal')
+            node: document.querySelector('#gamble')
         });
 
         this.alertWindow = new Alert({ node: document.querySelector('#alert') });
@@ -32,7 +32,6 @@ export default class InterfaceController {
         this.panel = new Panel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
             autoSpinClick: this.autoSpinClick,
-            stopAutoSpinning: this.props.stopAutoSpinning,
             setMaxBet: this.setMaxBet,
             gambleClick: this.gambleClick,
             toggleLinesBlock: this.toggleLinesBlock,
@@ -181,8 +180,18 @@ export default class InterfaceController {
     }
 
     setGamble = () => {
-        // Enable all gamble buttons
-        Object.keys(this.panel.btns.gambleModal).forEach(btnKey => this.panel.btns.gambleModal[btnKey].enable());
+        // Disable whole interface
+        this.disableInterface();
+
+        // Enable take win posibillity
+        this.panel.btns.SST.state.takeWin = true;
+
+        // TODO: Enable all gamble buttons in modal
+
+        // TODO: Enable red/black buttons instead of gamble/max
+
+        // Show modal
+        this.gambleModal.show();
     }
 
     // Disable each btn of panel btns
