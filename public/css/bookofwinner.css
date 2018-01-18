@@ -1017,7 +1017,7 @@ body {
 }
 
 .gamble {
-  display: block;
+  display: none;
   position: absolute;
   top: 115px;
   right: 0;
