@@ -19,7 +19,7 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-    "gamblePreviousCardsAmount": 5,
+    "gamblePreviousCardsAmount": 8,
     "gambleExtended": true,
 
     "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",

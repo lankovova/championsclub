@@ -71,4 +71,6 @@ export default class GambleModal {
     hide() {
         this.node.style.display = 'none';
     }
+
+    
 }
