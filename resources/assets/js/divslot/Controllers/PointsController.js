@@ -1,7 +1,10 @@
+let userWinTransferDelta;
+
 export default class PointsController {
     constructor(props, options) {
         this._userCash; // In coins
         this._userWin; // In points
+        this._previousWin; // In points
 
         this._linesAmount;
         this._betPerLine;
@@ -129,11 +132,64 @@ export default class PointsController {
      * @param {String|Number} win New win to set in points
      */
     set userWin(win) {
-        this._userWin = win;
+        this._userWin = +win;
         this.props.panel.setUserWin({
             points: this._userWin,
             kups: this.pointsToKups(this._userWin)
         });
     }
     get userWin() { return this._userWin; }
+
+    /**
+     * Set user previous win
+     * @param {String|Number} previousWin New previous win to set in points
+     */
+    set previousWin(previousWin) {
+        this._previousWin = +previousWin;
+        this.props.panel.setUserPreviousWin({
+            points: this._previousWin,
+            kups: this.pointsToKups(this._previousWin)
+        });
+    }
+    get previousWin() { return this._previousWin; }
+
+    // Transfer win cash to user's cash
+    transferWinToCash() {
+        return new Promise(resolve => {
+            // Transfer duration in ms
+            const transferDuration = 2000;
+            // Delay between each iteration in ms
+            const delayBetweenIteration = 50;
+
+            // Amount of iterations
+            const iterationsAmount = transferDuration / delayBetweenIteration;
+
+            // Delta of user cash between iterations
+            userWinTransferDelta = Math.ceil(this.userWin / iterationsAmount);
+
+            const intervalId = setInterval(() => {
+                // If last transfer iteration
+                if (this.userWin - userWinTransferDelta <= 0) {
+                    // Transfer rest userWin pooint to userCash
+                    this.userCash += this.pointsToCoins(this.userWin);
+
+                    // Reset user win
+                    this.userWin = 0;
+
+                    clearInterval(intervalId);
+
+                    // Resolve promise when transfering is done
+                    resolve();
+                } else {
+                    // Change values on delta
+                    this.userCash += this.pointsToCoins(userWinTransferDelta);
+                    this.userWin -= userWinTransferDelta;
+                }
+            }, delayBetweenIteration);
+        });
+    }
+
+    speedUpTransfer() {
+        userWinTransferDelta *= 2;
+    }
 }

@@ -8,8 +8,6 @@ import {freeSpin as mockResponseFreeSpin} from './spinMockup';
 
 import axios from 'axios';
 
-let userWinTransferDelta;
-
 export default class Game {
     constructor(gameName) {
         this.gameName = gameName;
@@ -28,9 +26,6 @@ export default class Game {
 
         // Flag for check if auto spins in turned on
         this.autoSpinIsOn = false;
-
-        // TODO:
-        this.previousWin;
 
         this.reelsController = new ReelsController(
             document.querySelector('#reels_wrapper'),
@@ -166,13 +161,14 @@ export default class Game {
     }
 
     transferWin = async () => {
+        // Enable transfer win speed up
         this.interfaceController.enableSpeedUpTransferWin();
 
-        this.previousWin = this.pointsController.userWin;
-        console.log(this.previousWin);
+        // Remember previous win before transfering it to user's cash
+        const previousWin = this.pointsController.userWin;
 
-        // Wait transfering win
-        await this.transferWinToCash();
+        // Wait until all win points will be transfered to user's cash
+        await this.pointsController.transferWinToCash();
 
         // Disable transfer speed up if money already transfered
         this.interfaceController.disableSpeedUpTransferWin();
@@ -180,49 +176,15 @@ export default class Game {
         // Unblur symbols after win points are transfered
         this.linesController.unblurAllSymbols();
 
-        // this.interfaceController.panel.
+        // Set previous win in win block
+        this.pointsController.previousWin = previousWin;
 
         return new Promise(resolve => resolve());
     }
 
-    // Transfer win cash to user's cash
-    transferWinToCash = () => {
-        return new Promise(resolve => {
-            // Transfer duration in ms
-            const transferDuration = 2000;
-            // Delay between each iteration in ms
-            const delayBetweenIteration = 50;
-
-            // Amount of iterations
-            const iterationsAmount = transferDuration / delayBetweenIteration;
-
-            // Delta of user cash between iterations
-            userWinTransferDelta = Math.ceil(this.pointsController.userWin / iterationsAmount);
-
-            const intervalId = setInterval(() => {
-                // If last transfer iteration
-                if (this.pointsController.userWin - userWinTransferDelta <= 0) {
-                    // Transfer rest userWin pooint to userCash
-                    this.pointsController.userCash += this.pointsController.pointsToCoins(this.pointsController.userWin);
-
-                    // Reset user win
-                    this.pointsController.userWin = 0;
-
-                    clearInterval(intervalId);
-
-                    // Resolve promise when transfering is done
-                    resolve();
-                } else {
-                    // Change values on delta
-                    this.pointsController.userCash += this.pointsController.pointsToCoins(userWinTransferDelta);
-                    this.pointsController.userWin -= userWinTransferDelta;
-                }
-            }, delayBetweenIteration);
-        });
-    }
-
+    // Increase transfering speed
     speedUpTakeWin = () => {
-        userWinTransferDelta *= 2;
+        this.pointsController.speedUpTransfer();
         this.interfaceController.disableSpeedUpTransferWin();
     }
 
@@ -451,9 +413,13 @@ export default class Game {
 
             this.linesController.cycleShowingWinningLines();
         } else { // Lose case
+            // Reset userWin block after
+            this.pointsController.userWin = 0;
+
             // If auto spin enabled
             if (this.autoSpinIsOn) {
                 this.autoSpin();
+
                 return;
             }
 

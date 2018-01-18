@@ -1,6 +1,8 @@
 import Notifier from '../Components/Notifier';
 import JackpotBonus from './JackpotBonus';
+import TNWinBlock from './TNWinBlock';
 import * as Buttons from './buttons';
+import TNBlock from './TNBlock';
 
 export default class Panel {
     constructor(node, props) {
@@ -68,14 +70,12 @@ export default class Panel {
             points: document.querySelector('#userInsurancePointsField'),
             kups: document.querySelector('#userInsuranceKupsField')
         };
-        this.totalBetFields = {
-            points: document.querySelector('#bet_points_field'),
-            kups: document.querySelector('#bet_kups_field'),
-        };
-        this.userWinFields = {
-            points: document.querySelector('#win_points_field'),
-            kups: document.querySelector('#win_kups_field'),
-        };
+        this.betBlock = new TNBlock({
+            node: document.querySelector('#betBlock')
+        });
+        this.winBlock = new TNWinBlock({
+            node: document.querySelector('#winBlock')
+        });
 
         // TEMP
         this.setUserInsurance({
@@ -104,18 +104,14 @@ export default class Panel {
     }
 
     setUserWin({points, kups}) {
-        this.userWinFields.points.innerText = points;
-        this.userWinFields.kups.innerText = `${kups.toFixed(2)} Kup`;
+        this.winBlock.setWin({points, kups});
     }
-
     setUserPreviousWin({points, kups}) {
-        this.
-        this.setUserWin({points, kups});
+        this.winBlock.setPreviousWin({points, kups});
     }
 
     setTotalBet({points, kups}) {
-        this.totalBetFields.points.innerText = points;
-        this.totalBetFields.kups.innerText = `${kups.toFixed(2)} Kup`;
+        this.betBlock.setValues({points, kups});
     }
 
 }

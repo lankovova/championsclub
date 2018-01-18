@@ -22,8 +22,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": true,
 
-    "symbolsImagesPath": "img/games/bookofwinner/symbols/",
-    "symbolsAnimationsPath": "img/games/bookofwinner/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",
+    "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
     "symbols": [
         {"image": "1.png"},
