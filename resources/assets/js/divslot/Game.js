@@ -191,23 +191,8 @@ export default class Game {
     startGamble = () => {
         console.log('Start gamble');
 
-        // TODO: Show gamble modal
-
-        // FIXME: Move to initGamble
-        const cardsSuits = [
-            'heart',
-            'diamond',
-            'club',
-            'spade'
-        ];
-
-        // Randomize initial previous cards
-        let randomedPreviousCards = [];
-        for (let i = 0; i < settings.gamblePreviousCardsAmount; i++) {
-            const randomedCardSuitIndex = Math.floor(Math.random() * cardsSuits.length);
-            randomedPreviousCards.push(cardsSuits[randomedCardSuitIndex]);
-        }
-        // FIXME:END
+        // Set interface to gamble 'state'
+        this.interfaceController.setGamble();
 
         // TODO:
     }
