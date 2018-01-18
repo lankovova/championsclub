@@ -127,46 +127,74 @@ body {
     height: 717px;
     background: white;
     z-index: 1;
-    background: url('../img/games/bookofwinner/gamble/gamble_bg.png')
-}
+    background: url('../img/games/bookofwinner/gamble/gamble_bg.png');
 
-.button__suit-color {
-    top: 260px;
+    .button__suit-color {
+        top: 260px;
+        position: absolute;
+        width: 419px;
+        height: 108px;
+        text-align: center;
+        line-height: 98px;
+        font-size: 50px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 7px;
+    }
+    .button__red {
+        left: 57px;
+        background: url('../img/games/bookofwinner/gamble/buttons/suit_color.png');
+        color: #cc0000;
+    }
+    .button__black {
+        right: 57px;
+        background: url('../img/games/bookofwinner/gamble/buttons/suit_color.png');
+        color: #000;
+    }
+    .button__suit {
+        position: absolute;
+        top: 397px;
+        width: 173px;
+        height: 114px;
+    }
+    .button__spade {
+        right: 77px;
+        background: url('../img/games/bookofwinner/gamble/buttons/spade.png');
+    }
+    .button__club {
+        right: 286px;
+        background: url('../img/games/bookofwinner/gamble/buttons/club.png');
+    }
+    .button__dimond {
+        left: 286px;
+        background: url('../img/games/bookofwinner/gamble/buttons/diamond.png');
+    }
+    .button__heart {
+        left: 77px;
+        background: url('../img/games/bookofwinner/gamble/buttons/heart.png');
+    }
+}
+.gamble__amount {
+    color: #fef669;
+    width: 50%;
     position: absolute;
-    width: 419px;
-    height: 108px;
-}
-.button__red {
-    left: 57px;
-    background: url('../img/games/bookofwinner/gamble/buttons/suit_color.png')
-}
-.button__black {
-    right: 57px;
-    background: url('../img/games/bookofwinner/gamble/buttons/suit_color.png')
-}
-.button__suit {
-    position: absolute;
-    top: 397px;
-    width: 173px;
-    height: 114px;
-}
-.button__spade {
-    right: 77px;
-    background: url('../img/games/bookofwinner/gamble/buttons/spade.png');
-}
-.button__club {
-    right: 286px;
-    background: url('../img/games/bookofwinner/gamble/buttons/club.png');
-}
-.button__dimond {
-    left: 286px;
-    background: url('../img/games/bookofwinner/gamble/buttons/diamond.png');
-}
-.button__heart {
-    left: 77px;
-    background: url('../img/games/bookofwinner/gamble/buttons/heart.png');
-}
+    left: 50px;
+    top: 50px;
+    &-text {
+        
+    }
+    &-value {
 
+    }
+}
+.gamble__to-win {
+    width: 50%;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    color: #fef669;
+
+}
 .card {
     background: url('../img/games/bookofwinner/gamble/cards/card.gif');
     width: 221px;
@@ -208,4 +236,23 @@ body {
     right: 0;
     left: 0;
     margin: auto;
+}
+.last-cards__text {
+    height: 100%;
+    width: 50%;
+    font-size: 33px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 67px;
+    box-sizing: border-box;
+}
+.last-cards__suits {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
