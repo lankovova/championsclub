@@ -1,7 +1,8 @@
 import LinePresenters from '../Components/LinePresenters';
 import Panel from '../Components/Panel';
-import ToggleBlock from './../Components/ToggleBlock';
-import Alert from './../Components/Alert';
+import ToggleBlock from '../Components/ToggleBlock';
+import Alert from '../Components/Alert';
+import GambleModal from '../Components/GambleModal';
 
 export default class InterfaceController {
     constructor(props) {
@@ -22,6 +23,10 @@ export default class InterfaceController {
             containerNode: this.props.containerNode
         });
 
+        this.gambleModal = new GambleModal({
+            node: document.querySelector('#gambleModal')
+        });
+
         this.alertWindow = new Alert({ node: document.querySelector('#alert') });
 
         this.panel = new Panel(document.querySelector('#panel'), {
@@ -34,6 +39,7 @@ export default class InterfaceController {
             toggleBetPerLineBlock: this.toggleBetPerLineBlock,
             toggleDenominationBlock: this.toggleDenominationBlock,
             toggleLanguageBlock: this.toggleLanguageBlock,
+            menuClickHandler: this.menuClickHandler
         });
     }
 
@@ -127,6 +133,11 @@ export default class InterfaceController {
         this.alertWindow.hide();
     }
 
+    menuClickHandler = () => {
+        if (this.panel.btns.menu.state)
+            window.location.href = "";
+    }
+
     enableSpin = () => this.panel.btns.SST.state.spin = true;
     disableSpin = () => this.panel.btns.SST.state.spin = false;
 
@@ -207,6 +218,9 @@ export default class InterfaceController {
                     break;
                 case 68: // d
                     this.setDenomination();
+                    break;
+                case 27:
+                    this.menuClickHandler();
                     break;
                 default: {}
             }

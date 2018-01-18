@@ -34,7 +34,7 @@ export default class Panel {
             }),
             menu: new Buttons.Button({
                 node: document.querySelector('#menuBtn'),
-                onClick: () => console.log('Menu clicked')
+                onClick: this.props.menuClickHandler
             }),
             language: new Buttons.Button({
                 node: document.querySelector('#languageBtn'),
