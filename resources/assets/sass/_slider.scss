@@ -44,64 +44,90 @@
     width: 431px;
     height: 203px;
     margin: 10px;
+
+    &:nth-child(1) {
+        order: 4;
+    }
+    &:nth-child(2) {
+        order: 5;
+    }
+    &:nth-child(3) {
+        order: 1;
+    }
+    &:nth-child(4) {
+        order: 2;
+    }
+    &:nth-child(5) {
+        order: 3;
+    }
+    &--book-of-winner {
+        background-image: url("../img/slider/book_of_winner.gif");
+    }
+    &--sevens-on-fire-plus {
+        // background-image: url("../img/slider/sevens_on_fire_plus.gif");
+    }
+    &--sevens-on-fire {
+        // background-image: url("../img/slider/sevens_on_fire.gif");
+    }
+    &--fire-rage-plus {
+        // background-image: url("../img/slider/fire_rage_plus.gif");
+    }
+    &--triple-diamond {
+        background-image: url("../img/slider/triple-diamond.gif");
+    }
+    &--kings-of-jewels {
+        background-image: url("../img/slider/kings_of_jewels.gif");
+    }
+    &--crazy-barmen {
+        background-image: url("../img/slider/crazy_barmen.gif");
+    }
+    &--scatter-wins {
+        background-image: url("../img/slider/scatter_wins.gif");
+    }
+    &--computer-world {
+        background-image: url("../img/slider/computer_world.gif");
+    }
+
+
+    // &--fire-rage-plus {
+    //     background-image: url("../img/slider/fire_rage_plus.gif");
+    // }
+    // &--fire-rage-plus {
+    //     background-image: url("../img/slider/fire_rage_plus.gif");
+    // }
+    // &--fire-rage-plus {
+    //     background-image: url("../img/slider/fire_rage_plus.gif");
+    // }
+
 }
-.slide__part--book-of-winner {
-    background-image: url("../img/slider/book_of_winner.gif"); 
-    order: 5;
-}
-.slide__part--kings-of-jewels {
-    background-image: url("../img/slider/kings_of_jewels.gif");
-    order: 4;
-}
-.slide__part--crazy-barmen {
-    background-image: url("../img/slider/crazy_barmen.gif");
-    order: 3;
-}
-.slide__part--scatter-wins {
-    background-image: url("../img/slider/scatter_wins.gif");
-    order: 2; 
-}
-.slide__part--computer-world {
-    background-image: url("../img/slider/computer_world.gif");
-    order: 1;
-}
+
 .slide__part--gates-of-avalon {
     background-image: url("../img/slider/gates_of_avalon.gif");
-    order: 5;
 }
 .slide__part--money {
     background-image: url("../img/slider/money.gif");
-    order: 4;
 }
 .slide__part--nautilus {
     background-image: url("../img/slider/nautilus.gif");
-    order: 3;
 }
 .slide__part--golden-harvest {
     background-image: url("../img/slider/golden_harvest.gif");
-    order: 2;
 }
 .slide__part--bananas {
     background-image: url("../img/slider/bananas.gif");
-    order: 1;
 }
 .slide__part--mariner {
     background-image: url("../img/slider/mariner.gif");
-    order: 5;
 }
 .slide__part--riddle-of-the-sphinx {
     background-image: url("../img/slider/riddle_of_the_sphinx.gif");
-    order: 4;
 }
 .slide__part--roll-of-ramses {
     background-image: url("../img/slider/roll_of_ramses.gif");
-    order: 3;
 }
 .slide__part--snow-white {
     background-image: url("../img/slider/snow_white.gif");
-    order: 2;
 }
 .slide__part--tropical-fruit {
     background-image: url("../img/slider/tropical_fruit.gif");
-    order: 1;
 }

@@ -14,4 +14,4 @@ Route::post("/gamble", "GameController@gamble")->name("gamble");
 Route::post("/getplayerinfo", "InfoController@getPlayerInfo")->name("getplayerinfo");
 Route::post("/gethistory", "InfoController@getHistory")->name("gethistory");
 
-Route::view('/bookofwinner', 'games/bookOfWinner');
+Route::view('/book-of-winner', 'games.BookOfWinner');

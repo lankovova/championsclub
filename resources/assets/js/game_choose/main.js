@@ -8,7 +8,7 @@ import VueCookie from "vue-cookie"
 Vue.use(VueCookie);
 Vue.use(VueI18n)
 Vue.config.productionTip = false
-import messages from "./translations/"
+import messages from "../translations/"
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({

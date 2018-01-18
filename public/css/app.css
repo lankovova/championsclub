@@ -6,6 +6,7 @@
 html,
 body {
   overflow: hidden;
+  background: #000;
 }
 
 .app {
@@ -19,7 +20,6 @@ body {
 }
 
 .game-chooser--champion {
-  background: #000 url("../img/champion_bg.gif") center top no-repeat;
   height: 100vh;
   position: relative;
   background-size: contain;
@@ -768,109 +768,98 @@ body {
   margin: 10px;
 }
 
-.slide__part--book-of-winner {
-  background-image: url("../img/slider/book_of_winner.gif");
+.slide__part:nth-child(1) {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
+}
+
+.slide__part:nth-child(2) {
   -webkit-box-ordinal-group: 6;
       -ms-flex-order: 5;
           order: 5;
+}
+
+.slide__part:nth-child(3) {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.slide__part:nth-child(4) {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.slide__part:nth-child(5) {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.slide__part--book-of-winner {
+  background-image: url("../img/slider/book_of_winner.gif");
+}
+
+.slide__part--triple-diamond {
+  background-image: url("../img/slider/triple-diamond.gif");
 }
 
 .slide__part--kings-of-jewels {
   background-image: url("../img/slider/kings_of_jewels.gif");
-  -webkit-box-ordinal-group: 5;
-      -ms-flex-order: 4;
-          order: 4;
 }
 
 .slide__part--crazy-barmen {
   background-image: url("../img/slider/crazy_barmen.gif");
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
 }
 
 .slide__part--scatter-wins {
   background-image: url("../img/slider/scatter_wins.gif");
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
 }
 
 .slide__part--computer-world {
   background-image: url("../img/slider/computer_world.gif");
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
 }
 
 .slide__part--gates-of-avalon {
   background-image: url("../img/slider/gates_of_avalon.gif");
-  -webkit-box-ordinal-group: 6;
-      -ms-flex-order: 5;
-          order: 5;
 }
 
 .slide__part--money {
   background-image: url("../img/slider/money.gif");
-  -webkit-box-ordinal-group: 5;
-      -ms-flex-order: 4;
-          order: 4;
 }
 
 .slide__part--nautilus {
   background-image: url("../img/slider/nautilus.gif");
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
 }
 
 .slide__part--golden-harvest {
   background-image: url("../img/slider/golden_harvest.gif");
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
 }
 
 .slide__part--bananas {
   background-image: url("../img/slider/bananas.gif");
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
 }
 
 .slide__part--mariner {
   background-image: url("../img/slider/mariner.gif");
-  -webkit-box-ordinal-group: 6;
-      -ms-flex-order: 5;
-          order: 5;
 }
 
 .slide__part--riddle-of-the-sphinx {
   background-image: url("../img/slider/riddle_of_the_sphinx.gif");
-  -webkit-box-ordinal-group: 5;
-      -ms-flex-order: 4;
-          order: 4;
 }
 
 .slide__part--roll-of-ramses {
   background-image: url("../img/slider/roll_of_ramses.gif");
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
 }
 
 .slide__part--snow-white {
   background-image: url("../img/slider/snow_white.gif");
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
 }
 
 .slide__part--tropical-fruit {
   background-image: url("../img/slider/tropical_fruit.gif");
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
 }
 
 .container {

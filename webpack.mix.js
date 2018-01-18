@@ -16,6 +16,12 @@ let mix = require('laravel-mix');
 //         processCssUrls: false
 //     });
 
+mix.js('resources/assets/js/game_choose/main.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false
+    });
+
 mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
     .sass('resources/assets/sass/divslot/games/sevensonfire.scss', 'public/css')
     .options({

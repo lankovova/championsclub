@@ -21,7 +21,6 @@ import HelpPanel from "./HelpPanel"
 export default {
     mounted() {
         EventBus.$on("toggle-denomination", () => {
-            console.log('click')
         })
     },
     components: {
