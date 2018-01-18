@@ -40,9 +40,9 @@ export default class Panel {
                 node: document.querySelector('#languageBtn'),
                 onClick: this.props.toggleLanguageBlock
             }),
-            gamble: new Buttons.GambleBtn({
+            gamble: new Buttons.Button({
                 node: document.querySelector('#gambleBtn'),
-                gambleClick: this.props.gambleClick
+                onClick: this.props.gambleClick
             })
         };
 
@@ -107,6 +107,12 @@ export default class Panel {
         this.userWinFields.points.innerText = points;
         this.userWinFields.kups.innerText = `${kups.toFixed(2)} Kup`;
     }
+
+    setUserPreviousWin({points, kups}) {
+        this.
+        this.setUserWin({points, kups});
+    }
+
     setTotalBet({points, kups}) {
         this.totalBetFields.points.innerText = points;
         this.totalBetFields.kups.innerText = `${kups.toFixed(2)} Kup`;

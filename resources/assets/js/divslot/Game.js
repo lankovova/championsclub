@@ -13,8 +13,8 @@ let userWinTransferDelta;
 export default class Game {
     constructor(gameName) {
         this.gameName = gameName;
-
         this.gameNode = document.querySelector('#game');
+
         // Store for spin response data
         this.spinResponse = {};
 
@@ -26,7 +26,11 @@ export default class Game {
             totalSpins: 0
         };
 
+        // Flag for check if auto spins in turned on
         this.autoSpinIsOn = false;
+
+        // TODO:
+        this.previousWin;
 
         this.reelsController = new ReelsController(
             document.querySelector('#reels_wrapper'),
@@ -43,7 +47,7 @@ export default class Game {
             lines: this.linesController.lines,
             spinReels: this.spin,
             stopReels: this.stop,
-            takeWin: this.takeWin,
+            takeWin: this.takeWinClickHandler,
             speedUpTakeWin: this.speedUpTakeWin,
             autoSpin: this.autoSpin,
             stopAutoSpinning: this.stopAutoSpinning,
@@ -146,30 +150,43 @@ export default class Game {
         }
     }
 
-    takeWin = async () => {
+    takeWinClickHandler = async () => {
         this.interfaceController.disableInterface();
-        this.interfaceController.enableSpeedUpTransferWin();
 
         // FIXME: Rethink about it
         if (this.interfaceController.alertWindow.isOn)
             this.interfaceController.hideAlert();
 
         // Wait transfering win
-        await this.transferUserWin();
-
-        // Unblur symbols after user took win
-        this.linesController.unblurAllSymbols();
-
-        // Disable transfer speed up if money already transfered
-        this.interfaceController.disableSpeedUpTransferWin();
+        await this.transferWin();
 
         // After transfering win enable interface
         this.interfaceController.enableInterface();
         this.setSpinPossibility();
     }
 
+    transferWin = async () => {
+        this.interfaceController.enableSpeedUpTransferWin();
+
+        this.previousWin = this.pointsController.userWin;
+        console.log(this.previousWin);
+
+        // Wait transfering win
+        await this.transferWinToCash();
+
+        // Disable transfer speed up if money already transfered
+        this.interfaceController.disableSpeedUpTransferWin();
+
+        // Unblur symbols after win points are transfered
+        this.linesController.unblurAllSymbols();
+
+        // this.interfaceController.panel.
+
+        return new Promise(resolve => resolve());
+    }
+
     // Transfer win cash to user's cash
-    transferUserWin = () => {
+    transferWinToCash = () => {
         return new Promise(resolve => {
             // Transfer duration in ms
             const transferDuration = 2000;
@@ -354,12 +371,8 @@ export default class Game {
                 // Show alert and wait for user to press start btn
                 this.interfaceController.showAlert(`You won ${this.bonusSpins.totalSpins} bonus spins`);
 
-                this.interfaceController.enableSpeedUpTransferWin();
                 // Transfer user regular spin win
-                await this.transferUserWin();
-
-                // Unblur all symbols
-                this.linesController.unblurAllSymbols();
+                await this.transferWin();
 
                 this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.totalSpins} free spins`;
 
@@ -419,10 +432,7 @@ export default class Game {
 
             if (this.autoSpinIsOn) {
                 // Transfer user regular spin win
-                await this.transferUserWin();
-
-                // Unblur all symbols
-                this.linesController.unblurAllSymbols();
+                await this.transferWin();
 
                 // If auto spins was disabled while transfering money
                 if (!this.autoSpinIsOn) {
