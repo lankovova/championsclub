@@ -5,12 +5,12 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": "spin",
+    "animationType": "fall",
 
     "numOfSpinsBeforeStop": 2,
 
     "delayBetweenShowingWinningLines": 700,
-    "delayBetweenReelsSpin": 300,
+    "delayBetweenReelsSpin": 200,
     "delayBetweenFallingSymbols": 300,
     // Do not set this delay lower than 50 ms
     // due to the slow browsers perfomance

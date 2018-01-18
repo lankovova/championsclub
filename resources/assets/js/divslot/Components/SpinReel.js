@@ -75,6 +75,9 @@ export default class Reel {
     addSpinningSymbols() {
         let spinningSymbolsArr = [];
 
+        // TODO: Spawn scatter with some chance
+        let isScatterSpawnedInReel = false;
+
         for (let i = 0; i < settings.numOfSpinsBeforeStop * settings.numOfRows; i++) {
             let symbol;
             // Generate no scatters at all while spinning
