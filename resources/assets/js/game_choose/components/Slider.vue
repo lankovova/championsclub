@@ -6,6 +6,7 @@
                     <a v-for="(item, key) in slide" 
                         :key="key" 
                         :class="'slide__part slide__part--' + item.class"
+                        :href="'/' + item.class"
                     ></a>
                 </div>
             </div>
@@ -25,26 +26,96 @@ export default {
             trasitionTime: 500,
             slides: [
                 [
-                    {url: '', class:'book-of-winner'},
-                    {url: '', class:'kings-of-jewels'},
-                    {url: '', class:'crazy-barmen'},
-                    {url: '', class:'scatter-wins'},
-                    {url: '', class:'computer-world'},
+                    {class:'book-of-winner'},
+                    {class:'sevens-on-fire-plus'},
+                    {class:'sevens-on-fire'},
+                    {class:'fire-rage-plus'},
+                    {class:'triple-diamond'}
                 ],
                 [
-                    {url: '', class:'gates-of-avalon'},
-                    {url: '', class:'money'},
-                    {url: '', class:'nautilus'},
-                    {url: '', class:'golden-harvest'},
-                    {url: '', class:'bananas'},
+                    {class:'king-of-jewels'},
+                    {class:'crazy-barmen'},
+                    {class:'scatter-wins'},
+                    {class:'computer-world'},
+                    {class:'hearts'}
                 ],
                 [
-                    {url: '', class:'mariner'},
-                    {url: '', class:'riddle-of-the-sphinx'},
-                    {url: '', class:'roll-of-ramses'},
-                    {url: '', class:'snow-white'},
-                    {url: '', class:'tropical-fruit'},
-                ],   
+                    {class:'gates-of-avalon'},
+                    {class:'money'},
+                    {class:'nautilus'},
+                    {class:'golden-harvest'},
+                    {class:'bananas'}
+                ],
+                [
+                    {class:'mariner'},
+                    {class:'riddle-of-the-sphinx'},
+                    {class:'roll-of-ramses'},
+                    {class:'snow-white'},
+                    {class:'tropical-fruit'}
+                ],
+                [
+                    {class:'billiard-world'},
+                    {class:'ultra-seven-hot'},
+                    {class:'hit-jewels'},
+                    {class:'robinson'},
+                    {class:'fire-rage'}
+                ],
+                [
+                    {class:'book-of-wins'},
+                    {class:'casino-world'},
+                    {class:'pepper-seven'},
+                    {class:'magic-secret'},
+                    {class:'casino-and-stars'}
+                ],
+                [
+                    {class:'beauty-dolphins'},
+                    {class:'savanna-queen'},
+                    {class:'hot-sevens'},
+                    {class:'ice-legend'},
+                    {class:'golden-scatter'}
+                ],
+                [
+                    {class:'lucky-ladys-glamor'},
+                    {class:'capitan'},
+                    {class:'hot-slot'},
+                    {class:'always-cherry'},
+                    {class:'dolphins-pearl'}
+                ],
+                [
+                    {class:'queen-of-hearts'},
+                    {class:'bananas-go-bahamas'},
+                    {class:'the-money-game'},
+                    {class:'lucky-ladys-charm'},
+                    {class:'venetiam-carnival'}
+                ],
+                [
+                    {class:'sea-light'},
+                    {class:'columbus'},
+                    {class:'sharky'},
+                    {class:'fire-frenzy'},
+                    {class:'golden-harvest'}
+                ],
+                [
+                    {class:'alice-in-wonderland'},
+                    {class:'sizzling-hot'},
+                    {class:'gryphons-gold'},
+                    {class:'book-of-ra'},
+                    {class:'crazy-barmen-old'}
+                ],
+                [
+                    {class:'cinema'},
+                    {class:'computer-world-old'},
+                    {class:'nautilus-old'},
+                    {class:''},
+                    {class:'gulliver'}
+                ],
+                // [
+                //     {class:''},
+                //     {class:''},
+                //     {class:''},
+                //     {class:''},
+                //     {class:''}
+                // ],
             ],
         }
     },

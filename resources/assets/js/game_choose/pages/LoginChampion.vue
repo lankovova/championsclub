@@ -108,7 +108,6 @@ export default {
                 code: this.login.join(),
                 license: 'champion'
             }).then((res) => {
-                console.log(res)
                 if (res.data.error) {
                     this.error = true
                     return

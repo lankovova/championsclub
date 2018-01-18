@@ -22,7 +22,6 @@ export default {
         axios.post(playerInfo).then(res => {
             data.cash = res.data.cash
             data.denominations = res.data.denomination
-            console.log(res.data)
             EventBus.$emit("player-data-loaded", data)
         })
     }
