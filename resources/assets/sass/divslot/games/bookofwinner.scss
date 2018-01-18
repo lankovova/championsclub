@@ -273,6 +273,8 @@ body {
     flex-direction: row-reverse;
     justify-content: flex-start;
     align-items: center;
+    padding-right: 78px;
+    box-sizing: border-box;
 }
 
 .suit-spade,
@@ -281,6 +283,7 @@ body {
 .suit-diamond {
     width: 51px;
     height: 46px;
+    margin-right: 7px;
 }
 
 .suit-spade {
