@@ -802,6 +802,22 @@ body {
   background-image: url("../img/slider/book_of_winner.gif");
 }
 
+.slide__part--sevens-on-fire-plus {
+  background-image: url("../img/slider/sevens_on_fire_plus.gif");
+}
+
+.slide__part--sevens-on-fire {
+  background-image: url("../img/slider/sevens_on_fire.gif");
+}
+
+.slide__part--fire-rage-plus {
+  background-image: url("../img/slider/fire_rage_plus.gif");
+}
+
+.slide__part--triple-diamond {
+  background-image: url("../img/slider/triple_diamond.gif");
+}
+
 .slide__part--kings-of-jewels {
   background-image: url("../img/slider/kings_of_jewels.gif");
 }
@@ -816,6 +832,10 @@ body {
 
 .slide__part--computer-world {
   background-image: url("../img/slider/computer_world.gif");
+}
+
+.slide__part--hearts {
+  background-image: url("../img/slider/hearts.gif");
 }
 
 .slide__part--gates-of-avalon {
@@ -878,6 +898,10 @@ body {
   background-image: url("../img/slider/fire_rage.gif");
 }
 
+.slide__part--book-of-wins {
+  background-image: url("../img/slider/book_of_wins.gif");
+}
+
 .slide__part--casino-world {
   background-image: url("../img/slider/casino_world.gif");
 }
@@ -910,8 +934,16 @@ body {
   background-image: url("../img/slider/ice_legend.gif");
 }
 
+.slide__part--golden-scatter {
+  background-image: url("../img/slider/golden_scatter.gif");
+}
+
 .slide__part--lucky-ladys-glamor {
   background-image: url("../img/slider/lucky_ladys_glamor.gif");
+}
+
+.slide__part--captain {
+  background-image: url("../img/slider/captain.gif");
 }
 
 .slide__part--hot-slot {
@@ -926,6 +958,10 @@ body {
   background-image: url("../img/slider/dolphins_pearl.gif");
 }
 
+.slide__part--queen-of-hearts {
+  background-image: url("../img/slider/queen_of_hearts.gif");
+}
+
 .slide__part--bananas-go-bahamas {
   background-image: url("../img/slider/bananas_go_bahamas.gif");
 }
@@ -936,6 +972,10 @@ body {
 
 .slide__part--lucky-ladys-charm {
   background-image: url("../img/slider/lucky_ladys_charm.gif");
+}
+
+.slide__part--venetiam-carnival {
+  background-image: url("../img/slider/venetiam_carnival.gif");
 }
 
 .slide__part--sea-light {
@@ -958,6 +998,10 @@ body {
   background-image: url("../img/slider/golden_harvest.gif");
 }
 
+.slide__part--alice-in-wonderland {
+  background-image: url("../img/slider/alice_in_wonderland.gif");
+}
+
 .slide__part--sizzling-hot {
   background-image: url("../img/slider/sizzling_hot.gif");
 }
@@ -972,6 +1016,14 @@ body {
 
 .slide__part--crazy-barmen-old {
   background-image: url("../img/slider/crazy_barmen_old.gif");
+}
+
+.slide__part--cinema {
+  background-image: url("../img/slider/cinema.gif");
+}
+
+.slide__part--computer-world-old {
+  background-image: url("../img/slider/computer_world_old.gif");
 }
 
 .slide__part--nautilus-old {

@@ -8,7 +8,7 @@ use App\Facades\Auth;
 
 class History {
 
-    public static function writeGameAction($date, $playerCash, $action, $login, $game="", $bet="") {
+    public static function writeGameAction(string $date, $playerCash, string $action, $login, $game=null, $bet=null) {
         DB::table("stats_pin")->insert([
             "data" => $date,
             "summa" => $playerCash,

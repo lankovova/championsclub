@@ -33,7 +33,7 @@ export default {
                     {class:'triple-diamond'}
                 ],
                 [
-                    {class:'king-of-jewels'},
+                    {class:'kings-of-jewels'},
                     {class:'crazy-barmen'},
                     {class:'scatter-wins'},
                     {class:'computer-world'},
@@ -76,7 +76,7 @@ export default {
                 ],
                 [
                     {class:'lucky-ladys-glamor'},
-                    {class:'capitan'},
+                    {class:'captain'},
                     {class:'hot-slot'},
                     {class:'always-cherry'},
                     {class:'dolphins-pearl'}

@@ -8,6 +8,7 @@ use App\Models\History;
 use App\Facades\Auth;
 use App\Game\GameFactory;
 use App\Game\GameInterface;
+use App\Game\Gamble;
 
 class GameController extends Controller
 {
