@@ -6,8 +6,6 @@ export default class ButtonWithNumber extends Button {
 
         this.numberField = this.node.querySelector('.number');
         if (!this.numberField) console.warn('No .number element in ButtonWithNumber component');
-
-        this.node.onclick = () => props.onClick();
     }
 
     set number(newNumber) {
