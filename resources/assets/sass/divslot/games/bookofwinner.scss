@@ -270,6 +270,28 @@ body {
     height: 100%;
     width: 50%;
     display: flex;
-    justify-content: center;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
     align-items: center;
+}
+
+.suit-spade,
+.suit-club,
+.suit-heart,
+.suit-diamond {
+    width: 51px;
+    height: 46px;
+}
+
+.suit-spade {
+    background: url('../img/games/bookofwinner/gamble/suits/spade.png');
+}
+.suit-club {
+    background: url('../img/games/bookofwinner/gamble/suits/club.png');
+}
+.suit-heart {
+    background: url('../img/games/bookofwinner/gamble/suits/heart.png');
+}
+.suit-diamond {
+    background: url('../img/games/bookofwinner/gamble/suits/diamond.png');
 }
