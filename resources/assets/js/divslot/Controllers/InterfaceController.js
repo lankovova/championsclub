@@ -24,7 +24,10 @@ export default class InterfaceController {
         });
 
         this.gambleModal = new GambleModal({
-            node: document.querySelector('#gamble')
+            node: document.querySelector('#gamble'),
+            gambleReadyToPick: this.props.gambleReadyToPick,
+            gambleWin: this.props.gambleWin,
+            gambleLose: this.props.gambleLose
         });
 
         this.alertWindow = new Alert({ node: document.querySelector('#alert') });

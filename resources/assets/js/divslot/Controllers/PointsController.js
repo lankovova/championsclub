@@ -128,7 +128,7 @@ export default class PointsController {
     }
 
     /**
-     * Set user win
+     * Set user win in points
      * @param {String|Number} win New win to set in points
      */
     set userWin(win) {
@@ -141,7 +141,7 @@ export default class PointsController {
     get userWin() { return this._userWin; }
 
     /**
-     * Set user previous win
+     * Set user previous win in points
      * @param {String|Number} previousWin New previous win to set in points
      */
     set previousWin(previousWin) {

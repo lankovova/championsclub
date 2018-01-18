@@ -50,7 +50,10 @@ export default class Game {
             setLines: this.setLines,
             setBerPerLine: this.setBerPerLine,
             setMaxBet: this.setMaxBet,
-            startGamble: this.startGamble
+            startGamble: this.startGamble,
+            gambleReadyToPick: this.gambleReadyToPick,
+            gambleWin: this.gambleWin,
+            gambleLose: this.gambleLose
         });
 
         this.interfaceController.panel.notifier.text = 'Loading...';
@@ -189,15 +192,34 @@ export default class Game {
     }
 
     startGamble = () => {
-        console.log('Start gamble');
+        this.gambleReadyToPick();
+
+        this.linesController.unblurAllSymbols();
 
         // Set interface to gamble 'state'
         this.interfaceController.setGamble();
-
-        // TODO:
     }
 
-    
+    gambleReadyToPick = () => {
+        this.interfaceController.panel.notifier.text = 'Choose red or black or take win';
+    }
+    gambleWin = async (wonCoins) => {
+        this.interfaceController.panel.notifier.text = 'Win';
+
+        // Update win field
+        this.pointsController.userWin = this.pointsController.coinsToPoints(wonCoins);
+    }
+    gambleLose = () => {
+        this.pointsController.userWin = 0;
+
+        this.gambleOver();
+
+        this.interfaceController.setIdle();
+    }
+    // FIXME: Handle case when user took his win
+    gambleOver = () => {
+        this.interfaceController.panel.notifier.text = 'Game over - gamble completed, place your bet';
+    }
 
     spin = () => {
         // FIXME: Rethink about it
