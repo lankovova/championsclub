@@ -1015,3 +1015,110 @@ body {
   background: url("../img/games/bookofwinner/header.gif");
   background-size: 100% 100%;
 }
+
+.gamble {
+  display: block;
+  position: absolute;
+  top: 115px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 1263px;
+  height: 717px;
+  background: white;
+  z-index: 1;
+  background: url("../img/games/bookofwinner/gamble/gamble_bg.png");
+}
+
+.button__suit-color {
+  top: 260px;
+  position: absolute;
+  width: 419px;
+  height: 108px;
+}
+
+.button__red {
+  left: 57px;
+  background: url("../img/games/bookofwinner/gamble/buttons/suit_color.png");
+}
+
+.button__black {
+  right: 57px;
+  background: url("../img/games/bookofwinner/gamble/buttons/suit_color.png");
+}
+
+.button__suit {
+  position: absolute;
+  top: 397px;
+  width: 173px;
+  height: 114px;
+}
+
+.button__spade {
+  right: 77px;
+  background: url("../img/games/bookofwinner/gamble/buttons/spade.png");
+}
+
+.button__club {
+  right: 286px;
+  background: url("../img/games/bookofwinner/gamble/buttons/club.png");
+}
+
+.button__dimond {
+  left: 286px;
+  background: url("../img/games/bookofwinner/gamble/buttons/diamond.png");
+}
+
+.button__heart {
+  left: 77px;
+  background: url("../img/games/bookofwinner/gamble/buttons/heart.png");
+}
+
+.card {
+  background: url("../img/games/bookofwinner/gamble/cards/card.gif");
+  width: 221px;
+  height: 326px;
+  position: absolute;
+  z-index: 1;
+  top: 169px;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.card__suit {
+  position: absolute;
+  width: 242px;
+  height: 327px;
+  top: 169px;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.card__spade {
+  background: url("../img/games/bookofwinner/gamble/cards/spade.png");
+}
+
+.card__club {
+  background: url("../img/games/bookofwinner/gamble/cards/club.png");
+}
+
+.card__heart {
+  background: url("../img/games/bookofwinner/gamble/cards/heart.png");
+}
+
+.card__diamond {
+  background: url("../img/games/bookofwinner/gamble/cards/diamond.png");
+}
+
+.last-cards {
+  width: 1084px;
+  height: 86px;
+  background: url("../img/games/bookofwinner/gamble/last_cards.png");
+  position: absolute;
+  bottom: 89px;
+  right: 0;
+  left: 0;
+  margin: auto;
+}

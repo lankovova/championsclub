@@ -23,7 +23,7 @@ const config = {
 		contentBase: path.join(__dirname, ''),
 		publicPath: "/public/js/",
 		compress: true,
-		port: 9000
+		port: 9001
 	}
 };
 
