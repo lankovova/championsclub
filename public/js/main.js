@@ -14018,9 +14018,20 @@ exports.default = {
 
         // Clear handlers
         showLangChooseHandler: function showLangChooseHandler() {},
-        hideLangChooseHandler: function hideLangChooseHandler() {}
+        hideLangChooseHandler: function hideLangChooseHandler() {},
+        setLang: function setLang(lang) {
+            this.$el.style.backgroundImage = "url('img/lang_flags/mini/" + lang + ".png')";
+        }
     },
-    mixins: [_mixins.buttonEvents]
+    mixins: [_mixins.buttonEvents],
+
+    mounted: function mounted() {
+        var _this = this;
+
+        _eventBus2.default.$on("lang-choose", function (lang) {
+            return _this.setLang(lang);
+        });
+    }
 };
 
 /***/ }),
@@ -14193,18 +14204,15 @@ exports.default = {
 
     methods: {
         choose: function choose(lang, $event) {
-            var langs = this.$el.childNodes;
-
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = langs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for (var _iterator = this.langs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var _lang = _step.value;
 
-                    if (!_lang.hasOwnProperty("classList")) continue;
-                    _lang.classList.remove("lang-active");
+                    this.$refs[_lang][0].classList.remove("lang-active");
                 }
             } catch (err) {
                 _didIteratorError = true;
@@ -14223,6 +14231,7 @@ exports.default = {
 
             $event.currentTarget.classList.add("lang-active");
             this.$i18n.locale = lang;
+            _eventBus2.default.$emit("lang-choose", lang);
             this.hide();
         },
         show: function show() {

@@ -22,8 +22,17 @@ export default {
         },
         // Clear handlers
         showLangChooseHandler() {},
-        hideLangChooseHandler() {}
+        hideLangChooseHandler() {},
+
+        setLang(lang) {
+            this.$el.style.backgroundImage = `url('img/lang_flags/mini/${lang}.png')`
+
+        }
     },
     mixins: [buttonEvents],
+
+    mounted() {
+        EventBus.$on("lang-choose", (lang) => this.setLang(lang))
+    }
 }
 </script>

@@ -26,15 +26,13 @@ export default {
     },
     methods: {
         choose(lang, $event) {
-            let langs = this.$el.childNodes
-
-            for (const lang of langs) {
-                if (!lang.hasOwnProperty("classList")) continue;
-                lang.classList.remove("lang-active")
+            for (const lang of this.langs) {
+                this.$refs[lang][0].classList.remove("lang-active")
             }
-
+            
             $event.currentTarget.classList.add("lang-active")
             this.$i18n.locale = lang
+            EventBus.$emit("lang-choose", lang)
             this.hide()
         },
         show() {
