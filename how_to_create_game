@@ -1,0 +1,10 @@
+что создать игру с бордером нужно
+1. app/Game/Games/ создать класс игры с кемалкейс названием
+    Пример: Bananas.php
+2. app/resources/views/games/ создать темплейт для игры с слитным названием
+    Пример: bananas.php
+3. app/public/js/ создать файл настроек игры
+    Пример: bananas_settings.js
+4. app/resources/assets/sass/games создать файл стилей игры
+    Пример: bananas.scss
+5. скомпилить .scss в app/public/css
