@@ -14,7 +14,7 @@ import EventBus from "./event-bus.js"
 export default {
     data() {
         return {
-            authed: true
+            authed: false
         }
     },
     components: {
