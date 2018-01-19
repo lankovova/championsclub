@@ -733,7 +733,7 @@ module.exports = defaults;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var login = exports.login = "http://admin.chcgreen.org/makelogin";
+var login = exports.login = "http://admin.chcgreen.org/login";
 var playerInfo = exports.playerInfo = "http://admin.chcgreen.org/getplayerinfo";
 var history = exports.history = "http://admin.chcgreen.org/gethistory";
 
@@ -12426,7 +12426,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
     data: function data() {
         return {
-            authed: true
+            authed: false
         };
     },
 
@@ -16143,7 +16143,7 @@ exports.default = {
                 return;
             }
             _axios2.default.post(_config.login, {
-                code: this.login.join(),
+                code: this.login.join(""),
                 license: 'champion'
             }).then(function (res) {
                 if (res.data.error) {
@@ -16218,7 +16218,7 @@ exports.default = {
             this.resetCalculator();
         },
         resetCalculator: function resetCalculator() {
-            this.login = '';
+            this.login = [];
             this.enableButtons();
         }
     },
@@ -16294,14 +16294,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm.error
-      ? _c("div", { staticClass: "error-modal" }, [
-          _c("div", {
-            staticClass: "error-modal__button",
-            on: { click: _vm.hideErrorModal }
-          })
-        ])
-      : _vm._e(),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.error,
+            expression: "error"
+          }
+        ],
+        staticClass: "error-modal"
+      },
+      [
+        _c("div", {
+          staticClass: "error-modal__button",
+          on: { click: _vm.hideErrorModal }
+        })
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "calculator" }, [
       _c(

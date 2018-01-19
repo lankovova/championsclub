@@ -48,9 +48,9 @@ class Auth {
      * @return mixed
      */
     public static function getParam(string $param) {
-        if ($param === "login") {
-            return "06509468906399";
-        }
+        // if ($param === "login") {
+        //     return "06509468906399";
+        // }
         return isset($_SESSION[$param]) ? $_SESSION[$param] : false;
     }
 }
