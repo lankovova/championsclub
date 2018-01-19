@@ -9,7 +9,7 @@ var settings = {
 
     "numOfSpinsBeforeStop": 2,
 
-    "delayBetweenShowingWinningLines": 400,
+    "delayBetweenShowingWinningLines": 1400,
     "delayBetweenReelsSpin": 200,
     "delayBetweenFallingSymbols": 300,
     // Do not set this delay lower than 50 ms
@@ -25,7 +25,7 @@ var settings = {
     "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
-    "dev": true,
+    "dev": false,
 
     "symbols": [
         {"image": "1.png"},
