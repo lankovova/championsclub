@@ -1,24 +1,37 @@
 <template>
     <div class="app">
-        <GameChoosePage v-if="authed" />
-        <LoginChampionPage v-else />
+        <Loading :shouldHide="hideLoading"/>
+        <GameChoosePage/>
+        <LoginChampionPage v-show="!authed"/>
         
     </div>
 </template>
 
 <script>
+import Loading from "./components/Loading"
 import GameChoosePage from "./pages/GameChoose"
 import LoginChampionPage from "./pages/LoginChampion"
 import EventBus from "./event-bus.js"
+import {isPlayerAuthed} from "./config.js"
+import axios from "axios"
 
 export default {
     data() {
         return {
-            authed: false
+            authed: false,
+            hideLoading: false
         }
     },
     components: {
-        GameChoosePage, LoginChampionPage
+        GameChoosePage, LoginChampionPage, Loading
+    },
+    beforeCreate() {
+        axios.get(isPlayerAuthed).then(res => {
+            this.authed = res.data.authed
+        })
+        window.addEventListener("load", () => {
+            this.hideLoading = true
+        });
     },
     mounted() {
         EventBus.$on("authed", () => this.authed = true)

@@ -5,7 +5,7 @@
 @import "../preloader";
 @import "../panel";
 @import "../media/media_with_border.scss";
-@import "../borders";
+@import "../game_types/with_borders";
 
 * {
     -webkit-user-select: none;
@@ -19,19 +19,6 @@ body {
     overflow: hidden;
 }
 
-.game_wrapper {
-    position: fixed;
-    width: 1870px;
-    height: 1050px;
-}
-
-#game {
-    width: 100%;
-    height: 100%;
-    background: #080200;
-    overflow: hidden;
-    position: absolute;
-}
 .alert {
     display: none;
 
@@ -52,14 +39,7 @@ body {
     border-radius: 10px;
 }
 .main {
-    width: 1482px;
-    height: 684px;
     background: url('../img/games/sevensonfire/game_bg.png') center center;
-    background-size: contain;
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin: auto;
 }
 
 .reels_wrapper {
@@ -116,11 +96,5 @@ body {
 }
 
 .header {
-    width: 1531px;
-    height: 150px;
-    position: relative;
-    z-index: 2;
-    margin: auto;
     background: url('../img/games/sevensonfire/header.png');
-    background-size: 100% 100%;
 }

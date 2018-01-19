@@ -35,7 +35,7 @@ class Auth {
      */
     public static function authed() {
         $fiveMin = 5 * 60 * 1000;
-        if (strtotime(Player::getLoginTime()) > (time() + $fiveMin)) {
+        if (strtotime(Player::getLoginTime(self::getParam("login"))) > (time() + $fiveMin)) {
             return false;
         }
         return true;

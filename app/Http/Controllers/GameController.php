@@ -69,6 +69,13 @@ class GameController extends Controller
     private function getResults(GameInterface $game, $reqData) {
         $spinResult = $game->spin();
 
+        // turn off bonus spins
+        if ($reqData === "BookOfWinner") {
+            while ($game->areBonusSpins()) {
+                $spinResult = $game->spin();
+            }
+        }
+
         if ($game->areBonusSpins()) {
             $bonusSpinResult = $game->bonusSpin();
             $spinResult["bonus_spins"] = $bonusSpinResult;
