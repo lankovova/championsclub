@@ -12,6 +12,8 @@ export default class GambleModal {
 
         this.isOn = false;
 
+        this.bigCardNode;
+
         this.previousCards = {
             node: this.node.querySelector('#previousCardsSuits'),
             add(cardSuit) {
@@ -113,19 +115,33 @@ export default class GambleModal {
         }
     }
 
+    showDroppedCard(randomSuit) {
+        // Change flipping card suit
+        this.bigCardNode.style.zIndex = 1;
+
+        // Add randomed card to previous cards
+        this.previousCards.add(randomSuit);
+    }
+
+    hideDroppedCard() {
+        // Remove oldest previous card
+        this.previousCards.removeOldest();
+
+        // Start flipping card
+        this.bigCardNode.style.zIndex = '';
+    }
+
     pickCard = async (cardSuit) => {
         // Disable gamble btns
         this.disableBtns();
 
+        // Get response from server
         const gambleResponse = await this.getGambleResponse(cardSuit);
         console.log(gambleResponse);
 
-        // Change flipping card suit
-        const droppedBigCard = this.node.querySelector(`#suit${capitalize(gambleResponse.rand_card)}`);
-        droppedBigCard.style.zIndex = 1;
-
-        // Add randomed card to previous cards
-        this.previousCards.add(gambleResponse.rand_card);
+        this.bigCardNode = this.node.querySelector(`#suit${capitalize(gambleResponse.rand_card)}`);
+        // Show randomed card in big card and add to previous cards
+        this.showDroppedCard(gambleResponse.rand_card);
 
         if (gambleResponse.won) {
             // Update win field from Game
@@ -133,11 +149,7 @@ export default class GambleModal {
 
             // After delay setup gamble to one more pick
             setTimeout(() => {
-                // Remove oldest previous card
-                this.previousCards.removeOldest();
-
-                // Start flipping card
-                droppedBigCard.style.zIndex = '';
+                this.hideDroppedCard();
 
                 this.setValues(gambleResponse.won_coins);
 
