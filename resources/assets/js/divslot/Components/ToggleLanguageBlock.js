@@ -16,8 +16,6 @@ export default class ToggleLanguageBlock extends ToggleBlock {
             const item = document.createElement('div');
             item.className = 'item item--language';
             item.style.backgroundImage = `url('public/img/lang_flags/${value}_btn_bg.png')`;
-            item.style.backgroundSize = '200% 200%';
-            item.style.backgroundPosition = 'top left';
             item.setAttribute('data-value', value);
 
             this.itemsNodes.push(item);
