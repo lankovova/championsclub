@@ -385,6 +385,11 @@ table {
   background-position: right;
 }
 
+.toggle_block .content .item--language:hover {
+  /* Re rewrite js styles */
+  background-position: top right !important;
+}
+
 .toggle_block.toggle_block--denom .item {
   width: 110px;
   height: 100px;
@@ -786,7 +791,6 @@ table {
 }
 
 .panel_row-bot .lhh_panel .language_btn {
-  background: url("../img/lang_flags/en_btn_bg.png");
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 200% 200%;

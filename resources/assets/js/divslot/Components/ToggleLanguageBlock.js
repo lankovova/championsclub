@@ -2,7 +2,7 @@ import ToggleBlock from "./ToggleBlock";
 
 export default class ToggleLanguageBlock extends ToggleBlock {
     constructor(options, props) {
-        super(props);
+        super(options, props);
     }
 
     init(options) {
@@ -14,11 +14,11 @@ export default class ToggleLanguageBlock extends ToggleBlock {
         reversedItems.forEach(value => {
             // Init element properties
             const item = document.createElement('div');
-            item.className = 'item';
+            item.className = 'item item--language';
+            item.style.backgroundImage = `url('public/img/lang_flags/${value}_btn_bg.png')`;
+            item.style.backgroundSize = '200% 200%';
+            item.style.backgroundPosition = 'top left';
             item.setAttribute('data-value', value);
-
-            // Place value from options.items to element innerHTML
-            item.innerHTML = value;
 
             this.itemsNodes.push(item);
 

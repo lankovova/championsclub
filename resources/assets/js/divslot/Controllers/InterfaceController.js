@@ -1,6 +1,7 @@
 import LinePresenters from '../Components/LinePresenters';
 import Panel from '../Components/Panel';
 import ToggleBlock from '../Components/ToggleBlock';
+import ToggleLanguageBlock from '../Components/ToggleLanguageBlock';
 import Alert from '../Components/Alert';
 import GambleModal from '../Components/GambleModal';
 
@@ -98,6 +99,10 @@ export default class InterfaceController {
     setDenomination = (denomination) => {
         if (this.panel.btns.denomination.state)
             this.props.setDenomination(denomination);
+    }
+
+    setLanguage = (countryCode) => {
+        this.panel.btns.language.setBg(countryCode);
     }
 
     maxBetClickHandler = () => {
@@ -321,9 +326,9 @@ export default class InterfaceController {
             setSpinPossibility: this.props.setSpinPossibility
         });
 
-        this.langBlock = new ToggleBlock({
+        this.langBlock = new ToggleLanguageBlock({
             node: document.querySelector('#languageBlock'),
-            items: ['hyi', 'lol', 'kek']
+            items: ['en', 'ru', 'ua']
         }, {
             onItemClick: this.setLanguage,
             enableSelf: this.enableLanguage,

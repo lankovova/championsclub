@@ -39,6 +39,9 @@ export default class SSTBtn extends MultipleStatesButton {
             },
             get speedUpTakeWin() { return this._speedUpTakeWin; },
             set speedUpTakeWin(newState) {
+                if (newState)
+                    self.text = 'Take';
+
                 this._speedUpTakeWin = newState;
                 self._handleDisabling();
             }

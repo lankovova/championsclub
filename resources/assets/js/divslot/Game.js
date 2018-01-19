@@ -4,7 +4,7 @@ import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 
-import {normalSpinWin as normalSpinWinAPI} from './MockAPI/spin';
+import {freeSpin as spinAPI} from './MockAPI/spin';
 
 import axios from 'axios';
 
@@ -143,7 +143,7 @@ export default class Game {
             // });
 
             // return response.data;
-            return normalSpinWinAPI;
+            return spinAPI;
         } catch(err) {
             console.log(err);
         }
@@ -202,6 +202,11 @@ export default class Game {
         this.linesController.unblurAllSymbols();
         this.linesController.stopCyclingWinningLines();
 
+        // FIXME:
+        if (this.interfaceController.alertWindow.isOn) {
+            this.interfaceController.hideAlert();
+        }
+
         // Set interface to gamble 'state'
         this.interfaceController.setGamble(this.pointsController.userWin);
     }
@@ -221,8 +226,6 @@ export default class Game {
         if (this.interfaceController.alertWindow.isOn) {
             console.log('Hide bonus spins result alert');
             this.interfaceController.hideAlert();
-
-            return;
         }
 
         if (this.bonusSpins.on) {
@@ -294,7 +297,7 @@ export default class Game {
     bonusSpin = () => {
         this.bonusSpins.currentSpinIndex++;
 
-        this.interfaceController.panel.notifier.text = `Free spin #${this.bonusSpins.currentSpinIndex}`;
+        this.interfaceController.panel.notifier.text = `Free spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.totalSpins}`;
 
         // Spin reels to given final symbols
         this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
