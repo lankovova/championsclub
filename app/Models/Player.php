@@ -95,6 +95,7 @@ class Player {
      * @return bool
      */
     public static function exist(string $login) {
+        // echo $login;exit;
         $res = DB::table("users")->where("login", $login)->count();
         return $res > 0;
     }

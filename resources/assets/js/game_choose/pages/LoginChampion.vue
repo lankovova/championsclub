@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="error-modal" v-if="error">
+        <div class="error-modal" v-show="error">
             <div class="error-modal__button" @click="hideErrorModal"></div>
         </div>
         <div class="calculator">
@@ -105,7 +105,7 @@ export default {
                 return
             }
             axios.post(login, {
-                code: this.login.join(),
+                code: this.login.join(""),
                 license: 'champion'
             }).then((res) => {
                 if (res.data.error) {
@@ -141,7 +141,7 @@ export default {
             this.resetCalculator()
         },
         resetCalculator() {
-            this.login = ''
+            this.login = []
             this.enableButtons()
         },
     },

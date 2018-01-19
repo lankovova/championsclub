@@ -14,7 +14,6 @@ class AuthController extends Controller
         $res = ["error" => true];
         $code = $request->input("code");
         $license = $request->input("license");
-        $p = new Player($code);
 
         if (Player::exist($code)) {
             Auth::login($code, $license);
