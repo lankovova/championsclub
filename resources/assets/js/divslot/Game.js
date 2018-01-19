@@ -194,8 +194,6 @@ export default class Game {
     }
 
     startGamble = () => {
-        this.gambleReadyToPick();
-
         this.linesController.unblurAllSymbols();
 
         // Set interface to gamble 'state'

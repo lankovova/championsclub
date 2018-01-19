@@ -561,7 +561,7 @@ table {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
@@ -1031,6 +1031,7 @@ body {
 }
 
 .gamble .button__suit-color {
+  cursor: pointer;
   top: 260px;
   position: absolute;
   width: 419px;
@@ -1041,6 +1042,13 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 7px;
+}
+
+.gamble .button__suit-color .overflow-layer {
+  border-radius: 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .gamble .button__red {
@@ -1056,10 +1064,18 @@ body {
 }
 
 .gamble .button__suit {
+  cursor: pointer;
   position: absolute;
   top: 397px;
   width: 173px;
   height: 114px;
+}
+
+.gamble .button__suit .overflow-layer {
+  border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .gamble .button__spade {

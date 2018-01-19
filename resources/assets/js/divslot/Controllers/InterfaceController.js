@@ -25,6 +25,7 @@ export default class InterfaceController {
 
         this.gambleModal = new GambleModal({
             node: document.querySelector('#gamble'),
+            pickSuit: this.pickSuit,
             gambleReadyToPick: this.props.gambleReadyToPick,
             gambleWin: this.props.gambleWin,
             gambleLose: this.props.gambleLose
@@ -137,7 +138,7 @@ export default class InterfaceController {
 
     menuClickHandler = () => {
         if (this.panel.btns.menu.state)
-            window.location.href = "";
+            window.location.href = "/";
     }
 
     enableSpin = () => this.panel.btns.SST.state.spin = true;
@@ -185,7 +186,7 @@ export default class InterfaceController {
         this.panel.btns.gamble.state = true;
     }
 
-    setGamble = (userWinPoints) => {
+    setGamble(userWinPoints) {
         // Disable whole interface
         this.disableInterface();
 
@@ -198,6 +199,18 @@ export default class InterfaceController {
 
         // Show modal
         this.gambleModal.start(userWinPoints);
+    }
+
+    /**
+     * Pick gamble card with state check based on card suit
+     * @param {String} suit Name of card suit
+     * @returns Returns function wich will pick gamble card
+     */
+    pickSuit = (suit) => {
+        return () => {
+            if (this.gambleModal.btns[suit].state)
+                this.gambleModal.pickCard(suit);
+        }
     }
 
     // Disable each btn of panel btns

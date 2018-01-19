@@ -12,57 +12,53 @@ export default class GambleModal {
 
         this.previousCards = {
             node: this.node.querySelector('#previousCardsSuits'),
-            _cards: [],
             add(cardSuit) {
-                // Push card suit name to store
-                this._cards.push(card);
-
                 // Add to markup
                 const cardToInsert = document.createElement('div');
                 cardToInsert.className = `suit-${cardSuit}`;
                 this.node.appendChild(cardToInsert);
             },
             removeOldest() {
-                // Remove it from store
-                this._cards.shift();
-
                 // Remove oldest card from html markup
                 this.node.removeChild(this.node.children[0]);
             }
         }
+
+        const redOverlayColor = 'rgba(255,0,0,0.3)';
+        const blueOverlayColor = 'rgba(0,0,255,0.3)';
 
         // TODO: Handle if gamble is extended
         // Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
             red: new GambleBtn({
                 node: this.node.querySelector('#red'),
-                onClick: () => this.pickCard('red'),
-                overlayColor: 'red'
+                onClick: this.props.pickSuit('red'),
+                overlayColor: redOverlayColor
             }),
             heart: new GambleBtn({
                 node: this.node.querySelector('#heart'),
-                onClick: () => this.pickCard('heart'),
-                overlayColor: 'red'
+                onClick: this.props.pickSuit('heart'),
+                overlayColor: redOverlayColor
             }),
             diamond: new GambleBtn({
                 node: this.node.querySelector('#diamond'),
-                onClick: () => this.pickCard('diamond'),
-                overlayColor: 'red'
+                onClick: this.props.pickSuit('diamond'),
+                overlayColor: redOverlayColor
             }),
             black: new GambleBtn({
                 node: this.node.querySelector('#black'),
-                onClick: () => this.pickCard('black'),
-                overlayColor: 'blue'
+                onClick: this.props.pickSuit('black'),
+                overlayColor: blueOverlayColor
             }),
             club: new GambleBtn({
                 node: this.node.querySelector('#club'),
-                onClick: () => this.pickCard('club'),
-                overlayColor: 'blue'
+                onClick: this.props.pickSuit('club'),
+                overlayColor: blueOverlayColor
             }),
             spade: new GambleBtn({
                 node: this.node.querySelector('#spade'),
-                onClick: () => this.pickCard('spade'),
-                overlayColor: 'blue'
+                onClick: this.props.pickSuit('spade'),
+                overlayColor: blueOverlayColor
             }),
         }
 
@@ -174,9 +170,20 @@ export default class GambleModal {
         }
     }
 
-    // Open gambleModal and enabling all buttons
+    /**
+     * Start gamble
+     * @param {Number} currentWin Current user win points
+     */
     start(currentWin) {
+        this.props.gambleReadyToPick();
+
+        // Enable gamble buttons
+        this.enableBtns();
+
+        // Set gamble values
         this.setValues(currentWin);
+
+        // Show modal
         this.show();
     }
 

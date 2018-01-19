@@ -130,6 +130,7 @@ body {
     background: url('../img/games/bookofwinner/gamble/gamble_bg.png');
 
     .button__suit-color {
+        cursor: pointer;
         top: 260px;
         position: absolute;
         width: 419px;
@@ -140,6 +141,12 @@ body {
         text-transform: uppercase;
         font-weight: 700;
         letter-spacing: 7px;
+        & .overflow-layer {
+            border-radius: 20px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     }
     .button__red {
         left: 57px;
@@ -152,10 +159,17 @@ body {
         color: #000;
     }
     .button__suit {
+        cursor: pointer;
         position: absolute;
         top: 397px;
         width: 173px;
         height: 114px;
+        & .overflow-layer {
+            border-radius: 30px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     }
     .button__spade {
         right: 77px;
@@ -186,7 +200,7 @@ body {
     text-shadow: 2px 2px #000;
 
     &-text {
-        
+
     }
     &-value {
         width: 230px;
