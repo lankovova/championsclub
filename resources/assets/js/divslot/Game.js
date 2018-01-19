@@ -52,7 +52,8 @@ export default class Game {
             setMaxBet: this.setMaxBet,
             startGamble: this.startGamble,
             gambleWin: this.gambleWin,
-            gambleLose: this.gambleLose
+            gambleLose: this.gambleLose,
+            setSpinPossibility: this.setSpinPossibility
         });
 
         this.interfaceController.panel.notifier.text = 'Loading...';
@@ -77,6 +78,8 @@ export default class Game {
             // And enable game to play
             this.interfaceController.setIdle();
             this.interfaceController.panel.notifier.text = 'Press start to spin';
+
+            this.setSpinPossibility();
 
             // Remove preloader
             window.onGameLoaded();
@@ -118,7 +121,7 @@ export default class Game {
             this.interfaceController.disableSpinAndAuto();
         } else {
             this.interfaceController.panel.notifier.text = 'Game over, place your bet';
-            this.interfaceController.enableSpinAndAuto();
+            this.interfaceController.setIdle();
         }
     }
 
@@ -166,7 +169,7 @@ export default class Game {
         }
 
         // After transfering win enable interface
-        this.interfaceController.enableInterface();
+        this.interfaceController.setIdle();
         this.setSpinPossibility();
     }
 
@@ -225,13 +228,14 @@ export default class Game {
             return;
         }
 
+        // Disable whole interface
+        this.interfaceController.disableInterface();
+
         if (this.bonusSpins.on) {
             console.log('Bonus spins starts');
 
             // Hide alert when bonus spins starts
             this.interfaceController.hideAlert();
-
-            this.interfaceController.disableInterface();
 
             // Start bonus spin
             this.bonusSpin();
@@ -244,8 +248,6 @@ export default class Game {
 
     getDataAndSpin = () => {
         this.interfaceController.panel.notifier.text = 'Fetching data...';
-        // Disable whole interface
-        this.interfaceController.disableInterface();
 
         // Enable auto btn if auto spins is on
         if (this.autoSpinIsOn) this.interfaceController.enableAuto();
@@ -374,7 +376,7 @@ export default class Game {
                     this.interfaceController.setTakeWin();
                 } else {
                     // If no win at all
-                    this.interfaceController.enableInterface();
+                    this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 }
 
@@ -402,7 +404,7 @@ export default class Game {
 
                 // If auto spins was disabled while transfering money
                 if (!this.autoSpinIsOn) {
-                    this.interfaceController.enableInterface();
+                    this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 } else {
                     this.autoSpin();
@@ -427,7 +429,7 @@ export default class Game {
                 return;
             }
 
-            this.interfaceController.enableInterface();
+            this.interfaceController.setIdle();
             this.setSpinPossibility();
         }
 

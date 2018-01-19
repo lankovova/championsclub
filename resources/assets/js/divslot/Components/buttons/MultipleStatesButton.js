@@ -5,8 +5,15 @@ export default class MultipleStatesButton extends Button {
         super(props);
     }
 
-    enable() {
-        // TODO:
+    enable(stateToEnable) {
+        // Disable all states of button
+        this.disable();
+
+        // If state to enable exists
+        if (stateToEnable && this.state[stateToEnable] !== undefined) {
+            // Enable given state
+            this.state[stateToEnable] = true;
+        }
     }
 
     disable() {

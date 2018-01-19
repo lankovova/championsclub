@@ -1,4 +1,4 @@
-import GambleModalButton from './buttons/GambleBtn';
+import GambleModalButton from './buttons/GambleModalButton';
 import {capitalize} from './../Helpers/stringHelper';
 
 import {gambleWin as gambleAPI} from './../MockAPI/gamble';
@@ -95,11 +95,19 @@ export default class GambleModal {
     }
 
     disableBtns() {
+        // Disable modal btns
         Object.keys(this.btns).forEach(btn => this.btns[btn].disable());
+
+        // Also disable panel btns
+        this.props.disablePanelGambleBtns();
     }
 
     enableBtns() {
+        // Enable modal btns
         Object.keys(this.btns).forEach(btn => this.btns[btn].enable());
+
+        // Also enable panel btns
+        this.props.enablePanelGambleBtns();
     }
 
     async getGambleResponse(cardSuit) {

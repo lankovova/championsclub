@@ -54,8 +54,10 @@ export default class ToggleBlock {
             } else {
                 // If block is sparred
                 event.target.style.display = '';
+                // FIXME: After toggling restore previous interface state
                 // After toggling enable interface
                 this.props.setInterfaceIdle();
+                this.props.setSpinPossibility();
             }
         });
     }

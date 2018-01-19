@@ -3,6 +3,8 @@ import Button from "./Button";
 export default class GambleModalButton extends Button {
     constructor(props) {
         super(props);
+
+        this.overlayColor = props.overlayColor;
     }
 
     _initEffects() {

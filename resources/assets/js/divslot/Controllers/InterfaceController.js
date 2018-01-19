@@ -29,7 +29,9 @@ export default class InterfaceController {
             gambleReadyToPick: this.gambleReadyToPick,
             gambleOver: this.gambleOver,
             gambleWin: this.props.gambleWin,
-            gambleLose: this.props.gambleLose
+            gambleLose: this.props.gambleLose,
+            disablePanelGambleBtns: this.disablePanelGambleBtns,
+            enablePanelGambleBtns: this.enablePanelGambleBtns
         });
 
         this.alertWindow = new Alert({ node: document.querySelector('#alert') });
@@ -147,53 +149,52 @@ export default class InterfaceController {
             window.location.href = "/";
     }
 
-    enableSpin = () => this.panel.btns.SST.state.spin = true;
+    enableSpin = () => this.panel.btns.SST.enable('spin');
     disableSpin = () => this.panel.btns.SST.state.spin = false;
+
+    enableGamble = () => this.panel.btns.gamble.enable('gamble');
 
     enableAuto = () => this.panel.btns.auto.state = true;
     disableAuto = () => this.panel.btns.auto.state = false;
 
-    enableGamble = () => this.panel.btns.gamble.state.gamble = true;
-    disableGamble = () => this.panel.btns.gamble.state.gamble = false;
-
-    enableRed = () => this.panel.btns.gamble.state.red = true;
-    disableRed = () => this.panel.btns.gamble.state.red = false;
-
-    enableBlack = () => this.panel.btns.maxBet.state.black = true;
-    disableBlack = () => this.panel.btns.maxBet.state.black = false;
+    disablePanelGambleBtns = () => {
+        this.panel.btns.gamble.disable();
+        this.panel.btns.maxBet.disable();
+    }
+    enablePanelGambleBtns = () => {
+        this.panel.btns.gamble.enable('red');
+        this.panel.btns.maxBet.enable('black');
+    }
 
     enableSpinAndAuto = () => {
-        this.panel.btns.SST.state.spin = true;
-        this.panel.btns.auto.state = true;
+        this.enableSpin();
+        this.enableAuto();
     }
     disableSpinAndAuto = () => {
-        this.panel.btns.SST.state.spin = false;
-        this.panel.btns.auto.state = false;
+        this.disableSpin();
+        this.disableAuto();
     }
 
-    enableStop = () => this.panel.btns.SST.state.stop = true;
+    enableStop = () => this.panel.btns.SST.enable('stop');
     disableStop = () => this.panel.btns.SST.state.stop = false;
 
-    enableTakeWin = () => this.panel.btns.SST.state.takeWin = true;
+    enableTakeWin = () => this.panel.btns.SST.enable('takeWin');
     disableTakeWin = () => this.panel.btns.SST.state.takeWin = false;
 
-    enableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = true;
+    enableSpeedUpTransferWin = () => this.panel.btns.SST.enable('speedUpTakeWin');
     disableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = false;
 
-    enableLines = () => this.panel.btns.lines.state = true;
-    enableBetPerLines = () => this.panel.btns.betPerLine.state = true;
-    enableDenomination = () => this.panel.btns.denomination.state = true;
-    enableLanguage = () => this.panel.btns.language.state = true;
+    enableLines = () => this.panel.btns.lines.enable();
+    enableBetPerLines = () => this.panel.btns.betPerLine.enable();
+    enableDenomination = () => this.panel.btns.denomination.enable();
+    enableLanguage = () => this.panel.btns.language.enable();
 
     setIdle = () => {
         this.enableInterface();
 
-        // FIXME: Refactor
-        this.panel.btns.SST.state.spin = true;
-        this.panel.btns.gamble.state.red = false;
-        this.panel.btns.gamble.state.gamble = false;
-        this.panel.btns.maxBet.state.black = false;
-        this.panel.btns.maxBet.state.maxbet = true;
+        this.panel.btns.gamble.disable();
+        this.panel.btns.SST.enable('spin');
+        this.panel.btns.maxBet.enable('maxbet');
     }
 
     setTakeWin = () => {
@@ -212,9 +213,10 @@ export default class InterfaceController {
     }
 
     gambleReadyToPick = () => {
-        // TODO: Enable red/black buttons instead of gamble/max
-        this.enableRed();
-        this.enableBlack();
+        this.disableInterface();
+
+        // Enable red/black buttons instead of gamble/max
+        this.enablePanelGambleBtns();
 
         // Enable take win posibillity
         this.enableTakeWin();
@@ -225,6 +227,7 @@ export default class InterfaceController {
     gambleOver = () => {
         this.gambleModal.hide();
         this.setIdle();
+
         this.panel.notifier.text = 'Game over - gamble completed, place your bet';
     }
 
@@ -250,13 +253,9 @@ export default class InterfaceController {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].disable());
     }
 
-    // FIXME: Get rid of this func, intead use smth like setGamble, setIdle, etc...
-    // Enable each btn of panel btns
-    enableInterface = () => {
+    // Enable each btn of panel except buttons with multiple states(gamble, maxbet, sst)
+    enableInterface() {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
-
-        // And disable gamble btn
-        this.panel.btns.gamble.state.gamble = false;
     }
 
     _initKeyboardListeners() {
@@ -274,12 +273,12 @@ export default class InterfaceController {
                     this.setBerPerLine();
                     break;
                 case 77: // m
-                    this.setMaxBet();
+                    this.maxBetClickHandler();
                     break;
                 case 68: // d
                     this.setDenomination();
                     break;
-                case 27:
+                case 27: // ESC
                     this.menuClickHandler();
                     break;
                 default: {}
@@ -296,6 +295,7 @@ export default class InterfaceController {
             enableSelf: this.enableLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
 
         this.betPerLineBlock = new ToggleBlock({
@@ -306,6 +306,7 @@ export default class InterfaceController {
             enableSelf: this.enableBetPerLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
 
         this.denominationBlock = new ToggleBlock({
@@ -316,6 +317,7 @@ export default class InterfaceController {
             enableSelf: this.enableDenomination,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
 
         this.langBlock = new ToggleBlock({
@@ -326,6 +328,7 @@ export default class InterfaceController {
             enableSelf: this.enableLanguage,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
     }
 
