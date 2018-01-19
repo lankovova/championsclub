@@ -10,6 +10,8 @@ export default class GambleModal {
         this.props = props;
         this.node = this.props.node;
 
+        this.isOn = false;
+
         this.previousCards = {
             node: this.node.querySelector('#previousCardsSuits'),
             add(cardSuit) {
@@ -81,10 +83,12 @@ export default class GambleModal {
     }
 
     show() {
+        this.isOn = true;
         this.node.style.display = 'block';
     }
 
     hide() {
+        this.isOn = false;
         this.node.style.display = 'none';
     }
 
@@ -109,7 +113,7 @@ export default class GambleModal {
         }
     }
 
-    pickCard = async (cardSuit) => {
+    pickCard = (cardSuit) => {
         // Disable gamble btns
         this.disableBtns();
 
@@ -127,46 +131,36 @@ export default class GambleModal {
             // Update win field from Game
             this.props.gambleWin(gambleResponse.won_coins);
 
-            // After one second setup gamble to one more pick
-            await (() => {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        console.log('Remove oldest card');
-                        // Remove oldest previous card
-                        this.previousCards.removeOldest();
+            // After delay setup gamble to one more pick
+            setTimeout(() => {
+                // Remove oldest previous card
+                this.previousCards.removeOldest();
 
-                        // Start flipping card
-                        droppedBigCard.style.zIndex = '';
+                // Start flipping card
+                droppedBigCard.style.zIndex = '';
 
-                        this.setValues(gambleResponse.won_coins);
+                this.setValues(gambleResponse.won_coins);
 
-                        // Enable gamble btns
-                        this.enableBtns();
+                // Enable gamble btns
+                this.enableBtns();
 
-                        this.props.gambleReadyToPick();
+                this.props.gambleReadyToPick();
 
-                        resolve();
-                    }, 1500);
-                });
-            })();
+            }, 1500);
         } else {
             this.props.gambleLose();
 
             this.setValues(0);
 
-            await (() => {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        // Hide gamble modal
-                        this.hide();
+            setTimeout(() => {
+                // Hide gamble modal
+                this.hide();
 
-                        // Start flipping card
-                        droppedBigCard.style.zIndex = '';
+                // Start flipping card
+                droppedBigCard.style.zIndex = '';
 
-                        resolve();
-                    }, 1500);
-                });
-            })();
+                this.props.gambleOver();
+            }, 1500);
         }
     }
 

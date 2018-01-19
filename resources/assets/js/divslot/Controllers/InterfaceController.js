@@ -26,7 +26,8 @@ export default class InterfaceController {
         this.gambleModal = new GambleModal({
             node: document.querySelector('#gamble'),
             pickSuit: this.pickSuit,
-            gambleReadyToPick: this.props.gambleReadyToPick,
+            gambleReadyToPick: this.gambleReadyToPick,
+            gambleOver: this.gambleOver,
             gambleWin: this.props.gambleWin,
             gambleLose: this.props.gambleLose
         });
@@ -182,7 +183,7 @@ export default class InterfaceController {
     setTakeWin = () => {
         this.disableInterface();
 
-        this.panel.btns.SST.state.takeWin = true;
+        this.enableTakeWin();
         this.panel.btns.gamble.state = true;
     }
 
@@ -191,7 +192,7 @@ export default class InterfaceController {
         this.disableInterface();
 
         // Enable take win posibillity
-        this.panel.btns.SST.state.takeWin = true;
+        this.enableTakeWin();
 
         // TODO: Enable red/black buttons instead of gamble/max
         // this.panel.btns.gamble.state.red = true;
@@ -201,6 +202,14 @@ export default class InterfaceController {
         this.gambleModal.start(userWinPoints);
     }
 
+    gambleReadyToPick = () => {
+        this.enableTakeWin();
+        this.panel.notifier.text = 'Choose red or black or take win';
+    }
+    gambleOver = () => {
+        this.panel.notifier.text = 'Game over - gamble completed, place your bet';
+    }
+
     /**
      * Pick gamble card with state check based on card suit
      * @param {String} suit Name of card suit
@@ -208,8 +217,12 @@ export default class InterfaceController {
      */
     pickSuit = (suit) => {
         return () => {
-            if (this.gambleModal.btns[suit].state)
+            if (this.gambleModal.btns[suit].state) {
+                // Disable take btn
+                this.disableTakeWin();
+
                 this.gambleModal.pickCard(suit);
+            }
         }
     }
 

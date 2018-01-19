@@ -51,7 +51,6 @@ export default class Game {
             setBerPerLine: this.setBerPerLine,
             setMaxBet: this.setMaxBet,
             startGamble: this.startGamble,
-            gambleReadyToPick: this.gambleReadyToPick,
             gambleWin: this.gambleWin,
             gambleLose: this.gambleLose
         });
@@ -208,17 +207,12 @@ export default class Game {
     gambleLose = () => {
         this.pointsController.userWin = 0;
 
-        this.gambleOver();
+        this.interfaceController.gambleOver();
 
         this.interfaceController.setIdle();
     }
-    gambleReadyToPick = () => {
-        this.interfaceController.panel.notifier.text = 'Choose red or black or take win';
-    }
+    // TODO: Hide gamble modal when user transfer all of his money
     // FIXME: Handle case when user took his win
-    gambleOver = () => {
-        this.interfaceController.panel.notifier.text = 'Game over - gamble completed, place your bet';
-    }
 
     spin = () => {
         // FIXME: Rethink about it

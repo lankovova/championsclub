@@ -23,6 +23,7 @@ export default class GambleBtn extends Button {
         this.node.onmouseup = function() {
             if (!self.isDisabled) {
                 self.isDisabled = false;
+                this.querySelector('.overflow-layer').style.backgroundColor = '';
             }
         };
         this.node.onmouseleave = function() {
