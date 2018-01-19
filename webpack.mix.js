@@ -21,7 +21,7 @@ mix.js('resources/assets/js/game_choose/main.js', 'public/js')
     .options({
         processCssUrls: false
     });
-// mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
+
 mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/sevensonfireplus.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/sevensonfire.scss', 'public/css')

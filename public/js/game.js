@@ -10681,11 +10681,15 @@ var Game = function () {
                                 _this.interfaceController.hideAlert();
                             }
 
+                            if (_this.interfaceController.gambleModal.isOn) {
+                                _this.interfaceController.gambleModal.disableBtns();
+                            }
+
                             // Wait transfering win
-                            _context3.next = 4;
+                            _context3.next = 5;
                             return _this.transferWin();
 
-                        case 4:
+                        case 5:
 
                             // FIXME:
                             if (_this.interfaceController.gambleModal.isOn) {
@@ -10696,7 +10700,7 @@ var Game = function () {
                             _this.interfaceController.setIdle();
                             _this.setSpinPossibility();
 
-                        case 7:
+                        case 8:
                         case 'end':
                             return _context3.stop();
                     }
@@ -11910,17 +11914,28 @@ var Reel = function () {
 
             for (var i = 0; i < settings.numOfSpinsBeforeStop * settings.numOfRows; i++) {
                 var symbol = void 0;
-                var symbolCantPass = true;
+                var symbolCanPass = void 0;
+
                 // Generate no scatters at all while spinning
                 do {
+                    symbolCanPass = true;
+
                     symbol = new _Symbol3.default(Math.floor(Math.random() * settings.symbols.length));
 
-                    // spinningSymbolsArr.forEach(spawnedSymbol => {
-                    //     if (spawnedSymbol.symbolNum === symbol.symbolNum) {
-                    //         console.log('repeat');
-                    //     }
-                    // });
-                } while (symbol.isScatter);
+                    if (symbol.isScatter) {
+                        symbolCanPass = false;
+                        continue;
+                    }
+
+                    // Rerandom if randomed symbol in not uniqe in 3 or less symbols generated before
+                    for (var _i = spinningSymbolsArr.length - 1; _i > spinningSymbolsArr.length - 4; _i--) {
+                        if (_i < 0) break;
+
+                        if (spinningSymbolsArr[_i].symbolNum === symbol.symbolNum) {
+                            symbolCanPass = false;
+                        }
+                    }
+                } while (!symbolCanPass);
 
                 spinningSymbolsArr.push(symbol);
             }
@@ -14633,39 +14648,54 @@ var GambleModal = function () {
         var blueOverlayColor = 'rgba(0,0,255,0.3)';
 
         // TODO: Handle if gamble is extended
-        // Init gamble modal btns here with passed nodes and click handlers
-        this.btns = {
-            red: new _GambleModalButton2.default({
-                node: this.node.querySelector('#red'),
-                onClick: this.props.pickSuit('red'),
-                overlayColor: redOverlayColor
-            }),
-            heart: new _GambleModalButton2.default({
-                node: this.node.querySelector('#heart'),
-                onClick: this.props.pickSuit('heart'),
-                overlayColor: redOverlayColor
-            }),
-            diamond: new _GambleModalButton2.default({
-                node: this.node.querySelector('#diamond'),
-                onClick: this.props.pickSuit('diamond'),
-                overlayColor: redOverlayColor
-            }),
-            black: new _GambleModalButton2.default({
-                node: this.node.querySelector('#black'),
-                onClick: this.props.pickSuit('black'),
-                overlayColor: blueOverlayColor
-            }),
-            club: new _GambleModalButton2.default({
-                node: this.node.querySelector('#club'),
-                onClick: this.props.pickSuit('club'),
-                overlayColor: blueOverlayColor
-            }),
-            spade: new _GambleModalButton2.default({
-                node: this.node.querySelector('#spade'),
-                onClick: this.props.pickSuit('spade'),
-                overlayColor: blueOverlayColor
-            })
-        };
+        // Init gamble modal btns depending on extended gamble or not
+        if (settings.gambleExtended) {
+            this.btns = {
+                red: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#red'),
+                    onClick: this.props.pickSuit('red'),
+                    overlayColor: redOverlayColor
+                }),
+                heart: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#heart'),
+                    onClick: this.props.pickSuit('heart'),
+                    overlayColor: redOverlayColor
+                }),
+                diamond: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#diamond'),
+                    onClick: this.props.pickSuit('diamond'),
+                    overlayColor: redOverlayColor
+                }),
+                black: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#black'),
+                    onClick: this.props.pickSuit('black'),
+                    overlayColor: blueOverlayColor
+                }),
+                club: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#club'),
+                    onClick: this.props.pickSuit('club'),
+                    overlayColor: blueOverlayColor
+                }),
+                spade: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#spade'),
+                    onClick: this.props.pickSuit('spade'),
+                    overlayColor: blueOverlayColor
+                })
+            };
+        } else {
+            this.btns = {
+                red: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#red'),
+                    onClick: this.props.pickSuit('red'),
+                    overlayColor: redOverlayColor
+                }),
+                black: new _GambleModalButton2.default({
+                    node: this.node.querySelector('#black'),
+                    onClick: this.props.pickSuit('black'),
+                    overlayColor: blueOverlayColor
+                })
+            };
+        }
 
         this._initializePreviousCards();
     }

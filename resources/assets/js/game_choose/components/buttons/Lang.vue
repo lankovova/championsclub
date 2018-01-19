@@ -25,8 +25,7 @@ export default {
         hideLangChooseHandler() {},
 
         setLang(lang) {
-            this.$el.style.backgroundImage = `url('img/lang_flags/mini/${lang}.png')`
-
+            this.$el.style.backgroundImage = `url('public/img/lang_flags/mini/${lang}.png')`
         }
     },
     mixins: [buttonEvents],
