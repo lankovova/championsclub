@@ -174,27 +174,30 @@ export default class InterfaceController {
 
     setIdle = () => {
         this.enableInterface();
+
         this.panel.btns.SST.state.spin = true;
     }
 
     setTakeWin = () => {
+        this.disableInterface();
+
         this.panel.btns.SST.state.takeWin = true;
         this.panel.btns.gamble.state = true;
     }
 
-    setGamble = () => {
+    setGamble = (userWinPoints) => {
         // Disable whole interface
         this.disableInterface();
 
         // Enable take win posibillity
         this.panel.btns.SST.state.takeWin = true;
 
-        // TODO: Enable all gamble buttons in modal
-
         // TODO: Enable red/black buttons instead of gamble/max
+        // this.panel.btns.gamble.state.red = true;
+        // this.panel.btns.max.state.black = true;
 
         // Show modal
-        this.gambleModal.show();
+        this.gambleModal.start(userWinPoints);
     }
 
     // Disable each btn of panel btns

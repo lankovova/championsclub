@@ -1,5 +1,7 @@
-import Button from './buttons/Button';
+import GambleBtn from './buttons/GambleBtn';
 import {capitalize} from './../Helpers/stringHelper';
+
+import {gambleWin as gambleWinAPI} from './../MockAPI/gamble';
 
 import axios from 'axios';
 
@@ -32,29 +34,35 @@ export default class GambleModal {
         // TODO: Handle if gamble is extended
         // Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
-            red: new Button({
+            red: new GambleBtn({
                 node: this.node.querySelector('#red'),
-                onClick: () => this.pickCard('red')
+                onClick: () => this.pickCard('red'),
+                overlayColor: 'red'
             }),
-            heart: new Button({
+            heart: new GambleBtn({
                 node: this.node.querySelector('#heart'),
-                onClick: () => this.pickCard('heart')
+                onClick: () => this.pickCard('heart'),
+                overlayColor: 'red'
             }),
-            diamond: new Button({
+            diamond: new GambleBtn({
                 node: this.node.querySelector('#diamond'),
-                onClick: () => this.pickCard('diamond')
+                onClick: () => this.pickCard('diamond'),
+                overlayColor: 'red'
             }),
-            black: new Button({
+            black: new GambleBtn({
                 node: this.node.querySelector('#black'),
-                onClick: () => this.pickCard('black')
+                onClick: () => this.pickCard('black'),
+                overlayColor: 'blue'
             }),
-            club: new Button({
+            club: new GambleBtn({
                 node: this.node.querySelector('#club'),
-                onClick: () => this.pickCard('club')
+                onClick: () => this.pickCard('club'),
+                overlayColor: 'blue'
             }),
-            spade: new Button({
+            spade: new GambleBtn({
                 node: this.node.querySelector('#spade'),
-                onClick: () => this.pickCard('spade')
+                onClick: () => this.pickCard('spade'),
+                overlayColor: 'blue'
             }),
         }
 
@@ -94,9 +102,12 @@ export default class GambleModal {
 
     async getGambleResponse(cardSuit) {
         try {
-            return (await axios.post('http://admin.chcgreen.org/gamble', {
-                card: cardSuit
-            })).data;
+            // const gambleResponse = await axios.post('http://admin.chcgreen.org/gamble', {
+            //     card: cardSuit
+            // });
+
+            // return gambleResponse.data;
+            return gambleWinAPI;
         } catch(err) {
             console.log(err);
         }
@@ -128,8 +139,10 @@ export default class GambleModal {
                         // Remove oldest previous card
                         this.previousCards.removeOldest();
 
-                        // Start flipping card back
+                        // Start flipping card
                         droppedBigCard.style.zIndex = '';
+
+                        this.setValues(gambleResponse.won_coins);
 
                         // Enable gamble btns
                         this.enableBtns();
@@ -137,11 +150,13 @@ export default class GambleModal {
                         this.props.gambleReadyToPick();
 
                         resolve();
-                    }, 700);
+                    }, 1500);
                 });
             })();
         } else {
             this.props.gambleLose();
+
+            this.setValues(0);
 
             await (() => {
                 return new Promise(resolve => {
@@ -149,15 +164,25 @@ export default class GambleModal {
                         // Hide gamble modal
                         this.hide();
 
-                        // Start flipping card back
+                        // Start flipping card
                         droppedBigCard.style.zIndex = '';
 
                         resolve();
-                    }, 1000);
+                    }, 1500);
                 });
             })();
         }
     }
 
-    // TODO: Create function called gambleStart wich will open gambleModal and enabling all buttons
+    // Open gambleModal and enabling all buttons
+    start(currentWin) {
+        this.setValues(currentWin);
+        this.show();
+    }
+
+    setValues(points) {
+        document.querySelector('#gameAmountValue').innerHTML = points;
+        document.querySelector('#gambleToWinColor').innerHTML = points * 2;
+        document.querySelector('#gambleToWinSuit').innerHTML = points * 4;
+    }
 }

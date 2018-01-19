@@ -4,7 +4,7 @@ import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 
-import {freeSpin as mockResponseFreeSpin} from './spinMockup';
+import {normalSpinWin as normalSpinWinAPI} from './MockAPI/spin';
 
 import axios from 'axios';
 
@@ -125,7 +125,9 @@ export default class Game {
 
     getPlayerData = async () => {
         try {
-            return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
+            // return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
+
+            return {cash: '153.94'}
         } catch(err) {
             console.log(err);
         }
@@ -134,17 +136,17 @@ export default class Game {
     // Getting spin data
     getSpinResponse = async () => {
         try {
-            const response = await axios.post('http://admin.chcgreen.org/spin', {
-                lines_amount: this.pointsController.lines,
-                bet_per_line: this.pointsController.betPerLine,
-                denomination: this.pointsController.denomination * 100,
-                game: this.gameName
-            });
+            // const response = await axios.post('http://admin.chcgreen.org/spin', {
+            //     lines_amount: this.pointsController.lines,
+            //     bet_per_line: this.pointsController.betPerLine,
+            //     denomination: this.pointsController.denomination * 100,
+            //     game: this.gameName
+            // });
 
-            return response.data;
+            // return response.data;
+            return normalSpinWinAPI;
         } catch(err) {
             console.log(err);
-            return mockResponseFreeSpin;
         }
     }
 
@@ -197,11 +199,7 @@ export default class Game {
         this.linesController.unblurAllSymbols();
 
         // Set interface to gamble 'state'
-        this.interfaceController.setGamble();
-    }
-
-    gambleReadyToPick = () => {
-        this.interfaceController.panel.notifier.text = 'Choose red or black or take win';
+        this.interfaceController.setGamble(this.pointsController.userWin);
     }
     gambleWin = async (wonCoins) => {
         this.interfaceController.panel.notifier.text = 'Win';
@@ -215,6 +213,9 @@ export default class Game {
         this.gambleOver();
 
         this.interfaceController.setIdle();
+    }
+    gambleReadyToPick = () => {
+        this.interfaceController.panel.notifier.text = 'Choose red or black or take win';
     }
     // FIXME: Handle case when user took his win
     gambleOver = () => {
