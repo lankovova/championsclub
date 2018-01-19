@@ -56,7 +56,8 @@ export default class InterfaceController {
             < - Increase lines
             > - Increase bet per line
             d - Increase denomination
-            m - Set max bet`
+            m - Set max bet
+            Esc - Menu`
         );
     }
 
@@ -302,7 +303,7 @@ export default class InterfaceController {
             node: document.querySelector('#betPerLineBlock'),
             items: settings.betPerLine
         }, {
-            setValue: this.setBerPerLine,
+            onItemClick: this.setBerPerLine,
             enableSelf: this.enableBetPerLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
@@ -313,7 +314,7 @@ export default class InterfaceController {
             node: document.querySelector('#denominationBlock'),
             items: settings.denominations.map(item => item.toFixed(2))
         }, {
-            setValue: this.setDenomination,
+            onItemClick: this.setDenomination,
             enableSelf: this.enableDenomination,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
@@ -324,7 +325,7 @@ export default class InterfaceController {
             node: document.querySelector('#languageBlock'),
             items: ['hyi', 'lol', 'kek']
         }, {
-            setValue: this.setLanguage,
+            onItemClick: this.setLanguage,
             enableSelf: this.enableLanguage,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,

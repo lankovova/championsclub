@@ -75,10 +75,7 @@ export default class Game {
                 betPerLine: 1,
             });
 
-            // And enable game to play
             this.interfaceController.setIdle();
-            this.interfaceController.panel.notifier.text = 'Press start to spin';
-
             this.setSpinPossibility();
 
             // Remove preloader
@@ -99,14 +96,14 @@ export default class Game {
 
     setBetRelatedValue = (array, currentValue, setNewValue) => {
         return value => {
-            const newValue = value ? value : getNextArrayItem(array, currentValue);
+            const newValue = value ? +value : getNextArrayItem(array, currentValue);
             setNewValue.call(null, newValue);
             this.setSpinPossibility();
         }
     }
 
     setLines = newLines => {
-        const newValue = newLines ? newLines : getNextArrayItem(settings.lines, this.pointsController.lines);
+        const newValue = newLines ? +newLines : getNextArrayItem(settings.lines, this.pointsController.lines);
         this.pointsController.setLines(newValue);
 
         this.setSpinPossibility();

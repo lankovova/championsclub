@@ -40,7 +40,7 @@ export default class ToggleBlock {
         this.itemsNodes.forEach(item => {
             // Add click event on item
             item.onclick = () => {
-                this.props.setValue(+item.getAttribute('data-value'));
+                this.props.onItemClick(item.getAttribute('data-value'));
 
                 // Toggle(hide) block itself
                 this.toggle();
@@ -88,8 +88,8 @@ export default class ToggleBlock {
             this.node.style.display = `block`;
             this.node.style.transform = `translateY(-${this.node.offsetHeight}px)`;
             this.isToggled = true;
-
         }
+
         // Disable interface while toggling
         this.props.disableInterface();
     }
