@@ -113,7 +113,7 @@ export default class GambleModal {
         }
     }
 
-    pickCard = (cardSuit) => {
+    pickCard = async (cardSuit) => {
         // Disable gamble btns
         this.disableBtns();
 
