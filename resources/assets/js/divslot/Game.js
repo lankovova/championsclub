@@ -144,7 +144,6 @@ export default class Game {
                     denomination: this.pointsController.denomination * 100,
                     game: this.gameName
                 });
-
                 return response.data;
             }
         } catch(err) {
@@ -158,6 +157,10 @@ export default class Game {
         // FIXME:
         if (this.interfaceController.alertWindow.isOn) {
             this.interfaceController.hideAlert();
+        }
+
+        if (this.interfaceController.gambleModal.isOn) {
+            this.interfaceController.gambleModal.disableBtns();
         }
 
         // Wait transfering win
