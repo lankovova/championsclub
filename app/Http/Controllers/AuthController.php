@@ -15,7 +15,7 @@ class AuthController extends Controller
         $code = $request->input("code");
         $license = $request->input("license");
         $p = new Player($code);
-        $p->getCashPool();
+
         if (Player::exist($code)) {
             Auth::login($code, $license);
             History::writeAuthAction($code, "login");
