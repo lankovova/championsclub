@@ -4,8 +4,10 @@
     <div id="preloader"></div>
     <div class="game_wrapper" id="game_wrapper">
         <div id="loading">
+            <div class="loading__container">
                 <div class="loading__text">please wait. loading <span id="loading__persent">100.00</span> %</div>
                 <div id="loading__block"></div>
+            </div>
         </div>
         <div id="game">
             <!-- <div class="header"></div> -->
@@ -23,18 +25,18 @@
 			<div class="gamble" id="gamble">
 				<div class="gamble__amount">
 					<div class="gamble__amount-text">gamble amount</div>
-					<div class="gamble__amount-value" id="gameAmountValue">vova</div>
+					<div class="gamble__amount-value" id="gameAmountValue"></div>
 				</div>
 
 				<div class="gamble__to-win">
 					<div class="gamble__to-win-suit">
 						suit gamble to win
-						<span id="gambleToWinSuit">vova</span>
+						<span id="gambleToWinSuit"></span>
 						(x4)
 					</div>
 					<div class="gamble__to-win-color">
 						color gamble to win
-						<span id="gambleToWinColor">vova</span>
+						<span id="gambleToWinColor"></span>
 						(x2)
 					</div>
 				</div>
@@ -152,7 +154,7 @@
                             </div>
                         </div>
 
-                        <div class="tnblock tnblock_bet">
+                        <div class="tnblock tnblock_bet" id="betBlock">
                             <div class="title_wrapper flex_center">
                                 <div class="title">Bet</div>
                             </div>
@@ -163,7 +165,7 @@
                         </div>
 
                         <!-- User win field -->
-                        <div class="tnblock tnblock_win">
+                        <div class="tnblock tnblock_win" id="winBlock">
                             <div class="title_wrapper flex_center">
                                 <div class="title">Win</div>
                             </div>

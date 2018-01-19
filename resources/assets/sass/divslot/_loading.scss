@@ -5,13 +5,22 @@
     left: 0;
     top: 0;
     bottom: 0;
-    background: #000 url("../img/loading/loading_bg.png") center center;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    font-family: Oswald;
+}
+.loading__container {
+    background: #000 url("../img/loading/loading_bg.png") center center;
+    width: 927px;
+    height: 900px;
+    position: relative;
 }
 #loading__block {
     position: absolute;
-    top: 422px;
-    left: 544px;
-    width: 588px;
+    top: 347px;
+    left: 167px;
     background: url("../img/loading/loading_block_bg.png");
     width: 0;
     height: 37px;
@@ -24,7 +33,7 @@
     text-transform: uppercase;
     text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
     position: absolute;
-    top: 388px;
+    top: 307px;
     left: 0;
     right: 0;
     margin: auto;

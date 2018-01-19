@@ -12729,7 +12729,7 @@ var InterfaceController = function () {
         };
 
         this.menuClickHandler = function () {
-            if (_this.panel.btns.menu.state) window.location.href = "";
+            if (_this.panel.btns.menu.state) window.location.href = "/";
         };
 
         this.enableSpin = function () {

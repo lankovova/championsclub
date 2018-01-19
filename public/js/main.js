@@ -736,6 +736,7 @@ Object.defineProperty(exports, "__esModule", {
 var login = exports.login = "http://admin.chcgreen.org/login";
 var playerInfo = exports.playerInfo = "http://admin.chcgreen.org/getplayerinfo";
 var history = exports.history = "http://admin.chcgreen.org/gethistory";
+var isPlayerAuthed = exports.isPlayerAuthed = "http://admin.chcgreen.org/isplayerauthed";
 
 /***/ }),
 /* 7 */
@@ -12409,6 +12410,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _Loading = __webpack_require__(110);
+
+var _Loading2 = _interopRequireDefault(_Loading);
+
 var _GameChoose = __webpack_require__(21);
 
 var _GameChoose2 = _interopRequireDefault(_GameChoose);
@@ -12421,33 +12426,53 @@ var _eventBus = __webpack_require__(1);
 
 var _eventBus2 = _interopRequireDefault(_eventBus);
 
+var _config = __webpack_require__(6);
+
+var _axios = __webpack_require__(4);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     data: function data() {
         return {
-            authed: false
+            authed: false,
+            hideLoading: false
         };
     },
 
     components: {
-        GameChoosePage: _GameChoose2.default, LoginChampionPage: _LoginChampion2.default
+        GameChoosePage: _GameChoose2.default, LoginChampionPage: _LoginChampion2.default, Loading: _Loading2.default
     },
-    mounted: function mounted() {
+    beforeCreate: function beforeCreate() {
         var _this = this;
 
+        _axios2.default.get(_config.isPlayerAuthed).then(function (res) {
+            _this.authed = res.data.authed;
+        });
+        window.addEventListener("load", function () {
+            _this.hideLoading = true;
+        });
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
         _eventBus2.default.$on("authed", function () {
-            return _this.authed = true;
+            return _this2.authed = true;
         });
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 21 */
@@ -16462,7 +16487,22 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "app" },
-    [_vm.authed ? _c("GameChoosePage") : _c("LoginChampionPage")],
+    [
+      _c("Loading", { attrs: { shouldHide: _vm.hideLoading } }),
+      _vm._v(" "),
+      _c("GameChoosePage"),
+      _vm._v(" "),
+      _c("LoginChampionPage", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.authed,
+            expression: "!authed"
+          }
+        ]
+      })
+    ],
     1
   )
 }
@@ -18363,6 +18403,182 @@ exports.default = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(111)
+/* template */
+var __vue_template__ = __webpack_require__(112)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/game_choose/components/Loading.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2236f3c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-2236f3c0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    props: ['shouldHide'],
+    data: function data() {
+        return {
+            loadingTime: 2000,
+            loadingBlockLength: 21,
+            loadingBlockCount: 0,
+            maxLoadingBlockAmount: 28,
+            loadingPersentCount: 0,
+            loadingInterval: '',
+            loadingPersentInterval: '',
+            showLoading: true
+        };
+    },
+
+    watch: {
+        shouldHide: function shouldHide() {
+            this.removeLoading();
+        }
+    },
+    methods: {
+        loading: function loading() {
+            var _this = this;
+
+            this.loadingInterval = setInterval(function () {
+                if (_this.loadingBlockCount === _this.maxLoadingBlockAmount) {
+                    clearInterval(_this.loadingInterval);
+                }
+                document.getElementById("loading__block").style.width = 21 * _this.loadingBlockCount + "px";
+                _this.loadingBlockCount++;
+            }, this.loadingTime / this.maxLoadingBlockAmount);
+        },
+        loadingPersent: function loadingPersent() {
+            var _this2 = this;
+
+            this.loadingPersentInterval = setInterval(function () {
+                _this2.loadingPersentCount += 1.11;
+                if (_this2.loadingPersentCount >= 100.00) {
+                    _this2.loadingPersentCount = 100;
+                    clearInterval(_this2.loadingPersentInterval);
+                }
+                document.getElementById("loading__persent").innerText = _this2.loadingPersentCount.toFixed(2);
+            }, this.loadingTime / 100); // 100%
+        },
+        removeLoading: function removeLoading() {
+            var _this3 = this;
+
+            if (this.loadingPersentCount === 100) {
+                clearInterval(this.loadingInterval);
+                clearInterval(this.loadingPersentInterval);
+                console.log('lol');
+                this.showLoading = false;
+                return;
+            }
+            setTimeout(function () {
+                _this3.removeLoading();
+            }, 100);
+        }
+    },
+    mounted: function mounted() {
+
+        this.loading();
+        this.loadingPersent();
+    }
+};
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showLoading
+    ? _c("div", { attrs: { id: "loading" } }, [_vm._m(0)])
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "loading__container" }, [
+      _c("div", { staticClass: "loading__text" }, [
+        _vm._v("please wait. loading "),
+        _c("span", { attrs: { id: "loading__persent" } }, [_vm._v("100.00")]),
+        _vm._v(" %")
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "loading__block" } })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2236f3c0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -137,7 +137,7 @@ export default class InterfaceController {
 
     menuClickHandler = () => {
         if (this.panel.btns.menu.state)
-            window.location.href = "";
+            window.location.href = "/";
     }
 
     enableSpin = () => this.panel.btns.SST.state.spin = true;
