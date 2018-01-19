@@ -25,6 +25,8 @@ var settings = {
     "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
+    "dev": true,
+
     "symbols": [
         {"image": "1.png"},
         {"image": "2.png"},

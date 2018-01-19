@@ -112,12 +112,14 @@ export default class GambleModal {
 
     async getGambleResponse(cardSuit) {
         try {
-            // const gambleResponse = await axios.post('http://admin.chcgreen.org/gamble', {
-            //     card: cardSuit
-            // });
-
-            // return gambleResponse.data;
-            return gambleAPI;
+            if (settings.dev) {
+                return gambleAPI;
+            } else {
+                const gambleResponse = await axios.post('http://admin.chcgreen.org/gamble', {
+                    card: cardSuit
+                });
+                return gambleResponse.data;
+            }
         } catch(err) {
             console.log(err);
         }

@@ -135,15 +135,18 @@ export default class Game {
     // Getting spin data
     getSpinResponse = async () => {
         try {
-            // const response = await axios.post('http://admin.chcgreen.org/spin', {
-            //     lines_amount: this.pointsController.lines,
-            //     bet_per_line: this.pointsController.betPerLine,
-            //     denomination: this.pointsController.denomination * 100,
-            //     game: this.gameName
-            // });
+            if (settings.dev) {
+                return spinAPI;
+            } else {
+                const response = await axios.post('http://admin.chcgreen.org/spin', {
+                    lines_amount: this.pointsController.lines,
+                    bet_per_line: this.pointsController.betPerLine,
+                    denomination: this.pointsController.denomination * 100,
+                    game: this.gameName
+                });
 
-            // return response.data;
-            return spinAPI;
+                return response.data;
+            }
         } catch(err) {
             console.log(err);
         }
