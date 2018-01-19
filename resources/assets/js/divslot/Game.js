@@ -4,7 +4,7 @@ import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 
-import {freeSpin as spinAPI} from './MockAPI/spin';
+import {normalSpinWin as spinAPI} from './MockAPI/spin';
 
 import axios from 'axios';
 
@@ -296,6 +296,9 @@ export default class Game {
 
     bonusSpin = () => {
         this.bonusSpins.currentSpinIndex++;
+
+        // FIXME:
+        this.linesController.unblurAllSymbols();
 
         this.interfaceController.panel.notifier.text = `Free spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.totalSpins}`;
 
