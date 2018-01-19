@@ -5,7 +5,7 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": "spin",
+    "animationType": "fall",
 
     "numOfSpinsBeforeStop": 2,
 
@@ -25,7 +25,7 @@ var settings = {
     "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
-    "dev": true,
+    "dev": false,
 
     "symbols": [
         {"image": "1.png"},

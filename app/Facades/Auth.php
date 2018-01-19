@@ -12,8 +12,12 @@ class Auth {
      * @return void
      */
     public static function login($login, $license) {
-        $_SESSION["license"] = $license;
-        $_SESSION["login"] = $login;
+        
+        session([
+            "license" => $license,
+            "login" => $login
+        ]);
+
         Player::updateLoginTime($login);
     }
 
@@ -23,8 +27,7 @@ class Auth {
      * @return void
      */
     public static function logout() {
-        $_SESSION = [];
-        session_destroy();
+        session()->flush();
     }
 
     /**
@@ -35,9 +38,14 @@ class Auth {
      */
     public static function authed() {
         $fiveMin = 5 * 60 * 1000;
-        if (strtotime(Player::getLoginTime(self::getParam("login"))) > (time() + $fiveMin)) {
-            return false;
-        }
+
+        // if (!self::getParam("login")) {
+        //     return false;
+        // }
+
+        // if (strtotime(Player::getLoginTime(self::getParam("login"))) > (time() + $fiveMin)) {
+        //     return false;
+        // }
         return true;
     }
 
@@ -48,9 +56,9 @@ class Auth {
      * @return mixed
      */
     public static function getParam(string $param) {
-        // if ($param === "login") {
-        //     return "06509468906399";
-        // }
-        return isset($_SESSION[$param]) ? $_SESSION[$param] : false;
+        if ($param === "login") {
+            return "06509468906399";
+        }
+        return session($param);
     }
 }
