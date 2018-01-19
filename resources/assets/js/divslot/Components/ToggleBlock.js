@@ -26,8 +26,8 @@ export default class ToggleBlock {
             item.className = 'item';
             item.setAttribute('data-value', value);
 
-            // Place value from options.items to element innerHTML
-            item.innerHTML = value;
+            // Place value from options.items to element innerText
+            item.innerText = value;
 
             this.itemsNodes.push(item);
 
