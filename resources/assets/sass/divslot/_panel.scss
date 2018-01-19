@@ -127,6 +127,14 @@
         color: rgba(5, 4, 36, 0.8);
         background-position: right;
     }
+
+    &--language {
+        background-size: 200% 200%;
+        background-position: top left;
+        &:hover {
+            background-position: top right;
+        }
+    }
 }
 .toggle_block.toggle_block--denom {
     .item {
@@ -427,8 +435,7 @@
     box-sizing: border-box;
     position: relative;
 }
-.panel_row-bot .lhh_panel  .language_btn {
-    background: url('../img/lang_flags/en_btn_bg.png');
+.panel_row-bot .lhh_panel .language_btn {
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 200% 200%;

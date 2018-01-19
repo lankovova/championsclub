@@ -5,11 +5,11 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": "fall",
+    "animationType": "spin",
 
     "numOfSpinsBeforeStop": 2,
 
-    "delayBetweenShowingWinningLines": 700,
+    "delayBetweenShowingWinningLines": 400,
     "delayBetweenReelsSpin": 200,
     "delayBetweenFallingSymbols": 300,
     // Do not set this delay lower than 50 ms
@@ -34,7 +34,7 @@ var settings = {
         {"image": "6.png"},
         {"image": "7.png"},
         {"image": "8.png"},
-        {"image": "9.png", "animation": "4Anim.png"},
+        {"image": "9.png"},
         {"image": "10.png"}
     ],
 

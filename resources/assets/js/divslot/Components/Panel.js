@@ -12,11 +12,11 @@ export default class Panel {
         this.btns = {
             SST: new Buttons.SSTBtn({
                 node: document.querySelector('#SSTBtn'),
-                spinStopTake: this.props.spinStopTake
+                onClick: this.props.spinStopTake
             }),
-            maxBet: new Buttons.Button({
+            maxBet: new Buttons.MaxBetBtn({
                 node: document.querySelector('#maxBetBtn'),
-                onClick: this.props.setMaxBet
+                onClick: this.props.maxBetClickHandler
             }),
             lines: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#linesBtn'),
@@ -38,11 +38,11 @@ export default class Panel {
                 node: document.querySelector('#menuBtn'),
                 onClick: this.props.menuClickHandler
             }),
-            language: new Buttons.Button({
+            language: new Buttons.LanguageBtn({
                 node: document.querySelector('#languageBtn'),
                 onClick: this.props.toggleLanguageBlock
             }),
-            gamble: new Buttons.Button({
+            gamble: new Buttons.GambleBtn({
                 node: document.querySelector('#gambleBtn'),
                 onClick: this.props.gambleClick
             })

@@ -10,6 +10,7 @@ export default class Button {
         this.node = props.node;
 
         this._state = false;
+        this.isDisabled = true;
 
         this.node.onclick = () => props.onClick();
 
@@ -17,23 +18,28 @@ export default class Button {
     }
 
     _initEffects() {
+        const self = this;
         this.node.onmouseenter = function() {
-            if (this.style.backgroundPosition !== spriteParts.disabled) {
+            if (!self.isDisabled) {
+                self.isDisabled = false;
                 this.style.backgroundPosition = spriteParts.hovered;
             }
         };
         this.node.onmousedown = function() {
-            if (this.style.backgroundPosition !== spriteParts.disabled) {
+            if (!self.isDisabled) {
+                self.isDisabled = false;
                 this.style.backgroundPosition = spriteParts.pressed;
             }
         };
         this.node.onmouseup = function() {
-            if (this.style.backgroundPosition !== spriteParts.disabled) {
+            if (!self.isDisabled) {
+                self.isDisabled = false;
                 this.style.backgroundPosition = spriteParts.enabled;
             }
         };
         this.node.onmouseleave = function() {
-            if (this.style.backgroundPosition !== spriteParts.disabled) {
+            if (!self.isDisabled) {
+                self.isDisabled = false;
                 this.style.backgroundPosition = spriteParts.enabled;
             }
         };
@@ -43,11 +49,13 @@ export default class Button {
     disable() { this.state = false; }
 
     enableView() {
+        this.isDisabled = false;
         this.node.style.backgroundPosition = spriteParts.enabled;
         this.node.style.cursor = '';
     }
 
     disableView() {
+        this.isDisabled = true;
         this.node.style.backgroundPosition = spriteParts.disabled;
         this.node.style.cursor = 'default';
     }

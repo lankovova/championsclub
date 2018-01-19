@@ -401,6 +401,15 @@ table {
   background-position: right;
 }
 
+.toggle_block .content .item--language {
+  background-size: 200% 200%;
+  background-position: top left;
+}
+
+.toggle_block .content .item--language:hover {
+  background-position: top right;
+}
+
 .toggle_block.toggle_block--denom .item {
   width: 110px;
   height: 100px;
@@ -577,7 +586,7 @@ table {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
@@ -802,7 +811,6 @@ table {
 }
 
 .panel_row-bot .lhh_panel .language_btn {
-  background: url("../img/lang_flags/en_btn_bg.png");
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 200% 200%;
@@ -1047,6 +1055,7 @@ body {
 }
 
 .gamble .button__suit-color {
+  cursor: pointer;
   top: 260px;
   position: absolute;
   width: 419px;
@@ -1057,6 +1066,13 @@ body {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 7px;
+}
+
+.gamble .button__suit-color .overflow-layer {
+  border-radius: 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .gamble .button__red {
@@ -1072,10 +1088,18 @@ body {
 }
 
 .gamble .button__suit {
+  cursor: pointer;
   position: absolute;
   top: 397px;
   width: 173px;
   height: 114px;
+}
+
+.gamble .button__suit .overflow-layer {
+  border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .gamble .button__spade {

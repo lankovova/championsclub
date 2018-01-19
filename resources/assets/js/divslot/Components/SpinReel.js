@@ -80,9 +80,17 @@ export default class Reel {
 
         for (let i = 0; i < settings.numOfSpinsBeforeStop * settings.numOfRows; i++) {
             let symbol;
+            // let symbolCantPass = true;
             // Generate no scatters at all while spinning
             do {
                 symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+
+                // spinningSymbolsArr.forEach(spawnedSymbol => {
+                //     if (spawnedSymbol.symbolNum === symbol.symbolNum) {
+                //         console.log('repeat');
+                //     }
+                // });
+
             } while (symbol.isScatter);
 
             spinningSymbolsArr.push(symbol);

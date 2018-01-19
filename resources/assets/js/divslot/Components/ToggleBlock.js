@@ -26,8 +26,8 @@ export default class ToggleBlock {
             item.className = 'item';
             item.setAttribute('data-value', value);
 
-            // Place value from options.items to element innerHTML
-            item.innerHTML = value;
+            // Place value from options.items to element innerText
+            item.innerText = value;
 
             this.itemsNodes.push(item);
 
@@ -40,7 +40,7 @@ export default class ToggleBlock {
         this.itemsNodes.forEach(item => {
             // Add click event on item
             item.onclick = () => {
-                this.props.setValue(+item.getAttribute('data-value'));
+                this.props.onItemClick(item.getAttribute('data-value'));
 
                 // Toggle(hide) block itself
                 this.toggle();
@@ -54,8 +54,10 @@ export default class ToggleBlock {
             } else {
                 // If block is sparred
                 event.target.style.display = '';
+                // FIXME: After toggling restore previous interface state
                 // After toggling enable interface
                 this.props.setInterfaceIdle();
+                this.props.setSpinPossibility();
             }
         });
     }
@@ -86,8 +88,8 @@ export default class ToggleBlock {
             this.node.style.display = `block`;
             this.node.style.transform = `translateY(-${this.node.offsetHeight}px)`;
             this.isToggled = true;
-
         }
+
         // Disable interface while toggling
         this.props.disableInterface();
     }

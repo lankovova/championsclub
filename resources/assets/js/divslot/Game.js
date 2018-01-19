@@ -4,7 +4,7 @@ import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 
-import {freeSpin as mockResponseFreeSpin} from './spinMockup';
+import {normalSpinWin as spinAPI} from './MockAPI/spin';
 
 import axios from 'axios';
 
@@ -51,9 +51,9 @@ export default class Game {
             setBerPerLine: this.setBerPerLine,
             setMaxBet: this.setMaxBet,
             startGamble: this.startGamble,
-            gambleReadyToPick: this.gambleReadyToPick,
             gambleWin: this.gambleWin,
-            gambleLose: this.gambleLose
+            gambleLose: this.gambleLose,
+            setSpinPossibility: this.setSpinPossibility
         });
 
         this.interfaceController.panel.notifier.text = 'Loading...';
@@ -75,9 +75,8 @@ export default class Game {
                 betPerLine: 1,
             });
 
-            // And enable game to play
             this.interfaceController.setIdle();
-            this.interfaceController.panel.notifier.text = 'Press start to spin';
+            this.setSpinPossibility();
 
             // Remove preloader
             window.onGameLoaded();
@@ -97,14 +96,14 @@ export default class Game {
 
     setBetRelatedValue = (array, currentValue, setNewValue) => {
         return value => {
-            const newValue = value ? value : getNextArrayItem(array, currentValue);
+            const newValue = value ? +value : getNextArrayItem(array, currentValue);
             setNewValue.call(null, newValue);
             this.setSpinPossibility();
         }
     }
 
     setLines = newLines => {
-        const newValue = newLines ? newLines : getNextArrayItem(settings.lines, this.pointsController.lines);
+        const newValue = newLines ? +newLines : getNextArrayItem(settings.lines, this.pointsController.lines);
         this.pointsController.setLines(newValue);
 
         this.setSpinPossibility();
@@ -118,14 +117,16 @@ export default class Game {
             this.interfaceController.panel.notifier.text = 'Not enough cash for this bet';
             this.interfaceController.disableSpinAndAuto();
         } else {
-            this.interfaceController.panel.notifier.text = 'Press start to spin';
-            this.interfaceController.enableSpinAndAuto();
+            this.interfaceController.panel.notifier.text = 'Game over, place your bet';
+            this.interfaceController.setIdle();
         }
     }
 
     getPlayerData = async () => {
         try {
-            return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
+            // return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
+
+            return {cash: '153.94'}
         } catch(err) {
             console.log(err);
         }
@@ -134,32 +135,38 @@ export default class Game {
     // Getting spin data
     getSpinResponse = async () => {
         try {
-            const response = await axios.post('http://admin.chcgreen.org/spin', {
-                lines_amount: this.pointsController.lines,
-                bet_per_line: this.pointsController.betPerLine,
-                denomination: this.pointsController.denomination * 100,
-                game: this.gameName
-            });
+            // const response = await axios.post('http://admin.chcgreen.org/spin', {
+            //     lines_amount: this.pointsController.lines,
+            //     bet_per_line: this.pointsController.betPerLine,
+            //     denomination: this.pointsController.denomination * 100,
+            //     game: this.gameName
+            // });
 
-            return response.data;
+            // return response.data;
+            return spinAPI;
         } catch(err) {
             console.log(err);
-            return mockResponseFreeSpin;
         }
     }
 
     takeWinClickHandler = async () => {
         this.interfaceController.disableInterface();
 
-        // FIXME: Rethink about it
-        if (this.interfaceController.alertWindow.isOn)
+        // FIXME:
+        if (this.interfaceController.alertWindow.isOn) {
             this.interfaceController.hideAlert();
+        }
 
         // Wait transfering win
         await this.transferWin();
 
+        // FIXME:
+        if (this.interfaceController.gambleModal.isOn) {
+            this.interfaceController.gambleOver();
+        }
+
         // After transfering win enable interface
-        this.interfaceController.enableInterface();
+        this.interfaceController.setIdle();
         this.setSpinPossibility();
     }
 
@@ -192,16 +199,16 @@ export default class Game {
     }
 
     startGamble = () => {
-        this.gambleReadyToPick();
-
         this.linesController.unblurAllSymbols();
+        this.linesController.stopCyclingWinningLines();
+
+        // FIXME:
+        if (this.interfaceController.alertWindow.isOn) {
+            this.interfaceController.hideAlert();
+        }
 
         // Set interface to gamble 'state'
-        this.interfaceController.setGamble();
-    }
-
-    gambleReadyToPick = () => {
-        this.interfaceController.panel.notifier.text = 'Choose red or black or take win';
+        this.interfaceController.setGamble(this.pointsController.userWin);
     }
     gambleWin = async (wonCoins) => {
         this.interfaceController.panel.notifier.text = 'Win';
@@ -210,24 +217,15 @@ export default class Game {
         this.pointsController.userWin = this.pointsController.coinsToPoints(wonCoins);
     }
     gambleLose = () => {
+        // Clear win field
         this.pointsController.userWin = 0;
-
-        this.gambleOver();
-
-        this.interfaceController.setIdle();
-    }
-    // FIXME: Handle case when user took his win
-    gambleOver = () => {
-        this.interfaceController.panel.notifier.text = 'Game over - gamble completed, place your bet';
     }
 
     spin = () => {
-        // FIXME: Rethink about it
+        // FIXME:
         if (this.interfaceController.alertWindow.isOn) {
             console.log('Hide bonus spins result alert');
             this.interfaceController.hideAlert();
-
-            return;
         }
 
         if (this.bonusSpins.on) {
@@ -236,6 +234,7 @@ export default class Game {
             // Hide alert when bonus spins starts
             this.interfaceController.hideAlert();
 
+            // Disable whole interface
             this.interfaceController.disableInterface();
 
             // Start bonus spin
@@ -248,9 +247,10 @@ export default class Game {
     }
 
     getDataAndSpin = () => {
-        this.interfaceController.panel.notifier.text = 'Fetching data...';
         // Disable whole interface
         this.interfaceController.disableInterface();
+
+        this.interfaceController.panel.notifier.text = 'Fetching data...';
 
         // Enable auto btn if auto spins is on
         if (this.autoSpinIsOn) this.interfaceController.enableAuto();
@@ -297,7 +297,10 @@ export default class Game {
     bonusSpin = () => {
         this.bonusSpins.currentSpinIndex++;
 
-        this.interfaceController.panel.notifier.text = `Free spin #${this.bonusSpins.currentSpinIndex}`;
+        // FIXME:
+        this.linesController.unblurAllSymbols();
+
+        this.interfaceController.panel.notifier.text = `Free spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.totalSpins}`;
 
         // Spin reels to given final symbols
         this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
@@ -379,7 +382,7 @@ export default class Game {
                     this.interfaceController.setTakeWin();
                 } else {
                     // If no win at all
-                    this.interfaceController.enableInterface();
+                    this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 }
 
@@ -407,7 +410,7 @@ export default class Game {
 
                 // If auto spins was disabled while transfering money
                 if (!this.autoSpinIsOn) {
-                    this.interfaceController.enableInterface();
+                    this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 } else {
                     this.autoSpin();
@@ -432,7 +435,7 @@ export default class Game {
                 return;
             }
 
-            this.interfaceController.enableInterface();
+            this.interfaceController.setIdle();
             this.setSpinPossibility();
         }
 

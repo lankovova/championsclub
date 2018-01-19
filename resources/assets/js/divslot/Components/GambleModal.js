@@ -1,5 +1,7 @@
-import Button from './buttons/Button';
+import GambleModalButton from './buttons/GambleModalButton';
 import {capitalize} from './../Helpers/stringHelper';
+
+import {gambleWin as gambleAPI} from './../MockAPI/gamble';
 
 import axios from 'axios';
 
@@ -8,53 +10,59 @@ export default class GambleModal {
         this.props = props;
         this.node = this.props.node;
 
+        this.isOn = false;
+
+        this.bigCardNode;
+
         this.previousCards = {
             node: this.node.querySelector('#previousCardsSuits'),
-            _cards: [],
             add(cardSuit) {
-                // Push card suit name to store
-                this._cards.push(card);
-
                 // Add to markup
                 const cardToInsert = document.createElement('div');
                 cardToInsert.className = `suit-${cardSuit}`;
                 this.node.appendChild(cardToInsert);
             },
             removeOldest() {
-                // Remove it from store
-                this._cards.shift();
-
                 // Remove oldest card from html markup
                 this.node.removeChild(this.node.children[0]);
             }
         }
 
+        const redOverlayColor = 'rgba(255,0,0,0.3)';
+        const blueOverlayColor = 'rgba(0,0,255,0.3)';
+
         // TODO: Handle if gamble is extended
         // Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
-            red: new Button({
+            red: new GambleModalButton({
                 node: this.node.querySelector('#red'),
-                onClick: () => this.pickCard('red')
+                onClick: this.props.pickSuit('red'),
+                overlayColor: redOverlayColor
             }),
-            heart: new Button({
+            heart: new GambleModalButton({
                 node: this.node.querySelector('#heart'),
-                onClick: () => this.pickCard('heart')
+                onClick: this.props.pickSuit('heart'),
+                overlayColor: redOverlayColor
             }),
-            diamond: new Button({
+            diamond: new GambleModalButton({
                 node: this.node.querySelector('#diamond'),
-                onClick: () => this.pickCard('diamond')
+                onClick: this.props.pickSuit('diamond'),
+                overlayColor: redOverlayColor
             }),
-            black: new Button({
+            black: new GambleModalButton({
                 node: this.node.querySelector('#black'),
-                onClick: () => this.pickCard('black')
+                onClick: this.props.pickSuit('black'),
+                overlayColor: blueOverlayColor
             }),
-            club: new Button({
+            club: new GambleModalButton({
                 node: this.node.querySelector('#club'),
-                onClick: () => this.pickCard('club')
+                onClick: this.props.pickSuit('club'),
+                overlayColor: blueOverlayColor
             }),
-            spade: new Button({
+            spade: new GambleModalButton({
                 node: this.node.querySelector('#spade'),
-                onClick: () => this.pickCard('spade')
+                onClick: this.props.pickSuit('spade'),
+                overlayColor: blueOverlayColor
             }),
         }
 
@@ -77,87 +85,122 @@ export default class GambleModal {
     }
 
     show() {
+        this.isOn = true;
         this.node.style.display = 'block';
     }
 
     hide() {
+        this.isOn = false;
         this.node.style.display = 'none';
     }
 
     disableBtns() {
+        // Disable modal btns
         Object.keys(this.btns).forEach(btn => this.btns[btn].disable());
+
+        // Also disable panel btns
+        this.props.disablePanelGambleBtns();
     }
 
     enableBtns() {
+        // Enable modal btns
         Object.keys(this.btns).forEach(btn => this.btns[btn].enable());
+
+        // Also enable panel btns
+        this.props.enablePanelGambleBtns();
     }
 
     async getGambleResponse(cardSuit) {
         try {
-            return (await axios.post('http://admin.chcgreen.org/gamble', {
-                card: cardSuit
-            })).data;
+            // const gambleResponse = await axios.post('http://admin.chcgreen.org/gamble', {
+            //     card: cardSuit
+            // });
+
+            // return gambleResponse.data;
+            return gambleAPI;
         } catch(err) {
             console.log(err);
         }
+    }
+
+    showDroppedCard(randomSuit) {
+        // Change flipping card suit
+        this.bigCardNode.style.zIndex = 1;
+
+        // Add randomed card to previous cards
+        this.previousCards.add(randomSuit);
+    }
+
+    hideDroppedCard() {
+        // Remove oldest previous card
+        this.previousCards.removeOldest();
+
+        // Start flipping card
+        this.bigCardNode.style.zIndex = '';
     }
 
     pickCard = async (cardSuit) => {
         // Disable gamble btns
         this.disableBtns();
 
+        // Get response from server
         const gambleResponse = await this.getGambleResponse(cardSuit);
         console.log(gambleResponse);
 
-        // Change flipping card suit
-        const droppedBigCard = this.node.querySelector(`#suit${capitalize(gambleResponse.rand_card)}`);
-        droppedBigCard.style.zIndex = 1;
-
-        // Add randomed card to previous cards
-        this.previousCards.add(gambleResponse.rand_card);
+        this.bigCardNode = this.node.querySelector(`#suit${capitalize(gambleResponse.rand_card)}`);
+        // Show randomed card in big card and add to previous cards
+        this.showDroppedCard(gambleResponse.rand_card);
 
         if (gambleResponse.won) {
             // Update win field from Game
             this.props.gambleWin(gambleResponse.won_coins);
 
-            // After one second setup gamble to one more pick
-            await (() => {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        console.log('Remove oldest card');
-                        // Remove oldest previous card
-                        this.previousCards.removeOldest();
+            // After delay setup gamble to one more pick
+            setTimeout(() => {
+                this.hideDroppedCard();
 
-                        // Start flipping card back
-                        droppedBigCard.style.zIndex = '';
+                this.setValues(gambleResponse.won_coins);
 
-                        // Enable gamble btns
-                        this.enableBtns();
+                // Enable gamble btns
+                this.enableBtns();
 
-                        this.props.gambleReadyToPick();
+                this.props.gambleReadyToPick();
 
-                        resolve();
-                    }, 700);
-                });
-            })();
+            }, 1500);
         } else {
             this.props.gambleLose();
 
-            await (() => {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        // Hide gamble modal
-                        this.hide();
+            this.setValues(0);
 
-                        // Start flipping card back
-                        droppedBigCard.style.zIndex = '';
+            setTimeout(() => {
+                // Start flipping card
+                this.bigCardNode.style.zIndex = '';
 
-                        resolve();
-                    }, 1000);
-                });
-            })();
+                this.props.gambleOver();
+            }, 1500);
         }
     }
 
-    // TODO: Create function called gambleStart wich will open gambleModal and enabling all buttons
+    /**
+     * Start gamble
+     * @param {Number} currentWin Current user win points
+     */
+    start(currentWin) {
+        this.props.gambleReadyToPick();
+
+        // Enable gamble buttons
+        this.enableBtns();
+
+        // Set gamble values
+        this.setValues(currentWin);
+
+        // Show modal
+        this.show();
+    }
+
+    setValues(points) {
+        document.querySelector('#gameAmountValue').innerText = points;
+        document.querySelector('#gambleToWinColor').innerText = points * 2;
+        document.querySelector('#gambleToWinSuit').innerText = points * 4;
+    }
 }

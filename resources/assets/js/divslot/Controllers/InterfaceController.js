@@ -1,6 +1,7 @@
 import LinePresenters from '../Components/LinePresenters';
 import Panel from '../Components/Panel';
 import ToggleBlock from '../Components/ToggleBlock';
+import ToggleLanguageBlock from '../Components/ToggleLanguageBlock';
 import Alert from '../Components/Alert';
 import GambleModal from '../Components/GambleModal';
 
@@ -25,9 +26,13 @@ export default class InterfaceController {
 
         this.gambleModal = new GambleModal({
             node: document.querySelector('#gamble'),
-            gambleReadyToPick: this.props.gambleReadyToPick,
+            pickSuit: this.pickSuit,
+            gambleReadyToPick: this.gambleReadyToPick,
+            gambleOver: this.gambleOver,
             gambleWin: this.props.gambleWin,
-            gambleLose: this.props.gambleLose
+            gambleLose: this.props.gambleLose,
+            disablePanelGambleBtns: this.disablePanelGambleBtns,
+            enablePanelGambleBtns: this.enablePanelGambleBtns
         });
 
         this.alertWindow = new Alert({ node: document.querySelector('#alert') });
@@ -35,7 +40,7 @@ export default class InterfaceController {
         this.panel = new Panel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
             autoSpinClick: this.autoSpinClick,
-            setMaxBet: this.setMaxBet,
+            maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
             toggleLinesBlock: this.toggleLinesBlock,
             toggleBetPerLineBlock: this.toggleBetPerLineBlock,
@@ -52,7 +57,8 @@ export default class InterfaceController {
             < - Increase lines
             > - Increase bet per line
             d - Increase denomination
-            m - Set max bet`
+            m - Set max bet
+            Esc - Menu`
         );
     }
 
@@ -95,14 +101,23 @@ export default class InterfaceController {
             this.props.setDenomination(denomination);
     }
 
-    setMaxBet = () => {
-        if (this.panel.btns.maxBet.state)
+    setLanguage = (countryCode) => {
+        this.panel.btns.language.setBg(countryCode);
+    }
+
+    maxBetClickHandler = () => {
+        if (this.panel.btns.maxBet.state.maxbet) {
             this.props.setMaxBet();
+        } else if (this.panel.btns.maxBet.state.black) {
+            this.pickSuit('black')();
+        }
     }
 
     gambleClick = () => {
-        if (this.panel.btns.gamble.state) {
+        if (this.panel.btns.gamble.state.gamble) {
             this.props.startGamble();
+        } else if (this.panel.btns.gamble.state.red) {
+            this.pickSuit('red')();
         }
     }
 
@@ -140,61 +155,103 @@ export default class InterfaceController {
             window.location.href = "/";
     }
 
-    enableSpin = () => this.panel.btns.SST.state.spin = true;
+    enableSpin = () => this.panel.btns.SST.enable('spin');
     disableSpin = () => this.panel.btns.SST.state.spin = false;
+
+    enableGamble = () => this.panel.btns.gamble.enable('gamble');
 
     enableAuto = () => this.panel.btns.auto.state = true;
     disableAuto = () => this.panel.btns.auto.state = false;
 
-    enableGamble = () => this.panel.btns.gamble.state = true;
-    disableGamble = () => this.panel.btns.gamble.state = false;
+    disablePanelGambleBtns = () => {
+        this.panel.btns.gamble.disable();
+        this.panel.btns.maxBet.disable();
+    }
+    enablePanelGambleBtns = () => {
+        this.panel.btns.gamble.enable('red');
+        this.panel.btns.maxBet.enable('black');
+    }
 
     enableSpinAndAuto = () => {
-        this.panel.btns.SST.state.spin = true;
-        this.panel.btns.auto.state = true;
+        this.enableSpin();
+        this.enableAuto();
     }
     disableSpinAndAuto = () => {
-        this.panel.btns.SST.state.spin = false;
-        this.panel.btns.auto.state = false;
+        this.disableSpin();
+        this.disableAuto();
     }
 
-    enableStop = () => this.panel.btns.SST.state.stop = true;
+    enableStop = () => this.panel.btns.SST.enable('stop');
     disableStop = () => this.panel.btns.SST.state.stop = false;
 
-    enableTakeWin = () => this.panel.btns.SST.state.takeWin = true;
+    enableTakeWin = () => this.panel.btns.SST.enable('takeWin');
     disableTakeWin = () => this.panel.btns.SST.state.takeWin = false;
 
-    enableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = true;
+    enableSpeedUpTransferWin = () => this.panel.btns.SST.enable('speedUpTakeWin');
     disableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = false;
 
-    enableLines = () => this.panel.btns.lines.state = true;
-    enableBetPerLines = () => this.panel.btns.betPerLine.state = true;
-    enableDenomination = () => this.panel.btns.denomination.state = true;
-    enableLanguage = () => this.panel.btns.language.state = true;
+    enableLines = () => this.panel.btns.lines.enable();
+    enableBetPerLines = () => this.panel.btns.betPerLine.enable();
+    enableDenomination = () => this.panel.btns.denomination.enable();
+    enableLanguage = () => this.panel.btns.language.enable();
 
     setIdle = () => {
         this.enableInterface();
-        this.panel.btns.SST.state.spin = true;
+
+        this.panel.btns.gamble.disable();
+        this.panel.btns.SST.enable('spin');
+        this.panel.btns.maxBet.enable('maxbet');
     }
 
     setTakeWin = () => {
-        this.panel.btns.SST.state.takeWin = true;
-        this.panel.btns.gamble.state = true;
+        this.disableInterface();
+
+        this.enableTakeWin();
+        this.enableGamble();
     }
 
-    setGamble = () => {
+    setGamble(userWinPoints) {
         // Disable whole interface
         this.disableInterface();
 
-        // Enable take win posibillity
-        this.panel.btns.SST.state.takeWin = true;
-
-        // TODO: Enable all gamble buttons in modal
-
-        // TODO: Enable red/black buttons instead of gamble/max
-
         // Show modal
-        this.gambleModal.show();
+        this.gambleModal.start(userWinPoints);
+    }
+
+    gambleReadyToPick = () => {
+        this.disableInterface();
+
+        // Enable red/black buttons instead of gamble/max
+        this.enablePanelGambleBtns();
+
+        // Enable take win posibillity
+        this.enableTakeWin();
+
+        this.panel.notifier.text = 'Choose red or black or take win';
+    }
+
+    gambleOver = () => {
+        this.gambleModal.hide();
+        this.setIdle();
+
+        this.panel.notifier.text = 'Game over - gamble completed, place your bet';
+    }
+
+    /**
+     * Pick gamble card with state check based on card suit
+     * @param {String} suit Name of card suit
+     * @returns Returns function wich will pick gamble card
+     */
+    pickSuit = (suit) => {
+        return () => {
+            console.log(suit);
+            if (this.gambleModal.btns[suit].state) {
+                // Disable take btn
+                this.disableTakeWin();
+
+                this.gambleModal.pickCard(suit);
+            }
+        }
     }
 
     // Disable each btn of panel btns
@@ -202,13 +259,9 @@ export default class InterfaceController {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].disable());
     }
 
-    // FIXME: Get rid of this func, intead use smth like setGamble, setIdle, etc...
-    // Enable each btn of panel btns
-    enableInterface = () => {
+    // Enable each btn of panel except buttons with multiple states(gamble, maxbet, sst)
+    enableInterface() {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
-
-        // Also disable gamble btn
-        this.panel.btns.gamble.state = false;
     }
 
     _initKeyboardListeners() {
@@ -226,12 +279,12 @@ export default class InterfaceController {
                     this.setBerPerLine();
                     break;
                 case 77: // m
-                    this.setMaxBet();
+                    this.maxBetClickHandler();
                     break;
                 case 68: // d
                     this.setDenomination();
                     break;
-                case 27:
+                case 27: // ESC
                     this.menuClickHandler();
                     break;
                 default: {}
@@ -248,36 +301,40 @@ export default class InterfaceController {
             enableSelf: this.enableLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
 
         this.betPerLineBlock = new ToggleBlock({
             node: document.querySelector('#betPerLineBlock'),
             items: settings.betPerLine
         }, {
-            setValue: this.setBerPerLine,
+            onItemClick: this.setBerPerLine,
             enableSelf: this.enableBetPerLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
             items: settings.denominations.map(item => item.toFixed(2))
         }, {
-            setValue: this.setDenomination,
+            onItemClick: this.setDenomination,
             enableSelf: this.enableDenomination,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
 
-        this.langBlock = new ToggleBlock({
+        this.langBlock = new ToggleLanguageBlock({
             node: document.querySelector('#languageBlock'),
-            items: ['hyi', 'lol', 'kek']
+            items: ['en', 'ru', 'ua']
         }, {
-            setValue: this.setLanguage,
+            onItemClick: this.setLanguage,
             enableSelf: this.enableLanguage,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
+            setSpinPossibility: this.props.setSpinPossibility
         });
     }
 
