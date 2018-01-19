@@ -51,7 +51,6 @@ export default {
 			if (this.loadingPersentCount === 100) {
                 clearInterval(this.loadingInterval);
                 clearInterval(this.loadingPersentInterval);
-                console.log('lol')
                 this.showLoading = false
 				return;
 			}
