@@ -225,14 +225,14 @@ export default class Game {
             return;
         }
 
-        // Disable whole interface
-        this.interfaceController.disableInterface();
-
         if (this.bonusSpins.on) {
             console.log('Bonus spins starts');
 
             // Hide alert when bonus spins starts
             this.interfaceController.hideAlert();
+
+            // Disable whole interface
+            this.interfaceController.disableInterface();
 
             // Start bonus spin
             this.bonusSpin();
@@ -244,6 +244,9 @@ export default class Game {
     }
 
     getDataAndSpin = () => {
+        // Disable whole interface
+        this.interfaceController.disableInterface();
+
         this.interfaceController.panel.notifier.text = 'Fetching data...';
 
         // Enable auto btn if auto spins is on
