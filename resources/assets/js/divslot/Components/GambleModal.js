@@ -32,38 +32,53 @@ export default class GambleModal {
         const blueOverlayColor = 'rgba(0,0,255,0.3)';
 
         // TODO: Handle if gamble is extended
-        // Init gamble modal btns here with passed nodes and click handlers
-        this.btns = {
-            red: new GambleModalButton({
-                node: this.node.querySelector('#red'),
-                onClick: this.props.pickSuit('red'),
-                overlayColor: redOverlayColor
-            }),
-            heart: new GambleModalButton({
-                node: this.node.querySelector('#heart'),
-                onClick: this.props.pickSuit('heart'),
-                overlayColor: redOverlayColor
-            }),
-            diamond: new GambleModalButton({
-                node: this.node.querySelector('#diamond'),
-                onClick: this.props.pickSuit('diamond'),
-                overlayColor: redOverlayColor
-            }),
-            black: new GambleModalButton({
-                node: this.node.querySelector('#black'),
-                onClick: this.props.pickSuit('black'),
-                overlayColor: blueOverlayColor
-            }),
-            club: new GambleModalButton({
-                node: this.node.querySelector('#club'),
-                onClick: this.props.pickSuit('club'),
-                overlayColor: blueOverlayColor
-            }),
-            spade: new GambleModalButton({
-                node: this.node.querySelector('#spade'),
-                onClick: this.props.pickSuit('spade'),
-                overlayColor: blueOverlayColor
-            }),
+        // Init gamble modal btns depending on extended gamble or not
+        if (settings.gambleExtended) {
+            this.btns = {
+                red: new GambleModalButton({
+                    node: this.node.querySelector('#red'),
+                    onClick: this.props.pickSuit('red'),
+                    overlayColor: redOverlayColor
+                }),
+                heart: new GambleModalButton({
+                    node: this.node.querySelector('#heart'),
+                    onClick: this.props.pickSuit('heart'),
+                    overlayColor: redOverlayColor
+                }),
+                diamond: new GambleModalButton({
+                    node: this.node.querySelector('#diamond'),
+                    onClick: this.props.pickSuit('diamond'),
+                    overlayColor: redOverlayColor
+                }),
+                black: new GambleModalButton({
+                    node: this.node.querySelector('#black'),
+                    onClick: this.props.pickSuit('black'),
+                    overlayColor: blueOverlayColor
+                }),
+                club: new GambleModalButton({
+                    node: this.node.querySelector('#club'),
+                    onClick: this.props.pickSuit('club'),
+                    overlayColor: blueOverlayColor
+                }),
+                spade: new GambleModalButton({
+                    node: this.node.querySelector('#spade'),
+                    onClick: this.props.pickSuit('spade'),
+                    overlayColor: blueOverlayColor
+                }),
+            };
+        } else {
+            this.btns = {
+                red: new GambleModalButton({
+                    node: this.node.querySelector('#red'),
+                    onClick: this.props.pickSuit('red'),
+                    overlayColor: redOverlayColor
+                }),
+                black: new GambleModalButton({
+                    node: this.node.querySelector('#black'),
+                    onClick: this.props.pickSuit('black'),
+                    overlayColor: blueOverlayColor
+                })
+            };
         }
 
         this._initializePreviousCards();
