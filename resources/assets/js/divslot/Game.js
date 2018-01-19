@@ -117,7 +117,7 @@ export default class Game {
             this.interfaceController.panel.notifier.text = 'Not enough cash for this bet';
             this.interfaceController.disableSpinAndAuto();
         } else {
-            this.interfaceController.panel.notifier.text = 'Press start to spin';
+            this.interfaceController.panel.notifier.text = 'Game over, place your bet';
             this.interfaceController.enableSpinAndAuto();
         }
     }
@@ -152,12 +152,18 @@ export default class Game {
     takeWinClickHandler = async () => {
         this.interfaceController.disableInterface();
 
-        // FIXME: Rethink about it
-        if (this.interfaceController.alertWindow.isOn)
+        // FIXME:
+        if (this.interfaceController.alertWindow.isOn) {
             this.interfaceController.hideAlert();
+        }
 
         // Wait transfering win
         await this.transferWin();
+
+        // FIXME:
+        if (this.interfaceController.gambleModal.isOn) {
+            this.interfaceController.gambleOver();
+        }
 
         // After transfering win enable interface
         this.interfaceController.enableInterface();
@@ -194,6 +200,7 @@ export default class Game {
 
     startGamble = () => {
         this.linesController.unblurAllSymbols();
+        this.linesController.stopCyclingWinningLines();
 
         // Set interface to gamble 'state'
         this.interfaceController.setGamble(this.pointsController.userWin);
@@ -205,17 +212,12 @@ export default class Game {
         this.pointsController.userWin = this.pointsController.coinsToPoints(wonCoins);
     }
     gambleLose = () => {
+        // Clear win field
         this.pointsController.userWin = 0;
-
-        this.interfaceController.gambleOver();
-
-        this.interfaceController.setIdle();
     }
-    // TODO: Hide gamble modal when user transfer all of his money
-    // FIXME: Handle case when user took his win
 
     spin = () => {
-        // FIXME: Rethink about it
+        // FIXME:
         if (this.interfaceController.alertWindow.isOn) {
             console.log('Hide bonus spins result alert');
             this.interfaceController.hideAlert();

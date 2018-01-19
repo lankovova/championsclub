@@ -37,7 +37,7 @@ export default class InterfaceController {
         this.panel = new Panel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
             autoSpinClick: this.autoSpinClick,
-            setMaxBet: this.setMaxBet,
+            maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
             toggleLinesBlock: this.toggleLinesBlock,
             toggleBetPerLineBlock: this.toggleBetPerLineBlock,
@@ -97,14 +97,19 @@ export default class InterfaceController {
             this.props.setDenomination(denomination);
     }
 
-    setMaxBet = () => {
-        if (this.panel.btns.maxBet.state)
+    maxBetClickHandler = () => {
+        if (this.panel.btns.maxBet.state.maxbet) {
             this.props.setMaxBet();
+        } else if (this.panel.btns.maxBet.state.black) {
+            this.pickSuit('black')();
+        }
     }
 
     gambleClick = () => {
-        if (this.panel.btns.gamble.state) {
+        if (this.panel.btns.gamble.state.gamble) {
             this.props.startGamble();
+        } else if (this.panel.btns.gamble.state.red) {
+            this.pickSuit('red')();
         }
     }
 
@@ -148,8 +153,14 @@ export default class InterfaceController {
     enableAuto = () => this.panel.btns.auto.state = true;
     disableAuto = () => this.panel.btns.auto.state = false;
 
-    enableGamble = () => this.panel.btns.gamble.state = true;
-    disableGamble = () => this.panel.btns.gamble.state = false;
+    enableGamble = () => this.panel.btns.gamble.state.gamble = true;
+    disableGamble = () => this.panel.btns.gamble.state.gamble = false;
+
+    enableRed = () => this.panel.btns.gamble.state.red = true;
+    disableRed = () => this.panel.btns.gamble.state.red = false;
+
+    enableBlack = () => this.panel.btns.maxBet.state.black = true;
+    disableBlack = () => this.panel.btns.maxBet.state.black = false;
 
     enableSpinAndAuto = () => {
         this.panel.btns.SST.state.spin = true;
@@ -177,36 +188,43 @@ export default class InterfaceController {
     setIdle = () => {
         this.enableInterface();
 
+        // FIXME: Refactor
         this.panel.btns.SST.state.spin = true;
+        this.panel.btns.gamble.state.red = false;
+        this.panel.btns.gamble.state.gamble = false;
+        this.panel.btns.maxBet.state.black = false;
+        this.panel.btns.maxBet.state.maxbet = true;
     }
 
     setTakeWin = () => {
         this.disableInterface();
 
         this.enableTakeWin();
-        this.panel.btns.gamble.state = true;
+        this.enableGamble();
     }
 
     setGamble(userWinPoints) {
         // Disable whole interface
         this.disableInterface();
 
-        // Enable take win posibillity
-        this.enableTakeWin();
-
-        // TODO: Enable red/black buttons instead of gamble/max
-        // this.panel.btns.gamble.state.red = true;
-        // this.panel.btns.max.state.black = true;
-
         // Show modal
         this.gambleModal.start(userWinPoints);
     }
 
     gambleReadyToPick = () => {
+        // TODO: Enable red/black buttons instead of gamble/max
+        this.enableRed();
+        this.enableBlack();
+
+        // Enable take win posibillity
         this.enableTakeWin();
+
         this.panel.notifier.text = 'Choose red or black or take win';
     }
+
     gambleOver = () => {
+        this.gambleModal.hide();
+        this.setIdle();
         this.panel.notifier.text = 'Game over - gamble completed, place your bet';
     }
 
@@ -217,6 +235,7 @@ export default class InterfaceController {
      */
     pickSuit = (suit) => {
         return () => {
+            console.log(suit);
             if (this.gambleModal.btns[suit].state) {
                 // Disable take btn
                 this.disableTakeWin();
@@ -236,8 +255,8 @@ export default class InterfaceController {
     enableInterface = () => {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
 
-        // Also disable gamble btn
-        this.panel.btns.gamble.state = false;
+        // And disable gamble btn
+        this.panel.btns.gamble.state.gamble = false;
     }
 
     _initKeyboardListeners() {

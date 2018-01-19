@@ -1,35 +1,28 @@
-import Button from "./Button";
+import MultipleStatesButton from "./MultipleStatesButton";
 
-export default class GambleBtn extends Button {
+export default class GambleBtn extends MultipleStatesButton {
     constructor(props) {
         super(props);
 
-        this.overlayColor = props.overlayColor;
-    }
-
-    _initEffects() {
         const self = this;
-        this.node.onmouseenter = function() {
-            if (!self.isDisabled) {
-                self.isDisabled = false;
-                this.querySelector('.overflow-layer').style.backgroundColor = self.overlayColor;
-            }
-        };
-        this.node.onmousedown = function() {
-            if (!self.isDisabled) {
-                self.isDisabled = false;
-            }
-        };
-        this.node.onmouseup = function() {
-            if (!self.isDisabled) {
-                self.isDisabled = false;
-                this.querySelector('.overflow-layer').style.backgroundColor = '';
-            }
-        };
-        this.node.onmouseleave = function() {
-            if (!self.isDisabled) {
-                self.isDisabled = false;
-                this.querySelector('.overflow-layer').style.backgroundColor = '';
+        this.state = {
+            _gamble: false,
+            _red: false,
+            get gamble() { return this._gamble; },
+            set gamble(newState) {
+                if (newState)
+                    self.text = 'Gamble';
+
+                this._gamble = newState;
+                self._handleDisabling();
+            },
+            get red() { return this._red; },
+            set red(newState) {
+                if (newState)
+                    self.text = 'Red';
+
+                this._red = newState;
+                self._handleDisabling();
             }
         };
     }

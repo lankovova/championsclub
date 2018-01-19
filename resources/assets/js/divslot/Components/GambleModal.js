@@ -1,7 +1,7 @@
-import GambleBtn from './buttons/GambleBtn';
+import GambleModalButton from './buttons/GambleBtn';
 import {capitalize} from './../Helpers/stringHelper';
 
-import {gambleWin as gambleWinAPI} from './../MockAPI/gamble';
+import {gambleWin as gambleAPI} from './../MockAPI/gamble';
 
 import axios from 'axios';
 
@@ -34,32 +34,32 @@ export default class GambleModal {
         // TODO: Handle if gamble is extended
         // Init gamble modal btns here with passed nodes and click handlers
         this.btns = {
-            red: new GambleBtn({
+            red: new GambleModalButton({
                 node: this.node.querySelector('#red'),
                 onClick: this.props.pickSuit('red'),
                 overlayColor: redOverlayColor
             }),
-            heart: new GambleBtn({
+            heart: new GambleModalButton({
                 node: this.node.querySelector('#heart'),
                 onClick: this.props.pickSuit('heart'),
                 overlayColor: redOverlayColor
             }),
-            diamond: new GambleBtn({
+            diamond: new GambleModalButton({
                 node: this.node.querySelector('#diamond'),
                 onClick: this.props.pickSuit('diamond'),
                 overlayColor: redOverlayColor
             }),
-            black: new GambleBtn({
+            black: new GambleModalButton({
                 node: this.node.querySelector('#black'),
                 onClick: this.props.pickSuit('black'),
                 overlayColor: blueOverlayColor
             }),
-            club: new GambleBtn({
+            club: new GambleModalButton({
                 node: this.node.querySelector('#club'),
                 onClick: this.props.pickSuit('club'),
                 overlayColor: blueOverlayColor
             }),
-            spade: new GambleBtn({
+            spade: new GambleModalButton({
                 node: this.node.querySelector('#spade'),
                 onClick: this.props.pickSuit('spade'),
                 overlayColor: blueOverlayColor
@@ -109,7 +109,7 @@ export default class GambleModal {
             // });
 
             // return gambleResponse.data;
-            return gambleWinAPI;
+            return gambleAPI;
         } catch(err) {
             console.log(err);
         }
@@ -165,11 +165,8 @@ export default class GambleModal {
             this.setValues(0);
 
             setTimeout(() => {
-                // Hide gamble modal
-                this.hide();
-
                 // Start flipping card
-                droppedBigCard.style.zIndex = '';
+                this.bigCardNode.style.zIndex = '';
 
                 this.props.gambleOver();
             }, 1500);

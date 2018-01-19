@@ -1,6 +1,6 @@
-import Button from './Button';
+import MultipleStatesButton from './MultipleStatesButton';
 
-export default class SSTBtn extends Button {
+export default class SSTBtn extends MultipleStatesButton {
     constructor(props) {
         super(props);
 
@@ -46,37 +46,5 @@ export default class SSTBtn extends Button {
                 self._handleDisabling();
             }
         };
-
-        this.node.onclick = () => this.props.spinStopTake();
-    }
-
-    enable() {
-        // TODO: Maybe remember previous state before disabling
-        // and restore it here after enabling
-        console.log('TODO: Enabling SST btn');
-    }
-
-    disable() {
-        for (const stateKey of Object.keys(this.state)) {
-            // Skip private props
-            if (stateKey.includes('_')) continue;
-
-            this.state[stateKey] = false;
-        }
-    }
-
-    // Disables sst button if all of its states is set to false
-    _handleDisabling() {
-        let noAvailableState = true;
-
-        for (const stateKey of Object.keys(this.state)) {
-            // Skip private props
-            if (stateKey.includes('_')) continue;
-
-            if (this.state[stateKey]) noAvailableState = false;
-        }
-
-        // Disable button if all state are set to false
-        (noAvailableState) ? this.disableView() : this.enableView();
     }
 }
