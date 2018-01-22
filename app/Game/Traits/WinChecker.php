@@ -212,7 +212,7 @@ trait WinChecker {
         $spinResult['scatter_count'] = $scatterCount;
 
         if ( $scatterCount > 0) {
-            $comboPay = $this->paytable[ $this->scatter-1 ][ $scatterCount-1 ];
+            $comboPay = $this->paytable[ $this->scatter ][ $scatterCount-1 ];
         }
 
         if ($comboPay > 0) {

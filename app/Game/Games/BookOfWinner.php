@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class BookOfWinner extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 1;
-    public static $joker = 1;
+    public static $scatter = 0;
+    public static $joker = 0;
     public static $freeSpinsAmout = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [

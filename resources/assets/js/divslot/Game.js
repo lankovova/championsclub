@@ -138,7 +138,7 @@ export default class Game {
             if (settings.dev) {
                 return spinAPI;
             } else {
-                const response = await axios.post('http://admin.chcgreen.org/spin', {
+                const response = await axios.post('http://php-slots/spin', {
                     lines_amount: this.pointsController.lines,
                     bet_per_line: this.pointsController.betPerLine,
                     denomination: this.pointsController.denomination * 100,

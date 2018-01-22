@@ -1,15 +1,10 @@
-@import "../reset";
-@import "../fonts";
-@import "../loading";
-@import "../animations";
-@import "../preloader";
-@import "../panel";
-@import "../media/media_with_border.scss";
 @import "../game_types/with_borders";
 
 
 .alert .content {
     background: url('../img/games/bananas/images/freeSpinBg.png');
+    width: 541px;
+    height: 497px;
 }
 .main {
     background: url('../img/games/bananas/game_bg.png') center center;
@@ -20,8 +15,8 @@
     background-color: #686890;
     background-size: 100% 100%;
     font-size: 32px;
-    width: 54px;
-    height: 54px;
+    width: 53px;
+    height: 53px;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     cursor: pointer;

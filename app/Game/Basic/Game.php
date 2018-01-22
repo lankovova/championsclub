@@ -39,9 +39,8 @@ class Game {
             $result = $this->$checkType();
         } while (!$this->canUserWin($result["won_points"] * $this->denomination));
 
-        if ($result["scatter_count"] > 2) {
-            $this->areBonusSpins = true;
-        }
+        $this->areBonusSpins = $result["scatter_count"] > 2;
+
         $result["won_coins"] = $result["won_points"] * $this->denomination;
         $result["final_symbols"] = $this->finalSymbols;
         $this->result = $result;

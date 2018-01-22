@@ -1,4 +1,6 @@
-export const login = "http://admin.chcgreen.org/login"
-export const playerInfo = "http://admin.chcgreen.org/getplayerinfo"
-export const history = "http://admin.chcgreen.org/gethistory"
-export const isPlayerAuthed = "http://admin.chcgreen.org/isplayerauthed"
+// const appUrl = "admin.chcgreen.org"
+const appUrl = "php-slots"
+export const login = `http://${appUrl}/login`
+export const playerInfo = `http://${appUrl}/getplayerinfo`
+export const history = `http://${appUrl}/gethistory`
+export const isPlayerAuthed = `http://${appUrl}/isplayerauthed`

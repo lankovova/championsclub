@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 20,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -36,8 +36,7 @@ var settings = {
         {"image": "9.png"},
         {"image": "10.png"},
 		{"image": "11.png"},
-		{"image": "12.png"},
-		{"image": "13.png"}
+		{"image": "12.png"}
     ],
 
     "denominations": [1, 10, 25, 50, 100],

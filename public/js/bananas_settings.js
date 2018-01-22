@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 20,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,

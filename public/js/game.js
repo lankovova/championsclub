@@ -10641,7 +10641,7 @@ var Game = function () {
 
                         case 5:
                             _context2.next = 7;
-                            return _axios2.default.post('http://admin.chcgreen.org/spin', {
+                            return _axios2.default.post('http://php-slots/spin', {
                                 lines_amount: _this.pointsController.lines,
                                 bet_per_line: _this.pointsController.betPerLine,
                                 denomination: _this.pointsController.denomination * 100,

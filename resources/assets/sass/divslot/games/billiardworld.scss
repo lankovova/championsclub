@@ -1,10 +1,3 @@
-@import "../reset";
-@import "../fonts";
-@import "../loading";
-@import "../animations";
-@import "../preloader";
-@import "../panel";
-@import "../media/media_with_border.scss";
 @import "../game_types/with_borders";
 
 .alert .content {
@@ -14,19 +7,20 @@
     background: url('../img/games/billiardworld/game_bg.png') center center;
 }
 
+.line_presenters_container {
+    height: 659px;
+    top: 6px;
+    &.left {
+        left: 4px;
+    }
+    &.right {
+        right: 8px;
+    }
+}
 .line_presenter {
-    background-image: url('../img/line_presenter_glare.png');
-    background-color: #686890;
-    background-size: 100% 100%;
-    font-size: 32px;
-    width: 54px;
-    height: 54px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 50%;
+
+
 }
 
 .reel_wrapper {

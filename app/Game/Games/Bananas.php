@@ -4,10 +4,10 @@ namespace App\Game\Games;
 
 use App\Game\Games\Game;
 
-class FireRagePlus extends Game {
+class Bananas extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 5;
-    public static $joker = 4;
+    public static $scatter = 1;
+    public static $joker = 1;
     public static $freeSpinsAmout = 45;
     public static $symbolsAmount = 13;
     public static $paytable = [
