@@ -1272,6 +1272,10 @@ body {
   background: url("../img/games/bookofwinner/gamble/suits/diamond.png");
 }
 
+.panel__background {
+  background: none;
+}
+
 .main {
   background: url("../img/games/bookofwinner/game_bg.gif") center center;
 }
