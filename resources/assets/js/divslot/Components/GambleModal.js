@@ -130,7 +130,7 @@ export default class GambleModal {
             if (settings.dev) {
                 return gambleAPI;
             } else {
-                const gambleResponse = await axios.post('http://admin.chcgreen.org/gamble', {
+                const gambleResponse = await axios.post('/gamble', {
                     card: cardSuit
                 });
                 return gambleResponse.data;

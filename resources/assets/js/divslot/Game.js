@@ -124,9 +124,11 @@ export default class Game {
 
     getPlayerData = async () => {
         try {
-            // return (await axios.post('http://admin.chcgreen.org/getplayerinfo')).data;
-
-            return {cash: '153.94'}
+            if (settings.dev) {
+                return {cash: '153.94'}
+            } else {
+                return (await axios.post('/getplayerinfo')).data;
+            }
         } catch(err) {
             console.log(err);
         }
@@ -138,7 +140,7 @@ export default class Game {
             if (settings.dev) {
                 return spinAPI;
             } else {
-                const response = await axios.post('http://php-slots/spin', {
+                const response = await axios.post('/spin', {
                     lines_amount: this.pointsController.lines,
                     bet_per_line: this.pointsController.betPerLine,
                     denomination: this.pointsController.denomination * 100,
