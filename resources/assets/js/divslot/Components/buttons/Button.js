@@ -8,13 +8,20 @@ const spriteParts = {
 export default class Button {
     constructor(props) {
         this.node = props.node;
+        this.props = props;
 
         this._state = false;
         this.isDisabled = true;
 
-        this.node.onclick = () => props.onClick();
+        this.node.onclick = () => this.onClick();
 
         this._initEffects();
+    }
+
+    onClick() {
+        if (this.state == true) {
+            this.props.onClick();
+        }
     }
 
     _initEffects() {

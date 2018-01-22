@@ -36,11 +36,11 @@ export default class InterfaceController {
             autoSpinClick: this.autoSpinClick,
             maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
-            toggleLinesBlock: this.toggleLinesBlock,
-            toggleBetPerLineBlock: this.toggleBetPerLineBlock,
-            toggleDenominationBlock: this.toggleDenominationBlock,
-            toggleLanguageBlock: this.toggleLanguageBlock,
-            menuClickHandler: this.menuClickHandler
+            toggleLinesBlock: () => this.linesBlock.toggle(),
+            toggleBetPerLineBlock: () => this.betPerLineBlock.toggle(),
+            toggleDenominationBlock: () => this.denominationBlock.toggle(),
+            toggleLanguageBlock: () => this.langBlock.toggle(),
+            menuClickHandler: () => window.location.href = "/"
         });
 
         // Init toggling blocks like lines, betPerLine, denomination and language
@@ -62,6 +62,7 @@ export default class InterfaceController {
         );
     }
 
+    // TODO: Move state into component in multi state component
     spinStopTake = () => {
         if (this.panel.btns.SST.state.spin) {
             this.props.spinReels();
@@ -99,31 +100,6 @@ export default class InterfaceController {
         } else if (this.panel.btns.gamble.state.red) {
             this.pickSuit('red')();
         }
-    }
-
-    toggleLinesBlock = () => {
-        if (this.panel.btns.lines.state)
-            this.linesBlock.toggle();
-    }
-
-    toggleBetPerLineBlock = () => {
-        if (this.panel.btns.betPerLine.state)
-            this.betPerLineBlock.toggle();
-    }
-
-    toggleDenominationBlock = () => {
-        if (this.panel.btns.denomination.state)
-            this.denominationBlock.toggle();
-    }
-
-    toggleLanguageBlock = () => {
-        if (this.panel.btns.language.state)
-            this.langBlock.toggle();
-    }
-
-    menuClickHandler = () => {
-        if (this.panel.btns.menu.state)
-            window.location.href = "/";
     }
 
     showAlert = (alertText) => {
@@ -265,7 +241,7 @@ export default class InterfaceController {
                     this.denominationBlock.setValue();
                     break;
                 case 27: // ESC
-                    this.menuClickHandler();
+                    this.panel.btns.menu.onClick();
                     break;
                 default: {}
             }
