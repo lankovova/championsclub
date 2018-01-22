@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export default class Game {
     constructor(gameName) {
-        document.querySelector('.panel').style.bottom = '45px';
+        // document.querySelector('.panel').style.bottom = '45px';
 
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
