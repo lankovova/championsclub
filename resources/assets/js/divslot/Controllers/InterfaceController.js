@@ -297,7 +297,7 @@ export default class InterfaceController {
             node: document.querySelector('#linesBlock'),
             items: settings.lines
         }, {
-            setValue: this.setLines,
+            onItemClick: this.setLines,
             enableSelf: this.enableLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
