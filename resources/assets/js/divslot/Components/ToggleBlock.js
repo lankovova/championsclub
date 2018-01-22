@@ -37,6 +37,8 @@ export default class ToggleBlock {
     }
 
     setValue = (itemValue) => {
+        if (this.isToggled) return;
+
         if (this.props.controlBtn.state) {
             this.props.setValue(itemValue);
         }
@@ -46,9 +48,9 @@ export default class ToggleBlock {
         this.itemsNodes.forEach(item => {
             // Add click event on item
             item.onclick = () => {
-                this.setValue(item.getAttribute('data-value'));
-
                 if (this.props.controlBtn.state) {
+                    this.props.setValue(item.getAttribute('data-value'));
+
                     // Toggle(hide) block itself
                     this.toggle();
                 }
