@@ -13,12 +13,6 @@ export default class InterfaceController {
         // DEV TEMP
         this._showControls();
 
-        // Init toggling blocks like lines, betPerLine, denomination and language
-        this._initTogglingBlocks();
-
-        // Init handler on keyboard actions
-        this._initKeyboardListeners();
-
         this.linePresenters = new LinePresenters({
             lines: this.props.lines,
             containerNode: this.props.containerNode
@@ -48,6 +42,12 @@ export default class InterfaceController {
             toggleLanguageBlock: this.toggleLanguageBlock,
             menuClickHandler: this.menuClickHandler
         });
+
+        // Init toggling blocks like lines, betPerLine, denomination and language
+        this._initTogglingBlocks();
+
+        // Init handler on keyboard actions
+        this._initKeyboardListeners();
     }
 
     _showControls() {
@@ -83,26 +83,6 @@ export default class InterfaceController {
             }
             this.panel.btns.auto.isOn = !this.panel.btns.auto.isOn;
         }
-    }
-
-    setLines = (lines) => {
-        if (this.panel.btns.lines.state) {
-            this.props.setLines(lines);
-        }
-    }
-
-    setBerPerLine = (betPerLine) => {
-        if (this.panel.btns.betPerLine.state)
-            this.props.setBerPerLine(betPerLine);
-    }
-
-    setDenomination = (denomination) => {
-        if (this.panel.btns.denomination.state)
-            this.props.setDenomination(denomination);
-    }
-
-    setLanguage = (countryCode) => {
-        this.panel.btns.language.setBg(countryCode);
     }
 
     maxBetClickHandler = () => {
@@ -141,6 +121,11 @@ export default class InterfaceController {
             this.langBlock.toggle();
     }
 
+    menuClickHandler = () => {
+        if (this.panel.btns.menu.state)
+            window.location.href = "/";
+    }
+
     showAlert = (alertText) => {
         this.alertWindow.text = alertText;
         this.alertWindow.show();
@@ -148,11 +133,6 @@ export default class InterfaceController {
 
     hideAlert = () => {
         this.alertWindow.hide();
-    }
-
-    menuClickHandler = () => {
-        if (this.panel.btns.menu.state)
-            window.location.href = "/";
     }
 
     enableSpin = () => this.panel.btns.SST.enable('spin');
@@ -273,16 +253,16 @@ export default class InterfaceController {
                     this.spinStopTake();
                     break;
                 case 188: // <
-                    this.setLines();
+                    this.linesBlock.setValue();
                     break;
                 case 190: // >
-                    this.setBerPerLine();
+                    this.betPerLineBlock.setValue();
                     break;
                 case 77: // m
                     this.maxBetClickHandler();
                     break;
                 case 68: // d
-                    this.setDenomination();
+                    this.denominationBlock.setValue();
                     break;
                 case 27: // ESC
                     this.menuClickHandler();
@@ -297,44 +277,44 @@ export default class InterfaceController {
             node: document.querySelector('#linesBlock'),
             items: settings.lines
         }, {
-            onItemClick: this.setLines,
-            enableSelf: this.enableLines,
+            setValue: this.props.setLines,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
-            setSpinPossibility: this.props.setSpinPossibility
+            setSpinPossibility: this.props.setSpinPossibility,
+            controlBtn: this.panel.btns.lines
         });
 
         this.betPerLineBlock = new ToggleBlock({
             node: document.querySelector('#betPerLineBlock'),
             items: settings.betPerLine
         }, {
-            onItemClick: this.setBerPerLine,
-            enableSelf: this.enableBetPerLines,
+            setValue: this.props.setBetPerLine,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
-            setSpinPossibility: this.props.setSpinPossibility
+            setSpinPossibility: this.props.setSpinPossibility,
+            controlBtn: this.panel.btns.betPerLine
         });
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
             items: settings.denominations.map(item => item.toFixed(2))
         }, {
-            onItemClick: this.setDenomination,
-            enableSelf: this.enableDenomination,
+            setValue: this.props.setDenomination,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
-            setSpinPossibility: this.props.setSpinPossibility
+            setSpinPossibility: this.props.setSpinPossibility,
+            controlBtn: this.panel.btns.denomination
         });
 
         this.langBlock = new ToggleLanguageBlock({
             node: document.querySelector('#languageBlock'),
             items: ['en', 'ru', 'ua']
         }, {
-            onItemClick: this.setLanguage,
-            enableSelf: this.enableLanguage,
+            setValue: () => this.panel.btns.language.setBg,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
-            setSpinPossibility: this.props.setSpinPossibility
+            setSpinPossibility: this.props.setSpinPossibility,
+            controlBtn: this.panel.btns.language
         });
     }
 

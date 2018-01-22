@@ -36,24 +36,35 @@ export default class ToggleBlock {
         });
     }
 
+    setValue = (itemValue) => {
+        if (this.props.controlBtn.state) {
+            this.props.setValue(itemValue);
+        }
+    }
+
     _initListeners() {
         this.itemsNodes.forEach(item => {
             // Add click event on item
             item.onclick = () => {
-                this.props.onItemClick(item.getAttribute('data-value'));
+                this.setValue(item.getAttribute('data-value'));
 
-                // Toggle(hide) block itself
-                this.toggle();
+                if (this.props.controlBtn.state) {
+                    // Toggle(hide) block itself
+                    this.toggle();
+                }
             }
         });
 
         this.node.addEventListener(transitionEnd, (event) => {
             if (this.isToggled) {
                 this.props.disableInterface();
-                this.props.enableSelf();
+
+                // Enable self controll button
+                this.props.controlBtn.enable();
             } else {
                 // If block is sparred
                 event.target.style.display = '';
+
                 // FIXME: After toggling restore previous interface state
                 // After toggling enable interface
                 this.props.setInterfaceIdle();

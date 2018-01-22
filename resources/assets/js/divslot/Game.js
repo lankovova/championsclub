@@ -10,6 +10,8 @@ import axios from 'axios';
 
 export default class Game {
     constructor(gameName) {
+        document.querySelector('.panel').style.bottom = '45px';
+
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
 
@@ -48,7 +50,7 @@ export default class Game {
             stopAutoSpinning: this.stopAutoSpinning,
             setDenomination: this.setDenomination,
             setLines: this.setLines,
-            setBerPerLine: this.setBerPerLine,
+            setBetPerLine: this.setBetPerLine,
             setMaxBet: this.setMaxBet,
             startGamble: this.startGamble,
             gambleWin: this.gambleWin,
@@ -88,10 +90,10 @@ export default class Game {
         const maxBetVars = getMultiplyNearestLowerNumbers(this.pointsController.userCashInPoints, settings.lines, settings.betPerLine);
 
         this.setLines(maxBetVars.firstNumber);
-        this.setBerPerLine(maxBetVars.secondNumber);
+        this.setBetPerLine(maxBetVars.secondNumber);
     }
 
-    setBerPerLine = newBetPerLine => this.setBetRelatedValue(settings.betPerLine, this.pointsController.betPerLine, this.pointsController.setBetPerLine)(newBetPerLine);
+    setBetPerLine = newBetPerLine => this.setBetRelatedValue(settings.betPerLine, this.pointsController.betPerLine, this.pointsController.setBetPerLine)(newBetPerLine);
     setDenomination = newDenom => this.setBetRelatedValue(settings.denominations, this.pointsController.denomination, this.pointsController.setDenomination)(newDenom);
 
     setBetRelatedValue = (array, currentValue, setNewValue) => {
@@ -232,7 +234,6 @@ export default class Game {
     spin = () => {
         // FIXME:
         if (this.interfaceController.alertWindow.isOn) {
-            console.log('Hide bonus spins result alert');
             this.interfaceController.hideAlert();
         }
 
