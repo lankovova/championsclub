@@ -36,7 +36,8 @@ export default class ToggleBlock {
         });
     }
 
-    setValue = (itemValue) => {
+    setValue(itemValue) {
+        // Do nothing if block is toggled
         if (this.isToggled) return;
 
         if (this.props.controlBtn.state) {
