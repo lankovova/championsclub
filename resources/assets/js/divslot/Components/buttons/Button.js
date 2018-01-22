@@ -19,7 +19,7 @@ export default class Button {
     }
 
     onClick() {
-        if (this.state == true) {
+        if (this.state === true) {
             this.props.onClick();
         }
     }
