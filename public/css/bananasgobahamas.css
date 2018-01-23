@@ -139,6 +139,7 @@ table {
 body {
   font-family: "Oswald",  sans-serif;
   overflow: hidden;
+  text-transform: uppercase;
 }
 
 .alert {
@@ -265,6 +266,125 @@ body {
   height: 64px;
 }
 
+.notifier {
+  position: absolute;
+  width: 738px;
+  height: 72px;
+  top: 23px;
+  left: 210px;
+}
+
+.credit_text {
+  position: absolute;
+  left: 275px;
+  top: 120px;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.credit_amount {
+  position: absolute;
+  left: 374px;
+  top: 105px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  width: 227px;
+  height: 51px;
+  text-align: right;
+  font-size: 47px;
+  padding-right: 12px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.bet_per_line_text {
+  right: 337px;
+  position: absolute;
+  top: 20px;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.bet_per_line_amount {
+  right: 239px;
+  position: absolute;
+  top: 20px;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.lines_amount_text {
+  right: 337px;
+  position: absolute;
+  top: 59px;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.lines_amount {
+  right: 239px;
+  position: absolute;
+  top: 59px;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.bet_text {
+  right: 355px;
+  position: absolute;
+  top: 118px;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.bet_amount {
+  right: 237px;
+  position: absolute;
+  top: 118px;
+  font-size: 29px;
+  letter-spacing: 2px;
+}
+
+.cash_out_btn {
+  background-image: url(../img/old_game/cash_out_btn_bg.png);
+  background-size: 100%;
+  position: absolute;
+  left: 109px;
+  top: 194px;
+  width: 199px;
+  height: 52px;
+}
+
+.info_btn {
+  background-image: url(../img/old_game/info_btn_bg.png);
+  background-size: 200%;
+  position: absolute;
+  left: 303px;
+  top: 194px;
+  width: 199px;
+  height: 55px;
+}
+
+.auto_btn {
+  background-image: url(../img/old_game/auto_btn_bg.png);
+  background-size: 200%;
+  position: absolute;
+  left: 272px;
+  bottom: 13px;
+  width: 199px;
+  height: 57px;
+}
+
+.exit_btn {
+  background-image: url(../img/old_game/exit_btn_bg.png);
+  background-size: 200%;
+  position: absolute;
+  left: 66px;
+  bottom: 13px;
+  width: 199px;
+  height: 57px;
+}
+
 .lines_btn {
   background-size: 200%;
   position: absolute;
@@ -274,24 +394,59 @@ body {
 }
 
 .one_lines_btn {
-  background: url(../img/old_game/one_lines_btn_bg.png);
+  background-image: url(../img/old_game/one_lines_btn_bg.png);
   left: 494px;
 }
 
 .three_lines_btn {
-  background: url(../img/old_game/three_lines_btn_bg.png);
+  background-image: url(../img/old_game/three_lines_btn_bg.png);
+  left: 641px;
 }
 
 .five_lines_btn {
-  background: url(../img/old_game/five_lines_btn_bg.png);
+  background-image: url(../img/old_game/five_lines_btn_bg.png);
+  left: 787px;
 }
 
 .sevens_lines_btn {
-  background: url(../img/old_game/sevens_lines_btn_bg.png);
+  background-image: url(../img/old_game/seven_lines_btn_bg.png);
+  right: 620px;
+  height: 65px;
 }
 
 .nine_lines_btn {
-  background: url(../img/old_game/nine_lines_btn_bg.png);
+  background-image: url(../img/old_game/nine_lines_btn_bg.png);
+  right: 474px;
+}
+
+.bet_btn {
+  background: url(../img/old_game/bet_btn_bg.png);
+  background-size: 200%;
+  position: absolute;
+  right: 276px;
+  top: 186px;
+  width: 194px;
+  height: 50px;
+}
+
+.maxbet_btn {
+  background: url(../img/old_game/maxbet_btn_bg.png);
+  background-size: 200%;
+  position: absolute;
+  right: 72px;
+  top: 189px;
+  width: 194px;
+  height: 50px;
+}
+
+.start_btn {
+  background: url(../img/old_game/start_btn_bg.png);
+  background-size: 200%;
+  position: absolute;
+  right: 127px;
+  bottom: 17px;
+  width: 245px;
+  height: 64px;
 }
 
 .panel {
