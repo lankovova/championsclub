@@ -78,7 +78,7 @@ class GameController extends Controller
 
         if ($game->areBonusSpins()) {
             $spinResult["bonus_spins"] = $game->bonusSpin();
-            $result["bonus_spins"]["amount"] = $game::$freeSpinsAmount;
+            $spinResult["bonus_spins"]["amount"] = $game::$freeSpinsAmount;
         }
 
         $spinResult["total_won_coins"] = $spinResult["won_coins"] + ((isset($spinResult["bonus_spins"])) ? $spinResult["bonus_spins"]["won_coins"] : 0);
