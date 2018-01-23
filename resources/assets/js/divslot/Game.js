@@ -85,7 +85,11 @@ export default class Game {
             this.setSpinPossibility();
 
             // Remove preloader
-            window.onGameLoaded();
+            if (window.onGameLoaded) {
+                window.onGameLoaded();
+            } else {
+                console.warn('No onGameLoaded function');
+            }
         })();
     }
 
