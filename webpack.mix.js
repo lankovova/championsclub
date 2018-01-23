@@ -1,27 +1,14 @@
 let mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application.` By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-// mix.js('resources/assets/js/main.js', 'public/js')
+//Gamechoose and login
+// mix.js('resources/assets/js/game_choose/main.js', 'public/js')
 //     .sass('resources/assets/sass/app.scss', 'public/css')
 //     .options({
 //         processCssUrls: false
 //     });
 
-mix.js('resources/assets/js/game_choose/main.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .options({
-        processCssUrls: false
-    });
 
+// games
 mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/sevensonfireplus.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/sevensonfire.scss', 'public/css')
@@ -63,7 +50,7 @@ mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/alwayscherry.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/dolphinspearl.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/queenofhearts.scss', 'public/css')
-    // .sass('resources/assets/sass/divslot/games/bananasgobahamas.scss', 'public/css')
+    .sass('resources/assets/sass/divslot/games/bananasgobahamas.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/themoneygame.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/luckyladyscharm.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/venetiamcarnival.scss', 'public/css')

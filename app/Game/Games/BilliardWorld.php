@@ -9,7 +9,7 @@ class BilliardWorld extends Game {
     public static $scatter = 7;
     public static $joker = 10;
 	public static $freeSpinsJocker = 9;
-    public static $freeSpinsAmout = 15;
+    public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 12;
     public static $paytable = [
         [0,0,5,20,100], //PAYTABLE FOR SYMBOL 1

@@ -11,7 +11,7 @@
     
     @yield('content')
 
-    <script>
+    {{--  <script>
         var loadingTime = 2000;
         var loadingBlockLength = 21;
         var loadingBlockCount = 0;
@@ -48,7 +48,7 @@
         function onGameLoaded() {
             removeLoading();
         }
-    </script>
+    </script>  --}}
     @yield('js')
 </body>
 </html>

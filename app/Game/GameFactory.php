@@ -27,7 +27,7 @@ class GameFactory {
         $game->symbolsAmount = $gameClass::$symbolsAmount;
         $game->paytable = $gameClass::$paytable;
         $game->linesTypes = $gameClass::$linesTypes;
-        $game->freeSpinsAmout = $gameClass::$freeSpinsAmout;
+        $game->freeSpinsAmount = $gameClass::$freeSpinsAmount;
 
         $customGame = new $gameClass($game);
         return $customGame;

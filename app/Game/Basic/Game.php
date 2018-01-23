@@ -15,7 +15,7 @@ class Game {
     public $symbolsAmount;
     public $paytable;
     public $linesTypes;
-    public $freeSpinsAmout;
+    public $freeSpinsAmount;
 
     public $wonCash;
     public $cashPool;
@@ -58,7 +58,7 @@ class Game {
         $freeSpinsObj = new $bonusClass([
             "symbolsAmount" => $this->symbolsAmount,
             "scatter" => $this->scatter,
-            "spinsAmout" => $this->freeSpinsAmout,
+            "spinsAmount" => $this->freeSpinsAmount,
             "cashPool" => $this->cashPool - ($this->result["won_points"] * $this->denomination),
             "reelsAmount" => $this->reelsAmount,
             "linesTypes" => $this->linesTypes,
