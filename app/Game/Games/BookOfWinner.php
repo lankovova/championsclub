@@ -8,7 +8,7 @@ class BookOfWinner extends Game {
     public static $reelsAmount = 5;
     public static $scatter = 0;
     public static $joker = 0;
-    public static $freeSpinsAmout = 10;
+    public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [
         [0, 0, 5, 25, 100],         // Symbol 1

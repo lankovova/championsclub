@@ -943,6 +943,12 @@ body {
 }
 
 .alert .content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
   width: 50%;
   min-width: 300px;
   height: 50%;
@@ -1308,4 +1314,10 @@ body {
 
 .header {
   background: url("../img/games/bookofwinner/header.gif");
+}
+
+.alert .content {
+  background: url("../img/games/bookofwinner/freeSpinBg.png");
+  width: 1184px;
+  height: 626px;
 }

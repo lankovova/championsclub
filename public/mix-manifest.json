@@ -1,6 +1,4 @@
 {
-    "/js/main.js": "/js/main.js",
-    "/css/app.css": "/css/app.css",
     "/css/bookofwinner.css": "/css/bookofwinner.css",
     "/css/kingsofjewels.css": "/css/kingsofjewels.css",
     "/css/crazybarmen.css": "/css/crazybarmen.css",
@@ -26,5 +24,6 @@
     "/css/hotsevens.css": "/css/hotsevens.css",
     "/css/icelegend.css": "/css/icelegend.css",
     "/css/luckyladysglamor.css": "/css/luckyladysglamor.css",
-    "/css/captain.css": "/css/captain.css"
+    "/css/captain.css": "/css/captain.css",
+    "/css/bananasgobahamas.css": "/css/bananasgobahamas.css"
 }

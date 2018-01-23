@@ -78,6 +78,57 @@ table {
   font-weight: 700;
 }
 
+#loading {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #000;
+  font-family: Oswald;
+}
+
+.loading__container {
+  background: #000 url("../img/loading/loading_bg.png") center center;
+  width: 927px;
+  height: 900px;
+  position: relative;
+}
+
+#loading__block {
+  position: absolute;
+  top: 347px;
+  left: 167px;
+  background: url("../img/loading/loading_block_bg.png");
+  width: 0;
+  height: 37px;
+}
+
+.loading__text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  position: absolute;
+  top: 307px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 362px;
+}
+
 @-webkit-keyframes symbolAnimation {
   0% {
     background-position: 0;
@@ -892,6 +943,12 @@ body {
 }
 
 .alert .content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
   width: 50%;
   min-width: 300px;
   height: 50%;
@@ -903,7 +960,6 @@ body {
 .main {
   width: 1680px;
   height: 731px;
-  background: url("../img/games/computerworld/game_bg.png") center center;
   background-size: contain;
   position: absolute;
 }
@@ -936,7 +992,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 4px 13px 0;
+  margin: 6px 13px 0;
   height: 692px;
 }
 
@@ -970,7 +1026,6 @@ body {
 }
 
 .reel_wrapper {
-  background: url("../img/games/computerworld/reel_bg.png");
   background-size: cover;
   position: relative;
   overflow: hidden;
@@ -985,6 +1040,284 @@ body {
 .header {
   width: 100%;
   height: 105px;
-  background: url("../img/games/computerworld/header.png");
   background-size: 100% 100%;
+}
+
+.gamble {
+  display: none;
+  position: absolute;
+  top: 115px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 1263px;
+  height: 717px;
+  background: white;
+  z-index: 1;
+  background: url("../img/games/bookofwinner/gamble/gamble_bg.png");
+}
+
+.gamble .button__suit-color {
+  cursor: pointer;
+  top: 260px;
+  position: absolute;
+  width: 419px;
+  height: 108px;
+  text-align: center;
+  line-height: 98px;
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 7px;
+}
+
+.gamble .button__suit-color .overflow-layer {
+  border-radius: 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.gamble .button__red {
+  left: 57px;
+  background: url("../img/games/bookofwinner/gamble/buttons/suit_color.png");
+  color: #cc0000;
+}
+
+.gamble .button__black {
+  right: 57px;
+  background: url("../img/games/bookofwinner/gamble/buttons/suit_color.png");
+  color: #000;
+}
+
+.gamble .button__suit {
+  cursor: pointer;
+  position: absolute;
+  top: 397px;
+  width: 173px;
+  height: 114px;
+}
+
+.gamble .button__suit .overflow-layer {
+  border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.gamble .button__spade {
+  right: 77px;
+  background: url("../img/games/bookofwinner/gamble/buttons/spade.png");
+}
+
+.gamble .button__club {
+  right: 286px;
+  background: url("../img/games/bookofwinner/gamble/buttons/club.png");
+}
+
+.gamble .button__diamond {
+  left: 286px;
+  background: url("../img/games/bookofwinner/gamble/buttons/diamond.png");
+}
+
+.gamble .button__heart {
+  left: 77px;
+  background: url("../img/games/bookofwinner/gamble/buttons/heart.png");
+}
+
+.gamble__amount {
+  color: #fef669;
+  width: 50%;
+  position: absolute;
+  left: 107px;
+  top: 56px;
+  text-transform: uppercase;
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px #000;
+}
+
+.gamble__amount-value {
+  width: 230px;
+  text-align: center;
+  margin-top: 18px;
+}
+
+.gamble__to-win {
+  width: 50%;
+  position: absolute;
+  right: 85px;
+  top: 56px;
+  color: #fef669;
+  text-transform: uppercase;
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px #000;
+  text-align: right;
+}
+
+.gamble__to-win-color {
+  margin-top: 18px;
+}
+
+.card {
+  background: url("../img/games/bookofwinner/gamble/cards/card.gif");
+  width: 221px;
+  height: 326px;
+  position: absolute;
+  z-index: 1;
+  top: 169px;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.card__suit {
+  position: absolute;
+  width: 242px;
+  height: 327px;
+  top: 169px;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.card__spade {
+  background: url("../img/games/bookofwinner/gamble/cards/spade.png");
+}
+
+.card__club {
+  background: url("../img/games/bookofwinner/gamble/cards/club.png");
+}
+
+.card__heart {
+  background: url("../img/games/bookofwinner/gamble/cards/heart.png");
+}
+
+.card__diamond {
+  background: url("../img/games/bookofwinner/gamble/cards/diamond.png");
+}
+
+.previous-cards {
+  width: 1084px;
+  height: 86px;
+  background: url("../img/games/bookofwinner/gamble/previous_cards.png");
+  position: absolute;
+  bottom: 89px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.previous-cards__text {
+  height: 100%;
+  width: 50%;
+  font-size: 33px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 67px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.previous-cards__suits {
+  height: 100%;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 78px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.suit-spade,
+.suit-club,
+.suit-heart,
+.suit-diamond {
+  width: 51px;
+  height: 46px;
+  margin-right: 7px;
+}
+
+.suit-spade {
+  background: url("../img/games/bookofwinner/gamble/suits/spade.png");
+}
+
+.suit-club {
+  background: url("../img/games/bookofwinner/gamble/suits/club.png");
+}
+
+.suit-heart {
+  background: url("../img/games/bookofwinner/gamble/suits/heart.png");
+}
+
+.suit-diamond {
+  background: url("../img/games/bookofwinner/gamble/suits/diamond.png");
+}
+
+.panel__background {
+  background: none;
+}
+
+.main {
+  background: url("../img/games/computerworld/game_bg.png") center center;
+}
+
+.line_presenter {
+  background-image: url("../img/line_presenter_glare.png");
+  background-color: #686890;
+  background-size: 100% 100%;
+  font-size: 32px;
+  width: 54px;
+  height: 54px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reel_wrapper {
+  background: url("../img/games/computerworld/reel_bg.png");
+}
+
+.header {
+  background: url("../img/games/computerworld/header.png");
+}
+
+.alert .content {
+  background: url("../img/games/computerworld/images/freeSpinBg.png");
+  width: 1184px;
+  height: 626px;
 }

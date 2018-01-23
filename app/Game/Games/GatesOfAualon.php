@@ -9,7 +9,7 @@ class FireRagePlus extends Game {
     public static $scatter = 11;
     public static $joker = 4;
 	public static $freeSpinsJocker = 5;
-    public static $freeSpinsAmout = 15;
+    public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 12;
     public static $paytable = [
         [0,0,5,20,100], //PAYTABLE FOR SYMBOL 1

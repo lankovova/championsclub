@@ -8,7 +8,7 @@ class BeautyDolphins extends Game {
     public static $reelsAmount = 5;
     public static $scatter = 10;
     public static $joker = 4;
-    public static $freeSpinsAmout = 10;
+    public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 13;
     public static $paytable = [
         [0,0,20,100,400], //PAYTABLE FOR SYMBOL 1
