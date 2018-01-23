@@ -36,10 +36,13 @@ class FreeSpins {
         $this->denomination = $settings["denomination"];
         $this->joker = $this->scatter;
 
+        $spined = 0;
         while ($this->spinsAmount > 0) {
             $this->spin();
             $this->spinsAmount--;
+            $spined++;
         }
+        $this->spinResult["spined"] = $spined;
         $this->spinResult["type"] = "free_spins";
         $this->spinResult["won_points"] = $this->wonPoints;
         $this->spinResult["won_coins"] = $this->wonPoints * $this->denomination;
