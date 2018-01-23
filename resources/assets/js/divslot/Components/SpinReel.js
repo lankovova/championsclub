@@ -126,6 +126,29 @@ export default class Reel {
     }
 
     /**
+     * Change all symbols in reel with given symbol
+     * @param {Number} symbolNum
+     */
+    async substitute(symbolNum) {
+        // Gradually substitute all symbols in reel with given symbol with delay between
+        for (let i = this.finalSymbols.length - 1; i >= 0; i--) {
+            // Skip already placed symbol
+            if (this.finalSymbols[i].symbolNum === symbolNum) continue;
+
+            await (() => {
+                return new Promise(resolve => {
+                    this.finalSymbols[i].changeSymbol(symbolNum);
+                    setTimeout(() => {
+                        resolve();
+                    }, 500);
+                });
+            })();
+        }
+
+        return new Promise(resolve => resolve());
+    }
+
+    /**
      * Add symbols to reel
      * @param {Array<Symbol>} symbolsArr Array of Symbols to add to reel
      */
