@@ -59,6 +59,31 @@ export default class FallReel {
     }
 
     /**
+     * Change all symbols in reel with given symbol
+     * @param {Number} symbolNum Number of substitution symbol
+     */
+    async substitute(symbolNum) {
+        // Gradually substitute all symbols in reel with given symbol with delay between
+        for (let i = this.finalSymbols.length - 1; i >= 0; i--) {
+            // Skip already placed symbol
+            if (this.finalSymbols[i].symbolNum === symbolNum) continue;
+
+            await (() => {
+                return new Promise(resolve => {
+                    this.finalSymbols[i].changeSymbol(symbolNum);
+
+                    // TODO: Move delay variable to settings
+                    setTimeout(() => {
+                        resolve();
+                    }, 500);
+                });
+            })();
+        }
+
+        return new Promise(resolve => resolve());
+    }
+
+    /**
      * Remove old symbols from reel
      */
     removeOldSymbols() {

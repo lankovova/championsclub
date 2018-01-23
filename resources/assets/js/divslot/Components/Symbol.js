@@ -26,6 +26,11 @@ export default class Symbol {
         this.symbolNode.appendChild(this.overflowLayer);
     }
 
+    changeSymbol(symbolNum) {
+        this.symbolNum = symbolNum;
+        this.symbolNode.style.backgroundImage = `url('${settings.symbolsImagesPath + settings.symbols[symbolNum].image}')`;
+    }
+
     animate() {
         // If animation for this symbol exists then apply it
         if (settings.symbols[this.symbolNum].animation) {

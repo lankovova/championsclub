@@ -4,14 +4,17 @@ import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 
-import {normalSpinWin as spinAPI} from './MockAPI/spin';
+import {substitution as spinAPI} from './MockAPI/spin';
 
 import axios from 'axios';
 
+const bonusSpinsTypes = {
+    freeSpin: 'free_spin',
+    substitution: 'substitution',
+}
+
 export default class Game {
     constructor(gameName) {
-        // document.querySelector('.panel').style.bottom = '45px';
-
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
 
@@ -23,7 +26,8 @@ export default class Game {
             on: false,
             spins: [],
             currentSpinIndex: 0,
-            totalSpins: 0
+            totalSpins: 0,
+            type: ''
         };
 
         // Flag for check if auto spins in turned on
@@ -246,6 +250,9 @@ export default class Game {
             // Disable whole interface
             this.interfaceController.disableInterface();
 
+            // Reset user win when bonus spins starts
+            this.pointsController.userWin = 0
+
             // Start bonus spin
             this.bonusSpin();
         } else {
@@ -275,6 +282,7 @@ export default class Game {
                 this.bonusSpins.spins = this.spinResponse.bonus_spins.spins;
                 this.bonusSpins.currentSpinIndex = 0;
                 this.bonusSpins.totalSpins = this.spinResponse.bonus_spins.spins.length;
+                this.bonusSpins.type = this.spinResponse.bonus_spins.type;
             }
 
             // Decrease user cash
@@ -373,6 +381,20 @@ export default class Game {
                     this.pointsController.userWin += winCashInLine;
                     this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
                 });
+            }
+
+            // If bonus spins type is substitution
+            if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                // Replace symbols in reel
+                await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
+
+                // Count win
+                if (previousBonusSpin.substitution.won) {
+                    await this.linesController.showWinningLines(previousBonusSpin.substitution.result, winCashInLine => {
+                        this.pointsController.userWin += winCashInLine;
+                        this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
+                    });
+                }
             }
 
             // If no more bonus spins

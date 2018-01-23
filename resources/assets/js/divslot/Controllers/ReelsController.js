@@ -104,6 +104,45 @@ export default class ReelsContorller {
         });
     }
 
+    // Make substitution on symbols map with substitution symbols
+    async makeSubstitution(finalSymbolsMap, substitutionSymbolNumber) {
+        // Get reels where found symbstitution symbol in center row
+        const reelsToSubstitute = this.getReelsWhereFoundSpecificSymbolInRow(finalSymbolsMap, substitutionSymbolNumber);
+
+        // Make substitution in specific reels
+        for (let i = 0; i < reelsToSubstitute.length; i++) {
+            const reelIndex = reelsToSubstitute[i];
+
+            await this.reels[reelIndex].substitute(substitutionSymbolNumber);
+        }
+
+        return new Promise(resolve => resolve());
+    }
+
+    /**
+     *
+     * @param {[][]} symbolsMap
+     * @param {Number} specificSymbolNumber
+     */
+    getReelsWhereFoundSpecificSymbolInRow(symbolsMap, specificSymbolNumber) {
+        let reelsNumbers = [];
+
+        for (let i = 0; i < settings.numOfReels; i++) {
+            const reelsSymbols = this.getReelSymbolsFromSymbolsMap(symbolsMap, i);
+
+            let allSymbolsIsSubstituitonSymbol = true;
+            reelsSymbols.forEach(symbol => {
+                if (symbol !== specificSymbolNumber) {
+                    allSymbolsIsSubstituitonSymbol = false;
+                }
+            });
+
+            if (allSymbolsIsSubstituitonSymbol) reelsNumbers.push(i);
+        }
+
+        return reelsNumbers;
+    }
+
     onReelStop = reelIndex => {
         stoppedReelsCounter++;
 
@@ -127,7 +166,7 @@ export default class ReelsContorller {
      * Get array of reel symbols from symbols map
      * @param {Array<Array>} symbolsMap Symbols map in two dimensional array
      * @param {Number} reelIndex Reel index
-     * @returns {Array<Symbol>} Returns array of reel symbols
+     * @returns {Array<Number|Symbol>} Returns array of reel symbols
      */
     getReelSymbolsFromSymbolsMap(symbolsMap, reelIndex) {
         let resultArray = [];
