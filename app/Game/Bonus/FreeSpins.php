@@ -15,7 +15,7 @@ class FreeSpins {
 
     protected $symbolsAmount;
     protected $scatter;
-    protected $spinsAmout;
+    protected $spinsAmount;
     protected $reelsAmount;
     protected $linesTypes;
     protected $joker;
@@ -26,7 +26,7 @@ class FreeSpins {
     function __construct($settings) {
         $this->symbolsAmount = $settings["symbolsAmount"];
         $this->scatter = $settings["scatter"];
-        $this->spinsAmout = $settings["spinsAmout"];
+        $this->spinsAmount = $settings["spinsAmount"];
         $this->cashPool = $settings["cashPool"];
         $this->reelsAmount = $settings["reelsAmount"];
         $this->linesTypes = $settings["linesTypes"];
@@ -36,9 +36,9 @@ class FreeSpins {
         $this->denomination = $settings["denomination"];
         $this->joker = $this->scatter;
 
-        while ($this->spinsAmout > 0) {
+        while ($this->spinsAmount > 0) {
             $this->spin();
-            $this->spinsAmout--;
+            $this->spinsAmount--;
         }
         $this->spinResult["type"] = "free_spins";
         $this->spinResult["won_points"] = $this->wonPoints;

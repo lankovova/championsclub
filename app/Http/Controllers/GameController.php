@@ -70,15 +70,15 @@ class GameController extends Controller
         $spinResult = $game->spin();
 
         // turn off bonus spins
-        if ($reqData["game"] === "BookOfWinner") {
-            while ($game->areBonusSpins()) {
-                $spinResult = $game->spin();
-            }
-        }
+        // if ($reqData["game"] === "BookOfWinner") {
+        //     while ($game->areBonusSpins()) {
+        //         $spinResult = $game->spin();
+        //     }
+        // }
 
         if ($game->areBonusSpins()) {
-            $bonusSpinResult = $game->bonusSpin();
-            $spinResult["bonus_spins"] = $bonusSpinResult;
+            $spinResult["bonus_spins"] = $game->bonusSpin();
+            $result["bonus_spins"]["amount"] = $game::$freeSpinsAmount;
         }
 
         $spinResult["total_won_coins"] = $spinResult["won_coins"] + ((isset($spinResult["bonus_spins"])) ? $spinResult["bonus_spins"]["won_coins"] : 0);
@@ -114,11 +114,23 @@ class GameController extends Controller
     }
 
     private function validateRequest($request) {
-       return [
+        if (!is_int($request->input("denomination"))) {
+            echo "denomination must be integer";
+            exit;
+        }
+        if (!is_int($request->input("lines_amount"))) {
+            echo "lines_amount must be integer";
+            exit;
+        }
+        if (!is_int($request->input("bet_per_line"))) {
+            echo "bet_per_line must be integer";
+            exit;
+        }
+        return [
             "lines_amount" => (int)$request->input("lines_amount"),
             "bet_per_line" => (int)$request->input("bet_per_line"),
             "denomination" => (int)$request->input("denomination"),
             "game" => (string)$request->input("game")
-       ];
+        ];
     }
 }

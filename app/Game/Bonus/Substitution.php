@@ -17,7 +17,7 @@ class Substitution {
     protected $symbolsAmount;
     protected $scatter;
     protected $finalSymbols;
-    protected $spinsAmout;
+    protected $spinsAmount;
     protected $reelsAmount;
     protected $linesTypes;
     protected $joker;
@@ -28,7 +28,7 @@ class Substitution {
     function __construct($settings) {
         $this->symbolsAmount = $settings["symbolsAmount"];
         $this->scatter = $settings["scatter"];
-        $this->spinsAmout = $settings["spinsAmout"];
+        $this->spinsAmount = $settings["spinsAmount"];
         $this->cashPool = $settings["cashPool"];
         $this->reelsAmount = $settings["reelsAmount"];
         $this->linesTypes = $settings["linesTypes"];
@@ -46,42 +46,37 @@ class Substitution {
     }
 
     protected function spin() {
-        $spinsAmout = $this->spinsAmout;
+        $spinsAmount = $this->spinsAmount;
         $this->wonPoints = 0;
         $this->spinResult = [];
         $this->generateSubstitutionSymbol();
 
-        while ($spinsAmout > 0) {
+        while ($spinsAmount > 0) {
             $report = [];
             do {
                 $this->fillSymbols();
                 $this->generateFinalSymbols();
                 $result = $this->checkForWinCombosScatterAsJoker();
-            } while (!$this->canUserWin($result["won_points"] * $this->denomination));
 
-            $this->cashPool -= ($result["won_points"] * $this->denomination);
-            $this->wonPoints += $result["won_points"];
+                $this->generateSubstitutionFinalSymbols();
+                $sResult = $this->checkForSubstitutionWin();
+            } while (!$this->canUserWin(
+                ($result["won_points"] + $sResult["won_points"]) * $this->denomination
+            ));
+
+            $this->cashPool -= (($result["won_points"] + $sResult["won_points"]) * $this->denomination);
+            $this->wonPoints += ($result["won_points"] + $sResult["won_points"]);
 
             $report["spin_result"] = $result["spin_result"];
             $report["final_symbols"] = $this->finalSymbols;
 
-            $this->generateSubstitutionFinalSymbols();
-            $result = $this->checkForSubstitutionWin();
-
-            if (!$this->canUserWin($result["won_points"] * $this->denomination)) {
-                $this->spin();
-                return;
-            }
-
-            $this->cashPool -= ($result["won_points"] * $this->denomination);
-            $this->wonPoints += $result["won_points"];
-
-            $report["substitution"]["result"] = $result["spin_result"];
-            $report["substitution"]["won"] = $result["won"];
+            $report["substitution"]["result"] = $sResult["spin_result"];
+            $report["substitution"]["won"] = $sResult["won"];
             $report["substitution"]["final_symbols"] = $this->substitutionFinalSymbols;
+
             $this->substitutionResult['spins'][] = $report;
 
-            $spinsAmout--;
+            $spinsAmount--;
         }
     }
 
