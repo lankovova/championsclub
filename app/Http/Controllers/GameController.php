@@ -114,18 +114,7 @@ class GameController extends Controller
     }
 
     private function validateRequest($request) {
-        if (!is_int($request->input("denomination"))) {
-            echo "denomination must be integer";
-            exit;
-        }
-        if (!is_int($request->input("lines_amount"))) {
-            echo "lines_amount must be integer";
-            exit;
-        }
-        if (!is_int($request->input("bet_per_line"))) {
-            echo "bet_per_line must be integer";
-            exit;
-        }
+
         return [
             "lines_amount" => (int)$request->input("lines_amount"),
             "bet_per_line" => (int)$request->input("bet_per_line"),
