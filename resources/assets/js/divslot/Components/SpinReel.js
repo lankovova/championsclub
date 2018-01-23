@@ -138,6 +138,8 @@ export default class Reel {
             await (() => {
                 return new Promise(resolve => {
                     this.finalSymbols[i].changeSymbol(symbolNum);
+
+                    // TODO: Move delay variable to settings
                     setTimeout(() => {
                         resolve();
                     }, 500);

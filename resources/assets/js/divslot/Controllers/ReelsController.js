@@ -113,9 +113,11 @@ export default class ReelsContorller {
         for (let i = 0; i < reelsToSubstitute.length; i++) {
             const reelIndex = reelsToSubstitute[i];
 
+            // Wait for reel to substitute
             await this.reels[reelIndex].substitute(substitutionSymbolNumber);
         }
 
+        // Resolve after all reels have done substitution
         return new Promise(resolve => resolve());
     }
 
