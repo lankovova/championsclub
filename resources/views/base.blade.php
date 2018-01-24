@@ -49,6 +49,8 @@
             removeLoading();
         }
     </script>
+
+    <script src="{{asset('public/js/_common_settings.js')}}"></script>
     @yield('js')
 </body>
 </html>
