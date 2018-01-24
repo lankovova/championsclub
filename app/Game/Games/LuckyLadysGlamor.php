@@ -31,11 +31,11 @@ class LuckyLadysGlamor extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        return $this->game->bonusSpin("FreeSpins");
     }
 
     public function areBonusSpins() {
