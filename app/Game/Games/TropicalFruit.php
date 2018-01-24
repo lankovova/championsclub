@@ -34,7 +34,8 @@ class TropicalFruit extends Game {
     }
 
     public function areBonusSpins() {
-        return $this->game->areBonusSpins();
+        //no bonus spin
+        return false;
     }
 
 }
