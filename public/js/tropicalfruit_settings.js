@@ -5,7 +5,7 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": 'fall',
+    "animationType": "spin",
 
     "numOfSpinsBeforeStop": 3,
 
@@ -19,7 +19,9 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-        "gamblePreviousCardsAmount": 7,     "gambleExtended": true,      "symbolsImagesPath": "public/img/games//tropicalfruit/symbols/",
+    "gamblePreviousCardsAmount": 7,
+    "gambleExtended": true,
+    "symbolsImagesPath": "public/img/games//tropicalfruit/symbols/",
     "symbolsAnimationsPath": "public/img/games/tropicalfruit/symbols/animations/",
 
     "symbols": [
@@ -33,7 +35,7 @@ var settings = {
         {"image": "8.png"}
     ],
 
-    "denominations": [1, 10, 25, 50, 100],
+    "denominations": [0.01, 0.1, 0.25, 0.5, 1],
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     "betPerLine": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100],
 

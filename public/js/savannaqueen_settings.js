@@ -19,7 +19,9 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-        "gamblePreviousCardsAmount": 7,     "gambleExtended": true,      "symbolsImagesPath": "public/img/games//savannaqueen/symbols/",
+    "gamblePreviousCardsAmount": 7,
+    "gambleExtended": true,
+    "symbolsImagesPath": "public/img/games//savannaqueen/symbols/",
     "symbolsAnimationsPath": "public/img/games/savannaqueen/symbols/animations/",
 
     "symbols": [
@@ -32,10 +34,10 @@ var settings = {
         {"image": "7.png"},
         {"image": "8.png"},
         {"image": "9.png"},
-        {"image": "10.png"}
-		{"image": "11.png"}
-		{"image": "12.png"}
-		{"image": "13.png"}
+        {"image": "10.png"},
+        {"image": "11.png"},
+        {"image": "12.png"},
+        {"image": "13.png"}
     ],
 
     "denominations": [1, 10, 25, 50, 100],
