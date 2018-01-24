@@ -30,7 +30,7 @@ class TropicalFruit extends Game {
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        return $this->game->bonusSpin("FreeSpins");
     }
 
     public function areBonusSpins() {
