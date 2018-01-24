@@ -4,7 +4,7 @@ namespace App\Game\Games;
 
 use App\Game\Games\Game;
 
-class FireRagePlus extends Game {
+class SnowWhite extends Game {
     public static $reelsAmount = 5;
     public static $scatter = [11,7,8];
     public static $joker = 6;

@@ -5,7 +5,7 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": 'fall',
+    "animationType": "spin",
 
     "numOfSpinsBeforeStop": 3,
 
@@ -19,7 +19,9 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-        "gamblePreviousCardsAmount": 7,     "gambleExtended": true,      "symbolsImagesPath": "public/img/games//snowwhite/symbols/",
+    "gamblePreviousCardsAmount": 7,
+    "gambleExtended": false,
+    "symbolsImagesPath": "public/img/games/snowwhite/symbols/",
     "symbolsAnimationsPath": "public/img/games/snowwhite/symbols/animations/",
 
     "symbols": [
@@ -33,9 +35,8 @@ var settings = {
         {"image": "8.png"},
         {"image": "9.png"},
         {"image": "10.png"},
-		{"image": "11.png"},
-		{"image": "12.png"},
-		{"image": "13.png"}
+        {"image": "11.png"},
+        {"image": "12.png"}
     ],
 
     "denominations": [0.01, 0.1, 0.25, 0.5, 1],
