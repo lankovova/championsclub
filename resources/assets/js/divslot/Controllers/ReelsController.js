@@ -122,6 +122,23 @@ export default class ReelsContorller {
     }
 
     /**
+     * Check if there is a bonus spins dropped
+     */
+    isThereBonusSpins() {
+        let scattersAmount = 0;
+
+        this.reels.forEach(reel => {
+            reel.finalSymbols.forEach(symbol => {
+                if (symbol.isScatter)
+                    scattersAmount++;
+            });
+        });
+
+        // TODO: Move 3 to individual settings of each game
+        return (scattersAmount >= 3) ? true : false;
+    }
+
+    /**
      *
      * @param {[][]} symbolsMap
      * @param {Number} specificSymbolNumber

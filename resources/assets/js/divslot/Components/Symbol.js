@@ -4,9 +4,11 @@ export default class Symbol {
         this.highlighted = false;
         this.symbolNode;
 
-        this.isScatter = (settings.symbols[this.symbolNum].isScatter) ? true : false;
-
         this.initSymbol();
+    }
+
+    get isScatter() {
+        return (settings.symbols[this.symbolNum].isScatter) ? true : false;
     }
 
     initSymbol() {

@@ -26,7 +26,8 @@ export default class Game {
             on: false,
             spins: [],
             currentSpinIndex: 0,
-            totalSpins: 0,
+            amount: 0,
+            standartSpinsAmount: 0,
             type: ''
         };
 
@@ -285,7 +286,8 @@ export default class Game {
                 this.bonusSpins.on = true;
                 this.bonusSpins.spins = this.spinResponse.bonus_spins.spins;
                 this.bonusSpins.currentSpinIndex = 0;
-                this.bonusSpins.totalSpins = this.spinResponse.bonus_spins.spins.length;
+                this.bonusSpins.standartSpinsAmount = +this.spinResponse.bonus_spins.amount;
+                this.bonusSpins.amount = +this.bonusSpins.standartSpinsAmount;
                 this.bonusSpins.type = this.spinResponse.bonus_spins.type;
             }
 
@@ -321,7 +323,7 @@ export default class Game {
         // FIXME:
         this.linesController.unblurAllSymbols();
 
-        this.interfaceController.panel.notifier.text = `Free spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.totalSpins}`;
+        this.interfaceController.panel.notifier.text = `Free spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.amount}`;
 
         // Spin reels to given final symbols
         this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
@@ -353,7 +355,7 @@ export default class Game {
 
         // Checking is there bonus spins
         if (this.bonusSpins.on) {
-            // If bonus spins dropped
+            // If first bonus spins
             if (this.bonusSpins.currentSpinIndex === 0) {
                 this.bonusSpins.on = true;
 
@@ -364,12 +366,12 @@ export default class Game {
                 });
 
                 // Show alert and wait for user to press start btn
-                this.interfaceController.showAlert(`You won ${this.bonusSpins.totalSpins} bonus spins`);
+                this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins`);
 
                 // Transfer user regular spin win
                 await this.transferWin();
 
-                this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.totalSpins} free spins`;
+                this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} free spins`;
 
                 // Enable spin btn to start bonus spins
                 this.interfaceController.enableSpin();
@@ -378,6 +380,16 @@ export default class Game {
             }
 
             const previousBonusSpin = this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1];
+
+            // If dropped more bonus spins then increase counter
+            // TODO: Also show alert and notify user about more bonus spins
+            if (this.reelsController.isThereBonusSpins()) {
+                console.log('More bonus spins dropped');
+
+                // Increase
+                this.bonusSpins.amount += this.bonusSpins.standartSpinsAmount;
+            }
+
             // If user won on bonus spin
             if (previousBonusSpin.won) {
                 // Show win lines and transfer win from regular spin
@@ -402,11 +414,11 @@ export default class Game {
             }
 
             // If no more bonus spins
-            if (this.bonusSpins.currentSpinIndex === this.bonusSpins.totalSpins) {
+            if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
                 this.interfaceController.panel.notifier.text = `Free spins ended. You won ${this.pointsController.userWin} points`;
 
                 // Show alert
-                this.interfaceController.showAlert(`Free spins ended, you won ${this.pointsController.userWin} points in ${this.bonusSpins.totalSpins} spins`);
+                this.interfaceController.showAlert(`Free spins ended, you won ${this.pointsController.userWin} points in ${this.bonusSpins.amount} spins`);
 
                 // Tun off bonus spins
                 this.bonusSpins.on = false;
