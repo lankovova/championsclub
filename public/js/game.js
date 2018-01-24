@@ -1754,21 +1754,31 @@ var spriteParts = {
 
 var Button = function () {
     function Button(props) {
+        var _this = this;
+
         _classCallCheck(this, Button);
 
         this.node = props.node;
+        this.props = props;
 
         this._state = false;
         this.isDisabled = true;
 
         this.node.onclick = function () {
-            return props.onClick();
+            return _this.onClick();
         };
 
         this._initEffects();
     }
 
     _createClass(Button, [{
+        key: 'onClick',
+        value: function onClick() {
+            if (this.state === true) {
+                this.props.onClick();
+            }
+        }
+    }, {
         key: '_initEffects',
         value: function _initEffects() {
             var self = this;
@@ -2292,6 +2302,11 @@ var MultipleStatesButton = function (_Button) {
     }
 
     _createClass(MultipleStatesButton, [{
+        key: 'onClick',
+        value: function onClick() {
+            this.props.onClick();
+        }
+    }, {
         key: 'enable',
         value: function enable(stateToEnable) {
             // Disable all states of button
@@ -4430,6 +4445,12 @@ var _Symbol = function () {
             this.symbolNode.appendChild(this.overflowLayer);
         }
     }, {
+        key: 'changeSymbol',
+        value: function changeSymbol(symbolNum) {
+            this.symbolNum = symbolNum;
+            this.symbolNode.style.backgroundImage = 'url(\'' + (settings.symbolsImagesPath + settings.symbols[symbolNum].image) + '\')';
+        }
+    }, {
         key: 'animate',
         value: function animate() {
             // If animation for this symbol exists then apply it
@@ -4647,6 +4668,16 @@ var ToggleBlock = function () {
             });
         }
     }, {
+        key: 'setValue',
+        value: function setValue(itemValue) {
+            // Do nothing if block is toggled
+            if (this.isToggled) return;
+
+            if (this.props.controlBtn.state) {
+                this.props.setValue(itemValue);
+            }
+        }
+    }, {
         key: '_initListeners',
         value: function _initListeners() {
             var _this2 = this;
@@ -4654,20 +4685,25 @@ var ToggleBlock = function () {
             this.itemsNodes.forEach(function (item) {
                 // Add click event on item
                 item.onclick = function () {
-                    _this2.props.onItemClick(item.getAttribute('data-value'));
+                    if (_this2.props.controlBtn.state) {
+                        _this2.props.setValue(item.getAttribute('data-value'));
 
-                    // Toggle(hide) block itself
-                    _this2.toggle();
+                        // Toggle(hide) block itself
+                        _this2.toggle();
+                    }
                 };
             });
 
             this.node.addEventListener(_events.transitionEnd, function (event) {
                 if (_this2.isToggled) {
                     _this2.props.disableInterface();
-                    _this2.props.enableSelf();
+
+                    // Enable self controll button
+                    _this2.props.controlBtn.enable();
                 } else {
                     // If block is sparred
                     event.target.style.display = '';
+
                     // FIXME: After toggling restore previous interface state
                     // After toggling enable interface
                     _this2.props.setInterfaceIdle();
@@ -10554,6 +10590,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var bonusSpinsTypes = {
+    freeSpin: 'free_spin',
+    substitution: 'substitution'
+};
+
 var Game = function () {
     function Game(gameName) {
         var _this = this;
@@ -10565,10 +10606,10 @@ var Game = function () {
             var maxBetVars = (0, _arrayHelp.getMultiplyNearestLowerNumbers)(_this.pointsController.userCashInPoints, settings.lines, settings.betPerLine);
 
             _this.setLines(maxBetVars.firstNumber);
-            _this.setBerPerLine(maxBetVars.secondNumber);
+            _this.setBetPerLine(maxBetVars.secondNumber);
         };
 
-        this.setBerPerLine = function (newBetPerLine) {
+        this.setBetPerLine = function (newBetPerLine) {
             return _this.setBetRelatedValue(settings.betPerLine, _this.pointsController.betPerLine, _this.pointsController.setBetPerLine)(newBetPerLine);
         };
 
@@ -10609,20 +10650,37 @@ var Game = function () {
                     switch (_context.prev = _context.next) {
                         case 0:
                             _context.prev = 0;
+
+                            if (!settings.dev) {
+                                _context.next = 5;
+                                break;
+                            }
+
                             return _context.abrupt('return', { cash: '153.94' });
 
-                        case 4:
-                            _context.prev = 4;
+                        case 5:
+                            _context.next = 7;
+                            return _axios2.default.post('/getplayerinfo');
+
+                        case 7:
+                            return _context.abrupt('return', _context.sent.data);
+
+                        case 8:
+                            _context.next = 13;
+                            break;
+
+                        case 10:
+                            _context.prev = 10;
                             _context.t0 = _context['catch'](0);
 
                             console.log(_context.t0);
 
-                        case 7:
+                        case 13:
                         case 'end':
                             return _context.stop();
                     }
                 }
-            }, _callee, _this, [[0, 4]]);
+            }, _callee, _this, [[0, 10]]);
         }));
         this.getSpinResponse = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var response;
@@ -10637,11 +10695,11 @@ var Game = function () {
                                 break;
                             }
 
-                            return _context2.abrupt('return', _spin.normalSpinWin);
+                            return _context2.abrupt('return', _spin.substitution);
 
                         case 5:
                             _context2.next = 7;
-                            return _axios2.default.post('http://php-slots/spin', {
+                            return _axios2.default.post('/spin', {
                                 lines_amount: _this.pointsController.lines,
                                 bet_per_line: _this.pointsController.betPerLine,
                                 denomination: _this.pointsController.denomination * 100,
@@ -10797,7 +10855,6 @@ var Game = function () {
         this.spin = function () {
             // FIXME:
             if (_this.interfaceController.alertWindow.isOn) {
-                console.log('Hide bonus spins result alert');
                 _this.interfaceController.hideAlert();
             }
 
@@ -10809,6 +10866,9 @@ var Game = function () {
 
                 // Disable whole interface
                 _this.interfaceController.disableInterface();
+
+                // Reset user win when bonus spins starts
+                _this.pointsController.userWin = 0;
 
                 // Start bonus spin
                 _this.bonusSpin();
@@ -10839,6 +10899,7 @@ var Game = function () {
                     _this.bonusSpins.spins = _this.spinResponse.bonus_spins.spins;
                     _this.bonusSpins.currentSpinIndex = 0;
                     _this.bonusSpins.totalSpins = _this.spinResponse.bonus_spins.spins.length;
+                    _this.bonusSpins.type = _this.spinResponse.bonus_spins.type;
                 }
 
                 // Decrease user cash
@@ -10896,7 +10957,7 @@ var Game = function () {
                             // Checking is there bonus spins
 
                             if (!_this.bonusSpins.on) {
-                                _context6.next = 24;
+                                _context6.next = 30;
                                 break;
                             }
 
@@ -10948,8 +11009,29 @@ var Game = function () {
                             });
 
                         case 16:
-                            if (!(_this.bonusSpins.currentSpinIndex === _this.bonusSpins.totalSpins)) {
+                            if (!(_this.bonusSpins.type === bonusSpinsTypes.substitution)) {
                                 _context6.next = 22;
+                                break;
+                            }
+
+                            _context6.next = 19;
+                            return _this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, _this.spinResponse.bonus_spins.substitution_symbol);
+
+                        case 19:
+                            if (!previousBonusSpin.substitution.won) {
+                                _context6.next = 22;
+                                break;
+                            }
+
+                            _context6.next = 22;
+                            return _this.linesController.showWinningLines(previousBonusSpin.substitution.result, function (winCashInLine) {
+                                _this.pointsController.userWin += winCashInLine;
+                                _this.interfaceController.panel.notifier.text = 'You won ' + _this.pointsController.userWin + ' points';
+                            });
+
+                        case 22:
+                            if (!(_this.bonusSpins.currentSpinIndex === _this.bonusSpins.totalSpins)) {
+                                _context6.next = 28;
                                 break;
                             }
 
@@ -10973,35 +11055,35 @@ var Game = function () {
 
                             return _context6.abrupt('return');
 
-                        case 22:
+                        case 28:
 
                             // Spin bonus spin
                             _this.bonusSpin();
 
                             return _context6.abrupt('return');
 
-                        case 24:
+                        case 30:
                             if (!_this.spinResponse.won) {
-                                _context6.next = 37;
+                                _context6.next = 43;
                                 break;
                             }
 
-                            _context6.next = 27;
+                            _context6.next = 33;
                             return _this.linesController.showWinningLines(_this.spinResponse.spin_result, function (winCashInLine) {
                                 _this.pointsController.userWin += winCashInLine;
                                 _this.interfaceController.panel.notifier.text = 'You won ' + _this.pointsController.userWin + ' points';
                             });
 
-                        case 27:
+                        case 33:
                             if (!_this.autoSpinIsOn) {
-                                _context6.next = 32;
+                                _context6.next = 38;
                                 break;
                             }
 
-                            _context6.next = 30;
+                            _context6.next = 36;
                             return _this.transferWin();
 
-                        case 30:
+                        case 36:
 
                             // If auto spins was disabled while transfering money
                             if (!_this.autoSpinIsOn) {
@@ -11013,17 +11095,17 @@ var Game = function () {
 
                             return _context6.abrupt('return');
 
-                        case 32:
+                        case 38:
 
                             // Enable possibility to take win or gamble
                             _this.interfaceController.setTakeWin();
                             _this.interfaceController.panel.notifier.text = 'Take win or gamble';
 
                             _this.linesController.cycleShowingWinningLines();
-                            _context6.next = 43;
+                            _context6.next = 49;
                             break;
 
-                        case 37:
+                        case 43:
                             // Lose case
                             // Reset userWin block after
                             _this.pointsController.userWin = 0;
@@ -11031,7 +11113,7 @@ var Game = function () {
                             // If auto spin enabled
 
                             if (!_this.autoSpinIsOn) {
-                                _context6.next = 41;
+                                _context6.next = 47;
                                 break;
                             }
 
@@ -11039,12 +11121,12 @@ var Game = function () {
 
                             return _context6.abrupt('return');
 
-                        case 41:
+                        case 47:
 
                             _this.interfaceController.setIdle();
                             _this.setSpinPossibility();
 
-                        case 43:
+                        case 49:
                         case 'end':
                             return _context6.stop();
                     }
@@ -11063,7 +11145,8 @@ var Game = function () {
             on: false,
             spins: [],
             currentSpinIndex: 0,
-            totalSpins: 0
+            totalSpins: 0,
+            type: ''
         };
 
         // Flag for check if auto spins in turned on
@@ -11084,7 +11167,7 @@ var Game = function () {
             stopAutoSpinning: this.stopAutoSpinning,
             setDenomination: this.setDenomination,
             setLines: this.setLines,
-            setBerPerLine: this.setBerPerLine,
+            setBetPerLine: this.setBetPerLine,
             setMaxBet: this.setMaxBet,
             startGamble: this.startGamble,
             gambleWin: this.gambleWin,
@@ -11124,7 +11207,11 @@ var Game = function () {
                             _this.setSpinPossibility();
 
                             // Remove preloader
-                            window.onGameLoaded();
+                            if (window.onGameLoaded) {
+                                window.onGameLoaded();
+                            } else {
+                                console.warn('No onGameLoaded function');
+                            }
 
                         case 8:
                         case 'end':
@@ -11745,6 +11832,89 @@ var ReelsContorller = function () {
                 }
             });
         }
+
+        // Make substitution on symbols map with substitution symbols
+
+    }, {
+        key: 'makeSubstitution',
+        value: function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(finalSymbolsMap, substitutionSymbolNumber) {
+                var reelsToSubstitute, i, reelIndex;
+                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                // Get reels where found symbstitution symbol in center row
+                                reelsToSubstitute = this.getReelsWhereFoundSpecificSymbolInRow(finalSymbolsMap, substitutionSymbolNumber);
+
+                                // Make substitution in specific reels
+
+                                i = 0;
+
+                            case 2:
+                                if (!(i < reelsToSubstitute.length)) {
+                                    _context3.next = 9;
+                                    break;
+                                }
+
+                                reelIndex = reelsToSubstitute[i];
+
+                                // Wait for reel to substitute
+
+                                _context3.next = 6;
+                                return this.reels[reelIndex].substitute(substitutionSymbolNumber);
+
+                            case 6:
+                                i++;
+                                _context3.next = 2;
+                                break;
+
+                            case 9:
+                                return _context3.abrupt('return', new Promise(function (resolve) {
+                                    return resolve();
+                                }));
+
+                            case 10:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, this);
+            }));
+
+            function makeSubstitution(_x3, _x4) {
+                return _ref3.apply(this, arguments);
+            }
+
+            return makeSubstitution;
+        }()
+
+        /**
+         *
+         * @param {[][]} symbolsMap
+         * @param {Number} specificSymbolNumber
+         */
+
+    }, {
+        key: 'getReelsWhereFoundSpecificSymbolInRow',
+        value: function getReelsWhereFoundSpecificSymbolInRow(symbolsMap, specificSymbolNumber) {
+            var reelsNumbers = [];
+
+            for (var i = 0; i < settings.numOfReels; i++) {
+                var reelsSymbols = this.getReelSymbolsFromSymbolsMap(symbolsMap, i);
+
+                var allSymbolsIsSubstituitonSymbol = true;
+                reelsSymbols.forEach(function (symbol) {
+                    if (symbol !== specificSymbolNumber) {
+                        allSymbolsIsSubstituitonSymbol = false;
+                    }
+                });
+
+                if (allSymbolsIsSubstituitonSymbol) reelsNumbers.push(i);
+            }
+
+            return reelsNumbers;
+        }
     }, {
         key: 'stopReels',
         value: function stopReels() {
@@ -11755,7 +11925,7 @@ var ReelsContorller = function () {
          * Get array of reel symbols from symbols map
          * @param {Array<Array>} symbolsMap Symbols map in two dimensional array
          * @param {Number} reelIndex Reel index
-         * @returns {Array<Symbol>} Returns array of reel symbols
+         * @returns {Array<Number|Symbol>} Returns array of reel symbols
          */
 
     }, {
@@ -11821,6 +11991,8 @@ var _Symbol3 = _interopRequireDefault(_Symbol2);
 var _events = __webpack_require__(93);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11963,6 +12135,100 @@ var Reel = function () {
         }
 
         /**
+         * Change all symbols in reel with given symbol
+         * @param {Number} symbolNum
+         */
+
+    }, {
+        key: 'substitute',
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(symbolNum) {
+                var _this2 = this;
+
+                var _loop, i, _ret;
+
+                return regeneratorRuntime.wrap(function _callee$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _loop = /*#__PURE__*/regeneratorRuntime.mark(function _loop(i) {
+                                    return regeneratorRuntime.wrap(function _loop$(_context) {
+                                        while (1) {
+                                            switch (_context.prev = _context.next) {
+                                                case 0:
+                                                    if (!(_this2.finalSymbols[i].symbolNum === symbolNum)) {
+                                                        _context.next = 2;
+                                                        break;
+                                                    }
+
+                                                    return _context.abrupt('return', 'continue');
+
+                                                case 2:
+                                                    _context.next = 4;
+                                                    return function () {
+                                                        return new Promise(function (resolve) {
+                                                            _this2.finalSymbols[i].changeSymbol(symbolNum);
+
+                                                            // TODO: Move delay variable to settings
+                                                            setTimeout(function () {
+                                                                resolve();
+                                                            }, 500);
+                                                        });
+                                                    }();
+
+                                                case 4:
+                                                case 'end':
+                                                    return _context.stop();
+                                            }
+                                        }
+                                    }, _loop, _this2);
+                                });
+                                i = this.finalSymbols.length - 1;
+
+                            case 2:
+                                if (!(i >= 0)) {
+                                    _context2.next = 10;
+                                    break;
+                                }
+
+                                return _context2.delegateYield(_loop(i), 't0', 4);
+
+                            case 4:
+                                _ret = _context2.t0;
+
+                                if (!(_ret === 'continue')) {
+                                    _context2.next = 7;
+                                    break;
+                                }
+
+                                return _context2.abrupt('continue', 7);
+
+                            case 7:
+                                i--;
+                                _context2.next = 2;
+                                break;
+
+                            case 10:
+                                return _context2.abrupt('return', new Promise(function (resolve) {
+                                    return resolve();
+                                }));
+
+                            case 11:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function substitute(_x) {
+                return _ref.apply(this, arguments);
+            }
+
+            return substitute;
+        }()
+
+        /**
          * Add symbols to reel
          * @param {Array<Symbol>} symbolsArr Array of Symbols to add to reel
          */
@@ -11978,7 +12244,7 @@ var Reel = function () {
     }, {
         key: 'resetReel',
         value: function resetReel() {
-            var _this2 = this;
+            var _this3 = this;
 
             // Remove useless symbols
             while (this.reelNode.childNodes.length !== settings.numOfRows) {
@@ -11993,7 +12259,7 @@ var Reel = function () {
             // Set spin animation time back
             setTimeout(function () {
                 // Reset spin duration
-                _this2.reelNode.style.transitionDuration = settings.spinAnimationTimeInMs + 'ms';
+                _this3.reelNode.style.transitionDuration = settings.spinAnimationTimeInMs + 'ms';
             }, 0);
         }
     }]);
@@ -12126,6 +12392,100 @@ var FallReel = function () {
             }
 
             return spin;
+        }()
+
+        /**
+         * Change all symbols in reel with given symbol
+         * @param {Number} symbolNum Number of substitution symbol
+         */
+
+    }, {
+        key: 'substitute',
+        value: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(symbolNum) {
+                var _this2 = this;
+
+                var _loop, i, _ret;
+
+                return regeneratorRuntime.wrap(function _callee2$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                _loop = /*#__PURE__*/regeneratorRuntime.mark(function _loop(i) {
+                                    return regeneratorRuntime.wrap(function _loop$(_context2) {
+                                        while (1) {
+                                            switch (_context2.prev = _context2.next) {
+                                                case 0:
+                                                    if (!(_this2.finalSymbols[i].symbolNum === symbolNum)) {
+                                                        _context2.next = 2;
+                                                        break;
+                                                    }
+
+                                                    return _context2.abrupt('return', 'continue');
+
+                                                case 2:
+                                                    _context2.next = 4;
+                                                    return function () {
+                                                        return new Promise(function (resolve) {
+                                                            _this2.finalSymbols[i].changeSymbol(symbolNum);
+
+                                                            // TODO: Move delay variable to settings
+                                                            setTimeout(function () {
+                                                                resolve();
+                                                            }, 500);
+                                                        });
+                                                    }();
+
+                                                case 4:
+                                                case 'end':
+                                                    return _context2.stop();
+                                            }
+                                        }
+                                    }, _loop, _this2);
+                                });
+                                i = this.finalSymbols.length - 1;
+
+                            case 2:
+                                if (!(i >= 0)) {
+                                    _context3.next = 10;
+                                    break;
+                                }
+
+                                return _context3.delegateYield(_loop(i), 't0', 4);
+
+                            case 4:
+                                _ret = _context3.t0;
+
+                                if (!(_ret === 'continue')) {
+                                    _context3.next = 7;
+                                    break;
+                                }
+
+                                return _context3.abrupt('continue', 7);
+
+                            case 7:
+                                i--;
+                                _context3.next = 2;
+                                break;
+
+                            case 10:
+                                return _context3.abrupt('return', new Promise(function (resolve) {
+                                    return resolve();
+                                }));
+
+                            case 11:
+                            case 'end':
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function substitute(_x) {
+                return _ref2.apply(this, arguments);
+            }
+
+            return substitute;
         }()
 
         /**
@@ -13046,24 +13406,6 @@ var InterfaceController = function () {
             }
         };
 
-        this.setLines = function (lines) {
-            if (_this.panel.btns.lines.state) {
-                _this.props.setLines(lines);
-            }
-        };
-
-        this.setBerPerLine = function (betPerLine) {
-            if (_this.panel.btns.betPerLine.state) _this.props.setBerPerLine(betPerLine);
-        };
-
-        this.setDenomination = function (denomination) {
-            if (_this.panel.btns.denomination.state) _this.props.setDenomination(denomination);
-        };
-
-        this.setLanguage = function (countryCode) {
-            _this.panel.btns.language.setBg(countryCode);
-        };
-
         this.maxBetClickHandler = function () {
             if (_this.panel.btns.maxBet.state.maxbet) {
                 _this.props.setMaxBet();
@@ -13080,22 +13422,6 @@ var InterfaceController = function () {
             }
         };
 
-        this.toggleLinesBlock = function () {
-            if (_this.panel.btns.lines.state) _this.linesBlock.toggle();
-        };
-
-        this.toggleBetPerLineBlock = function () {
-            if (_this.panel.btns.betPerLine.state) _this.betPerLineBlock.toggle();
-        };
-
-        this.toggleDenominationBlock = function () {
-            if (_this.panel.btns.denomination.state) _this.denominationBlock.toggle();
-        };
-
-        this.toggleLanguageBlock = function () {
-            if (_this.panel.btns.language.state) _this.langBlock.toggle();
-        };
-
         this.showAlert = function (alertText) {
             _this.alertWindow.text = alertText;
             _this.alertWindow.show();
@@ -13103,10 +13429,6 @@ var InterfaceController = function () {
 
         this.hideAlert = function () {
             _this.alertWindow.hide();
-        };
-
-        this.menuClickHandler = function () {
-            if (_this.panel.btns.menu.state) window.location.href = "/";
         };
 
         this.enableSpin = function () {
@@ -13247,12 +13569,6 @@ var InterfaceController = function () {
         // DEV TEMP
         this._showControls();
 
-        // Init toggling blocks like lines, betPerLine, denomination and language
-        this._initTogglingBlocks();
-
-        // Init handler on keyboard actions
-        this._initKeyboardListeners();
-
         this.linePresenters = new _LinePresenters2.default({
             lines: this.props.lines,
             containerNode: this.props.containerNode
@@ -13276,12 +13592,28 @@ var InterfaceController = function () {
             autoSpinClick: this.autoSpinClick,
             maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
-            toggleLinesBlock: this.toggleLinesBlock,
-            toggleBetPerLineBlock: this.toggleBetPerLineBlock,
-            toggleDenominationBlock: this.toggleDenominationBlock,
-            toggleLanguageBlock: this.toggleLanguageBlock,
-            menuClickHandler: this.menuClickHandler
+            toggleLinesBlock: function toggleLinesBlock() {
+                return _this.linesBlock.toggle();
+            },
+            toggleBetPerLineBlock: function toggleBetPerLineBlock() {
+                return _this.betPerLineBlock.toggle();
+            },
+            toggleDenominationBlock: function toggleDenominationBlock() {
+                return _this.denominationBlock.toggle();
+            },
+            toggleLanguageBlock: function toggleLanguageBlock() {
+                return _this.langBlock.toggle();
+            },
+            menuClickHandler: function menuClickHandler() {
+                return window.location.href = "/";
+            }
         });
+
+        // Init toggling blocks like lines, betPerLine, denomination and language
+        this._initTogglingBlocks();
+
+        // Init handler on keyboard actions
+        this._initKeyboardListeners();
     }
 
     _createClass(InterfaceController, [{
@@ -13289,6 +13621,9 @@ var InterfaceController = function () {
         value: function _showControls() {
             console.log('Controls:\n            space - Spin\n            < - Increase lines\n            > - Increase bet per line\n            d - Increase denomination\n            m - Set max bet\n            Esc - Menu');
         }
+
+        // TODO: Move state into component in multi state component
+
     }, {
         key: 'setGamble',
         value: function setGamble(userWinPoints) {
@@ -13335,11 +13670,11 @@ var InterfaceController = function () {
                         break;
                     case 188:
                         // <
-                        _this3.setLines();
+                        _this3.linesBlock.setValue();
                         break;
                     case 190:
                         // >
-                        _this3.setBerPerLine();
+                        _this3.betPerLineBlock.setValue();
                         break;
                     case 77:
                         // m
@@ -13347,11 +13682,11 @@ var InterfaceController = function () {
                         break;
                     case 68:
                         // d
-                        _this3.setDenomination();
+                        _this3.denominationBlock.setValue();
                         break;
                     case 27:
                         // ESC
-                        _this3.menuClickHandler();
+                        _this3.panel.btns.menu.onClick();
                         break;
                     default:
                         {}
@@ -13361,26 +13696,28 @@ var InterfaceController = function () {
     }, {
         key: '_initTogglingBlocks',
         value: function _initTogglingBlocks() {
+            var _this4 = this;
+
             this.linesBlock = new _ToggleBlock2.default({
                 node: document.querySelector('#linesBlock'),
                 items: settings.lines
             }, {
-                setValue: this.setLines,
-                enableSelf: this.enableLines,
+                setValue: this.props.setLines,
                 setInterfaceIdle: this.setIdle,
                 disableInterface: this.disableInterface,
-                setSpinPossibility: this.props.setSpinPossibility
+                setSpinPossibility: this.props.setSpinPossibility,
+                controlBtn: this.panel.btns.lines
             });
 
             this.betPerLineBlock = new _ToggleBlock2.default({
                 node: document.querySelector('#betPerLineBlock'),
                 items: settings.betPerLine
             }, {
-                onItemClick: this.setBerPerLine,
-                enableSelf: this.enableBetPerLines,
+                setValue: this.props.setBetPerLine,
                 setInterfaceIdle: this.setIdle,
                 disableInterface: this.disableInterface,
-                setSpinPossibility: this.props.setSpinPossibility
+                setSpinPossibility: this.props.setSpinPossibility,
+                controlBtn: this.panel.btns.betPerLine
             });
 
             this.denominationBlock = new _ToggleBlock2.default({
@@ -13389,22 +13726,24 @@ var InterfaceController = function () {
                     return item.toFixed(2);
                 })
             }, {
-                onItemClick: this.setDenomination,
-                enableSelf: this.enableDenomination,
+                setValue: this.props.setDenomination,
                 setInterfaceIdle: this.setIdle,
                 disableInterface: this.disableInterface,
-                setSpinPossibility: this.props.setSpinPossibility
+                setSpinPossibility: this.props.setSpinPossibility,
+                controlBtn: this.panel.btns.denomination
             });
 
             this.langBlock = new _ToggleLanguageBlock2.default({
                 node: document.querySelector('#languageBlock'),
                 items: ['en', 'ru', 'ua']
             }, {
-                onItemClick: this.setLanguage,
-                enableSelf: this.enableLanguage,
+                setValue: function setValue() {
+                    return _this4.panel.btns.language.setBg;
+                },
                 setInterfaceIdle: this.setIdle,
                 disableInterface: this.disableInterface,
-                setSpinPossibility: this.props.setSpinPossibility
+                setSpinPossibility: this.props.setSpinPossibility,
+                controlBtn: this.panel.btns.language
             });
         }
     }]);
@@ -14769,7 +15108,7 @@ var GambleModal = function () {
 
                             case 5:
                                 _context2.next = 7;
-                                return _axios2.default.post('http://admin.chcgreen.org/gamble', {
+                                return _axios2.default.post('/gamble', {
                                     card: cardSuit
                                 });
 
@@ -15775,11 +16114,12 @@ module.exports = function spread(callback) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-// export const freeSpinsInFreeSpins = {"won_points":3,"spin_result":[{"line_symbol":3,"list":[{"row":1,"col":0,"value":3},{"row":1,"col":1,"value":3},{"row":1,"col":2,"value":3}],"points":3}],"scatter_count":3,"won":true,"won_coins":3,"final_symbols":[[6,1,9,4,4],[3,3,3,0,7],[4,6,6,6,6]],"bonus_spins":{"spins":[{"spin_result":[{"line_symbol":3,"list":[{"row":1,"col":1,"value":3},{"row":2,"col":0,"value":3},{"row":2,"col":3,"value":3}],"points":3}],"final_symbols":[[1,5,2,6,9],[4,3,5,0,2],[3,8,0,3,6]],"won":true},{"spin_result":[{"line_symbol":3,"list":[{"row":0,"col":4,"value":3},{"row":1,"col":1,"value":3},{"row":1,"col":3,"value":3}],"points":3}],"final_symbols":[[8,7,5,1,3],[1,3,6,3,7],[9,4,2,5,4]],"won":true},{"spin_result":[],"final_symbols":[[8,2,0,9,4],[7,4,6,4,3],[3,5,4,2,2]],"won":false},{"spin_result":[],"final_symbols":[[6,7,4,0,9],[5,2,7,4,0],[0,5,0,2,4]],"won":false},{"spin_result":[],"final_symbols":[[2,5,4,6,3],[9,1,5,1,1],[1,8,0,9,7]],"won":false},{"spin_result":[],"final_symbols":[[8,0,4,0,3],[0,8,9,5,4],[3,5,8,7,7]],"won":false},{"spin_result":[],"final_symbols":[[7,9,5,8,6],[4,6,8,9,4],[3,7,0,1,1]],"won":false},{"spin_result":[],"final_symbols":[[3,7,4,8,8],[2,1,2,9,9],[6,5,0,1,4]],"won":false},{"spin_result":[],"final_symbols":[[2,5,9,9,7],[9,0,2,3,8],[8,2,8,0,2]],"won":false},{"spin_result":[],"final_symbols":[[6,8,2,7,0],[4,7,9,1,5],[3,6,5,4,9]],"won":false}],"type":"free_spins","won_points":6,"won_coins":6},"total_won_coins":9,"total_won_points":9,"bet":1,"player_cash":155.28,"player_coins":15527,"game":"Bananas"};
 var freeSpin = exports.freeSpin = { "won_points": 40, "spin_result": [{ "line_index": 2, "line_symbol": 8, "list": [{ "row": 2, "col": 0, "value": 3 }, { "row": 2, "col": 1, "value": 8 }], "points": 5 }, { "line_index": 8, "line_symbol": 8, "list": [{ "row": 2, "col": 0, "value": 3 }, { "row": 2, "col": 1, "value": 8 }], "points": 5 }, { "line_symbol": 3, "list": [{ "row": 1, "col": 4, "value": 3 }, { "row": 2, "col": 0, "value": 3 }, { "row": 2, "col": 3, "value": 3 }], "points": 30 }], "scatter_count": 3, "won": true, "won_coins": 40, "final_symbols": [[1, 6, 6, 9, 2], [2, 1, 1, 1, 3], [3, 8, 2, 3, 4]], "bonus_spins": { "spins": [{ "spin_result": [{ "line_index": 5, "line_symbol": 8, "list": [{ "row": 1, "col": 0, "value": 8 }, { "row": 0, "col": 1, "value": 8 }], "points": 5 }, { "line_index": 9, "line_symbol": 8, "list": [{ "row": 1, "col": 0, "value": 8 }, { "row": 0, "col": 1, "value": 8 }], "points": 5 }], "final_symbols": [[7, 8, 2, 1, 1], [8, 7, 4, 2, 0], [1, 0, 1, 6, 8]], "won": true }, { "spin_result": [], "final_symbols": [[4, 6, 2, 5, 6], [7, 5, 6, 6, 0], [1, 1, 7, 0, 8]], "won": false }, { "spin_result": [{ "line_index": 9, "line_symbol": 7, "list": [{ "row": 1, "col": 0, "value": 7 }, { "row": 0, "col": 1, "value": 7 }, { "row": 1, "col": 2, "value": 3 }], "points": 10 }], "final_symbols": [[5, 7, 8, 7, 6], [7, 1, 3, 6, 5], [8, 5, 0, 2, 0]], "won": true }, { "spin_result": [{ "line_index": 6, "line_symbol": 1, "list": [{ "row": 1, "col": 0, "value": 1 }, { "row": 2, "col": 1, "value": 1 }, { "row": 2, "col": 2, "value": 1 }], "points": 5 }], "final_symbols": [[0, 7, 9, 5, 9], [1, 9, 0, 2, 7], [8, 1, 1, 4, 8]], "won": true }, { "spin_result": [{ "line_index": 8, "line_symbol": 7, "list": [{ "row": 2, "col": 0, "value": 7 }, { "row": 2, "col": 1, "value": 7 }, { "row": 1, "col": 2, "value": 7 }], "points": 5 }], "final_symbols": [[6, 4, 6, 0, 2], [1, 0, 7, 6, 5], [7, 7, 4, 2, 0]], "won": true }, { "spin_result": [], "final_symbols": [[5, 9, 9, 4, 8], [0, 7, 8, 6, 9], [1, 4, 2, 5, 1]], "won": false }, { "spin_result": [], "final_symbols": [[2, 2, 9, 3, 3], [7, 1, 1, 8, 2], [1, 4, 0, 5, 0]], "won": false }, { "spin_result": [], "final_symbols": [[6, 4, 4, 1, 1], [9, 0, 3, 2, 0], [4, 5, 2, 6, 3]], "won": false }, { "spin_result": [], "final_symbols": [[4, 7, 3, 2, 4], [1, 9, 7, 6, 8], [8, 0, 8, 1, 1]], "won": false }, { "spin_result": [{ "line_index": 2, "line_symbol": 0, "list": [{ "row": 2, "col": 0, "value": 0 }, { "row": 2, "col": 1, "value": 0 }, { "row": 2, "col": 2, "value": 0 }], "points": 5 }], "final_symbols": [[3, 7, 8, 6, 0], [5, 1, 9, 1, 3], [0, 0, 0, 5, 8]], "won": true }], "type": "free_spins", "won_points": 35, "won_coins": 35 }, "total_won_coins": 75, "total_won_points": 75, "bet": 10, "player_cash": 155.21000000000001, "player_coins": 15521, "game": "Bananas" };
 
 var normalSpinWin = exports.normalSpinWin = { "won_points": 41, "spin_result": [{ "line_index": 4, "line_symbol": 2, "list": [{ "row": 2, "col": 0, "value": 4 }, { "row": 1, "col": 1, "value": 2 }, { "row": 0, "col": 2, "value": 2 }], "points": 6 }, { "line_index": 8, "line_symbol": 5, "list": [{ "row": 2, "col": 0, "value": 4 }, { "row": 2, "col": 1, "value": 5 }, { "row": 1, "col": 2, "value": 4 }], "points": 10 }, { "line_index": 12, "line_symbol": 2, "list": [{ "row": 0, "col": 0, "value": 2 }, { "row": 1, "col": 1, "value": 2 }, { "row": 0, "col": 2, "value": 2 }], "points": 3 }, { "line_index": 17, "line_symbol": 5, "list": [{ "row": 2, "col": 0, "value": 4 }, { "row": 2, "col": 1, "value": 5 }, { "row": 1, "col": 2, "value": 4 }], "points": 10 }, { "line_index": 18, "line_symbol": 2, "list": [{ "row": 0, "col": 0, "value": 2 }, { "row": 1, "col": 1, "value": 2 }, { "row": 1, "col": 2, "value": 4 }], "points": 6 }, { "line_index": 19, "line_symbol": 2, "list": [{ "row": 2, "col": 0, "value": 4 }, { "row": 1, "col": 1, "value": 2 }, { "row": 1, "col": 2, "value": 4 }], "points": 6 }], "scatter_count": 1, "won": true, "won_coins": 41, "final_symbols": [[2, 8, 2, 7, 7], [0, 2, 4, 5, 3], [4, 5, 6, 6, 0]], "total_won_coins": 41, "total_won_points": 41, "bet": 20, "player_cash": 154.15000000000001, "player_coins": 15415, "game": "Bananas" };
 var normalSpinLose = exports.normalSpinLose = { "won_points": 0, "spin_result": [], "scatter_count": 2, "won": false, "won_coins": 0, "final_symbols": [[5, 8, 3, 9, 4], [1, 1, 9, 5, 5], [8, 2, 5, 6, 3]], "total_won_coins": 0, "total_won_points": 0, "bet": 20, "player_cash": 153.95000000000002, "player_coins": 15395, "game": "Bananas" };
+
+var substitution = exports.substitution = { "won_points": 5, "spin_result": [{ "line_symbol": 0, "list": [{ "row": 0, "col": 0, "value": 0 }, { "row": 1, "col": 3, "value": 0 }, { "row": 1, "col": 4, "value": 0 }], "points": 5 }], "scatter_count": 3, "won": true, "won_coins": 5, "final_symbols": [[0, 1, 5, 9, 3], [4, 6, 9, 0, 0], [2, 9, 2, 3, 6]], "bonus_spins": { "spins": [{ "spin_result": [], "final_symbols": [[8, 2, 5, 8, 2], [4, 8, 4, 5, 6], [3, 1, 3, 1, 9]], "substitution": { "result": [], "won": false, "final_symbols": [[8, 2, 5, 8, 6], [4, 8, 4, 5, 6], [3, 1, 3, 1, 6]] } }, { "spin_result": [], "final_symbols": [[7, 1, 5, 7, 4], [4, 9, 2, 8, 9], [2, 8, 6, 5, 7]], "substitution": { "result": [], "won": false, "final_symbols": [[2, 1, 2, 7, 4], [2, 9, 2, 8, 9], [2, 8, 2, 5, 7]] } }, { "spin_result": [], "final_symbols": [[6, 1, 9, 2, 5], [3, 9, 4, 9, 1], [2, 4, 8, 4, 4]], "substitution": { "result": [], "won": false, "final_symbols": [[2, 1, 9, 2, 5], [2, 9, 4, 2, 1], [2, 4, 8, 2, 4]] } }, { "spin_result": [], "final_symbols": [[7, 9, 5, 1, 9], [1, 2, 3, 3, 5], [4, 3, 9, 9, 4]], "substitution": { "result": [], "won": false, "final_symbols": [[7, 2, 5, 1, 9], [1, 2, 3, 3, 5], [4, 2, 9, 9, 4]] } }, { "spin_result": [], "final_symbols": [[6, 7, 9, 6, 5], [2, 3, 5, 9, 6], [4, 9, 4, 8, 4]], "substitution": { "result": [], "won": false, "final_symbols": [[2, 7, 9, 6, 5], [2, 3, 5, 9, 6], [2, 9, 4, 8, 4]] } }, { "spin_result": [], "final_symbols": [[5, 7, 4, 1, 5], [2, 6, 9, 9, 3], [8, 1, 8, 6, 1]], "substitution": { "result": [], "won": false, "final_symbols": [[2, 7, 4, 1, 5], [2, 6, 9, 9, 3], [2, 1, 8, 6, 1]] } }, { "spin_result": [], "final_symbols": [[9, 5, 8, 7, 1], [6, 4, 6, 4, 2], [5, 1, 3, 8, 9]], "substitution": { "result": [], "won": false, "final_symbols": [[9, 5, 8, 7, 2], [6, 4, 6, 4, 2], [5, 1, 3, 8, 2]] } }, { "spin_result": [], "final_symbols": [[9, 6, 5, 5, 6], [6, 2, 3, 6, 4], [7, 4, 2, 2, 3]], "substitution": { "result": [], "won": true, "final_symbols": [[9, 2, 2, 2, 6], [6, 2, 2, 2, 4], [7, 2, 2, 2, 3]] } }, { "spin_result": [], "final_symbols": [[5, 1, 2, 8, 7], [6, 8, 1, 4, 4], [2, 4, 6, 5, 8]], "substitution": { "result": [], "won": false, "final_symbols": [[2, 1, 2, 8, 7], [2, 8, 2, 4, 4], [2, 4, 2, 5, 8]] } }, { "spin_result": [], "final_symbols": [[5, 5, 9, 9, 4], [7, 7, 8, 6, 8], [3, 1, 3, 4, 5]], "substitution": { "result": [], "won": false, "final_symbols": [[5, 5, 9, 9, 4], [7, 7, 8, 6, 8], [3, 1, 3, 4, 5]] } }, { "spin_result": [], "final_symbols": [[4, 5, 2, 8, 5], [1, 6, 5, 4, 4], [5, 8, 6, 6, 8]], "substitution": { "result": [], "won": false, "final_symbols": [[4, 5, 2, 8, 5], [1, 6, 2, 4, 4], [5, 8, 2, 6, 8]] } }], "won_coins": 6, "won_points": 6, "type": "substitution", "substitution_symbol": 2 }, "total_won_coins": 11, "total_won_points": 11, "bet": 1, "player_cash": 155.23, "player_coins": 15523, "game": "BookOfWinner" };
 
 /***/ })
 /******/ ]);

@@ -266,12 +266,34 @@ body {
   height: 64px;
 }
 
+.jackpot-bonus .grid {
+  position: absolute;
+  background: url("../img/old_game/grid.png");
+  right: 0;
+  left: 0;
+  top: 0;
+  margin: auto;
+  width: 1611px;
+  height: 52px;
+}
+
 .notifier {
   position: absolute;
   width: 738px;
   height: 72px;
   top: 23px;
   left: 210px;
+  color: #f7f700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30px;
 }
 
 .credit_text {
@@ -280,6 +302,8 @@ body {
   top: 120px;
   font-size: 28px;
   letter-spacing: 2px;
+  color: #fcaf05;
+  text-shadow: 1px 1px #000;
 }
 
 .credit_amount {
@@ -295,6 +319,7 @@ body {
   padding-right: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  color: #f7f700;
 }
 
 .bet_per_line_text {
@@ -303,6 +328,8 @@ body {
   top: 20px;
   font-size: 29px;
   letter-spacing: 2px;
+  color: #fcaf05;
+  text-shadow: 1px 1px #000;
 }
 
 .bet_per_line_amount {
@@ -311,6 +338,7 @@ body {
   top: 20px;
   font-size: 29px;
   letter-spacing: 2px;
+  color: #f7f700;
 }
 
 .lines_amount_text {
@@ -319,6 +347,8 @@ body {
   top: 59px;
   font-size: 29px;
   letter-spacing: 2px;
+  color: #fcaf05;
+  text-shadow: 1px 1px #000;
 }
 
 .lines_amount {
@@ -327,6 +357,7 @@ body {
   top: 59px;
   font-size: 29px;
   letter-spacing: 2px;
+  color: #f7f700;
 }
 
 .bet_text {
@@ -335,6 +366,8 @@ body {
   top: 118px;
   font-size: 29px;
   letter-spacing: 2px;
+  color: #fcaf05;
+  text-shadow: 1px 1px #000;
 }
 
 .bet_amount {
@@ -343,6 +376,7 @@ body {
   top: 118px;
   font-size: 29px;
   letter-spacing: 2px;
+  color: #f7f700;
 }
 
 .cash_out_btn {

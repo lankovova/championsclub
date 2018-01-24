@@ -6,7 +6,11 @@
         {{--  @include('games.parts.loading')  --}}
         <div id="game">
             <div class="jackpot-bonus">
-
+                <div class="jackpot_text"></div>
+                <div class="jackpot_amount"></div>
+                <div class="bonus_text"></div>
+                <div class="bonus_amount"></div>
+                <div class="grid"></div>
             </div>
 
 

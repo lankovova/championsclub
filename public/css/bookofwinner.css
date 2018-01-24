@@ -1054,7 +1054,6 @@ body {
   height: 717px;
   background: white;
   z-index: 1;
-  background: url("../img/games/bookofwinner/gamble/gamble_bg.png");
 }
 
 .gamble .button__suit-color {
@@ -1080,13 +1079,13 @@ body {
 
 .gamble .button__red {
   left: 57px;
-  background: url("../img/games/bookofwinner/gamble/buttons/suit_color.png");
+  background: url("../img/gamble/buttons/suit_color.png");
   color: #cc0000;
 }
 
 .gamble .button__black {
   right: 57px;
-  background: url("../img/games/bookofwinner/gamble/buttons/suit_color.png");
+  background: url("../img/gamble/buttons/suit_color.png");
   color: #000;
 }
 
@@ -1107,22 +1106,22 @@ body {
 
 .gamble .button__spade {
   right: 77px;
-  background: url("../img/games/bookofwinner/gamble/buttons/spade.png");
+  background: url("../img/gamble/buttons/spade.png");
 }
 
 .gamble .button__club {
   right: 286px;
-  background: url("../img/games/bookofwinner/gamble/buttons/club.png");
+  background: url("../img/gamble/buttons/club.png");
 }
 
 .gamble .button__diamond {
   left: 286px;
-  background: url("../img/games/bookofwinner/gamble/buttons/diamond.png");
+  background: url("../img/gamble/buttons/diamond.png");
 }
 
 .gamble .button__heart {
   left: 77px;
-  background: url("../img/games/bookofwinner/gamble/buttons/heart.png");
+  background: url("../img/gamble/buttons/heart.png");
 }
 
 .gamble__amount {
@@ -1161,7 +1160,7 @@ body {
 }
 
 .card {
-  background: url("../img/games/bookofwinner/gamble/cards/card.gif");
+  background: url("../img/gamble/cards/card.gif");
   width: 221px;
   height: 326px;
   position: absolute;
@@ -1183,25 +1182,25 @@ body {
 }
 
 .card__spade {
-  background: url("../img/games/bookofwinner/gamble/cards/spade.png");
+  background: url("../img/gamble/cards/spade.png");
 }
 
 .card__club {
-  background: url("../img/games/bookofwinner/gamble/cards/club.png");
+  background: url("../img/gamble/cards/club.png");
 }
 
 .card__heart {
-  background: url("../img/games/bookofwinner/gamble/cards/heart.png");
+  background: url("../img/gamble/cards/heart.png");
 }
 
 .card__diamond {
-  background: url("../img/games/bookofwinner/gamble/cards/diamond.png");
+  background: url("../img/gamble/cards/diamond.png");
 }
 
 .previous-cards {
   width: 1084px;
   height: 86px;
-  background: url("../img/games/bookofwinner/gamble/previous_cards.png");
+  background: url("../img/gamble/previous_cards.png");
   position: absolute;
   bottom: 89px;
   right: 0;
@@ -1263,19 +1262,19 @@ body {
 }
 
 .suit-spade {
-  background: url("../img/games/bookofwinner/gamble/suits/spade.png");
+  background: url("../img/gamble/suits/spade.png");
 }
 
 .suit-club {
-  background: url("../img/games/bookofwinner/gamble/suits/club.png");
+  background: url("../img/gamble/suits/club.png");
 }
 
 .suit-heart {
-  background: url("../img/games/bookofwinner/gamble/suits/heart.png");
+  background: url("../img/gamble/suits/heart.png");
 }
 
 .suit-diamond {
-  background: url("../img/games/bookofwinner/gamble/suits/diamond.png");
+  background: url("../img/gamble/suits/diamond.png");
 }
 
 .panel__background {
@@ -1320,4 +1319,8 @@ body {
   background: url("../img/games/bookofwinner/freeSpinBg.png");
   width: 1184px;
   height: 626px;
+}
+
+.gamble {
+  background: url("../img/games/bookofwinner/gamble/gamble_bg.png");
 }
