@@ -78,6 +78,57 @@ table {
   font-weight: 700;
 }
 
+#loading {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #000;
+  font-family: Oswald;
+}
+
+.loading__container {
+  background: #000 url("../img/loading/loading_bg.png") center center;
+  width: 927px;
+  height: 900px;
+  position: relative;
+}
+
+#loading__block {
+  position: absolute;
+  top: 347px;
+  left: 167px;
+  background: url("../img/loading/loading_block_bg.png");
+  width: 0;
+  height: 37px;
+}
+
+.loading__text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  position: absolute;
+  top: 307px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 362px;
+}
+
 @-webkit-keyframes symbolAnimation {
   0% {
     background-position: 0;
@@ -535,7 +586,7 @@ table {
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
+  text-shadow: 1px 1px 0px #2178cd, -1px -1px 0px #2178cd, 1px -1px 0px #2178cd, -1px 1px 0px #2178cd;
 }
 
 .panel_row-top .auto_btn {
