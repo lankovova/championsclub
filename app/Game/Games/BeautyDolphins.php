@@ -31,7 +31,7 @@ class BeautyDolphins extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {

@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 23,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -19,7 +19,9 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-        "gamblePreviousCardsAmount": 7,     "gambleExtended": true,      "symbolsImagesPath": "public/img/games//captain/symbols/",
+    "gamblePreviousCardsAmount": 7,     
+    "gambleExtended": true,      
+    "symbolsImagesPath": "public/img/games//captain/symbols/",
     "symbolsAnimationsPath": "public/img/games/captain/symbols/animations/",
 
     "symbols": [

@@ -4,7 +4,7 @@ namespace App\Game\Games;
 
 use App\Game\Games\Game;
 
-class FireRagePlus extends Game {
+class CasinoAndStars extends Game {
     public static $reelsAmount = 5;
     public static $scatter = 11;
     public static $joker = 12;
@@ -31,11 +31,11 @@ class FireRagePlus extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        return $this->game->bonusSpin("FreeSpins");
     }
 
     public function areBonusSpins() {
