@@ -9,7 +9,7 @@ class Captain extends Game {
     public static $scatter = 4;
     public static $joker = 5;
     public static $freeSpinsAmount = 10;
-    public static $symbolsAmount = 13;
+    public static $symbolsAmount = 12;
     public static $paytable = [
         [0,2,5,25,100], //PAYTABLE FOR SYMBOL 1
         [0,0,5,25,100],  //PAYTABLE FOR SYMBOL 2
