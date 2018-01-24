@@ -1354,3 +1354,7 @@ body {
 .header {
   background: url("../img/games/beautydolphins/header.png");
 }
+
+.gamble {
+  background: url("../img/games/beautydolphins/gamble/gamble_bg.png");
+}
