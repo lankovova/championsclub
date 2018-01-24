@@ -14942,6 +14942,8 @@ var GambleModal = function () {
                                     _this.setValues(0);
 
                                     setTimeout(function () {
+                                        _this.hideDroppedCard();
+
                                         // Start flipping card
                                         _this.bigCardNode.style.zIndex = '';
 

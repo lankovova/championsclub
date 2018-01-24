@@ -190,6 +190,8 @@ export default class GambleModal {
             this.setValues(0);
 
             setTimeout(() => {
+                this.hideDroppedCard();
+
                 // Start flipping card
                 this.bigCardNode.style.zIndex = '';
 
