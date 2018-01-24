@@ -11,3 +11,6 @@ npm-debug.log
 yarn-error.log
 .env
 .DS_store
+/public/js/game.js
+/public/js/game.js.map
+/public/css
