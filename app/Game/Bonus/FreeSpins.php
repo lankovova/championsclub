@@ -8,6 +8,7 @@ use App\Game\Traits\Helper;
 class FreeSpins {
     use WinChecker, Helper;
 
+    protected $multiplier = 1;
     protected $randomSymbols;
     protected $finalSymbols;
     protected $spinResult;
@@ -55,7 +56,7 @@ class FreeSpins {
         $report;
         do {
             $this->generateFinalSymbols();
-            $result = $this->checkForWinCombos();
+            $result = $this->checkForWinCombos($this->multiplier);
         } while (!$this->canUserWin($result["won_points"] * $this->denomination));
 
         if ($result["scatter_count"] > 2) {
