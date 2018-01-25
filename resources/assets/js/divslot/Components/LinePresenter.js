@@ -1,3 +1,5 @@
+const defaultColor = '#686890';
+
 export default class LinePresenter {
     constructor(line, color) {
         this.line = line;
@@ -7,7 +9,7 @@ export default class LinePresenter {
         this.node = document.createElement('div');
         this.node.text = '';
         this.node.className += 'line_presenter';
-        this.node.style.backgroundColor = (settings.presentersDefaultColor) ? settings.presentersDefaultColor : '';
+        this.node.style.backgroundColor = (settings.presentersDefaultColor) ? settings.presentersDefaultColor : defaultColor;
 
         // Init listners
         this.node.onmousedown = () => this.line.show();
@@ -19,7 +21,7 @@ export default class LinePresenter {
         this.node.style.backgroundColor = (!text || text === '')
                                             ? (settings.presentersDefaultColor)
                                                 ? settings.presentersDefaultColor
-                                                : '#686890'
+                                                : defaultColor
                                             : this.color;
 
         this.node.innerText = text;
