@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class LuckyLadysGlamor extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 12;
-    public static $joker = 6;
+    public static $scatter = 11;
+    public static $joker = 5;
     public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 13;
     public static $paytable = [
@@ -35,7 +35,7 @@ class LuckyLadysGlamor extends Game {
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpins");
+        return $this->game->bonusSpin("FreeSpinsMultiplier");
     }
 
     public function areBonusSpins() {
