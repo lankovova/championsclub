@@ -1,0 +1,39 @@
+@import "../game_types/without_borders";
+
+.main {
+    background: url('../img/games/kingofjewels/game_bg.gif') center center;
+}
+
+.line_presenter {
+    background-image: url('../img/line_presenter_glare.png');
+
+    background-size: 100% 100%;
+    font-size: 32px;
+    width: 54px;
+    height: 54px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reel_wrapper {
+    background: url('../img/games/kingofjewels/reel_bg.png');
+}
+
+.header {
+    background: url('../img/games/kingofjewels/header.gif');
+}
+.alert .content {
+    background: url("../img/games/kingofjewels/freeSpinBg.png");
+    width: 1184px;
+    height: 626px;
+}
+.gamble {
+    background-image: url('../img/games/kingofjewels/gamble/gamble_bg.png');
+    width: 1406px;
+    border-radius: 20px;
+    background-size: 100% 100%;
+}
