@@ -19,7 +19,7 @@
 			</div>
 			
 			@section('gamble')
-				@include('games.parts.gamble')
+				@include('games.parts.gambleExtended')
 			@show
 			
             @include('games.parts.panel')

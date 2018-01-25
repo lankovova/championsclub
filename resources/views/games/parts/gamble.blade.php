@@ -23,18 +23,7 @@
         <div class="button__suit-color button__black" id="black">
             <div class="overflow-layer">black</div>
         </div>
-        <div class="button__suit button__spade" id="spade">
-            <div class="overflow-layer"></div>
-        </div>
-        <div class="button__suit button__club" id="club">
-            <div class="overflow-layer"></div>
-        </div>
-        <div class="button__suit button__heart" id="heart">
-            <div class="overflow-layer"></div>
-        </div>
-        <div class="button__suit button__diamond" id="diamond">
-            <div class="overflow-layer"></div>
-        </div>
+
 
         <div class="card" id="card"></div>
         <div class="card__suit card__spade" id="suitSpade"></div>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('gamble')
-    @include('games.parts.gambleExtended')
+    @include('games.parts.gamble')
 @endsection
 
 @section('js')
