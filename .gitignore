@@ -13,4 +13,6 @@ yarn-error.log
 .DS_store
 /public/js/game.js
 /public/js/game.js.map
-public/css
+/public/css
+/public/mix.js
+/public/mix-manifest.json

@@ -1,11 +1,11 @@
 var settings = {
-    "symbolSize": 220.5,
-    "spaceBetweenReels": 29,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": "spin",
+    "animationType": 'fall',
 
     "numOfSpinsBeforeStop": 3,
 
@@ -22,8 +22,9 @@ var settings = {
 
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": true,
-    "symbolsImagesPath": "public/img/games/casinoworld/symbols/",
-    "symbolsAnimationsPath": "public/img/games/casinoworld/symbols/animations/",
+
+    "symbolsImagesPath": "public/img/games/bananas/symbols/",
+    "symbolsAnimationsPath": "public/img/games/bananas/symbols/animations/",
 
     "symbols": [
         {"image": "1.png"},
@@ -39,7 +40,5 @@ var settings = {
         {"image": "11.png"},
         {"image": "12.png"},
         {"image": "13.png"}
-    ],
-
-    "presentersDefaultColor": "rgb(0, 134, 0)"
+    ]
 }

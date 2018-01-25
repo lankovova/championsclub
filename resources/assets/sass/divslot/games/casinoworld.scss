@@ -3,21 +3,31 @@
 
 .alert .content {
     background: url('../img/games/casinoworld/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+    width: 805px;
+    height: 285px;
 }
 .main {
     background: url('../img/games/casinoworld/game_bg.png') center center;
 }
 
+.line_presenters_container {
+    top: 7px;
+    &.left {
+        left: 2px;
+    }
+    &.right {
+        right: 5px;
+    }
+}
+
 .line_presenter {
     background-image: url('../img/line_presenter_glare.png');
-    background-color: #686890;
+
     background-size: 100% 100%;
     font-size: 32px;
-    width: 53px;
-    height: 53px;
-    border-radius: 5px;
+    width: 71px;
+    height: 52px;
+    border-radius: 13px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     cursor: pointer;
     display: flex;
