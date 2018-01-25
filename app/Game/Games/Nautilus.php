@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class Nautilus extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 4;
-    public static $joker = 9;
+    public static $scatter = 3;
+    public static $joker = 8;
     public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 13;
     public static $paytable = [
