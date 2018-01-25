@@ -4,74 +4,109 @@ namespace App\Game\Bonus;
 
 use App\Game\Traits\WinChecker;
 use App\Game\Traits\Helper;
+use App\Game\Bonus\FreeSpins;
 
-class FreeSpins {
-    use WinChecker, Helper;
+class FreeSpinsMultiplier extends FreeSpins {
 
-    protected $randomSymbols;
-    protected $finalSymbols;
-    protected $spinResult;
-    protected $wonPoints;
-    protected $leftToSpin;
+    private $multiplier = 3;
 
-    protected $symbolsAmount;
-    protected $scatter;
-    protected $spinsAmount;
-    protected $reelsAmount;
-    protected $linesTypes;
-    protected $joker;
-    protected $linesAmount;
-    protected $paytable;
-    protected $cashPool;
+    private function checkForWinCombos() {
+        $result = [
+            'won_points' => 0,
+            "spin_result" => []
+        ];
+        foreach($this->linesTypes as $lineIndex => $line) {
+            if ($this->linesAmount === $lineIndex) {
+                break;
+            }
 
-    function __construct($settings) {
-        $this->symbolsAmount = $settings["symbolsAmount"];
-        $this->scatter = $settings["scatter"];
-        $this->joker = $settings["joker"];
-        $this->spinsAmount = $settings["spinsAmount"];
-        $this->cashPool = $settings["cashPool"];
-        $this->reelsAmount = $settings["reelsAmount"];
-        $this->linesTypes = $settings["linesTypes"];
-        $this->linesAmount = $settings["linesAmount"];
-        $this->paytable = $settings["paytable"];
-        $this->betPerLine = $settings["betPerLine"];
-        $this->denomination = $settings["denomination"];
+            $symbolsInLine = 1; // 1 because first symbol in line is counted as part of combo
+            $lineSymbol; // First symbol in line
+            $currSymbol;
+            $list = [];
+            $isJoker = false;
 
-        $this->leftToSpin = $this->spinsAmount;
+            // Found first symbol that is not joker
+            foreach ($line as $symMapIndex => $symMap) {
+                $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
+                // Symbol can`t be scatter
+                if (($currSymbol !== $this->joker && $currSymbol !== $this->scatter) || 
+                    $symMapIndex === ($this->reelsAmount - 1)) {
+                    // Default symbol
+                    $lineSymbol = $currSymbol;
+                    // The first symbol in line even if joker
+                    $list[] = [
+                        'row' => $line[0][0],
+                        'col' => $line[0][1],
+                        'value' => $this->finalSymbols[ $line[0][0] ][ $line[0][1] ]
+                    ];
+                    break;
+                }
+            }
 
-        $spined = 0;
-        while ($this->leftToSpin > 0) {
-            $this->spin();
-            $this->leftToSpin--;
-            $spined++;
+            // Scatter has its own checker
+            if ($currSymbol === $this->scatter) {
+                break;
+            }
+
+            foreach ($line as $symMapIndex => $symMap) {
+
+                // Skipping first symbol as it is known
+                if ($symMapIndex === 0) {
+                    if ($this->finalSymbols[ $line[0][0] ][ $line[0][1] ] === $this->joker) {
+                        $isJoker = true;
+                    }
+                    continue;
+                }
+                
+                $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
+                
+                if ($currSymbol === $this->joker ) {
+                    $symbolsInLine++;
+                    $isJoker = true;
+                    $list[] = [
+                        'row' => $symMap[0],
+                        'col' => $symMap[1],
+                        'value' => $this->joker
+                    ];
+                } elseif ($currSymbol == $lineSymbol) {
+                    $symbolsInLine++;
+                    $list[] = [
+                        'row' => $symMap[0],
+                        'col' => $symMap[1],
+                        'value' => $currSymbol
+                    ];
+                }
+                
+                if ($currSymbol !== $lineSymbol && $currSymbol !== $this->joker || $symbolsInLine === $this->reelsAmount) {
+                    $comboPay = $this->paytable[ $lineSymbol ][ $symbolsInLine - 1 ];
+
+                    if ($comboPay > 0) {
+                        $comboPay *= $this->betPerLine;
+                        $comboPay = $isJoker ? ($comboPay * 2) : $comboPay;
+
+                        $comboPay *= $this->multiplier;
+
+                        $result['won_points'] += $comboPay;
+
+                        $result['spin_result'][] = [
+                            'line_index' => $lineIndex,
+                            'line_symbol' => $lineSymbol,
+                            'list' => $list,
+                            'points' => $comboPay
+                        ];
+                    }
+                }
+
+                if ($currSymbol !== $lineSymbol && $currSymbol !== $this->joker) {
+                    break;
+                }
+            }
         }
-        $this->spinResult["spined"] = $spined;
-        $this->spinResult["type"] = "free_spins";
-        $this->spinResult["won_points"] = $this->wonPoints;
-        $this->spinResult["won_coins"] = $this->wonPoints * $this->denomination;
-    }
 
-    protected function spin() {
-        $report;
-        do {
-            $this->generateFinalSymbols();
-            $result = $this->checkForWinCombos();
-        } while (!$this->canUserWin($result["won_points"] * $this->denomination));
+        $spinResult = $this->checkForScatterWin($result);
+        $spinResult['won'] = $spinResult['won_points'] > 0;
 
-        if ($result["scatter_count"] > 2) {
-            $this->leftToSpin +=  $this->spinsAmount;
-        }
-
-        $report["spin_result"] = $result["spin_result"];
-        $report["final_symbols"] = $this->finalSymbols;
-        $report["won"] = $result["won"];
-        
-        $this->spinResult["spins"][] = $report;
-        $this->cashPool -= ($result["won_points"] * $this->denomination);
-        $this->wonPoints += ($result["won_points"]);
-    }
-
-    public function getResult() {
-        return $this->spinResult;
+        return $spinResult;
     }
 }
