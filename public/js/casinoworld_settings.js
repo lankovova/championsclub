@@ -39,5 +39,7 @@ var settings = {
         {"image": "11.png"},
         {"image": "12.png"},
         {"image": "13.png"}
-    ]
+    ],
+
+    "presentersDefaultColor": "rgb(0, 134, 0)"
 }
