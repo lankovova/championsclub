@@ -36,7 +36,7 @@ var settings = {
         {"image": "7.png"},
         {"image": "8.png"},
         {"image": "9.png"},
-        {"image": "10.png"},
+        {"image": "10.png", "isScatter": true},
         {"image": "11.png"},
         {"image": "12.png"},
         {"image": "13.png"}

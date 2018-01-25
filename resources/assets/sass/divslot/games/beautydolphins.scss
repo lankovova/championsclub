@@ -2,6 +2,12 @@
 
 .alert .content {
     background: url('../img/games/beautydolphins/images/freeSpinBg.png');
+    width: 1015px;
+    height: 504px;
+    background-size: 100% 100%;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .main {
@@ -39,4 +45,9 @@
 }
 .gamble {
     background: url('../img/games/beautydolphins/gamble/gamble_bg.png');
+    top: 155px;
+    width: 1402px;
+    height: 679px;
+    background-size: 100% 100%;
+    border-radius: 20px;
 }
