@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 33,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -21,7 +21,7 @@ var settings = {
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
-    "gambleExtended": true,
+    "gambleExtended": false,
 
     "symbolsImagesPath": "public/img/games/icelegend/symbols/",
     "symbolsAnimationsPath": "public/img/games/icelegend/symbols/animations/",
@@ -30,15 +30,16 @@ var settings = {
         {"image": "1.png"},
         {"image": "2.png"},
         {"image": "3.png"},
-        {"image": "4.png", "animation": "4Anim.png"},
+        {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
-        {"image": "7.png"},
+        {"image": "7.png", "isScatter": true },
         {"image": "8.png"},
         {"image": "9.png"},
         {"image": "10.png"},
         {"image": "11.png"},
         {"image": "12.png"},
         {"image": "13.png"}
-    ]
+    ],
+    "presentersDefaultColor": "rgb(104, 104, 144)"
 }

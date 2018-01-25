@@ -23,7 +23,7 @@ class CrazyBarmen extends Game {
         [0,0,10,50,125],     //PAYTABLE FOR SYMBOL 10
         [0,0,5,25,100],     //PAYTABLE FOR SYMBOL 11
         [0,2,25,125,750],     //PAYTABLE FOR SYMBOL 12
-        [0,2,25,125,750]     //PAYTABLE FOR SYMBOL 13
+        [0,2,25,125,750]
     ];
 
     function __construct($game) {

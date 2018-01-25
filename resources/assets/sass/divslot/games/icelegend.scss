@@ -9,6 +9,12 @@
 .main {
     background: url('../img/games/icelegend/game_bg.png') center center;
 }
+.line_presenters_container {
+    top: 4px;
+    &.right {
+        right: -3px;
+    }
+}
 
 .line_presenter {
     background-image: url('../img/line_presenter_glare.png');

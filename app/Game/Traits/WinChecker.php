@@ -98,7 +98,7 @@ trait WinChecker {
         return $spinResult;
     }
 
-    private function checkForWinCombos() {
+    private function checkForWinCombos($multiplier=1) {
         $result = [
             'won_points' => 0,
             "spin_result" => []
@@ -117,9 +117,8 @@ trait WinChecker {
             // Found first symbol that is not joker
             foreach ($line as $symMapIndex => $symMap) {
                 $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
-                // Symbol can`t be scatter
-                if (($currSymbol !== $this->joker && $currSymbol !== $this->scatter) || 
-                    $symMapIndex === ($this->reelsAmount - 1)) {
+                // Scatter has its own checker
+                if (($currSymbol !== $this->joker) || $symMapIndex === ($this->reelsAmount - 1)) {
                     // Default symbol
                     $lineSymbol = $currSymbol;
                     // The first symbol in line even if joker
@@ -132,13 +131,7 @@ trait WinChecker {
                 }
             }
 
-            // Scatter has its own checker
-            if ($currSymbol === $this->scatter) {
-                break;
-            }
-
             foreach ($line as $symMapIndex => $symMap) {
-
                 // Skipping first symbol as it is known
                 if ($symMapIndex === 0) {
                     if ($this->finalSymbols[ $line[0][0] ][ $line[0][1] ] === $this->joker) {
@@ -148,6 +141,10 @@ trait WinChecker {
                 }
                 
                 $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
+
+                if ($currSymbol === $this->scatter) {
+                    break;
+                }
                 
                 if ($currSymbol === $this->joker ) {
                     $symbolsInLine++;
@@ -157,7 +154,7 @@ trait WinChecker {
                         'col' => $symMap[1],
                         'value' => $this->joker
                     ];
-                } elseif ($currSymbol == $lineSymbol) {
+                } elseif ($currSymbol === $lineSymbol) {
                     $symbolsInLine++;
                     $list[] = [
                         'row' => $symMap[0],
@@ -172,7 +169,7 @@ trait WinChecker {
                     if ($comboPay > 0) {
                         $comboPay *= $this->betPerLine;
                         $comboPay = $isJoker ? ($comboPay * 2) : $comboPay;
-
+                        $comboPay *= $multiplier;
                         $result['won_points'] += $comboPay;
 
                         $result['spin_result'][] = [

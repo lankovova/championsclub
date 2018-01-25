@@ -28,8 +28,21 @@
 }
 .alert .content {
     background: url("../img/games/crazybarmen/freeSpinBg.png");
-    width: 1184px;
-    height: 626px;
+    width: 818px;
+    height: 327px;
+    font-size: 44px;
+    color: #c1ff7f;
+    text-shadow: -5px -5px 5px #000, 5px 5px 5px #000, -5px 5px 5px #000, 5px -5px 5px #000;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 80px;
+    box-sizing: border-box;
+    background-position: center;
 }
 .gamble {
     background: url('../img/games/crazybarmen/gamble/gamble_bg.png');
