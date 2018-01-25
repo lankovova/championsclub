@@ -1,11 +1,11 @@
 let mix = require('laravel-mix');
 
 //Gamechoose and login
-// mix.js('resources/assets/js/game_choose/main.js', 'public/js')
-//     .sass('resources/assets/sass/app.scss', 'public/css')
-//     .options({
-//         processCssUrls: false
-//     });
+mix.js('resources/assets/js/game_choose/main.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false
+    });
 
 
 // games
