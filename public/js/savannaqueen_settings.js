@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 35,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -30,7 +30,7 @@ var settings = {
         {"image": "1.png"},
         {"image": "2.png"},
         {"image": "3.png"},
-        {"image": "4.png", "animation": "4Anim.png"},
+        {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
         {"image": "7.png"},
@@ -39,6 +39,8 @@ var settings = {
         {"image": "10.png"},
         {"image": "11.png"},
         {"image": "12.png"},
-        {"image": "13.png"}
-    ]
+        {"image": "13.png", "isScatter": true}
+    ],
+
+    "presentersDefaultColor": "rgb(0,0,0)"
 }

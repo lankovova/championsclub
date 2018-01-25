@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class SavannaQueen extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 13;
-    public static $joker = 7;
+    public static $scatter = 12;
+    public static $joker = 6;
     public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 13;
     public static $paytable = [
@@ -31,11 +31,11 @@ class SavannaQueen extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        return $this->game->bonusSpin("FreeSpinsMultiplier");
     }
 
     public function areBonusSpins() {
