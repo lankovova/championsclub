@@ -33,5 +33,19 @@
     background: url('../img/games/bananas/header.png');
 }
 .gamble {
+    width: 1273px;
     background: url('../img/games/bananas/gamble/gamble_bg.png');
+}
+.alert .content {
+    font-size: 44px;
+    color: #8400a6;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 200px 120px 100px 120px;
+
 }
