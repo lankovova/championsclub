@@ -6,12 +6,12 @@ use App\Game\Games\Game;
 
 class CrazyBarmen extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 4;
-    public static $joker = 6;
+    public static $scatter = 3;
+    public static $joker = 5;
     public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 13;
     public static $paytable = [
-       [0,2,5,25,100], //PAYTABLE FOR SYMBOL 1
+        [0,2,5,25,100], //PAYTABLE FOR SYMBOL 1
         [0,0,5,25,100],  //PAYTABLE FOR SYMBOL 2
         [0,0,10,50,125],  //PAYTABLE FOR SYMBOL 3
         [0,20,50,200,5000],  //PAYTABLE FOR SYMBOL 4
@@ -31,11 +31,11 @@ class CrazyBarmen extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        return $this->game->bonusSpin("FreeSpinsMultiplier");
     }
 
     public function areBonusSpins() {
