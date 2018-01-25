@@ -3,8 +3,12 @@
 
 .alert .content {
     background: url('../img/games/money/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+    width: 804px;
+    height: 411px;
+    background-size: 100% 100%;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 .main {
     background: url('../img/games/money/game_bg.png') center center;
@@ -33,5 +37,10 @@
     background: url('../img/games/money/header.png');
 }
 .gamble {
-    background: url('../img/games/money/gamble/gamble_bg.png');
+    background-image: url('../img/games/money/gamble/gamble_bg.png');
+    background-size: 100% 100%;
+    top: 155px;
+    width: 1402px;
+    border-radius: 20px;
+    height: 675px;
 }
