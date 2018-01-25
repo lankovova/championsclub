@@ -3,8 +3,18 @@
 
 .alert .content {
     background: url('../img/games/icelegend/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+    width: 758px;
+    height: 284px;
+    font-size: 44px;
+    color: #fff0c6;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    text-shadow: -3px -3px 3px #000, 3px 3px 3px #000, -3px 3px 3px #000, 3px -3px 3px #000;
 }
 .main {
     background: url('../img/games/icelegend/game_bg.png') center center;
@@ -18,7 +28,6 @@
 
 .line_presenter {
     background-image: url('../img/line_presenter_glare.png');
-
     background-size: 100% 100%;
     font-size: 32px;
     width: 53px;
@@ -40,4 +49,7 @@
 }
 .gamble {
     background: url('../img/games/icelegend/gamble/gamble_bg.png');
+    top: 153px;
+    width: 1365px;
+    height: 674px;
 }
