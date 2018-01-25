@@ -16,12 +16,12 @@
                     <div class="content flex_center"></div>
                 </div>
                 <div id="reels_wrapper" class="reels_wrapper"></div>
-			</div>
-			
-			@section('gamble')
-				@include('games.parts.gambleExtended')
-			@show
-			
+            </div>
+
+            @section('gamble')
+                @include('games.parts.gambleExtended')
+            @show
+
             @include('games.parts.panel')
 
             <div class="border-right"></div>

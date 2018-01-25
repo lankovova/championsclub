@@ -6,7 +6,7 @@
                 <div class="gamble__amount-text">gamble amount</div>
                 <div class="gamble__amount-value" id="gameAmountValue"></div>
             </div>
-    
+
             <div class="gamble__to-win">
                 <div class="gamble__to-win-suit">
                     suit gamble to win
@@ -19,7 +19,7 @@
                     (x2)
                 </div>
             </div>
-    
+
             <div class="button__suit-color button__red" id="red">
                 <div class="overflow-layer">red</div>
             </div>
@@ -38,7 +38,7 @@
             <div class="button__suit button__diamond" id="diamond">
                 <div class="overflow-layer"></div>
             </div>
-    
+
             <div class="card" id="card"></div>
             <div class="card__suit card__spade" id="suitSpade"></div>
             <div class="card__suit card__club" id="suitClub"></div>

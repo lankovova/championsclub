@@ -218,8 +218,12 @@ export default class GambleModal {
     }
 
     setValues(points) {
-        document.querySelector('#gameAmountValue').innerText = points;
-        document.querySelector('#gambleToWinColor').innerText = points * 2;
-        document.querySelector('#gambleToWinSuit').innerText = points * 4;
+        const amountField     = document.querySelector('#gameAmountValue');
+        const winByColorField = document.querySelector('#gambleToWinColor');
+        const winBySuitField  = document.querySelector('#gambleToWinSuit');
+
+        if (amountField) amountField.innerText         = points;
+        if (winByColorField) winByColorField.innerText = points * 2;
+        if (winBySuitField) winBySuitField.innerText   = points * 4;
     }
 }
