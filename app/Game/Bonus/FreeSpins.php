@@ -12,6 +12,7 @@ class FreeSpins {
     protected $finalSymbols;
     protected $spinResult;
     protected $wonPoints;
+    protected $leftToSpin;
 
     protected $symbolsAmount;
     protected $scatter;
@@ -26,6 +27,7 @@ class FreeSpins {
     function __construct($settings) {
         $this->symbolsAmount = $settings["symbolsAmount"];
         $this->scatter = $settings["scatter"];
+        $this->joker = $settings["joker"];
         $this->spinsAmount = $settings["spinsAmount"];
         $this->cashPool = $settings["cashPool"];
         $this->reelsAmount = $settings["reelsAmount"];
@@ -34,12 +36,13 @@ class FreeSpins {
         $this->paytable = $settings["paytable"];
         $this->betPerLine = $settings["betPerLine"];
         $this->denomination = $settings["denomination"];
-        $this->joker = $this->scatter;
+
+        $this->leftToSpin = $this->spinsAmount;
 
         $spined = 0;
-        while ($this->spinsAmount > 0) {
+        while ($this->leftToSpin > 0) {
             $this->spin();
-            $this->spinsAmount--;
+            $this->leftToSpin--;
             $spined++;
         }
         $this->spinResult["spined"] = $spined;
@@ -54,6 +57,10 @@ class FreeSpins {
             $this->generateFinalSymbols();
             $result = $this->checkForWinCombos();
         } while (!$this->canUserWin($result["won_points"] * $this->denomination));
+
+        if ($result["scatter_count"] > 2) {
+            $this->leftToSpin +=  $this->spinsAmount;
+        }
 
         $report["spin_result"] = $result["spin_result"];
         $report["final_symbols"] = $this->finalSymbols;
