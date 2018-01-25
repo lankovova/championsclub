@@ -24,7 +24,10 @@ class GameController extends Controller
         $result = $gamble->getResult();
 
         $date = date("Y-m-d H:i:s");
-        $playerCash = $result["won"] ? ($this->player->getCash() + $result["won_coins"] / 100) : ($this->player->getCash() - $this->player->getlastWonCash());
+        $playerCash = $result["won"] ? 
+            ($this->player->getCash() - $this->player->getlastWonCash() + $result["won_coins"] / 100) : 
+            ($this->player->getCash() - $this->player->getlastWonCash());
+
         $action = $result["won"] ? "game gamble win" : "game gamble loose";
         $login = Auth::getParam("login");
 
