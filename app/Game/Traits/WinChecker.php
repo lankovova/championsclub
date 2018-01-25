@@ -193,6 +193,75 @@ trait WinChecker {
         return $spinResult;
     }
 
+    private function checkForWinCombosFromAnyPosition() {
+        $result = [
+            'won_points' => 0,
+            "spin_result" => []
+        ];
+
+        foreach ($this->linesTypes as $lineIndex => $line) {
+            if ($this->linesAmount < $lineIndex) {
+                break;
+            }
+
+            $symbolsInLine = 0;
+            $firstSymbol = -1; // first symbol in line
+            $currSymbol = -1;
+            $list = [];
+
+            foreach ($line as $symMapIndex => $symMap) {
+                $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
+                
+                if ($currSymbol === $firstSymbol) {
+                    $symbolsInLine++;
+                    $list[] = [
+                        'row' => $symMap[0],
+                        'col' => $symMap[1],
+                        'value' => $currSymbol
+                    ];
+                    // push prev symbol
+                    if ($symbolsInLine === 1) {
+                        $symbolsInLine++;
+
+                        $list[] = [
+                            'row' => $line[ $symMapIndex - 1 ][ 0 ],
+                            'col' => $line[ $symMapIndex - 1 ][ 1 ],
+                             // previous symbol
+                            'value' => $this->finalSymbols[ $line[ $symMapIndex - 1 ][ 0 ] ][ $line[ $symMapIndex - 1 ][ 1 ] ]
+                        ];
+                    }
+                } elseif ($symbolsInLine <= 2) { // for 2 symbols no cashpay
+                    // reset
+                    $list = [];
+                    $symbolsInLine = 0;
+                    $firstSymbol = $currSymbol;
+                }
+                // 3 symbols - minimum cashpay
+                if ($symbolsInLine > 2 && $symMapIndex === ($this->reelsAmount - 1)) {
+                    $comboPay = $this->paytable[ $firstSymbol ][ $symbolsInLine - 1 ];
+
+                    if ($comboPay > 0) {
+                        $comboPay *= $this->betPerLine;
+
+                        $result['won_points'] += $comboPay;
+
+                        $result['spin_result'][] = [
+                            'line_index' => $lineIndex,
+                            'line_symbol' => $firstSymbol,
+                            'list' => $list,
+                            'points' => $comboPay
+                        ];
+                    }
+                }
+            }
+        }
+
+        $spinResult = $this->checkForScatterWin($result);
+        $spinResult['won'] = $spinResult['won_points'] > 0;
+
+        return $spinResult;
+    }
+
     private function checkForScatterWin ($spinResult) {
         $scatterCount = 0;
         $list = [];

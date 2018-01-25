@@ -18,6 +18,7 @@ var settings = {
     "delayBeforeStartReelsSpin": 200,
     "spinAnimationTimeInMs": 1000,
     "spinAnimTimingFunc": "ease-in-out",
+    "spinAnimTimingFunc": "cubic-bezier(1,1.26,.66,.93)",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
@@ -30,7 +31,7 @@ var settings = {
         {"image": "1.png"},
         {"image": "2.png"},
         {"image": "3.png"},
-        {"image": "4.png", "animation": "4Anim.png"},
+        {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
         {"image": "7.png"},
