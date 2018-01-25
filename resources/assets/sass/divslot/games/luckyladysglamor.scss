@@ -1,10 +1,13 @@
 @import "../game_types/with_borders";
 
-
 .alert .content {
     background: url('../img/games/luckyladysglamor/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+    width: 1015px;
+    height: 504px;
+    background-size: 100% 100%;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 .main {
     background: url('../img/games/luckyladysglamor/game_bg.png') center center;
@@ -34,4 +37,9 @@
 }
 .gamble {
     background: url('../img/games/luckyladysglamor/gamble/gamble_bg.png');
+    top: 155px;
+    width: 1402px;
+    height: 679px;
+    background-size: 100% 100%;
+    border-radius: 20px;
 }
