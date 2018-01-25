@@ -6,7 +6,7 @@ use App\Game\Games\Game;
 
 class TropicalFruit extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 7;
+    public static $scatter = 6;
     public static $joker = -1;
     public static $freeSpinsAmount = 0;
     public static $symbolsAmount = 8;
@@ -26,11 +26,11 @@ class TropicalFruit extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombosFromAnyPosition");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpins");
+        
     }
 
     public function areBonusSpins() {
