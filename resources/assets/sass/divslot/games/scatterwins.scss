@@ -1,0 +1,37 @@
+@import "../game_types/with_borders";
+
+
+.alert .content {
+    background: url('../img/games/bananas/images/freeSpinBg.png');
+    width: 541px;
+    height: 497px;
+}
+.main {
+    background: url('../img/games/bananas/game_bg.png') center center;
+}
+
+.line_presenter {
+    background-image: url('../img/line_presenter_glare.png');
+    background-color: #686890;
+    background-size: 100% 100%;
+    font-size: 32px;
+    width: 53px;
+    height: 53px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reel_wrapper {
+    background: url('../img/games/bananas/reel_bg.png');
+}
+
+.header {
+    background: url('../img/games/bananas/header.png');
+}
+.gamble {
+    background: url('../img/games/bananas/gamble/gamble_bg.png');
+}
