@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class Bananas extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 1;
-    public static $joker = 1;
+    public static $scatter = 4;
+    public static $joker = 3;
     public static $freeSpinsAmount = 45;
     public static $symbolsAmount = 13;
     public static $paytable = [

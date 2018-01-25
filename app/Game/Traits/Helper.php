@@ -80,14 +80,16 @@ trait Helper {
     protected function fillSymbols() {
         $this->randomSymbols = [];
 
-        for ($i = 1; $i < $this->symbolsAmount; $i++) {
+        for ($i = 0; $i < $this->symbolsAmount; $i++) {
             for($j = 0; $j < 15; $j++) {
-                $this->randomSymbols[] = $i;
+                if ($j !== $this->scatter) {
+                    $this->randomSymbols[] = $i;
+                }
             }
         }
-        // scatter
-        for($j = 0; $j < 15; $j++) {
-            $this->randomSymbols[] = 0;
+
+        for($j = 0; $j < 5; $j++) {
+            $this->randomSymbols[] = $this->scatter;
         }
     }
 }

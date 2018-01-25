@@ -132,9 +132,15 @@ trait WinChecker {
                 }
             }
 
+            // Scatter has its own checker
+            if ($currSymbol === $this->scatter) {
+                break;
+            }
+
             foreach ($line as $symMapIndex => $symMap) {
+
                 // Skipping first symbol as it is known
-                if ($symMapIndex == 0) {
+                if ($symMapIndex === 0) {
                     if ($this->finalSymbols[ $line[0][0] ][ $line[0][1] ] === $this->joker) {
                         $isJoker = true;
                     }
