@@ -3,7 +3,11 @@
 @section('css')
     <link href="{{asset('public/css/casinoandstars.css')}}" rel=stylesheet type=text/css>
 @endsection
-    
+
+@section('gamble')
+    @include('games.parts.gamble')
+@endsection
+
 @section('js')
     @parent
     <script src="{{asset('public/js/casinoandstars_settings.js')}}"></script>
