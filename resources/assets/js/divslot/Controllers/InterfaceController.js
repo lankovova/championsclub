@@ -58,7 +58,7 @@ export default class InterfaceController {
             > - Increase bet per line
             d - Increase denomination
             m - Set max bet
-            Esc - Menuhyi`
+            Esc - Menu`
         );
     }
 

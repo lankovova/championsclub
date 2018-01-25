@@ -1,11 +1,11 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 23,
+    "symbolSize": 220.5,
+    "spaceBetweenReels": 29,
 
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": 'fall',
+    "animationType": "spin",
 
     "numOfSpinsBeforeStop": 3,
 
@@ -29,7 +29,7 @@ var settings = {
         {"image": "1.png"},
         {"image": "2.png"},
         {"image": "3.png"},
-        {"image": "4.png", "animation": "4Anim.png"},
+        {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
         {"image": "7.png"},
