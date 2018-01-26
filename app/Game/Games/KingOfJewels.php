@@ -6,7 +6,7 @@ use App\Game\Games\Game;
 
 class KingOfJewels extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 4;
+    public static $scatter = 3;
     public static $joker = -1;
     public static $freeSpinsAmount = 0;
     public static $symbolsAmount = 8;
@@ -26,15 +26,15 @@ class KingOfJewels extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+
     }
 
     public function areBonusSpins() {
-        return $this->game->areBonusSpins();
+        return false;
     }
 
 }
