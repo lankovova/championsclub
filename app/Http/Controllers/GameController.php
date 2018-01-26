@@ -73,10 +73,19 @@ class GameController extends Controller
         $spinResult = $game->spin();
 
         // turn off bonus spins
-        if ($reqData["game"] === "BookOfWinner") {
-            while ($game->areBonusSpins()) {
-                $spinResult = $game->spin();
-            }
+        switch ($reqData["game"]) {
+            case "BookOfWinner":
+            case "ComputerWorld":
+            case "RollOfRamses":
+            case "PepperSeven":
+            case "MagicSecret":
+            case "BookOfWins":
+            case "BookOfRa":
+                while ($game->areBonusSpins()) {
+                    $spinResult = $game->spin();
+                }
+            break;
+
         }
 
         if ($game->areBonusSpins()) {
