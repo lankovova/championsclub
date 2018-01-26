@@ -33,12 +33,50 @@ var settings = {
         {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png"},
-        {"image": "10.png"},
-        {"image": "11.png"},
-        {"image": "12.png"},
-        {"image": "13.png"}
+        {"image": "7.png"}
+    ],
+
+    "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+
+    "lineTypes": [
+        [ [1, 0], [1, 1], [1, 2] ],
+        [ [0, 0], [0, 1], [0, 2] ],
+        [ [2, 0], [2, 1], [2, 2] ],
+        [ [0, 0], [1, 1], [2, 2] ],
+        [ [2, 0], [1, 1], [0, 2] ],
+        [ [0, 0], [1, 1], [0, 2] ],
+        [ [2, 0], [1, 1], [2, 2] ],
+        [ [1, 0], [0, 1], [1, 2] ],
+        [ [1, 0], [2, 1], [1, 2] ],
+        [ [2, 0], [1, 1], [1, 2] ],
+        [ [0, 0], [1, 1], [1, 2] ],
+        [ [1, 0], [2, 1], [2, 2] ],
+        [ [1, 0], [0, 1], [0, 2] ],
+        [ [1, 0], [1, 1], [2, 2] ],
+        [ [1, 0], [1, 1], [0, 2] ],
+        [ [2, 0], [2, 1], [1, 2] ],
+        [ [0, 0], [0, 1], [1, 2] ],
+    ],
+
+    "linePresenterLeftLines": [
+        {lineIndex: 3, color: "rgb(255, 199, 0)"},
+        {lineIndex: 1, color: "rgb(255, 199, 0)"},
+        {lineIndex: 5, color: "rgb(255, 199, 0)"},
+        {lineIndex: 7, color: "rgb(255, 199, 0)"},
+        {lineIndex: 0, color: "rgb(255, 199, 0)"},
+        {lineIndex: 8, color: "rgb(255, 199, 0)"},
+        {lineIndex: 6, color: "rgb(255, 199, 0)"},
+        {lineIndex: 2, color: "rgb(255, 199, 0)"},
+        {lineIndex: 4, color: "rgb(255, 199, 0)"},
+    ],
+    "linePresenterRightLines" : [
+        {lineIndex: 14, color: "rgb(255, 199, 0)"},
+        {lineIndex: 12, color: "rgb(255, 199, 0)"},
+        {lineIndex: 16, color: "rgb(255, 199, 0)"},
+        {lineIndex: 10, color: "rgb(255, 199, 0)"},
+        {lineIndex: 9, color: "rgb(255, 199, 0)"},
+        {lineIndex: 15, color: "rgb(255, 199, 0)"},
+        {lineIndex: 11, color: "rgb(255, 199, 0)"},
+        {lineIndex: 13, color: "rgb(255, 199, 0)"},
     ]
 }

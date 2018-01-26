@@ -12,7 +12,7 @@ class Auth {
      * @return void
      */
     public static function login($login, $license) {
-        
+
         session([
             "license" => $license,
             "login" => $login
