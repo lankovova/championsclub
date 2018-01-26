@@ -166,20 +166,20 @@ export default {
     },
     methods: {
         showSlide(number) {
+            number = +number
             this.$refs.sliderTracker.style.transform = `translateX(-${100 * number}vw)`
             this.current = number
+
         },
         showNextSlide() {
             EventBus.$emit("slide-transition-start")
             this.$refs.sliderTracker.style.transform = `translateX(-${100 * this.next()}vw)`
             this.current = this.next()
-            this.$cookie.set("slide_number", this.current)
         },
         showPreviousSlide() {
             EventBus.$emit("slide-transition-start")
             this.$refs.sliderTracker.style.transform = `translateX(-${100 * this.prev()}vw)`
             this.current = this.prev()
-            this.$cookie.set("slide_number", this.current)
         },
         next() {
             return (this.current + 1) > this.amount ? 1 : this.current + 1
@@ -202,12 +202,13 @@ export default {
             EventBus.$emit("slide-transition-end")
             this.$refs.sliderTracker.style.transition = `0ms`;
             if (this.current === 0) { // Last slide
-                    this.$refs.sliderTracker.style.transform = `translateX(-${100 * (this.amount - 2)}vw)`
-                    this.current = this.amount - 2
-                } else if (this.current === (this.amount - 1)) { // First slide
-                    this.$refs.sliderTracker.style.transform = "translateX(-100vw)"
-                    this.current = this.start
-                }
+                this.$refs.sliderTracker.style.transform = `translateX(-${100 * (this.amount - 2)}vw)`
+                this.current = this.amount - 2
+            } else if (this.current === (this.amount - 1)) { // First slide
+                this.$refs.sliderTracker.style.transform = "translateX(-100vw)"
+                this.current = this.start
+            }
+            this.$cookie.set("slide_number", this.current)
             setTimeout(() => {
                 this.$refs.sliderTracker.style.transition = `${this.trasitionTime}ms`
             }, 0)
