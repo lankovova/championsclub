@@ -1,3 +1,5 @@
+const ANIMATION_FPS = 13;
+
 export default class Symbol {
     constructor(symbolNumber) {
         this.symbolNum = symbolNumber;
@@ -36,8 +38,14 @@ export default class Symbol {
     animate() {
         // If animation for this symbol exists then apply it
         if (settings.symbols[this.symbolNum].animation) {
-            this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + settings.symbols[this.symbolNum].animation}')`;
-            this.symbolNode.style.animation = 'symbolAnimation 2s steps(35) infinite';
+            // Get symbol animation data
+            const symbolAnimationData = settings.symbols[this.symbolNum].animation;
+
+            // Calculate animation duration in ms
+            const animDuration = 1000 * symbolAnimationData.frames / ANIMATION_FPS;
+
+            this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + symbolAnimationData.image}')`;
+            this.symbolNode.style.animation = `symbolAnimation ${animDuration}ms steps(${symbolAnimationData.frames}) infinite`;
         }
     }
 
