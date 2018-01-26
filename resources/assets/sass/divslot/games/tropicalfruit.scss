@@ -9,7 +9,12 @@
 .main {
     background: url('../img/games/tropicalfruit/game_bg.png') center center;
 }
-
+.line_presenters_container.right {
+    right: 7px;
+}
+.line_presenters_container.left {
+    left: 6px;
+}
 .line_presenter {
     background-image: url('../img/line_presenter_glare.png');
 
