@@ -37,7 +37,7 @@ export default class Symbol {
         // If animation for this symbol exists then apply it
         if (settings.symbols[this.symbolNum].animation) {
             this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + settings.symbols[this.symbolNum].animation}')`;
-            this.symbolNode.style.animation = 'symbolAnimation 1s steps(15) infinite';
+            this.symbolNode.style.animation = 'symbolAnimation 2s steps(35) infinite';
         }
     }
 
