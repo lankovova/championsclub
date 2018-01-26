@@ -14,11 +14,19 @@ Route::get("/isplayerauthed", function()  {
     ]);
 })->name("isplayerauthed");
 
-Route::post("/spin", "GameController@spin")->name("spin");
-Route::post("/gamble", "GameController@gamble")->name("gamble");
+Route::group(['middleware' => ['auth:json']], function () {
 
-Route::post("/getplayerinfo", "InfoController@getPlayerInfo")->name("getplayerinfo");
-Route::post("/gethistory", "InfoController@getHistory")->name("gethistory");
+    Route::post("/spin", "GameController@spin")->name("spin");
+    Route::post("/gamble", "GameController@gamble")->name("gamble");
+
+    Route::post("/getplayerinfo", "InfoController@getPlayerInfo")->name("getplayerinfo");
+    Route::post("/gethistory", "InfoController@getHistory")->name("gethistory");
+    
+});
+
+
+
+
 
 Route::get('/{game}', function ($game) {
 
@@ -27,4 +35,4 @@ Route::get('/{game}', function ($game) {
     }
     
     return redirect('/');
-});
+})->middleware('auth');

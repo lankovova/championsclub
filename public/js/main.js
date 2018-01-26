@@ -12485,12 +12485,26 @@ exports.default = {
     components: {
         GameChoosePage: _GameChoose2.default, LoginChampionPage: _LoginChampion2.default, Loading: _Loading2.default
     },
+    watch: {
+        authed: function authed() {
+            if (this.authed) {
+                _axios2.default.post(_config.playerInfo).then(function (res) {
+                    var data = {};
+                    data.cash = res.data.cash;
+                    data.denominations = res.data.denomination;
+
+                    _eventBus2.default.$emit("player-data-loaded", data);
+                });
+            }
+        }
+    },
     beforeCreate: function beforeCreate() {
         var _this = this;
 
         _axios2.default.get(_config.isPlayerAuthed).then(function (res) {
             _this.authed = res.data.authed;
         });
+
         window.addEventListener("load", function () {
             _this.hideLoading = true;
         });
@@ -12752,32 +12766,22 @@ var _eventBus = __webpack_require__(1);
 
 var _eventBus2 = _interopRequireDefault(_eventBus);
 
-var _config = __webpack_require__(5);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     name: "app",
     components: {
         Panel: _Panel2.default, Slider: _Slider2.default
-    },
-    mounted: function mounted() {
-        _eventBus2.default.$on("authed", function () {
-            var data = {};
-            _axios2.default.post(_config.playerInfo).then(function (res) {
-                data.cash = res.data.cash;
-                data.denominations = res.data.denomination;
-                _eventBus2.default.$emit("player-data-loaded", data);
-            });
-        });
     }
-}; //
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 26 */
@@ -13878,12 +13882,13 @@ exports.default = {
             this.denominationChanged(denomination);
         }
     },
-    mounted: function mounted() {
+    created: function created() {
         var _this = this;
 
         _eventBus2.default.$on("pick-denomination-choose", function (denomination) {
             return _this.denominationChanged(denomination);
         });
+
         _eventBus2.default.$on("player-data-loaded", function (data) {
             return _this.dataLoaded(data);
         });
@@ -14905,13 +14910,10 @@ exports.default = {
 
         _eventBus2.default.$on("show-history", function () {
             _this.shown = true;
-        });
-        _axios2.default.post(_config.history, {
-            // skip: 0,
-            // take: 20
-        }).then(function (res) {
-            _this.history = res.data;
-            _this.historyToShow = _this.history.slice(0, _this.rowsAmountPerPage);
+            _axios2.default.post(_config.history).then(function (res) {
+                _this.history = res.data;
+                _this.historyToShow = _this.history.slice(0, _this.rowsAmountPerPage);
+            });
         });
     }
 }; //
