@@ -37,7 +37,7 @@ export default {
                     {class:'pepper-seven', url:'pepperseven'},
                     {class:'magic-secret', url:'magicsecret'},
                     {class:'golden-harvest', url:'golden-harvest'},
-                    {class:'scatter-wins', url:'scatterwins'},
+                    {class:'lucky-ladys-glamor', url:'luckyladysglamor'},
                 ],
                 [
                     {class:'bananas', url:'bananas'},
@@ -53,13 +53,6 @@ export default {
                     {class:'beauty-dolphins', url:'beautydolphins'},
                     {class:'savanna-queen', url:'savannaqueen'},
                 ],
-                [
-                    {class:'lucky-ladys-glamor', url:'luckyladysglamor'},
-                    {class:'', url:'#'},
-                    {class:'', url:'#'},
-                    {class:'', url:'#'},
-                    {class:'', url:'#'},
-                ]
                 // [
                 //     {class:'book-of-winner', url:'bookofwinner'},
                 //     {class:'sevens-on-fire-plus', url:'sevensonfireplus'},
