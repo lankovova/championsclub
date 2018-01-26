@@ -27,88 +27,123 @@ export default {
             slides: [
                 [
                     {class:'book-of-winner', url:'bookofwinner'},
-                    {class:'sevens-on-fire-plus', url:'sevensonfireplus'},
-                    {class:'sevens-on-fire', url:'sevensonfire'},
-                    {class:'fire-rage-plus', url:'firerageplus'},
-                    {class:'triple-diamond', url:'triplediamond'}
-                ],
-                [
-                    {class:'kings-of-jewels', url:'kingsofjewels'},
-                    {class:'crazy-barmen', url:'crazybarmen'},
-                    {class:'scatter-wins', url:'scatterwins'},
-                    {class:'computer-world', url:'computerworld'},
-                    {class:'hearts', url:'hearts'}
-                ],
-                [
-                    {class:'gates-of-avalon', url:'gatesofavalon'},
-                    {class:'money', url:'money'},
-                    {class:'nautilus', url:'nautilus'},
-                    {class:'golden-harvest', url:'golden-harvest'},
-                    {class:'bananas', url:'bananas'}
-                ],
-                [
-                    {class:'mariner', url:'mariner'},
-                    {class:'riddle-of-the-sphinx', url:'riddleofthesphinx'},
-                    {class:'roll-of-ramses', url:'rolloframses'},
-                    {class:'snow-white', url:'snowwhite'},
-                    {class:'tropical-fruit', url:'tropicalfruit'}
-                ],
-                [
-                    {class:'billiard-world', url:'billiardworld'},
-                    {class:'ultra-seven-hot', url:'ultrasevenhot'},
+                    {class:'tropical-fruit', url:'tropicalfruit'},
                     {class:'hit-jewels', url:'hitjewels'},
-                    {class:'robinson', url:'robinson'},
-                    {class:'fire-rage', url:'firerage'}
+                    {class:'kings-of-jewels', url:'kingsofjewels'},
+                    {class:'computer-world', url:'computerworld'},
                 ],
                 [
-                    {class:'book-of-wins', url:'bookofwins'},
-                    {class:'casino-world', url:'casinoworld'},
+                    {class:'roll-of-ramses', url:'rolloframses'},
                     {class:'pepper-seven', url:'pepperseven'},
                     {class:'magic-secret', url:'magicsecret'},
-                    {class:'casino-and-stars', url:'casinoandstars'}
+                    {class:'golden-harvest', url:'golden-harvest'},
+                    {class:'scatter-wins', url:'scatterwins'},
                 ],
                 [
+                    {class:'bananas', url:'bananas'},
+                    {class:'casino-world', url:'casinoworld'},
+                    {class:'book-of-wins', url:'bookofwins'},
+                    {class:'crazy-barmen', url:'crazybarmen'},
+                    {class:'nautilus', url:'nautilus'},
+                ],
+                [
+                    {class:'money', url:'money'},
+                    {class:'ice-legend', url:'icelegend'},
+                    {class:'casino-and-stars', url:'casinoandstars'},
                     {class:'beauty-dolphins', url:'beautydolphins'},
                     {class:'savanna-queen', url:'savannaqueen'},
-                    {class:'hot-sevens', url:'hotsevens'},
-                    {class:'ice-legend', url:'icelegend'},
-                    {class:'golden-scatter', url:'goldenscatter'}
                 ],
                 [
                     {class:'lucky-ladys-glamor', url:'luckyladysglamor'},
-                    {class:'captain', url:'captain'},
-                    {class:'hot-slot', url:'hotslot'},
-                    {class:'always-cherry', url:'alwayscherry'},
-                    {class:'dolphins-pearl', url:'dolphinspearl'}
-                ],
-                [
-                    {class:'queen-of-hearts', url:'queenofhearts'},
-                    {class:'bananas-go-bahamas', url:'bananasgobahamas'},
-                    {class:'the-money-game', url:'themoneygame'},
-                    {class:'lucky-ladys-charm', url:'luckyladyscharm'},
-                    {class:'venetiam-carnival', url:'venetiamcarnival'}
-                ],
-                [
-                    {class:'sea-light', url:'sealight'},
-                    {class:'columbus', url:'columbus'},
-                    {class:'sharky', url:'sharky'},
-                    {class:'fire-frenzy', url:'firefrenzy'},
-                    {class:'golden-harvest', url:'goldenharvest'}
-                ],
-                [
-                    {class:'alice-in-wonderland', url:'aliceinwonderland'},
-                    {class:'sizzling-hot', url:'sizzlinghot'},
-                    {class:'gryphons-gold', url:'gryphonsgold'},
-                    {class:'book-of-ra', url:'bookofra'},
-                    {class:'crazy-barmen-old', url:'crazybarmenold'}
-                ],
-                [
-                    {class:'cinema', url:'cinema'},
-                    {class:'computer-world-old', url:'computerworldold'},
-                    {class:'nautilus-old', url:'nautilusold'},
-                    {class:'', url:''},
-                    {class:'gulliver', url:'gulliver'}
-                ],
+                    {class:'', url:'#'},
+                    {class:'', url:'#'},
+                    {class:'', url:'#'},
+                    {class:'', url:'#'},
+                ]
+                // [
+                //     {class:'book-of-winner', url:'bookofwinner'},
+                //     {class:'sevens-on-fire-plus', url:'sevensonfireplus'},
+                //     {class:'sevens-on-fire', url:'sevensonfire'},
+                //     {class:'fire-rage-plus', url:'firerageplus'},
+                //     {class:'triple-diamond', url:'triplediamond'}
+                // ],
+                // [
+                //     {class:'kings-of-jewels', url:'kingsofjewels'},
+                //     {class:'crazy-barmen', url:'crazybarmen'},
+                //     {class:'scatter-wins', url:'scatterwins'},
+                //     {class:'computer-world', url:'computerworld'},
+                //     {class:'hearts', url:'hearts'}
+                // ],
+                // [
+                //     {class:'gates-of-avalon', url:'gatesofavalon'},
+                //     {class:'money', url:'money'},
+                //     {class:'nautilus', url:'nautilus'},
+                //     {class:'golden-harvest', url:'golden-harvest'},
+                //     {class:'bananas', url:'bananas'}
+                // ],
+                // [
+                //     {class:'mariner', url:'mariner'},
+                //     {class:'riddle-of-the-sphinx', url:'riddleofthesphinx'},
+                //     {class:'roll-of-ramses', url:'rolloframses'},
+                //     {class:'snow-white', url:'snowwhite'},
+                //     {class:'tropical-fruit', url:'tropicalfruit'}
+                // ],
+                // [
+                //     {class:'billiard-world', url:'billiardworld'},
+                //     {class:'ultra-seven-hot', url:'ultrasevenhot'},
+                //     {class:'hit-jewels', url:'hitjewels'},
+                //     {class:'robinson', url:'robinson'},
+                //     {class:'fire-rage', url:'firerage'}
+                // ],
+                // [
+                //     {class:'book-of-wins', url:'bookofwins'},
+                //     {class:'casino-world', url:'casinoworld'},
+                //     {class:'pepper-seven', url:'pepperseven'},
+                //     {class:'magic-secret', url:'magicsecret'},
+                //     {class:'casino-and-stars', url:'casinoandstars'}
+                // ],
+                // [
+                //     {class:'beauty-dolphins', url:'beautydolphins'},
+                //     {class:'savanna-queen', url:'savannaqueen'},
+                //     {class:'hot-sevens', url:'hotsevens'},
+                //     {class:'ice-legend', url:'icelegend'},
+                //     {class:'golden-scatter', url:'goldenscatter'}
+                // ],
+                // [
+                //     {class:'lucky-ladys-glamor', url:'luckyladysglamor'},
+                //     {class:'captain', url:'captain'},
+                //     {class:'hot-slot', url:'hotslot'},
+                //     {class:'always-cherry', url:'alwayscherry'},
+                //     {class:'dolphins-pearl', url:'dolphinspearl'}
+                // ],
+                // [
+                //     {class:'queen-of-hearts', url:'queenofhearts'},
+                //     {class:'bananas-go-bahamas', url:'bananasgobahamas'},
+                //     {class:'the-money-game', url:'themoneygame'},
+                //     {class:'lucky-ladys-charm', url:'luckyladyscharm'},
+                //     {class:'venetiam-carnival', url:'venetiamcarnival'}
+                // ],
+                // [
+                //     {class:'sea-light', url:'sealight'},
+                //     {class:'columbus', url:'columbus'},
+                //     {class:'sharky', url:'sharky'},
+                //     {class:'fire-frenzy', url:'firefrenzy'},
+                //     {class:'golden-harvest', url:'goldenharvest'}
+                // ],
+                // [
+                //     {class:'alice-in-wonderland', url:'aliceinwonderland'},
+                //     {class:'sizzling-hot', url:'sizzlinghot'},
+                //     {class:'gryphons-gold', url:'gryphonsgold'},
+                //     {class:'book-of-ra', url:'bookofra'},
+                //     {class:'crazy-barmen-old', url:'crazybarmenold'}
+                // ],
+                // [
+                //     {class:'cinema', url:'cinema'},
+                //     {class:'computer-world-old', url:'computerworldold'},
+                //     {class:'nautilus-old', url:'nautilusold'},
+                //     {class:'', url:''},
+                //     {class:'gulliver', url:'gulliver'}
+                // ],
                 // [
                 //     {class:''},
                 //     {class:''},
