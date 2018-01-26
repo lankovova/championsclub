@@ -33,12 +33,48 @@ var settings = {
         {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png"},
-        {"image": "10.png"},
-        {"image": "11.png"},
-        {"image": "12.png"},
-        {"image": "13.png"}
+        {"image": "7.png"}
+    ],
+
+    "lineTypes": [
+        [ [1, 0], [1, 1], [1, 2] ],
+        [ [0, 0], [0, 1], [0, 2] ],
+        [ [2, 0], [2, 1], [2, 2] ],
+        [ [0, 0], [1, 1], [2, 2] ],
+        [ [2, 0], [1, 1], [0, 2] ], //5
+        [ [0, 0], [1, 1], [0, 2] ],
+        [ [2, 0], [1, 1], [2, 2] ],
+        [ [1, 0], [0, 1], [1, 2] ], //8
+        [ [1, 0], [2, 1], [1, 2] ], //9
+        [ [2, 0], [1, 1], [1, 2] ], //10
+        [ [0, 0], [1, 1], [1, 2] ], //11
+        [ [1, 0], [2, 1], [2, 2] ], //12
+        [ [1, 0], [0, 1], [0, 2] ], //13
+        [ [1, 0], [1, 1], [2, 2] ], //14
+        [ [1, 0], [1, 1], [0, 2] ], //15
+        [ [2, 0], [2, 1], [1, 2] ], //16
+        [ [0, 0], [0, 1], [1, 2] ],
+    ],
+
+    "linePresenterLeftLines": [
+        {lineIndex: 3, color: "rgb(252, 252, 0)"},
+        {lineIndex: 1, color: "rgb(255, 0, 0)"},
+        {lineIndex: 5, color: "rgb(139, 251, 155)"},
+        {lineIndex: 7, color: "rgb(255, 181, 0)"},
+        {lineIndex: 0, color: "rgb(252, 252, 252)"},
+        {lineIndex: 8, color: "rgb(0, 213, 0)"},
+        {lineIndex: 6, color: "rgb(142, 252, 252)"},
+        {lineIndex: 2, color: "rgb(116, 89, 249)"},
+        {lineIndex: 4, color: "rgb(231, 60, 204)"}
+    ],
+    "linePresenterRightLines" : [
+        {lineIndex: 14, color: "rgb(252, 252, 252)"},
+        {lineIndex: 12, color: "rgb(252, 252, 252)"},
+        {lineIndex: 16, color: "rgb(252, 252, 252)"},
+        {lineIndex: 10, color: "rgb(252, 252, 252)"},
+        {lineIndex: 9, color: "rgb(252, 252, 252)"},
+        {lineIndex: 15, color: "rgb(252, 252, 252)"},
+        {lineIndex: 11, color: "rgb(252, 252, 252)"},
+        {lineIndex: 13, color: "rgb(252, 252, 252)"},
     ]
 }
