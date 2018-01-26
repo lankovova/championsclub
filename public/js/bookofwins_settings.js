@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 23,
+    "symbolSize": 219,
+    "spaceBetweenReels": 28,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -21,7 +21,7 @@ var settings = {
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
-    "gambleExtended": true,
+    "gambleExtended": false,
 
     "symbolsImagesPath": "public/img/games/bookofwins/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwins/symbols/animations/",
@@ -47,6 +47,7 @@ var settings = {
             "image": "9.png",
         }, {
             "image": "10.png",
+            "isScatter": true
         },
     ]
 }
