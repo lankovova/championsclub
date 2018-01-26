@@ -24,11 +24,14 @@
 }
 
 .header {
-    background: url('../img/games/computerworld/header.png');
+    background-image: url('../img/games/computerworld/header.png');
 }
 
 .alert .content {
     background: url("../img/games/computerworld/images/freeSpinBg.png");
     width: 1184px;
     height: 626px;
+}
+.gamble {
+    background: url('../img/games/computerworld/gamble/gamble_bg.png');
 }

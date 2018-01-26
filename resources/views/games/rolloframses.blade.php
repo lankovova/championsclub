@@ -3,7 +3,11 @@
 @section('css')
     <link href="{{asset('public/css/rolloframses.css')}}" rel=stylesheet type=text/css>
 @endsection
-    
+
+@section('gamble')
+    @include('games.parts.gamble')
+@endsection
+
 @section('js')
     @parent
     <script src="{{asset('public/js/rolloframses_settings.js')}}"></script>
