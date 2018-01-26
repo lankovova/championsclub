@@ -628,24 +628,6 @@ module.exports = __webpack_require__(69);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-// const appUrl = "admin.chcgreen.org"
-var appUrl = "php-slots";
-var login = exports.login = "http://" + appUrl + "/login";
-var logout = exports.logout = "http://" + appUrl + "/logout";
-var playerInfo = exports.playerInfo = "http://" + appUrl + "/getplayerinfo";
-var history = exports.history = "http://" + appUrl + "/gethistory";
-var isPlayerAuthed = exports.isPlayerAuthed = "http://" + appUrl + "/isplayerauthed";
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(2);
@@ -740,6 +722,24 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// const appUrl = "admin.chcgreen.org"
+var appUrl = "php-slots";
+var login = exports.login = "http://" + appUrl + "/login";
+var logout = exports.logout = "http://" + appUrl + "/logout";
+var playerInfo = exports.playerInfo = "http://" + appUrl + "/getplayerinfo";
+var history = exports.history = "http://" + appUrl + "/gethistory";
+var isPlayerAuthed = exports.isPlayerAuthed = "http://" + appUrl + "/isplayerauthed";
 
 /***/ }),
 /* 7 */
@@ -12077,7 +12077,8 @@ __webpack_require__(129);
 __webpack_require__(130);
 __webpack_require__(131);
 __webpack_require__(132);
-module.exports = __webpack_require__(133);
+__webpack_require__(133);
+module.exports = __webpack_require__(134);
 
 
 /***/ }),
@@ -12456,7 +12457,7 @@ var _eventBus = __webpack_require__(1);
 
 var _eventBus2 = _interopRequireDefault(_eventBus);
 
-var _config = __webpack_require__(5);
+var _config = __webpack_require__(6);
 
 var _axios = __webpack_require__(4);
 
@@ -14838,7 +14839,7 @@ var _axios = __webpack_require__(4);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _config = __webpack_require__(5);
+var _config = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14964,7 +14965,7 @@ exports.default = {
 var utils = __webpack_require__(2);
 var bind = __webpack_require__(10);
 var Axios = __webpack_require__(71);
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(5);
 
 /**
  * Create an instance of Axios
@@ -15047,7 +15048,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(5);
 var utils = __webpack_require__(2);
 var InterceptorManager = __webpack_require__(80);
 var dispatchRequest = __webpack_require__(81);
@@ -15588,7 +15589,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(2);
 var transformData = __webpack_require__(82);
 var isCancel = __webpack_require__(13);
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(5);
 var isAbsoluteURL = __webpack_require__(83);
 var combineURLs = __webpack_require__(84);
 
@@ -16326,7 +16327,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _config = __webpack_require__(5);
+var _config = __webpack_require__(6);
 
 var _axios = __webpack_require__(4);
 
@@ -18770,6 +18771,12 @@ exports.default = {
 
 /***/ }),
 /* 133 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 134 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
