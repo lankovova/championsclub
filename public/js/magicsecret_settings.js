@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 235,
-    "spaceBetweenReels": 35,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -21,7 +21,7 @@ var settings = {
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
-    "gambleExtended": true,
+    "gambleExtended": false,
 
     "symbolsImagesPath": "public/img/games/magicsecret/symbols/",
     "symbolsAnimationsPath": "public/img/games/magicsecret/symbols/animations/",
@@ -30,7 +30,7 @@ var settings = {
         {"image": "1.png"},
         {"image": "2.png"},
         {"image": "3.png"},
-        {"image": "4.png", "animation": "4Anim.png"},
+        {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
         {"image": "7.png"},

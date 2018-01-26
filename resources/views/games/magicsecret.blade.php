@@ -4,6 +4,10 @@
     <link href="{{asset('public/css/magicsecret.css')}}" rel=stylesheet type=text/css>
 @endsection
 
+@section('gamble')
+    @include('games.parts.gamble')
+@endsection
+
 @section('js')
     @parent
     <script src="{{asset('public/js/magicsecret_settings.js')}}"></script>

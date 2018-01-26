@@ -6,12 +6,12 @@ use App\Game\Games\Game;
 
 class MagicSecret extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 10;
-    public static $joker = 10;
+    public static $scatter = 9;
+    public static $joker = 9;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [
-         [0,0,5,25,100], //PAYTABLE FOR SYMBOL 1
+        [0,0,5,25,100], //PAYTABLE FOR SYMBOL 1
         [0,0,5,40,150],  //PAYTABLE FOR SYMBOL 2
         [0,5,30,100,750],  //PAYTABLE FOR SYMBOL 3
         [0,5,40,400,2000],  //PAYTABLE FOR SYMBOL 4
@@ -28,11 +28,11 @@ class MagicSecret extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombos");
+        return $this->game->spin("checkForWinCombosScatterAsJoker");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpins");
+        return $this->game->bonusSpin("Substitution");
     }
 
     public function areBonusSpins() {
