@@ -27,15 +27,15 @@ var settings = {
     "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
     "symbols": [
-        {"image": "1.png", "isScatter": true},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png"},
-        {"image": "5.png"},
-        {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png"},
-        {"image": "10.png"}
+        {"image": "1.png", "isScatter": true, "animation": "1.png"},
+        {"image": "2.png", "animation": "2.png"},
+        {"image": "3.png", "animation": "3.png"},
+        {"image": "4.png", "animation": "4.png"},
+        {"image": "5.png", "animation": "5.png"},
+        {"image": "6.png", "animation": "6.png"},
+        {"image": "7.png", "animation": "7.png"},
+        {"image": "8.png", "animation": "8.png"},
+        {"image": "9.png", "animation": "9.png"},
+        {"image": "10.png", "animation": "10.png"}
     ]
 }
