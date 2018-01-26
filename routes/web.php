@@ -24,10 +24,6 @@ Route::group(['middleware' => ['auth:json']], function () {
     
 });
 
-
-
-
-
 Route::get('/{game}', function ($game) {
 
     if (view()->exists("games.$game")) {
