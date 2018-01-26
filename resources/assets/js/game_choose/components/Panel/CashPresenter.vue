@@ -44,9 +44,10 @@ export default {
             this.denominationChanged(denomination)
         }
     },
-    mounted() {
+    created() {
         EventBus.$on("pick-denomination-choose", 
             denomination => this.denominationChanged(denomination))
+
         EventBus.$on("player-data-loaded", data => this.dataLoaded(data))
     }
 }

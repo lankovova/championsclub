@@ -105,15 +105,13 @@ export default {
     created() {
         EventBus.$on("show-history", () => {
             this.shown = true
+            axios.post(history).then(res => {
+                this.history = res.data
+                this.historyToShow = this.history.slice(0, this.rowsAmountPerPage)
+                
+            })
         })
-        axios.post(history, {
-            // skip: 0,
-            // take: 20
-        }).then(res => {
-            this.history = res.data
-            this.historyToShow = this.history.slice(0, this.rowsAmountPerPage)
-            
-        })
+
     },
 }
 </script>
