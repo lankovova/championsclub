@@ -160,19 +160,26 @@ export default {
             } else {
                 slide = this.current
             }
+
             return slide
         }
     },
     methods: {
+        showSlide(number) {
+            this.$refs.sliderTracker.style.transform = `translateX(-${100 * number}vw)`
+            this.current = number
+        },
         showNextSlide() {
             EventBus.$emit("slide-transition-start")
             this.$refs.sliderTracker.style.transform = `translateX(-${100 * this.next()}vw)`
             this.current = this.next()
+            this.$cookie.set("slide_number", this.current)
         },
         showPreviousSlide() {
             EventBus.$emit("slide-transition-start")
             this.$refs.sliderTracker.style.transform = `translateX(-${100 * this.prev()}vw)`
             this.current = this.prev()
+            this.$cookie.set("slide_number", this.current)
         },
         next() {
             return (this.current + 1) > this.amount ? 1 : this.current + 1
@@ -208,6 +215,7 @@ export default {
     },
     mounted() {
         this.createSlides()
+        this.showSlide(this.$cookie.get("slide_number" || this.start))
         this.$refs.sliderTracker.addEventListener("transitionend", () => this.onTransitionEnd(), false);
         EventBus.$on("show-previous-slide", () => this.showPreviousSlide())
         EventBus.$on("show-next-slide", () => this.showNextSlide())
