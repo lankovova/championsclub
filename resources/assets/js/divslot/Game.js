@@ -371,7 +371,7 @@ export default class Game {
                 // Transfer user regular spin win
                 await this.transferWin();
 
-                this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} free spins`;
+                this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins`;
 
                 // Enable spin btn to start bonus spins
                 this.interfaceController.enableSpin();
@@ -381,15 +381,6 @@ export default class Game {
 
             const previousBonusSpin = this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1];
 
-            // If dropped more bonus spins then increase counter
-            // TODO: Also show alert and notify user about more bonus spins
-            if (this.reelsController.isThereBonusSpins()) {
-                console.log('More bonus spins dropped');
-
-                // Increase
-                this.bonusSpins.amount += this.bonusSpins.standartSpinsAmount;
-            }
-
             // If user won on bonus spin
             if (previousBonusSpin.won) {
                 // Show win lines and transfer win from regular spin
@@ -397,6 +388,25 @@ export default class Game {
                     this.pointsController.userWin += winCashInLine;
                     this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
                 });
+            }
+
+            // If dropped more bonus spins then increase counter
+            // Also show alert and notify user about more bonus spins
+            if (this.reelsController.isThereBonusSpins()) {
+                await (() => {
+                    return new Promise(resolve => {
+                        this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} more bonus spins`);
+                        this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} more bonus spins`;
+
+                        setTimeout(() => {
+                            this.interfaceController.hideAlert();
+                            resolve();
+                        }, 1500);
+                    });
+                })();
+
+                // Increase
+                this.bonusSpins.amount += this.bonusSpins.standartSpinsAmount;
             }
 
             // If bonus spins type is substitution
