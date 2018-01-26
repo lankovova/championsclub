@@ -3,7 +3,7 @@ var settings = {
     "spaceBetweenReels": 30,
 
     "numOfRows": 3,
-    "numOfReels": 5,
+    "numOfReels": 3,
 
     "animationType": 'fall',
 
@@ -23,8 +23,8 @@ var settings = {
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": true,
 
-    "symbolsImagesPath": "public/img/games/bananas/symbols/",
-    "symbolsAnimationsPath": "public/img/games/bananas/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/scatterwins/symbols/",
+    "symbolsAnimationsPath": "public/img/games/scatterwins/symbols/animations/",
 
     "symbols": [
         {"image": "1.png"},
