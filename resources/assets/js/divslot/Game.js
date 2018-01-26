@@ -3,10 +3,7 @@ import PointsController from './Controllers/PointsController';
 import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
-
-import {substitution as spinAPI} from './MockAPI/spin';
-
-import axios from 'axios';
+import APIController from './Controllers/APIController';
 
 const bonusSpinsTypes = {
     freeSpin: 'free_spin',
@@ -66,7 +63,7 @@ export default class Game {
         this.interfaceController.panel.notifier.text = 'Loading...';
         (async () => {
             // Load some necessarily information, use it
-            const playerData = await this.getPlayerData();
+            const playerData = await APIController.getPlayerData();
             const userCash = +playerData.cash;
 
             this.pointsController = new PointsController({
@@ -133,37 +130,6 @@ export default class Game {
         }
     }
 
-    getPlayerData = async () => {
-        try {
-            if (settings.dev) {
-                return {cash: '153.94'}
-            } else {
-                return (await axios.post('/getplayerinfo')).data;
-            }
-        } catch(err) {
-            console.log(err);
-        }
-    }
-
-    // Getting spin data
-    getSpinResponse = async () => {
-        try {
-            if (settings.dev) {
-                return spinAPI;
-            } else {
-                const response = await axios.post('/spin', {
-                    lines_amount: this.pointsController.lines,
-                    bet_per_line: this.pointsController.betPerLine,
-                    denomination: this.pointsController.denomination * 100,
-                    game: this.gameName
-                });
-                return response.data;
-            }
-        } catch(err) {
-            console.log(err);
-        }
-    }
-
     takeWinClickHandler = async () => {
         this.interfaceController.disableInterface();
 
@@ -219,7 +185,6 @@ export default class Game {
 
     startGamble = () => {
         this.linesController.unblurAllSymbols();
-        this.linesController.stopCyclingWinningLines();
 
         // FIXME:
         if (this.interfaceController.alertWindow.isOn) {
@@ -276,8 +241,12 @@ export default class Game {
         // Enable auto btn if auto spins is on
         if (this.autoSpinIsOn) this.interfaceController.enableAuto();
 
-        this.getSpinResponse().then(result => {
-            console.log(result);
+        APIController.getSpinData({
+            linesAmount:  this.pointsController.lines,
+            betPerLine:   this.pointsController.betPerLine,
+            denomination: this.pointsController.denomination * 100,
+            gameName:     this.gameName
+        }).then(result => {
             this.spinResponse = result;
 
             // If bonus spins dropped

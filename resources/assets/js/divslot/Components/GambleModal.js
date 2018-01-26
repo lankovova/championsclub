@@ -1,9 +1,6 @@
+import APIController from './../Controllers/APIController';
 import GambleModalButton from './buttons/GambleModalButton';
 import {capitalize} from './../Helpers/stringHelper';
-
-import {gambleWin as gambleAPI} from './../MockAPI/gamble';
-
-import axios from 'axios';
 
 export default class GambleModal {
     constructor(props) {
@@ -125,21 +122,6 @@ export default class GambleModal {
         this.props.enablePanelGambleBtns();
     }
 
-    async getGambleResponse(cardSuit) {
-        try {
-            if (settings.dev) {
-                return gambleAPI;
-            } else {
-                const gambleResponse = await axios.post('/gamble', {
-                    card: cardSuit
-                });
-                return gambleResponse.data;
-            }
-        } catch(err) {
-            console.log(err);
-        }
-    }
-
     showDroppedCard(randomSuit) {
         // Change flipping card suit
         this.bigCardNode.style.zIndex = 1;
@@ -161,8 +143,8 @@ export default class GambleModal {
         this.disableBtns();
 
         // Get response from server
-        const gambleResponse = await this.getGambleResponse(cardSuit);
-        console.log(gambleResponse);
+        // const gambleResponse = await this.getGambleResponse(cardSuit);
+        const gambleResponse = await APIController.getGambleData(cardSuit);
 
         this.bigCardNode = this.node.querySelector(`#suit${capitalize(gambleResponse.rand_card)}`);
         // Show randomed card in big card and add to previous cards
