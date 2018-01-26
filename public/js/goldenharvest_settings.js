@@ -17,7 +17,8 @@ var settings = {
     // due to the slow browsers perfomance
     "delayBeforeStartReelsSpin": 200,
     "spinAnimationTimeInMs": 1000,
-    "spinAnimTimingFunc": "ease-in-out",
+    
+    "spinAnimTimingFunc": "cubic-bezier(1,1.26,.66,.93)",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
