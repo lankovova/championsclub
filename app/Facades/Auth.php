@@ -43,7 +43,7 @@ class Auth {
             return false;
         }
 
-        if (strtotime(Player::getLoginTime(self::getParam("login"))) > (time() + $fiveMin)) {
+        if ((strtotime(Player::getLoginTime(self::getParam("login"))) + $fiveMin) < time()) {
             return false;
         }
 
