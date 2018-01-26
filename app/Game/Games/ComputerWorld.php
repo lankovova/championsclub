@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class ComputerWorld extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 7;
-    public static $joker = 7;
+    public static $scatter = 6;
+    public static $joker = 6;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [
