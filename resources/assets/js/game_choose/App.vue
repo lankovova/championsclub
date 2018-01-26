@@ -12,7 +12,7 @@ import Loading from "./components/Loading"
 import GameChoosePage from "./pages/GameChoose"
 import LoginChampionPage from "./pages/LoginChampion"
 import EventBus from "./event-bus.js"
-import {isPlayerAuthed} from "./config.js"
+import {isPlayerAuthed, logout} from "./config.js"
 import axios from "axios"
 
 export default {
@@ -35,6 +35,11 @@ export default {
     },
     mounted() {
         EventBus.$on("authed", () => this.authed = true)
+
+        EventBus.$on("logout", () => {
+            axios.get(logout)
+            this.authed = false
+        })
     }
 }
 </script>

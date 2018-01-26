@@ -18,7 +18,7 @@ export default {
     methods: {
         exit() {
             if (this.$el.classList.contains("button--disabled")) return;
-            EventBus.$emit("exit")
+            EventBus.$emit("logout")
         },
     },
     mixins: [buttonEvents],

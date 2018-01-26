@@ -18,11 +18,13 @@ export default {
         Panel, Slider
     },
     mounted() {
-        let data = {};
-        axios.post(playerInfo).then(res => {
-            data.cash = res.data.cash
-            data.denominations = res.data.denomination
-            EventBus.$emit("player-data-loaded", data)
+        EventBus.$on("authed", () => {
+            let data = {};
+            axios.post(playerInfo).then(res => {
+                data.cash = res.data.cash
+                data.denominations = res.data.denomination
+                EventBus.$emit("player-data-loaded", data)
+            })
         })
     }
 }
