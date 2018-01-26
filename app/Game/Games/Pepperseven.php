@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class Pepperseven extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 6;
-    public static $joker = -1;
+    public static $scatter = 5;
+    public static $joker = 5;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [
