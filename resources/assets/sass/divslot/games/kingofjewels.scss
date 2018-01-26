@@ -27,9 +27,16 @@
     background: url('../img/games/kingofjewels/header.gif');
 }
 .alert .content {
-    background: url("../img/games/kingofjewels/freeSpinBg.png");
-    width: 1184px;
-    height: 626px;
+    background-image: url("../img/games/kingofjewels/images/freeSpinBg.png");
+    background-size: 100% 100%;
+    width: 830px;
+    height: 310px;
+    color: white;
+    font-size: 44px;
+    text-shadow: 2px 2px black;
+    padding: 0 100px;
+    box-sizing: border-box;
+    text-align: center;
 }
 .gamble {
     background-image: url('../img/games/kingofjewels/gamble/gamble_bg.png');
