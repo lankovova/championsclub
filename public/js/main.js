@@ -12408,7 +12408,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\App.vue"
+Component.options.__file = "resources/assets/js/game_choose/App.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -12417,9 +12417,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-195b8f0c", Component.options)
+    hotAPI.createRecord("data-v-5f8ee998", Component.options)
   } else {
-    hotAPI.reload("data-v-195b8f0c", Component.options)
+    hotAPI.reload("data-v-5f8ee998", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -12549,7 +12549,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Loading.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Loading.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -12558,9 +12558,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-35eb3926", Component.options)
+    hotAPI.createRecord("data-v-2236f3c0", Component.options)
   } else {
-    hotAPI.reload("data-v-35eb3926", Component.options)
+    hotAPI.reload("data-v-2236f3c0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -12688,7 +12688,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-35eb3926", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2236f3c0", module.exports)
   }
 }
 
@@ -12718,7 +12718,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\pages\\GameChoose.vue"
+Component.options.__file = "resources/assets/js/game_choose/pages/GameChoose.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -12727,9 +12727,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-00d5a990", Component.options)
+    hotAPI.createRecord("data-v-2296e951", Component.options)
   } else {
-    hotAPI.reload("data-v-00d5a990", Component.options)
+    hotAPI.reload("data-v-2296e951", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -12809,7 +12809,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\Panel.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/Panel.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -12818,9 +12818,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-29fa8fbd", Component.options)
+    hotAPI.createRecord("data-v-1bf047c6", Component.options)
   } else {
-    hotAPI.reload("data-v-29fa8fbd", Component.options)
+    hotAPI.reload("data-v-1bf047c6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -12963,7 +12963,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\PanelTop.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/PanelTop.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -12972,9 +12972,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2a0ba3f0", Component.options)
+    hotAPI.createRecord("data-v-2e8505a8", Component.options)
   } else {
-    hotAPI.reload("data-v-2a0ba3f0", Component.options)
+    hotAPI.reload("data-v-2e8505a8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13048,7 +13048,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\buttons\\Exit.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/buttons/Exit.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13057,9 +13057,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d7c6c690", Component.options)
+    hotAPI.createRecord("data-v-2c3675d0", Component.options)
   } else {
-    hotAPI.reload("data-v-d7c6c690", Component.options)
+    hotAPI.reload("data-v-2c3675d0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13139,7 +13139,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d7c6c690", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2c3675d0", module.exports)
   }
 }
 
@@ -13169,7 +13169,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\Notifier\\Notifier.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/Notifier/Notifier.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13178,9 +13178,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0aa14375", Component.options)
+    hotAPI.createRecord("data-v-dd9249b0", Component.options)
   } else {
-    hotAPI.reload("data-v-0aa14375", Component.options)
+    hotAPI.reload("data-v-dd9249b0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13252,7 +13252,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0aa14375", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-dd9249b0", module.exports)
   }
 }
 
@@ -13279,7 +13279,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2a0ba3f0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2e8505a8", module.exports)
   }
 }
 
@@ -13309,7 +13309,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\PanelBottom.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/PanelBottom.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13318,9 +13318,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6c87c8c8", Component.options)
+    hotAPI.createRecord("data-v-66c24d28", Component.options)
   } else {
-    hotAPI.reload("data-v-6c87c8c8", Component.options)
+    hotAPI.reload("data-v-66c24d28", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13420,7 +13420,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\buttons\\Denomination.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/buttons/Denomination.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13429,9 +13429,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0ee799ff", Component.options)
+    hotAPI.createRecord("data-v-67b1625f", Component.options)
   } else {
-    hotAPI.reload("data-v-0ee799ff", Component.options)
+    hotAPI.reload("data-v-67b1625f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13546,7 +13546,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0ee799ff", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-67b1625f", module.exports)
   }
 }
 
@@ -13576,7 +13576,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\buttons\\PreviousSlide.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/buttons/PreviousSlide.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13585,9 +13585,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dce32660", Component.options)
+    hotAPI.createRecord("data-v-51fdb070", Component.options)
   } else {
-    hotAPI.reload("data-v-dce32660", Component.options)
+    hotAPI.reload("data-v-51fdb070", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13667,7 +13667,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-dce32660", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-51fdb070", module.exports)
   }
 }
 
@@ -13697,7 +13697,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\buttons\\NextSlide.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/buttons/NextSlide.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13706,9 +13706,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7d71a754", Component.options)
+    hotAPI.createRecord("data-v-6a53baf4", Component.options)
   } else {
-    hotAPI.reload("data-v-7d71a754", Component.options)
+    hotAPI.reload("data-v-6a53baf4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13789,7 +13789,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7d71a754", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6a53baf4", module.exports)
   }
 }
 
@@ -13819,7 +13819,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\CashPresenter.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/CashPresenter.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13828,9 +13828,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-05a6e4ee", Component.options)
+    hotAPI.createRecord("data-v-5b51d14e", Component.options)
   } else {
-    hotAPI.reload("data-v-05a6e4ee", Component.options)
+    hotAPI.reload("data-v-5b51d14e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13957,7 +13957,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-05a6e4ee", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5b51d14e", module.exports)
   }
 }
 
@@ -13987,7 +13987,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\HelpPanel.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/HelpPanel.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13996,9 +13996,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ee900fc", Component.options)
+    hotAPI.createRecord("data-v-6cb91d5c", Component.options)
   } else {
-    hotAPI.reload("data-v-3ee900fc", Component.options)
+    hotAPI.reload("data-v-6cb91d5c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14071,7 +14071,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\buttons\\History.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/buttons/History.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14080,9 +14080,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e31db42c", Component.options)
+    hotAPI.createRecord("data-v-1603a18a", Component.options)
   } else {
-    hotAPI.reload("data-v-e31db42c", Component.options)
+    hotAPI.reload("data-v-1603a18a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14162,7 +14162,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e31db42c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1603a18a", module.exports)
   }
 }
 
@@ -14192,7 +14192,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\buttons\\Lang.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/buttons/Lang.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14201,9 +14201,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9b32e4f0", Component.options)
+    hotAPI.createRecord("data-v-082eb5e8", Component.options)
   } else {
-    hotAPI.reload("data-v-9b32e4f0", Component.options)
+    hotAPI.reload("data-v-082eb5e8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14294,7 +14294,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9b32e4f0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-082eb5e8", module.exports)
   }
 }
 
@@ -14325,7 +14325,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3ee900fc", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6cb91d5c", module.exports)
   }
 }
 
@@ -14362,7 +14362,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6c87c8c8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-66c24d28", module.exports)
   }
 }
 
@@ -14392,7 +14392,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\LangChoose.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/LangChoose.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14401,9 +14401,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6cd7393c", Component.options)
+    hotAPI.createRecord("data-v-0deaae48", Component.options)
   } else {
-    hotAPI.reload("data-v-6cd7393c", Component.options)
+    hotAPI.reload("data-v-0deaae48", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14550,7 +14550,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6cd7393c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0deaae48", module.exports)
   }
 }
 
@@ -14580,7 +14580,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\DenominationChoose.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/DenominationChoose.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14589,9 +14589,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f252f91a", Component.options)
+    hotAPI.createRecord("data-v-f21f59da", Component.options)
   } else {
-    hotAPI.reload("data-v-f252f91a", Component.options)
+    hotAPI.reload("data-v-f21f59da", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14768,7 +14768,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f252f91a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f21f59da", module.exports)
   }
 }
 
@@ -14798,7 +14798,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Panel\\HistoryPresenter.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Panel/HistoryPresenter.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14807,9 +14807,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-87e30d6a", Component.options)
+    hotAPI.createRecord("data-v-0cd09e2a", Component.options)
   } else {
-    hotAPI.reload("data-v-87e30d6a", Component.options)
+    hotAPI.reload("data-v-0cd09e2a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15975,7 +15975,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-87e30d6a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0cd09e2a", module.exports)
   }
 }
 
@@ -16019,7 +16019,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-29fa8fbd", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1bf047c6", module.exports)
   }
 }
 
@@ -16049,7 +16049,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\components\\Slider.vue"
+Component.options.__file = "resources/assets/js/game_choose/components/Slider.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16058,9 +16058,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-07a36e40", Component.options)
+    hotAPI.createRecord("data-v-816bf0e6", Component.options)
   } else {
-    hotAPI.reload("data-v-07a36e40", Component.options)
+    hotAPI.reload("data-v-816bf0e6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16093,7 +16093,99 @@ exports.default = {
             start: 1,
             current: 1,
             trasitionTime: 500,
-            slides: [[{ class: 'book-of-winner', url: 'bookofwinner' }, { class: 'sevens-on-fire-plus', url: 'sevensonfireplus' }, { class: 'sevens-on-fire', url: 'sevensonfire' }, { class: 'fire-rage-plus', url: 'firerageplus' }, { class: 'triple-diamond', url: 'triplediamond' }], [{ class: 'kings-of-jewels', url: 'kingsofjewels' }, { class: 'crazy-barmen', url: 'crazybarmen' }, { class: 'scatter-wins', url: 'scatterwins' }, { class: 'computer-world', url: 'computerworld' }, { class: 'hearts', url: 'hearts' }], [{ class: 'gates-of-avalon', url: 'gatesofavalon' }, { class: 'money', url: 'money' }, { class: 'nautilus', url: 'nautilus' }, { class: 'golden-harvest', url: 'golden-harvest' }, { class: 'bananas', url: 'bananas' }], [{ class: 'mariner', url: 'mariner' }, { class: 'riddle-of-the-sphinx', url: 'riddleofthesphinx' }, { class: 'roll-of-ramses', url: 'rolloframses' }, { class: 'snow-white', url: 'snowwhite' }, { class: 'tropical-fruit', url: 'tropicalfruit' }], [{ class: 'billiard-world', url: 'billiardworld' }, { class: 'ultra-seven-hot', url: 'ultrasevenhot' }, { class: 'hit-jewels', url: 'hitjewels' }, { class: 'robinson', url: 'robinson' }, { class: 'fire-rage', url: 'firerage' }], [{ class: 'book-of-wins', url: 'bookofwins' }, { class: 'casino-world', url: 'casinoworld' }, { class: 'pepper-seven', url: 'pepperseven' }, { class: 'magic-secret', url: 'magicsecret' }, { class: 'casino-and-stars', url: 'casinoandstars' }], [{ class: 'beauty-dolphins', url: 'beautydolphins' }, { class: 'savanna-queen', url: 'savannaqueen' }, { class: 'hot-sevens', url: 'hotsevens' }, { class: 'ice-legend', url: 'icelegend' }, { class: 'golden-scatter', url: 'goldenscatter' }], [{ class: 'lucky-ladys-glamor', url: 'luckyladysglamor' }, { class: 'captain', url: 'captain' }, { class: 'hot-slot', url: 'hotslot' }, { class: 'always-cherry', url: 'alwayscherry' }, { class: 'dolphins-pearl', url: 'dolphinspearl' }], [{ class: 'queen-of-hearts', url: 'queenofhearts' }, { class: 'bananas-go-bahamas', url: 'bananasgobahamas' }, { class: 'the-money-game', url: 'themoneygame' }, { class: 'lucky-ladys-charm', url: 'luckyladyscharm' }, { class: 'venetiam-carnival', url: 'venetiamcarnival' }], [{ class: 'sea-light', url: 'sealight' }, { class: 'columbus', url: 'columbus' }, { class: 'sharky', url: 'sharky' }, { class: 'fire-frenzy', url: 'firefrenzy' }, { class: 'golden-harvest', url: 'goldenharvest' }], [{ class: 'alice-in-wonderland', url: 'aliceinwonderland' }, { class: 'sizzling-hot', url: 'sizzlinghot' }, { class: 'gryphons-gold', url: 'gryphonsgold' }, { class: 'book-of-ra', url: 'bookofra' }, { class: 'crazy-barmen-old', url: 'crazybarmenold' }], [{ class: 'cinema', url: 'cinema' }, { class: 'computer-world-old', url: 'computerworldold' }, { class: 'nautilus-old', url: 'nautilusold' }, { class: '', url: '' }, { class: 'gulliver', url: 'gulliver' }]]
+            slides: [[{ class: 'book-of-winner', url: 'bookofwinner' }, { class: 'tropical-fruit', url: 'tropicalfruit' }, { class: 'hit-jewels', url: 'hitjewels' }, { class: 'kings-of-jewels', url: 'kingsofjewels' }, { class: 'computer-world', url: 'computerworld' }], [{ class: 'roll-of-ramses', url: 'rolloframses' }, { class: 'pepper-seven', url: 'pepperseven' }, { class: 'magic-secret', url: 'magicsecret' }, { class: 'golden-harvest', url: 'golden-harvest' }, { class: 'scatter-wins', url: 'scatterwins' }], [{ class: 'bananas', url: 'bananas' }, { class: 'casino-world', url: 'casinoworld' }, { class: 'book-of-wins', url: 'bookofwins' }, { class: 'crazy-barmen', url: 'crazybarmen' }, { class: 'nautilus', url: 'nautilus' }], [{ class: 'money', url: 'money' }, { class: 'ice-legend', url: 'icelegend' }, { class: 'casino-and-stars', url: 'casinoandstars' }, { class: 'beauty-dolphins', url: 'beautydolphins' }, { class: 'savanna-queen', url: 'savannaqueen' }], [{ class: 'lucky-ladys-glamor', url: 'luckyladysglamor' }, { class: '', url: '#' }, { class: '', url: '#' }, { class: '', url: '#' }, { class: '', url: '#' }]
+            // [
+            //     {class:'book-of-winner', url:'bookofwinner'},
+            //     {class:'sevens-on-fire-plus', url:'sevensonfireplus'},
+            //     {class:'sevens-on-fire', url:'sevensonfire'},
+            //     {class:'fire-rage-plus', url:'firerageplus'},
+            //     {class:'triple-diamond', url:'triplediamond'}
+            // ],
+            // [
+            //     {class:'kings-of-jewels', url:'kingsofjewels'},
+            //     {class:'crazy-barmen', url:'crazybarmen'},
+            //     {class:'scatter-wins', url:'scatterwins'},
+            //     {class:'computer-world', url:'computerworld'},
+            //     {class:'hearts', url:'hearts'}
+            // ],
+            // [
+            //     {class:'gates-of-avalon', url:'gatesofavalon'},
+            //     {class:'money', url:'money'},
+            //     {class:'nautilus', url:'nautilus'},
+            //     {class:'golden-harvest', url:'golden-harvest'},
+            //     {class:'bananas', url:'bananas'}
+            // ],
+            // [
+            //     {class:'mariner', url:'mariner'},
+            //     {class:'riddle-of-the-sphinx', url:'riddleofthesphinx'},
+            //     {class:'roll-of-ramses', url:'rolloframses'},
+            //     {class:'snow-white', url:'snowwhite'},
+            //     {class:'tropical-fruit', url:'tropicalfruit'}
+            // ],
+            // [
+            //     {class:'billiard-world', url:'billiardworld'},
+            //     {class:'ultra-seven-hot', url:'ultrasevenhot'},
+            //     {class:'hit-jewels', url:'hitjewels'},
+            //     {class:'robinson', url:'robinson'},
+            //     {class:'fire-rage', url:'firerage'}
+            // ],
+            // [
+            //     {class:'book-of-wins', url:'bookofwins'},
+            //     {class:'casino-world', url:'casinoworld'},
+            //     {class:'pepper-seven', url:'pepperseven'},
+            //     {class:'magic-secret', url:'magicsecret'},
+            //     {class:'casino-and-stars', url:'casinoandstars'}
+            // ],
+            // [
+            //     {class:'beauty-dolphins', url:'beautydolphins'},
+            //     {class:'savanna-queen', url:'savannaqueen'},
+            //     {class:'hot-sevens', url:'hotsevens'},
+            //     {class:'ice-legend', url:'icelegend'},
+            //     {class:'golden-scatter', url:'goldenscatter'}
+            // ],
+            // [
+            //     {class:'lucky-ladys-glamor', url:'luckyladysglamor'},
+            //     {class:'captain', url:'captain'},
+            //     {class:'hot-slot', url:'hotslot'},
+            //     {class:'always-cherry', url:'alwayscherry'},
+            //     {class:'dolphins-pearl', url:'dolphinspearl'}
+            // ],
+            // [
+            //     {class:'queen-of-hearts', url:'queenofhearts'},
+            //     {class:'bananas-go-bahamas', url:'bananasgobahamas'},
+            //     {class:'the-money-game', url:'themoneygame'},
+            //     {class:'lucky-ladys-charm', url:'luckyladyscharm'},
+            //     {class:'venetiam-carnival', url:'venetiamcarnival'}
+            // ],
+            // [
+            //     {class:'sea-light', url:'sealight'},
+            //     {class:'columbus', url:'columbus'},
+            //     {class:'sharky', url:'sharky'},
+            //     {class:'fire-frenzy', url:'firefrenzy'},
+            //     {class:'golden-harvest', url:'goldenharvest'}
+            // ],
+            // [
+            //     {class:'alice-in-wonderland', url:'aliceinwonderland'},
+            //     {class:'sizzling-hot', url:'sizzlinghot'},
+            //     {class:'gryphons-gold', url:'gryphonsgold'},
+            //     {class:'book-of-ra', url:'bookofra'},
+            //     {class:'crazy-barmen-old', url:'crazybarmenold'}
+            // ],
+            // [
+            //     {class:'cinema', url:'cinema'},
+            //     {class:'computer-world-old', url:'computerworldold'},
+            //     {class:'nautilus-old', url:'nautilusold'},
+            //     {class:'', url:''},
+            //     {class:'gulliver', url:'gulliver'}
+            // ],
+            // [
+            //     {class:''},
+            //     {class:''},
+            //     {class:''},
+            //     {class:''},
+            //     {class:''}
+            // ],
+            ]
         };
     },
 
@@ -16239,7 +16331,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-07a36e40", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-816bf0e6", module.exports)
   }
 }
 
@@ -16264,7 +16356,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-00d5a990", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2296e951", module.exports)
   }
 }
 
@@ -16294,7 +16386,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\game_choose\\pages\\LoginChampion.vue"
+Component.options.__file = "resources/assets/js/game_choose/pages/LoginChampion.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16303,9 +16395,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6c54dcb3", Component.options)
+    hotAPI.createRecord("data-v-341dbbfa", Component.options)
   } else {
-    hotAPI.reload("data-v-6c54dcb3", Component.options)
+    hotAPI.reload("data-v-341dbbfa", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16680,7 +16772,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6c54dcb3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-341dbbfa", module.exports)
   }
 }
 
@@ -16720,7 +16812,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-195b8f0c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5f8ee998", module.exports)
   }
 }
 
