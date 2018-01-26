@@ -6,7 +6,7 @@ use App\Game\Games\Game;
 
 class ScatterWins extends Game {
     public static $reelsAmount = 3;
-    public static $scatter = 4;
+    public static $scatter = 5;
     public static $joker = -1;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 7;
