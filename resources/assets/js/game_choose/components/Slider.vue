@@ -36,7 +36,7 @@ export default {
                     {class:'roll-of-ramses', url:'rolloframses'},
                     {class:'pepper-seven', url:'pepperseven'},
                     {class:'magic-secret', url:'magicsecret'},
-                    {class:'golden-harvest', url:'golden-harvest'},
+                    {class:'golden-harvest', url:'goldenharvest'},
                     {class:'lucky-ladys-glamor', url:'luckyladysglamor'},
                 ],
                 [
