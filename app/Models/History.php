@@ -28,6 +28,25 @@ class History {
         ]);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $cash
+     * @param [type] $idAgent
+     * @param [type] $login
+     * @return void
+     */
+    public static function writeInsuranceTransfer($cash, $idAgent, $login) {
+        DB::table("historysch")->insert([
+            "data" => date("Y-m-d H:i:s"),
+            "summa" => $cash,
+            "ivent" => 'возврат',
+            "subdiler" => $idAgent,
+            "PIN" => $login,
+            "IP" => $_SERVER['REMOTE_ADDR']
+        ]);
+    }
+
     public static function getHistory() {
         return DB::table("stats_pin")
             ->where("PIN", Auth::getParam("login"))

@@ -32,7 +32,8 @@ export default {
                     let data = {}
                     data.cash = res.data.cash
                     data.denominations = res.data.denomination
-
+                    data.insurance = res.data.insurance
+                    
                     EventBus.$emit("player-data-loaded", data)
                 })
             }

@@ -11,6 +11,8 @@ class Player {
     private $maxWinCash;
     private $lastWinCash;
     private $cash;
+    private $insurance;
+    private $totalPaidInsurance;
 
     function __construct(string $login) {
         $this->setLogin($login);
@@ -23,13 +25,15 @@ class Player {
 
     private function init() {
         $player = DB::table("users")
-            ->select("id_agent", "user_max_win_cash", "user_last_win_cash", "cash")
+            ->select("id_agent", "user_max_win_cash", "user_last_win_cash", "cash", "pcash", "total_paid_pcash")
             ->where("login", $this->login)->first();
 
         $this->idAgent = $player->id_agent;
         $this->maxWinCash = $player->user_max_win_cash;
         $this->lastWinCash = $player->user_last_win_cash;
         $this->cash = $player->cash;
+        $this->insurance = $player->pcash;
+        $this->totalPaidInsurance = $player->total_paid_pcash;
     }
 
     public function getCashPool() {
@@ -51,6 +55,8 @@ class Player {
             $cashPool = 0.10;
         }
 
+        // TODO: remove static cash pool
+        $cashPool = 1000;
         return $cashPool;
     }
 
@@ -59,10 +65,30 @@ class Player {
             ->where("login", $this->login)
             ->update([
                 "cash" => $this->cash,
+                "pcash" => $this->insurance,
+                "total_paid_pcash" => $this->totalPaidInsurance,
                 "user_last_win_cash" => $this->lastWinCash,
                 "user_max_win_cash" => $this->maxWinCash,
                 "sessions_at" => date("Y-m-d H:i:s")
             ]);
+    }
+    /**
+     * Transfer insurance to cash
+     *
+     * @return boolean
+     */
+    public function transferInsurance(): bool {
+        if ($this->insurance == 0) {
+            return false;
+        }
+        $this->cash = $this->insurance;
+        $this->insurance = 0;
+
+        return true;
+    }
+
+    public function getIdAgent() {
+        return $this->idAgent;
     }
 
     public function getlastWonCash() {
@@ -71,6 +97,10 @@ class Player {
 
     public function getCash() {
         return $this->cash;
+    }
+
+    public function getInsurance() {
+        return $this->insurance;
     }
 
     public function setCash(float $cash) {
@@ -137,17 +167,4 @@ class Player {
         return $cash;
     }
 
-    /**
-     * Return Players cash.
-     *
-     * @param string $login
-     * @return string
-     */
-    public static function getInsuranceByLogin(string $login): string {
-        $insurance = DB::table("users")
-            ->where("login", $login)
-            ->value("pcash");
-
-        return $insurance;
-    }
 }
