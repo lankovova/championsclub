@@ -118,3 +118,20 @@
 .help__slide_2 {
     background-image: url('../img/games/bookofwinner/help/slide_bg_2.png');
 }
+.help__prize_container {
+    position: absolute;
+}
+.help__prize_container[data-symbols='6'] {
+    top: 270px;
+    left: 255px;
+}
+.help__prize_container div {
+    font-size: 26px;
+    line-height: 43px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 3px;
+    text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+    width: 177px;
+    height: 43px;
+}
