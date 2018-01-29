@@ -32,6 +32,7 @@ export default {
             
             $event.currentTarget.classList.add("lang-active")
             this.$i18n.locale = lang
+            this.$cookie.set("lang", lang, 1)
             EventBus.$emit("lang-choose", lang)
             this.hide()
         },
@@ -52,8 +53,9 @@ export default {
         }
     },
     mounted() {
+        let lang = this.$cookie.get("lang") || this.$i18n.locale
         EventBus.$on("toggle-lang-choose", () => this.toggle())
-        this.$refs[this.$i18n.locale][0].classList.add("lang-active")
+        this.$refs[lang][0].click()
     }
 }
 </script>

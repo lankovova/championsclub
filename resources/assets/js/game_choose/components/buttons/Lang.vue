@@ -31,6 +31,8 @@ export default {
     mixins: [buttonEvents],
 
     mounted() {
+        let lang = this.$cookie.get("lang") || this.$i18n.locale
+        this.setLang(lang)
         EventBus.$on("lang-choose", (lang) => this.setLang(lang))
     }
 }
