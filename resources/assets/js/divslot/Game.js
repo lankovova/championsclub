@@ -432,9 +432,6 @@ export default class Game {
 
             // If no more bonus spins
             if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
-                // Hide and reset substitution block
-                this.interfaceController.hideAndResetSubstitutionBlock();
-
                 this.interfaceController.panel.notifier.text = `Free spins ended. You won ${this.pointsController.userWin} points`;
 
                 // Show alert
@@ -444,7 +441,8 @@ export default class Game {
                 this.bonusSpins.on = false;
 
                 if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
-                    // TODO: Reset substitution symbol here
+                    // Hide and reset substitution block
+                    this.interfaceController.hideAndResetSubstitutionBlock();
                 }
 
                 // Check if user won

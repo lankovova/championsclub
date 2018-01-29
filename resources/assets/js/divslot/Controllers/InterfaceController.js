@@ -300,7 +300,6 @@ export default class InterfaceController {
                 setTimeout(() => {
                     const symbolImage = settings.symbols[randomSymbols[i]].image;
                     substitutionSymbolEl.style.backgroundImage = `url('${settings.symbolsImagesPath + symbolImage}')`;
-                    console.log(symbolImage);
                     resolve();
                 }, 200);
             });
