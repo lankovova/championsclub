@@ -26,7 +26,7 @@ class KingOfJewels extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombos");
+        return $this->game->spin("checkForWinCombosFromAnyPosition");
     }
 
     public function bonusSpin() {

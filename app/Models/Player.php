@@ -116,7 +116,7 @@ class Player {
      * @param string $login
      * @return string
      */
-    public static function getLoginTime(string $login) {
+    public static function getLoginTime(string $login): string {
         $sessions_at = DB::table("users")
             ->where("login", $login)
             ->value("sessions_at");
@@ -129,11 +129,25 @@ class Player {
      * @param string $login
      * @return string
      */
-    public static function getCashByLogin(string $login) {
+    public static function getCashByLogin(string $login): string {
         $cash = DB::table("users")
             ->where("login", $login)
             ->value("cash");
 
         return $cash;
+    }
+
+    /**
+     * Return Players cash.
+     *
+     * @param string $login
+     * @return string
+     */
+    public static function getInsuranceByLogin(string $login): string {
+        $insurance = DB::table("users")
+            ->where("login", $login)
+            ->value("pcash");
+
+        return $insurance;
     }
 }
