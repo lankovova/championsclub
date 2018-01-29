@@ -1,4 +1,4 @@
-import {getNextArrayItem, getMultiplyNearestLowerNumbers} from './Helpers/arrayHelp';
+import {getNextArrayItem, getMultiplyNearestLowerNumbers, shuffleArray} from './Helpers/arrayHelp';
 import PointsController from './Controllers/PointsController';
 import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
@@ -210,28 +210,43 @@ export default class Game {
         this.pointsController.userWin = 0;
     }
 
-    spin = () => {
-        // FIXME:
-        if (this.interfaceController.alertWindow.isOn) {
-            this.interfaceController.hideAlert();
-        }
-
+    spin = async () => {
         if (this.bonusSpins.on) {
             console.log('Bonus spins starts');
 
-            // Hide alert when bonus spins starts
-            this.interfaceController.hideAlert();
+            // If it is substitution bonus spins type
+            if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                // And if substitution just starts
+                if (this.bonusSpins.currentSpinIndex === 0) {
+                    // Disable whole interface
+                    this.interfaceController.disableInterface();
 
-            // Disable whole interface
-            this.interfaceController.disableInterface();
+                    // Wait for animation to end
+                    await this.interfaceController.animateRandomizingSubstitutionSymbol(this.spinResponse.bonus_spins.substitution_symbol);
+                }
+            } else {
+                // Hide alert when bonus spins starts
+                this.interfaceController.hideAlert();
 
-            // Reset user win when bonus spins starts
-            this.pointsController.userWin = 0
+                // Disable whole interface
+                this.interfaceController.disableInterface();
+
+                // Reset user win when bonus spins starts
+                this.pointsController.userWin = 0;
+
+                if (this.interfaceController.alertWindow.isOn) {
+                    this.interfaceController.hideAlert();
+                }
+            }
 
             // Start bonus spin
             this.bonusSpin();
         } else {
             console.log('Normal spin');
+
+            if (this.interfaceController.alertWindow.isOn) {
+                this.interfaceController.hideAlert();
+            }
 
             this.getDataAndSpin();
         }
@@ -297,7 +312,7 @@ export default class Game {
         // FIXME:
         this.linesController.unblurAllSymbols();
 
-        this.interfaceController.panel.notifier.text = `Free spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.amount}`;
+        this.interfaceController.panel.notifier.text = `Bonus spin ${this.bonusSpins.currentSpinIndex} of ${this.bonusSpins.amount}`;
 
         // Spin reels to given final symbols
         this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
@@ -342,7 +357,7 @@ export default class Game {
 
         // Checking is there bonus spins
         if (this.bonusSpins.on) {
-            // If first bonus spins
+            // If bonus spins just dropped
             if (this.bonusSpins.currentSpinIndex === 0) {
                 this.bonusSpins.on = true;
 
@@ -352,18 +367,24 @@ export default class Game {
                 // Show alert and wait for user to press start btn
                 // Based on bonus spins type
                 if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                    // Show substitution alert
                     this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins with substitution`);
                     this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins with substitution`;
+
+                    this.interfaceController.displaySubstitutionStart();
+
+                    // Wait for user to start spin
+                    this.interfaceController.enableSpin();
                 } else {
                     this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins`);
                     this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins`;
+
+                    // Transfer user regular spin win
+                    await this.transferWin();
+
+                    // Enable spin btn to start bonus spins
+                    this.interfaceController.enableSpin();
                 }
-
-                // Transfer user regular spin win
-                await this.transferWin();
-
-                // Enable spin btn to start bonus spins
-                this.interfaceController.enableSpin();
 
                 return;
             }
@@ -408,6 +429,9 @@ export default class Game {
 
             // If no more bonus spins
             if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
+                // Hide and reset substitution block
+                this.interfaceController.hideAndResetSubstitutionBlock();
+
                 this.interfaceController.panel.notifier.text = `Free spins ended. You won ${this.pointsController.userWin} points`;
 
                 // Show alert
@@ -415,6 +439,10 @@ export default class Game {
 
                 // Tun off bonus spins
                 this.bonusSpins.on = false;
+
+                if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                    // TODO: Reset substitution symbol here
+                }
 
                 // Check if user won
                 if (this.pointsController.userWin > 0) {

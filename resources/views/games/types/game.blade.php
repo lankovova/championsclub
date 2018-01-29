@@ -5,7 +5,18 @@
     <div class="game_wrapper" id="game_wrapper">
         @include('games.parts.loading')
         <div id="game">
-            <div class="header"></div>
+            <div class="substitutionBlock-wrapper start" id="substitutionBlock">
+                <div class="substitutionBlock">
+                    <div class="substitutionSymbol-container">
+                        <div class="substitutionSymbol" id="substitutionSymbol"></div>
+                    </div>
+                    <div class="substitutionPaytable-container">
+                        <div class="substitutionPaytable" id="substitutionPaytable"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header" id="header"></div>
 
             <div class="main flex_center">
                 <div class="alert" id="alert">

@@ -3,6 +3,7 @@ import Panel from '../Components/Panel';
 import ToggleBlock from '../Components/ToggleBlock';
 import ToggleLanguageBlock from '../Components/ToggleLanguageBlock';
 import Alert from '../Components/Alert';
+import SubstitutionBlock from './../Components/SubstitutionBlock';
 import GambleModal from '../Components/GambleModal';
 
 export default class InterfaceController {
@@ -29,7 +30,9 @@ export default class InterfaceController {
             enablePanelGambleBtns: this.enablePanelGambleBtns
         });
 
-        this.alertWindow = new Alert({ node: document.querySelector('#alert') });
+        this.alertWindow = new Alert({node: document.querySelector('#alert')});
+
+        this.substitutionBlock = new SubstitutionBlock({node: document.querySelector('#substitutionBlock')});
 
         this.panel = new Panel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
@@ -218,6 +221,120 @@ export default class InterfaceController {
     // Enable each btn of panel except buttons with multiple states(gamble, maxbet, sst)
     enableInterface() {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
+    }
+
+    // FIXME: Move to substitution component
+    displaySubstitutionStart() {
+        // Show substitution block
+        const substitutionBlock = document.querySelector('#substitutionBlock');
+        substitutionBlock.style.display = 'block';
+
+        // Show animation prestart
+        substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionPrestart.png')`;
+    }
+
+    // FIXME: Move to substitution component
+    hideAndResetSubstitutionBlock() {
+        const substitutionBlock = document.querySelector('#substitutionBlock');
+
+        // Hide block
+        substitutionBlock.style.display = 'none';
+
+        // Reset block content
+        substitutionBlock.style.backgroundImage = '';
+        const paytableEl = document.querySelector('#substitutionPaytable');
+        paytableEl.innerHTML = '';
+        const substitutionSymbolEl = substitutionBlock.querySelector('#substitutionSymbol');
+        substitutionSymbolEl.style.backgroundImage = '';
+
+        // Reset block position
+        substitutionBlock.classList.remove('finish');
+        substitutionBlock.classList.add('start');
+
+        // Change header to default background
+        document.querySelector('#header').style.backgroundImage = '';
+
+    }
+
+    // FIXME: Move to substitution component
+    async animateRandomizingSubstitutionSymbol(substitutionSymbol) {
+        const substitutionBlock = document.querySelector('#substitutionBlock');
+        const substitutionSymbolEl = substitutionBlock.querySelector('#substitutionSymbol');
+
+        // Create array of "randomed" symbol
+        let randomSymbols = [];
+        for (let i = 0; i < 15; i++) {
+            let symbol;
+            // Rerandom if symbol is the same as previous
+            do {
+                symbol = Math.floor(Math.random() * settings.symbols.length);
+            } while (symbol === randomSymbols[randomSymbols.length - 1]);
+
+            // On last symbol
+            if (i === 14) {
+                // Rerandom if it is substitution or the same as previous
+                while (
+                    symbol === substitutionSymbol ||
+                    symbol === randomSymbols[randomSymbols.length - 1]
+                ) {
+                    symbol = Math.floor(Math.random() * settings.symbols.length);
+                }
+            }
+
+            randomSymbols.push(symbol);
+        }
+
+        // Start animation
+        substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionProgress.gif')`;
+        // Wait for animation to end
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Set final background to substitution block
+        substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionBlock.png')`;
+
+        // Show each symbol from randomed symbols array every 200ms
+        for (let i = 0; i < randomSymbols.length; i++) {
+            await new Promise(resolve => {
+                setTimeout(() => {
+                    const symbolImage = settings.symbols[randomSymbols[i]].image;
+                    substitutionSymbolEl.style.backgroundImage = `url('${settings.symbolsImagesPath + symbolImage}')`;
+                    resolve();
+                }, 200);
+            });
+        }
+
+        // Write symbol paytable
+        const paytableEl = document.querySelector('#substitutionPaytable');
+        // FIXME: Use normal paytable from settings instead of mock
+        const mockPayTable = [0,10,50,250,1000];
+        for (let i = mockPayTable.length - 1; i >= 0; i--) {
+            if (mockPayTable[i] === 0) continue;
+            paytableEl.innerHTML += `${i + 1} - ${mockPayTable[i]}<br />`;
+        }
+
+        // Change header to substitution background
+        document.querySelector('#header').style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionHeader.png')`;
+
+        // Hide alert
+        this.hideAlert();
+
+        // Move symbol to finish position
+        // Add substitution move finish class
+        substitutionBlock.classList.remove('start');
+        substitutionBlock.classList.add('finish');
+
+        const substBlockMoveEnds = (resolve) => {
+            // Resolve when animation is complete
+            resolve();
+            // Remove event listener for optimization
+            substitutionBlock.removeEventListener('transitionend', substBlockMoveEnds);
+        }
+
+        return new Promise(resolve => {
+            // When substitution block denstinates finish position
+            substitutionBlock.addEventListener('transitionend', () => {
+                substBlockMoveEnds.call(this, resolve);
+            });
+        });
     }
 
     _initKeyboardListeners() {

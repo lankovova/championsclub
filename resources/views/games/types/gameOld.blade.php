@@ -15,7 +15,7 @@
 
 
             <div class="main flex_center">
-                <div class="header"></div>
+                <div class="header" id="header"></div>
                 <div class="alert" id="alert">
                     <div class="content flex_center"></div>
                 </div>

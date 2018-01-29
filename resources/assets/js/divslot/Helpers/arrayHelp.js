@@ -41,6 +41,19 @@ export function getMultiplyNearestLowerNumbers(value, firstArr, secondArr) {
             }
         }
     }
-
     return best;
+}
+
+
+/**
+ * Shuffles array in place
+ * @param {Array} a items An array containing the items.
+ */
+export function shuffleArray(array) {
+    let resultArray = array.slice();
+    for (let i = resultArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [resultArray[i], resultArray[j]] = [resultArray[j], resultArray[i]];
+    }
+    return resultArray;
 }

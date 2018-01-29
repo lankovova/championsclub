@@ -6,7 +6,7 @@
     <div class="game_wrapper" id="game_wrapper">
         @include('games.parts.loading')
         <div id="game">
-            <div class="header"></div>
+            <div class="header" id="header"></div>
 
             <div class="main flex_center">
                 <div class="alert" id="alert">
