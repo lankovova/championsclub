@@ -20,12 +20,12 @@ export default class Game {
 
         // Store for bonus spins
         this.bonusSpins = {
+            type: '',
             on: false,
             spins: [],
+            standartSpinsAmount: 0,
             currentSpinIndex: 0,
             amount: 0,
-            standartSpinsAmount: 0,
-            type: ''
         };
 
         // Flag for check if auto spins in turned on
@@ -66,6 +66,10 @@ export default class Game {
             const playerData = await APIController.getPlayerData();
             const userCash = +playerData.cash;
 
+            // TODO: Move to denom, betPerLine and lines to config.js
+            settings.denomination = playerData.denomination ? playerData.denomination : settings.denomination;
+            settings.betPerLine = playerData.bet_per_line ? playerData.bet_per_line : settings.betPerLine;
+
             this.pointsController = new PointsController({
                 panel: this.interfaceController.panel,
                 linePresenters: this.interfaceController.linePresenters,
@@ -74,9 +78,10 @@ export default class Game {
                 denominationBlock: this.interfaceController.denominationBlock,
             }, {
                 userCash: userCash,
-                denomination: 0.01,
                 lines: 1,
-                betPerLine: 1,
+                // TODO: Get this values from cookie
+                betPerLine: settings.betPerLine[0],
+                denomination: settings.denomination[0],
             });
 
             this.interfaceController.setIdle();
@@ -318,6 +323,19 @@ export default class Game {
         this.reelsController.stopReels();
     }
 
+    /**
+     * Show winning lines of passed spin result and add win
+     * @param {[]} spinResult Spin result of lines
+     */
+    async showWinningLines(spinResult) {
+        await this.linesController.showWinningLines(spinResult, winCashInLine => {
+            this.pointsController.userWin += winCashInLine;
+            this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
+        });
+
+        return new Promise(resolve => resolve());
+    }
+
     // All reels has stopped event
     reelsHasStopped = async () => {
         this.interfaceController.disableStop();
@@ -329,18 +347,20 @@ export default class Game {
                 this.bonusSpins.on = true;
 
                 // Show win lines and transfer win from regular spin
-                await this.linesController.showWinningLines(this.spinResponse.spin_result, winCashInLine => {
-                    this.pointsController.userWin += winCashInLine;
-                    this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
-                });
+                await this.showWinningLines(this.spinResponse.spin_result);
 
                 // Show alert and wait for user to press start btn
-                this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins`);
+                // Based on bonus spins type
+                if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                    this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins with substitution`);
+                    this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins with substitution`;
+                } else {
+                    this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins`);
+                    this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins`;
+                }
 
                 // Transfer user regular spin win
                 await this.transferWin();
-
-                this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins`;
 
                 // Enable spin btn to start bonus spins
                 this.interfaceController.enableSpin();
@@ -353,10 +373,7 @@ export default class Game {
             // If user won on bonus spin
             if (previousBonusSpin.won) {
                 // Show win lines and transfer win from regular spin
-                await this.linesController.showWinningLines(previousBonusSpin.spin_result, winCashInLine => {
-                    this.pointsController.userWin += winCashInLine;
-                    this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
-                });
+                await this.showWinningLines(previousBonusSpin.spin_result);
             }
 
             // If dropped more bonus spins then increase counter
@@ -385,10 +402,7 @@ export default class Game {
 
                 // Count win
                 if (previousBonusSpin.substitution.won) {
-                    await this.linesController.showWinningLines(previousBonusSpin.substitution.result, winCashInLine => {
-                        this.pointsController.userWin += winCashInLine;
-                        this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
-                    });
+                    await this.showWinningLines(previousBonusSpin.substitution.result);
                 }
             }
 
@@ -425,10 +439,7 @@ export default class Game {
         if (this.spinResponse.won) { // Win case
             // Show all winning lines
             // and update user win line by line in callback
-            await this.linesController.showWinningLines(this.spinResponse.spin_result, winCashInLine => {
-                this.pointsController.userWin += winCashInLine;
-                this.interfaceController.panel.notifier.text = `You won ${this.pointsController.userWin} points`;
-            });
+            await this.showWinningLines(this.spinResponse.spin_result);
 
             if (this.autoSpinIsOn) {
                 // Transfer user regular spin win
