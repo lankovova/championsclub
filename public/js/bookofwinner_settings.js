@@ -71,7 +71,8 @@ var settings = {
             "animation": {
                 "image": "7.png",
                 "frames": 34
-            }
+            },
+            "paytable": [5000, 1000, 100, 10]
         }, {
             "image": "8.png",
             "animation": {

@@ -5,7 +5,15 @@
 @endsection
 
 @section('help')
-    @include('games.parts.helpSubstitution')
+
+    @component('games.parts.help')
+        @slot('helpValues')
+            <div id="help__prize_7">
+
+            </div>
+        @endslot
+    @endcomponent
+
 @endsection
 
 @section('js')

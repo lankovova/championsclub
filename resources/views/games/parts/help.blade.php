@@ -5,7 +5,9 @@
 
     <div class="help__slider">
         <div class="help__slider_tracker" id="helpSliderTracker">
-            <div class="help__slide help__slide_1"></div>
+            <div class="help__slide help__slide_1">
+                {{ $helpValues }}
+            </div>
             <div class="help__slide help__slide_2"></div>
         </div>
     </div>
