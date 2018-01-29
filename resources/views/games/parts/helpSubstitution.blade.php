@@ -1,11 +1,13 @@
-<div class="help">
-    <div class="help__btn_next"></div>
-    <div class="help__btn_prev"></div>
-    <div class="help__btn_close"></div>
+<div class="help" id="help">
+    <div class="help__btn_next" id="helpBtnNext"></div>
+    <div class="help__btn_prev" id="helpBtnPrev"></div>
+    <div class="help__btn_close" id="helpBtnClose"></div>
 
     <div class="help__slider">
-        <div class="help__slide_1"></div>
-        <div class="help__slide_2"></div>
+        <div class="help__slider_tracker" id="helpSliderTracker">
+            <div class="help__slide help__slide_1"></div>
+            <div class="help__slide help__slide_2"></div>
+        </div>
     </div>
 
 </div>

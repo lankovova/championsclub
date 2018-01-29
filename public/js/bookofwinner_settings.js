@@ -23,6 +23,8 @@ var settings = {
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": true,
 
+    "helpType": "slider",
+
     "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
