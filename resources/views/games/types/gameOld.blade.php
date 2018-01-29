@@ -5,6 +5,17 @@
     <div class="game_wrapper" id="game_wrapper">
         {{--  @include('games.parts.loading')  --}}
         <div id="game">
+            <div class="substitutionBlock-wrapper start" id="substitutionBlock">
+                <div class="substitutionBlock">
+                    <div class="substitutionSymbol-container">
+                        <div class="substitutionSymbol" id="substitutionSymbol"></div>
+                    </div>
+                    <div class="substitutionPaytable-container">
+                        <div class="substitutionPaytable" id="substitutionPaytable"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="jackpot-bonus">
                 <div class="jackpot_text"></div>
                 <div class="jackpot_amount"></div>
