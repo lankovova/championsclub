@@ -216,13 +216,16 @@ export default class Game {
 
             // If it is substitution bonus spins type
             if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
-                // And if substitution just starts
+                // If it is substitution pre start
                 if (this.bonusSpins.currentSpinIndex === 0) {
                     // Disable whole interface
                     this.interfaceController.disableInterface();
 
                     // Wait for animation to end
                     await this.interfaceController.animateRandomizingSubstitutionSymbol(this.spinResponse.bonus_spins.substitution_symbol);
+
+                    // Start bonus spin
+                    this.bonusSpin();
                 }
             } else {
                 // Hide alert when bonus spins starts
@@ -237,10 +240,10 @@ export default class Game {
                 if (this.interfaceController.alertWindow.isOn) {
                     this.interfaceController.hideAlert();
                 }
-            }
 
-            // Start bonus spin
-            this.bonusSpin();
+                // Start bonus spin
+                this.bonusSpin();
+            }
         } else {
             console.log('Normal spin');
 

@@ -284,6 +284,9 @@ export default class InterfaceController {
             randomSymbols.push(symbol);
         }
 
+        // Add substitution symbol as last symbol in randomed array
+        randomSymbols.push(substitutionSymbol);
+
         // Start animation
         substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionProgress.gif')`;
         // Wait for animation to end
@@ -297,6 +300,7 @@ export default class InterfaceController {
                 setTimeout(() => {
                     const symbolImage = settings.symbols[randomSymbols[i]].image;
                     substitutionSymbolEl.style.backgroundImage = `url('${settings.symbolsImagesPath + symbolImage}')`;
+                    console.log(symbolImage);
                     resolve();
                 }, 200);
             });
@@ -304,11 +308,11 @@ export default class InterfaceController {
 
         // Write symbol paytable
         const paytableEl = document.querySelector('#substitutionPaytable');
-        // FIXME: Use normal paytable from settings instead of mock
-        const mockPayTable = [0,10,50,250,1000];
-        for (let i = mockPayTable.length - 1; i >= 0; i--) {
-            if (mockPayTable[i] === 0) continue;
-            paytableEl.innerHTML += `${i + 1} - ${mockPayTable[i]}<br />`;
+        // Get symbol paytable
+        const symbolPaytable = settings.symbols[substitutionSymbol].paytable;
+        for (let i = symbolPaytable.length - 1; i >= 0; i--) {
+            if (symbolPaytable[i] === 0) continue;
+            paytableEl.innerHTML += `${i + 1} - ${symbolPaytable[i]}<br />`;
         }
 
         // Change header to substitution background

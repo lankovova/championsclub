@@ -36,37 +36,43 @@ var settings = {
                 "image": "1.png",
                 "frames": 34
             },
-            "isScatter": true
+            "isScatter": true,
+            "paytable": [0, 0, 5, 25, 100]
         }, {
             "image": "2.png",
             "animation": {
                 "image": "2.png",
                 "frames": 10
-            }
+            },
+            "paytable": [0, 0, 5, 40, 150]
         }, {
             "image": "3.png",
             "animation": {
                 "image": "3.png",
                 "frames": 22
-            }
+            },
+            "paytable": [0, 0, 3, 30, 300]
         }, {
             "image": "4.png",
             "animation": {
                 "image": "4.png",
                 "frames": 23
-            }
+            },
+            "paytable": [0, 5, 30, 100, 750]
         }, {
             "image": "5.png",
             "animation": {
                 "image": "5.png",
                 "frames": 9
-            }
+            },
+            "paytable": [0, 0, 5, 25, 100]
         }, {
             "image": "6.png",
             "animation": {
                 "image": "6.png",
                 "frames": 11
-            }
+            },
+            "paytable": [0, 0, 5, 40, 150]
         }, {
             "image": "7.png",
             "animation": {
@@ -79,19 +85,22 @@ var settings = {
             "animation": {
                 "image": "8.png",
                 "frames": 11
-            }
+            },
+            "paytable": [0, 0, 5, 25, 100]
         }, {
             "image": "9.png",
             "animation": {
                 "image": "9.png",
                 "frames": 29
-            }
+            },
+            "paytable": [0, 5, 40, 400, 2000]
         }, {
             "image": "10.png",
             "animation": {
                 "image": "10.png",
                 "frames": 36
-            }
+            },
+            "paytable": [0, 5, 30, 100, 750]
         },
     ]
 }

@@ -38,15 +38,18 @@ export default class Panel {
                 node: document.querySelector('#menuBtn'),
                 onClick: this.props.menuClickHandler
             }),
-            language: new Buttons.LanguageBtn({
-                node: document.querySelector('#languageBtn'),
-                onClick: this.props.toggleLanguageBlock
-            }),
+            // language: new Buttons.LanguageBtn({
+            //     node: document.querySelector('#languageBtn'),
+            //     onClick: this.props.toggleLanguageBlock
+            // }),
             gamble: new Buttons.GambleBtn({
                 node: document.querySelector('#gambleBtn'),
                 onClick: this.props.gambleClick
             })
         };
+
+        // FIXME: Delete when languge will be done
+        document.querySelector('#languageBtn').style.backgroundImage = `url(public/img/lang_flags/mini/en.png)`;
 
         this.notifier = new Notifier();
 
