@@ -30,6 +30,7 @@ body {
     background: #080200;
     overflow: hidden;
     position: absolute;
+    z-index: 0;
 }
 .alert {
     display: none;

@@ -10,8 +10,22 @@ use App\Facades\Auth;
 class InfoController extends Controller
 {
     public function getPlayerInfo() {
+        $player = new Player(Auth::getParam("login"));
+        // Transfer insurance
+        if ($player->getCash() <= 0) {
+            $success = $player->transferInsurance();
+            if ($success) {
+                History::writeInsuranceTransfer(
+                    $player->getCash(),
+                    $player->getIdAgent(),
+                    Auth::getParam("login")
+                );
+            }
+        }
+
         return response()->json([
-            "cash" => Player::getCashByLogin(Auth::getParam("login")),
+            "cash" => $player->getCash(),
+            "insurance" => $player->getInsurance(),
             "denomination" => [0.01, 0.1, 0.25, 0.5, 1],
             "bet_per_line" => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100],
         ]);

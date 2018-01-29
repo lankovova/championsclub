@@ -36,11 +36,13 @@ export default {
     methods: {
         denominationChanged(denomination) {
             this.credit.points = parseInt(this.credit.kup / denomination)
+            this.insurance.points = parseInt(this.insurance.kup / denomination)
         },
         dataLoaded(data) {
             this.credit.kup = data.cash
-            let denomination = this.$cookie.get("denomination") || data.denominations[0]
+            this.insurance.kup = data.insurance
 
+            let denomination = this.$cookie.get("denomination") || data.denominations[0]
             this.denominationChanged(denomination)
         }
     },

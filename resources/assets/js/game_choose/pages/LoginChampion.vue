@@ -148,7 +148,15 @@ export default {
     mounted() {
         this.checkButtonsState()
         document.onkeyup = (e) => {
-            this.writeLogin(parseInt(e.key))
+            switch (e.keyCode) {
+                case 13:
+                    this.makeLogin()
+                break
+                default:
+                    this.writeLogin(parseInt(e.key))
+                break
+            }
+            
         }
     }
 }

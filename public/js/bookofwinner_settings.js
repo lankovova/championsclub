@@ -24,6 +24,8 @@ var settings = {
     "gambleExtended": true,
 
     "imagesPath": "public/img/games/bookofwinner/",
+    "helpType": "slider",
+
     "symbolsImagesPath": "public/img/games/bookofwinner/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwinner/symbols/animations/",
 
@@ -70,7 +72,8 @@ var settings = {
             "animation": {
                 "image": "7.png",
                 "frames": 34
-            }
+            },
+            "paytable": [0, 10, 100, 1000, 5000]
         }, {
             "image": "8.png",
             "animation": {
