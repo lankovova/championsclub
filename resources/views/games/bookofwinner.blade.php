@@ -8,7 +8,7 @@
 
     @component('games.parts.help')
         @slot('helpValues')
-            <div id="help__prize_7">
+            <div data-symbols="6" class="help__prize_container">
 
             </div>
         @endslot
@@ -24,16 +24,57 @@
         var game = new divSlot.Game('BookOfWinner');
     </script>
 
+    <style>
+        .help__prize_container {
+            position: absolute;
+        }
+        .help__prize_container[data-symbols='6'] {
+            top: 270px;
+            left: 255px;
+        }
+        .help__prize_container div {
+            font-size: 26px;
+            line-height: 43px;
+            text-align: center;
+            color: #fff;
+            letter-spacing: 3px;
+            text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+            width: 177px;
+            height: 43px;
+        }
+    </style>
+
     <script>
         class Help {
 
             constructor() {
-
                 if (settings.helpType === "slider") {
-                    this.initSlider()
+                    this.initSlider();
                 }
-                
+                this.initPrizeContainers();
                 document.getElementById("helpBtnClose").addEventListener("click", () => this.onClose());
+            }
+
+            initPrizeContainers() {
+                let containers = document.getElementsByClassName("help__prize_container");
+                
+                for (let container of containers) {
+                    // convert to array 
+                    let symbols = container.dataset.symbols.split(' ');
+                    let paytable = settings.symbols[symbols[0]].paytable;
+                    
+                    for (const pay of paytable) {
+                        if (+pay !== 0) {
+                            let payEl = document.createElement('div');
+                            payEl.innerText = pay;
+                            container.prepend(payEl);
+                        }  
+                    }   
+                }
+            }
+
+            onClose() {
+                document.getElementById("help").style.transform = "translateY(-100%)";
             }
 
             showNextSlide() {
@@ -72,10 +113,6 @@
                     this.sliderTracker.style.transitionDuration = `${this.trasitionTime}ms`
                     this.disableButtons = false
                 }, 0)
-            }
-
-            onClose() {
-                document.getElementById("help").style.transform = "translateY(-100%)";
             }
 
             initSlider() {
