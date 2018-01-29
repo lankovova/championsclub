@@ -4,6 +4,9 @@
     <link href="{{asset('public/css/bookofwinner.css')}}" rel=stylesheet type=text/css>
 @endsection
 
+@section('help')
+    @include('games.parts.helpSubstitution')
+@endsection
 
 @section('js')
     @parent

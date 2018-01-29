@@ -1,0 +1,38 @@
+.help {
+    position: absolute;
+    z-index: 1;
+    width: 1442px;
+    height: 1043px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.help__btn_next {
+    width: 54px;
+    height: 86px;
+    right: 0px;
+    top: 456px;
+    position: absolute;
+}
+.help__btn_prev {
+    width: 54px;
+    height: 86px;
+    left: 0px;
+    top: 455px;
+    position: absolute;
+}
+.help__btn_close {
+    width: 147px;
+    height: 90px;
+    position: absolute;
+    bottom: -1px;
+    left: 648px;
+}
+.help__slide_1 {
+    width: 100%;
+    height: 100%;
+    
+}
+.help__slide_2 {
+
+}

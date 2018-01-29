@@ -3,6 +3,7 @@
 @section('content')
     <div id="preloader"></div>
     <div class="game_wrapper" id="game_wrapper">
+        @yield('help')
         @include('games.parts.loading')
         <div id="game">
             <!-- <div class="header"></div> -->
