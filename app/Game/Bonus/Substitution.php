@@ -69,6 +69,7 @@ class Substitution {
 
             $report["spin_result"] = $result["spin_result"];
             $report["final_symbols"] = $this->finalSymbols;
+            $report["won"] = $result["won"];
 
             $report["substitution"]["result"] = $sResult["spin_result"];
             $report["substitution"]["won"] = $sResult["won"];
