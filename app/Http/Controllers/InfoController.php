@@ -15,6 +15,7 @@ class InfoController extends Controller
         if ($player->getCash() <= 0) {
             $success = $player->transferInsurance();
             if ($success) {
+                $player->update();
                 History::writeInsuranceTransfer(
                     $player->getCash(),
                     $player->getIdAgent(),
