@@ -3,6 +3,32 @@ export default {
     "credit": "кредит",
     "insurance": "страховка",
 
+    // Notifier
+    "notEnoughCash": "недостатньо готівки для цієї ставки",
+    "gameOverPlaceYourBet": "розіграш зупинено, зробіть вашу ставку",
+    "gambleUpOrTakeWin": "ризикувати до 5x або забрати виграш",
+    "chooseRedOrBlackOrTakeWin": "виберіть, червоний або чорний, або заберіть виграш",
+    "gameOverGambleCompletedPlaceYourBet": "розіграш зупинено, ризик закінчено, зробіть вашу ставку",
+    "bonusSpin": "бонусна крутка",
+    "bonusSpins": "бонусні крутки",
+    "withSubstitution": "з підстановкою",
+    "more": "",
+    "of": "з",
+    "youWon": "ви виграли",
+    "credits": "кредитів",
+    "ended": "закінчились",
+    "in": "за",
+    "spins": "круток",
+
+    // Gamble modal
+    "red": "червона",
+    "black": "чорна",
+    "gambleAmount": "сума ризику",
+    "suitGambleToWin": "виграш при виборі масті",
+    "colorGambleToWin": "виграш при виборі кольору",
+    "previousCards": "попередні карти",
+    "win": "виграш",
+
     // Buttons
     "start": "старт",
     "stop": "стоп",

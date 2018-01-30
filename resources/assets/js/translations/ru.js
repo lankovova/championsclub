@@ -3,6 +3,32 @@ export default {
     "credit": "кредит",
     "insurance": "страховка",
 
+    // Notifier
+    "notEnoughCash": "недостаточно денег для этой ставки",
+    "gameOverPlaceYourBet": "игра закончена, сделайте вашу ставку",
+    "gambleUpOrTakeWin": "рисковать до 5x или забрать выигрыш",
+    "chooseRedOrBlackOrTakeWin": "выберите, красная или чёрная или заберите выигрыш",
+    "gameOverGambleCompletedPlaceYourBet": "игра закончена, риск закончен, сделайте вашу ставку",
+    "bonusSpin": "бонусная крутка",
+    "bonusSpins": "бонусные крутки",
+    "withSubstitution": "с подстановкой",
+    "more": "",
+    "of": "из",
+    "youWon": "вы выиграли",
+    "credits": "кредитов",
+    "ended": "закончились",
+    "in": "за",
+    "spins": "круток",
+
+    // Gamble modal
+    "red": "красная",
+    "black": "чёрная",
+    "gambleAmount": "сумма риска",
+    "suitGambleToWin": "выигрыш при выборе масти",
+    "colorGambleToWin": "выигрыш при выборе цвета",
+    "previousCards": "предыдущие карты",
+    "win": "выигрыш",
+
     // Buttons
     "start": "старт",
     "stop": "стоп",

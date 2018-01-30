@@ -3,6 +3,32 @@ export default {
     "credit": "credit",
     "insurance": "insurance",
 
+    // Notifier
+    "notEnoughCash": "not enough cash for this bet",
+    "gameOverPlaceYourBet": "game over, place your bet",
+    "gambleUpOrTakeWin": "gamble up to 5x or take win",
+    "chooseRedOrBlackOrTakeWin": "choose red or black or take win",
+    "gameOverGambleCompletedPlaceYourBet": "game over - gamble completed, place your bet",
+    "bonusSpin": "bonus spin",
+    "bonusSpins": "bonus spins",
+    "withSubstitution": "with substitution",
+    "more": "more",
+    "of": "of",
+    "youWon": "you won",
+    "credits": "credits",
+    "ended": "ended",
+    "in": "in",
+    "spins": "spins",
+
+    // Gamble modal
+    "red": "red",
+    "black": "black",
+    "gambleAmount": "gamble amount",
+    "suitGambleToWin": "suit gamble to win",
+    "colorGambleToWin": "color gamble to win",
+    "previousCards": "previous cards",
+    "win": "win",
+
     // Buttons
     "start": "start",
     "stop": "stop",
