@@ -33,12 +33,12 @@ export default class Game {
 
         this.reelsController = new ReelsController(
             document.querySelector('#reels_wrapper'),
-            { reelsHasStopped: this.reelsHasStopped }
+            {reelsHasStopped: this.reelsHasStopped}
         );
 
         this.linesController = new LinesController(
             document.querySelector('#reels_container'),
-            { reels: this.reelsController.reels }
+            {reels: this.reelsController.reels}
         );
 
         this.interfaceController = new InterfaceController({
@@ -60,13 +60,14 @@ export default class Game {
             setSpinPossibility: this.setSpinPossibility
         });
 
-        this.interfaceController.panel.notifier.text = 'Loading...';
         (async () => {
+            this.interfaceController.panel.notifier.text = 'Loading...';
+
             // Load some necessarily information, use it
             const playerData = await APIController.getPlayerData();
             const userCash = +playerData.cash;
 
-            // TODO: Move to denom, betPerLine and lines to config.js
+            // TODO: Move denom, betPerLine and lines to config.js
             settings.denomination = playerData.denomination ? playerData.denomination : settings.denomination;
             settings.betPerLine = playerData.bet_per_line ? playerData.bet_per_line : settings.betPerLine;
 
@@ -78,7 +79,7 @@ export default class Game {
                 denominationBlock: this.interfaceController.denominationBlock,
             }, {
                 userCash: userCash,
-                lines: 1,
+                lines: 10,
                 // TODO: Get this values from cookie
                 betPerLine: settings.betPerLine[0],
                 denomination: settings.denomination[0],
@@ -88,11 +89,7 @@ export default class Game {
             this.setSpinPossibility();
 
             // Remove preloader
-            if (window.onGameLoaded) {
-                window.onGameLoaded();
-            } else {
-                console.warn('No onGameLoaded function');
-            }
+            window.onGameLoaded ? window.onGameLoaded() : console.warn('No onGameLoaded function in window object');
         })();
     }
 
@@ -138,11 +135,11 @@ export default class Game {
     takeWinClickHandler = async () => {
         this.interfaceController.disableInterface();
 
-        // FIXME:
         if (this.interfaceController.alertWindow.isOn) {
             this.interfaceController.hideAlert();
         }
 
+        // Disable gamble buttons while transfering win
         if (this.interfaceController.gambleModal.isOn) {
             this.interfaceController.gambleModal.disableBtns();
         }
@@ -150,7 +147,6 @@ export default class Game {
         // Wait transfering win
         await this.transferWin();
 
-        // FIXME:
         if (this.interfaceController.gambleModal.isOn) {
             this.interfaceController.gambleOver();
         }
@@ -191,7 +187,9 @@ export default class Game {
     startGamble = () => {
         this.linesController.unblurAllSymbols();
 
-        // FIXME:
+        // Hide alert in case
+        // when user won something in bonus spins
+        // and want to gamble
         if (this.interfaceController.alertWindow.isOn) {
             this.interfaceController.hideAlert();
         }
@@ -237,16 +235,13 @@ export default class Game {
                 // Reset user win when bonus spins starts
                 this.pointsController.userWin = 0;
 
-                if (this.interfaceController.alertWindow.isOn) {
-                    this.interfaceController.hideAlert();
-                }
-
                 // Start bonus spin
                 this.bonusSpin();
             }
         } else {
             console.log('Normal spin');
 
+            // Hide alert after bonus spins
             if (this.interfaceController.alertWindow.isOn) {
                 this.interfaceController.hideAlert();
             }
