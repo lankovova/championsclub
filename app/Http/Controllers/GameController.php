@@ -45,6 +45,7 @@ class GameController extends Controller
         $reqData = $this->validateRequest($request);
         $this->player = new Player(Auth::getParam("login"));
         // All count in coins
+
         if (($this->player->getCash() * 100) < ($reqData["denomination"] * $reqData["lines_amount"] * $reqData["bet_per_line"])) {
             echo "not enough money";
             exit;

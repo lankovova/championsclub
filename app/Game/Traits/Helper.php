@@ -81,14 +81,14 @@ trait Helper {
         $this->randomSymbols = [];
 
         for ($i = 0; $i < $this->symbolsAmount; $i++) {
-            for($j = 0; $j < 5; $j++) {
-                if ($j !== $this->scatter) {
+            for($j = 0; $j < 10; $j++) {
+                if ($i !== $this->scatter) {
                     $this->randomSymbols[] = $i;
                 }
             }
         }
 
-        for($j = 0; $j < 5; $j++) {
+        for($i = 0; $i < 5; $i++) {
             $this->randomSymbols[] = $this->scatter;
         }
     }
