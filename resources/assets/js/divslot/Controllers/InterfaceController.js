@@ -11,7 +11,7 @@ export default class InterfaceController {
         this.props = props;
         const that = this;
 
-        // DEV TEMP
+        // FIXME: DEV TEMP
         this._showControls();
 
         this.linePresenters = new LinePresenters({
@@ -193,7 +193,9 @@ export default class InterfaceController {
         this.gambleModal.hide();
         this.setIdle();
 
+        // FIXME: Write correct notifier text based on setSpinPossibility answer
         this.panel.notifier.text = 'Game over - gamble completed, place your bet';
+        this.props.setSpinPossibility();
     }
 
     /**
@@ -223,121 +225,31 @@ export default class InterfaceController {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
     }
 
-    // FIXME: Move to substitution component
     displaySubstitutionStart() {
-        // Show substitution block
-        const substitutionBlock = document.querySelector('#substitutionBlock');
-        substitutionBlock.style.display = 'block';
-
-        // Show animation prestart
-        substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionPrestart.png')`;
+        this.substitutionBlock.show();
     }
 
-    // FIXME: Move to substitution component
     hideAndResetSubstitutionBlock() {
-        const substitutionBlock = document.querySelector('#substitutionBlock');
+        this.substitutionBlock.hide();
 
-        // Hide block
-        substitutionBlock.style.display = 'none';
-
-        // Reset block content
-        substitutionBlock.style.backgroundImage = '';
-        const paytableEl = document.querySelector('#substitutionPaytable');
-        paytableEl.innerHTML = '';
-        const substitutionSymbolEl = substitutionBlock.querySelector('#substitutionSymbol');
-        substitutionSymbolEl.style.backgroundImage = '';
-
-        // Reset block position
-        substitutionBlock.classList.remove('finish');
-        substitutionBlock.classList.add('start');
-
-        // Change header to default background
+        // Change header background to default
         document.querySelector('#header').style.backgroundImage = '';
-
     }
 
-    // FIXME: Move to substitution component
     async animateRandomizingSubstitutionSymbol(substitutionSymbol) {
-        const substitutionBlock = document.querySelector('#substitutionBlock');
-        const substitutionSymbolEl = substitutionBlock.querySelector('#substitutionSymbol');
+        // Wait for randomizing animation to end
+        await this.substitutionBlock.startRandomizing(substitutionSymbol);
 
-        // Create array of "randomed" symbol
-        let randomSymbols = [];
-        for (let i = 0; i < 15; i++) {
-            let symbol;
-            // Rerandom if symbol is the same as previous
-            do {
-                symbol = Math.floor(Math.random() * settings.symbols.length);
-            } while (symbol === randomSymbols[randomSymbols.length - 1]);
-
-            // On last symbol
-            if (i === 14) {
-                // Rerandom if it is substitution or the same as previous
-                while (
-                    symbol === substitutionSymbol ||
-                    symbol === randomSymbols[randomSymbols.length - 1]
-                ) {
-                    symbol = Math.floor(Math.random() * settings.symbols.length);
-                }
-            }
-
-            randomSymbols.push(symbol);
-        }
-
-        // Add substitution symbol as last symbol in randomed array
-        randomSymbols.push(substitutionSymbol);
-
-        // Start animation
-        substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionProgress.gif')`;
-        // Wait for animation to end
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        // Set final background to substitution block
-        substitutionBlock.style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionBlock.png')`;
-
-        // Show each symbol from randomed symbols array every 200ms
-        for (let i = 0; i < randomSymbols.length; i++) {
-            await new Promise(resolve => {
-                setTimeout(() => {
-                    const symbolImage = settings.symbols[randomSymbols[i]].image;
-                    substitutionSymbolEl.style.backgroundImage = `url('${settings.symbolsImagesPath + symbolImage}')`;
-                    resolve();
-                }, 200);
-            });
-        }
-
-        // Write symbol paytable
-        const paytableEl = document.querySelector('#substitutionPaytable');
-        // Get symbol paytable
-        const symbolPaytable = settings.symbols[substitutionSymbol].paytable;
-        for (let i = symbolPaytable.length - 1; i >= 0; i--) {
-            if (symbolPaytable[i] === 0) continue;
-            paytableEl.innerHTML += `${i + 1} - ${symbolPaytable[i]}<br />`;
-        }
-
-        // Change header to substitution background
+        // Change header background to substitution
         document.querySelector('#header').style.backgroundImage = `url('${settings.imagesPath}substitution/substitutionHeader.png')`;
-
         // Hide alert
         this.hideAlert();
 
-        // Move symbol to finish position
-        // Add substitution move finish class
-        substitutionBlock.classList.remove('start');
-        substitutionBlock.classList.add('finish');
+        // Wait for symbol to move to his finish position
+        await this.substitutionBlock.moveSymbolToFinishPos();
 
-        const substBlockMoveEnds = (resolve) => {
-            // Resolve when animation is complete
-            resolve();
-            // Remove event listener for optimization
-            substitutionBlock.removeEventListener('transitionend', substBlockMoveEnds);
-        }
-
-        return new Promise(resolve => {
-            // When substitution block denstinates finish position
-            substitutionBlock.addEventListener('transitionend', () => {
-                substBlockMoveEnds.call(this, resolve);
-            });
-        });
+        // Resolve after full animation is complete
+        return new Promise(resolve => resolve());
     }
 
     _initKeyboardListeners() {

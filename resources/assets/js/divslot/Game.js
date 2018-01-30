@@ -85,6 +85,7 @@ export default class Game {
                 denomination: settings.denomination[0],
             });
 
+            // FIXME: Rethink abount set idle here
             this.interfaceController.setIdle();
             this.setSpinPossibility();
 
@@ -151,6 +152,7 @@ export default class Game {
             this.interfaceController.gambleOver();
         }
 
+        // FIXME: Rethink abount set idle here
         // After transfering win enable interface
         this.interfaceController.setIdle();
         this.setSpinPossibility();
@@ -452,6 +454,7 @@ export default class Game {
                     this.interfaceController.setTakeWin();
                 } else {
                     // If no win at all
+                    // FIXME: Rethink abount set idle here
                     this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 }
@@ -479,6 +482,7 @@ export default class Game {
 
                 // If auto spins was disabled while transfering money
                 if (!this.autoSpinIsOn) {
+                    // FIXME: Rethink abount set idle here
                     this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 } else {
@@ -499,6 +503,7 @@ export default class Game {
             if (this.autoSpinIsOn) { // If auto spin is on
                 this.getDataAndSpin();
             } else { // Normal spin case
+                // FIXME: Rethink abount set idle here
                 this.interfaceController.setIdle();
                 this.setSpinPossibility();
             }

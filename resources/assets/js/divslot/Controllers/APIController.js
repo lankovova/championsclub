@@ -6,7 +6,7 @@ const gambleAPIUrl = '/gamble';
 
 export default class APIController {
     static _handleRedirect(responseData) {
-        if (responseData.redirect) {
+        if (responseData && responseData.redirect) {
             window.location.href = (responseData.redirect) ? responseData.redirect : '/';
         }
     }
