@@ -81,9 +81,9 @@ export default class InterfaceController {
     autoSpinClick = () => {
         if (this.panel.btns.auto.state) {
             if (!this.panel.btns.auto.isOn) {
-                this.props.autoSpin();
+                this.props.startAutoSpin();
             } else {
-                this.props.stopAutoSpinning();
+                this.props.stopAutoSpin();
             }
             this.panel.btns.auto.isOn = !this.panel.btns.auto.isOn;
         }

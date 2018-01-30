@@ -48,8 +48,8 @@ export default class Game {
             stopReels: this.stop,
             takeWin: this.takeWinClickHandler,
             speedUpTakeWin: this.speedUpTakeWin,
-            autoSpin: this.autoSpin,
-            stopAutoSpinning: this.stopAutoSpinning,
+            startAutoSpin: this.startAutoSpin,
+            stopAutoSpin: this.stopAutoSpin,
             setDenomination: this.setDenomination,
             setLines: this.setLines,
             setBetPerLine: this.setBetPerLine,
@@ -254,10 +254,10 @@ export default class Game {
         // Disable whole interface
         this.interfaceController.disableInterface();
 
-        this.interfaceController.panel.notifier.text = 'Fetching data...';
-
         // Enable auto btn if auto spins is on
         if (this.autoSpinIsOn) this.interfaceController.enableAuto();
+
+        this.interfaceController.panel.notifier.text = 'Fetching data...';
 
         APIController.getSpinData({
             linesAmount:  this.pointsController.lines,
@@ -292,16 +292,15 @@ export default class Game {
         });
     }
 
-    autoSpin = () => {
-        // When function called from interface controller
-        // If no auto spin, turn it on
-        if (!this.autoSpinIsOn) this.autoSpinIsOn = true;
+    startAutoSpin = () => {
+        // Enable auto spin
+        this.autoSpinIsOn = true;
 
         // Start normal spin
         this.getDataAndSpin();
     }
 
-    stopAutoSpinning = () => {
+    stopAutoSpin = () => {
         this.autoSpinIsOn = false;
     }
 
@@ -483,7 +482,7 @@ export default class Game {
                     this.interfaceController.setIdle();
                     this.setSpinPossibility();
                 } else {
-                    this.autoSpin();
+                    this.getDataAndSpin();
                 }
             } else { // Normal spin case
                 // Enable possibility to take win or gamble
@@ -498,12 +497,11 @@ export default class Game {
             this.pointsController.userWin = 0;
 
             if (this.autoSpinIsOn) { // If auto spin is on
-                this.autoSpin();
+                this.getDataAndSpin();
             } else { // Normal spin case
                 this.interfaceController.setIdle();
                 this.setSpinPossibility();
             }
-
         }
 
     }
