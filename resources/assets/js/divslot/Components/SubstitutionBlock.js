@@ -1,3 +1,5 @@
+import {transitionEnd} from '../events';
+
 const RANDOMED_SYMBOLS_AMOUNT = 15;
 const DELAY_BETWEEN_SYMBOLS = 300;
 const PRESTART_GIF_DURATION = 1800;
@@ -138,12 +140,12 @@ export default class SubstitutionBlock {
             resolve();
 
             // Remove event listener for optimization
-            substitutionBlock.removeEventListener('transitionend', substBlockMoveEnds);
+            substitutionBlock.removeEventListener(transitionEnd, substBlockMoveEnds);
         }
 
         return new Promise(resolve => {
             // When substitution block denstinates finish position
-            substitutionBlock.addEventListener('transitionend', () => {
+            substitutionBlock.addEventListener(transitionEnd, () => {
                 substBlockMoveEnds.call(this, resolve);
             });
         });
