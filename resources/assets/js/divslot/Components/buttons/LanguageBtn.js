@@ -1,11 +1,11 @@
 import Button from "./Button";
+import CookieController from "../../Controllers/CookieController";
 
 export default class LanguageBtn extends Button {
     constructor(props) {
         super(props);
 
-        // FIXME: Set language dynamically from cookies
-        this.setBg('en');
+        this.setBg(CookieController.get('lang'));
     }
 
     setBg(countryName) {

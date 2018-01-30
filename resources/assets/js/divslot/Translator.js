@@ -3,8 +3,7 @@ import translations from './../translations';
 
 function getTranslation() {
     const langFromCookie = CookieController.get('lang');
-    // FIXME: Fix default language
-    const lang = langFromCookie ? langFromCookie : 'ua';
+    const lang = langFromCookie ? langFromCookie : 'en';
 
     return translations[lang];
 }

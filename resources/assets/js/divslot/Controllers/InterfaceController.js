@@ -6,6 +6,7 @@ import Alert from '../Components/Alert';
 import SubstitutionBlock from './../Components/SubstitutionBlock';
 import GambleModal from '../Components/GambleModal';
 import Translator from '../Translator';
+import CookieController from './CookieController';
 
 export default class InterfaceController {
     constructor(props) {
@@ -253,6 +254,11 @@ export default class InterfaceController {
         return new Promise(resolve => resolve());
     }
 
+    setLanguage = (value) => {
+        CookieController.set('lang', value);
+        window.location.reload(false);
+    }
+
     _initKeyboardListeners() {
         window.onkeydown = (event) => {
             var keyCode = event.which || event.keyCode;
@@ -323,7 +329,7 @@ export default class InterfaceController {
             items: ['en', 'ru', 'ua'],
             title: Translator.selectLanguage
         }, {
-            setValue: () => this.panel.btns.language.setBg,
+            setValue: this.setLanguage,
             setInterfaceIdle: this.setIdle,
             disableInterface: this.disableInterface,
             setSpinPossibility: this.props.setSpinPossibility,
