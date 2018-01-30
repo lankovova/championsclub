@@ -51,8 +51,8 @@
 
     position: absolute;
     z-index: 51;
-    width: 180px;
-    height: 90px;
+    width: 260px;
+    height: 130px;
 
     background-size: 100% 100%;
 
@@ -68,7 +68,7 @@
 
         & .substitutionSymbol-container {
             width: 50%;
-            padding: 10px;
+            padding: 25px 28px 31px;
             box-sizing: border-box;
 
             & .substitutionSymbol {
@@ -79,7 +79,7 @@
         }
         & .substitutionPaytable-container {
             width: 50%;
-            padding: 10px;
+            padding: 25px 10px 31px;
             box-sizing: border-box;
 
             & .substitutionPaytable {
@@ -96,7 +96,7 @@
         left: calc(50% - 100px);
     }
     &.finish {
-        top: 7px;
+        top: -10px;
         left: calc(50% - 100px);
     }
 }
