@@ -5,6 +5,10 @@ export default class ToggleBlock {
         this.props = props;
 
         this.node = options.node;
+
+        this.titleNode = this.node.querySelector('.title');
+        this.titleNode.innerText = options.title;
+
         this.isToggled = false;
 
         this.itemsNodes = [];

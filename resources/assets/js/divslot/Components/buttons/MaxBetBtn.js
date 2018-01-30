@@ -1,4 +1,5 @@
 import MultipleStatesButton from './MultipleStatesButton';
+import Translator from './../../Translator';
 
 export default class MaxBetBtn extends MultipleStatesButton {
     constructor(props) {
@@ -11,7 +12,7 @@ export default class MaxBetBtn extends MultipleStatesButton {
             get maxbet() { return this._maxbet; },
             set maxbet(newState) {
                 if (newState)
-                    self.text = 'Maxbet';
+                    self.text = Translator.maxbet;
 
                 this._maxbet = newState;
                 self._handleDisabling();
@@ -19,7 +20,7 @@ export default class MaxBetBtn extends MultipleStatesButton {
             get black() { return this._black; },
             set black(newState) {
                 if (newState)
-                    self.text = 'Black';
+                    self.text = Translator.black;
 
                 this._black = newState;
                 self._handleDisabling();

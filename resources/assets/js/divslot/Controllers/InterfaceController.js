@@ -5,6 +5,7 @@ import ToggleLanguageBlock from '../Components/ToggleLanguageBlock';
 import Alert from '../Components/Alert';
 import SubstitutionBlock from './../Components/SubstitutionBlock';
 import GambleModal from '../Components/GambleModal';
+import Translator from '../Translator';
 
 export default class InterfaceController {
     constructor(props) {
@@ -283,7 +284,8 @@ export default class InterfaceController {
     _initTogglingBlocks() {
         this.linesBlock = new ToggleBlock({
             node: document.querySelector('#linesBlock'),
-            items: settings.lines
+            items: settings.lines,
+            title: Translator.selectLine
         }, {
             setValue: this.props.setLines,
             setInterfaceIdle: this.setIdle,
@@ -294,7 +296,8 @@ export default class InterfaceController {
 
         this.betPerLineBlock = new ToggleBlock({
             node: document.querySelector('#betPerLineBlock'),
-            items: settings.betPerLine
+            items: settings.betPerLine,
+            title: Translator.selectBet
         }, {
             setValue: this.props.setBetPerLine,
             setInterfaceIdle: this.setIdle,
@@ -305,7 +308,8 @@ export default class InterfaceController {
 
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
-            items: settings.denominations.map(item => item.toFixed(2))
+            items: settings.denominations.map(item => item.toFixed(2)),
+            title: Translator.selectDenomination
         }, {
             setValue: this.props.setDenomination,
             setInterfaceIdle: this.setIdle,
@@ -316,7 +320,8 @@ export default class InterfaceController {
 
         this.langBlock = new ToggleLanguageBlock({
             node: document.querySelector('#languageBlock'),
-            items: ['en', 'ru', 'ua']
+            items: ['en', 'ru', 'ua'],
+            title: Translator.selectLanguage
         }, {
             setValue: () => this.panel.btns.language.setBg,
             setInterfaceIdle: this.setIdle,

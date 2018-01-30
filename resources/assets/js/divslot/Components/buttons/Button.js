@@ -13,6 +13,11 @@ export default class Button {
         this._state = false;
         this.isDisabled = true;
 
+        this.titleNode = this.node.querySelector('.title');
+        if (this.titleNode && props.title) {
+            this.titleNode.innerText = props.title;
+        }
+
         this.node.onclick = () => this.onClick();
 
         this._initEffects();

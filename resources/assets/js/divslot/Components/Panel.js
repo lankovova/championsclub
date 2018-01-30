@@ -3,6 +3,7 @@ import JackpotBonus from './JackpotBonus';
 import TNWinBlock from './TNWinBlock';
 import * as Buttons from './buttons';
 import TNBlock from './TNBlock';
+import Translator from '../Translator';
 
 export default class Panel {
     constructor(node, props) {
@@ -20,36 +21,42 @@ export default class Panel {
             }),
             lines: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#linesBtn'),
-                onClick: this.props.toggleLinesBlock
+                onClick: this.props.toggleLinesBlock,
+                title: Translator.lines
             }),
             betPerLine: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#betPerLineBtn'),
-                onClick: this.props.toggleBetPerLineBlock
+                onClick: this.props.toggleBetPerLineBlock,
+                title: Translator.betPerLine
             }),
             denomination: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#denominationBtn'),
-                onClick: this.props.toggleDenominationBlock
+                onClick: this.props.toggleDenominationBlock,
+                title: Translator.credit
             }),
             auto: new Buttons.AutoBtn({
                 node: document.querySelector('#autoBtn'),
-                onClick: this.props.autoSpinClick
+                onClick: this.props.autoSpinClick,
+                title: Translator.auto
             }),
             menu: new Buttons.Button({
                 node: document.querySelector('#menuBtn'),
-                onClick: this.props.menuClickHandler
+                onClick: this.props.menuClickHandler,
+                title: Translator.menu
             }),
-            // language: new Buttons.LanguageBtn({
-            //     node: document.querySelector('#languageBtn'),
-            //     onClick: this.props.toggleLanguageBlock
-            // }),
+            language: new Buttons.LanguageBtn({
+                node: document.querySelector('#languageBtn'),
+                onClick: this.props.toggleLanguageBlock
+            }),
             gamble: new Buttons.GambleBtn({
                 node: document.querySelector('#gambleBtn'),
                 onClick: this.props.gambleClick
             })
         };
 
-        // FIXME: Delete when languge will be done
-        document.querySelector('#languageBtn').style.backgroundImage = `url(public/img/lang_flags/mini/en.png)`;
+        // FIXME:
+        // Translate history btn
+        document.querySelector('#serviceBtn').innerText = Translator.service;
 
         this.notifier = new Notifier();
 
@@ -61,29 +68,28 @@ export default class Panel {
         // Start jackpot bonus counter
         this.jb.run();
 
-        this.linesAmountField = document.querySelector('#linesAmountField');
-        this.betPerLineAmountField = document.querySelector('#betperlineAmountField');
-        this.denominationAmountField = document.querySelector('#denominationAmountField');
+        this.userCashFields = new function() {
+            this.node = document.querySelector('#userCash');
+            this.title = this.node.querySelector('.title');
+            this.points = this.node.querySelector('.points');
+            this.kups = this.node.querySelector('.kups');
 
-        this.userCashFields = {
-            points: document.querySelector('#userCashPointsField'),
-            kups: document.querySelector('#userCashKupsField')
+            this.title.innerText = Translator.credit;
         };
-        this.userInsuranceFields = {
-            points: document.querySelector('#userInsurancePointsField'),
-            kups: document.querySelector('#userInsuranceKupsField')
+        this.userInsurance = new function() {
+            this.node = document.querySelector('#userInsurance');
+            this.title = this.node.querySelector('.title');
+            this.points = this.node.querySelector('.points');
+            this.kups = this.node.querySelector('.kups');
+
+            this.title.innerText = Translator.insurance;
         };
         this.betBlock = new TNBlock({
-            node: document.querySelector('#betBlock')
+            node: document.querySelector('#betBlock'),
+            title: Translator.bet
         });
         this.winBlock = new TNWinBlock({
             node: document.querySelector('#winBlock')
-        });
-
-        // TEMP
-        this.setUserInsurance({
-            points: 1000,
-            kups: 10.00
         });
     }
 
@@ -102,8 +108,8 @@ export default class Panel {
         this.userCashFields.kups.innerText = `${kups.toFixed(2)} Kup`;
     }
     setUserInsurance({points, kups}) {
-        this.userInsuranceFields.points.innerText = points;
-        this.userInsuranceFields.kups.innerText = `${kups.toFixed(2)} Kup`;
+        this.userInsurance.points.innerText = points;
+        this.userInsurance.kups.innerText = `${kups.toFixed(2)} Kup`;
     }
 
     setUserWin({points, kups}) {
