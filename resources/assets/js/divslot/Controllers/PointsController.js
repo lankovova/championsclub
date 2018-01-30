@@ -3,6 +3,7 @@ let userWinTransferDelta;
 export default class PointsController {
     constructor(props, options) {
         this._userCash; // In coins
+        this._userInsurance; // In coins
         this._userWin; // In points
         this._previousWin; // In points
 
@@ -16,7 +17,7 @@ export default class PointsController {
         this._init(options);
     }
 
-    _init({lines = settings.lines[0], betPerLine = settings.betPerLine[0], denomination = settings.denominations[0], userCash = 0, userWin = 0}) {
+    _init({lines = settings.lines[0], betPerLine = settings.betPerLine[0], denomination = settings.denominations[0], userInsurance = 0, userCash = 0, userWin = 0}) {
         // Init denom
         this._denomination = denomination;
         this.props.denominationBlock.highlightItem(this._denomination);
@@ -27,10 +28,11 @@ export default class PointsController {
 
         // Init user cash
         this._userCash = this.kupsToCoins(userCash);
-        this.props.panel.setUserCash({
-            points: this.coinsToPoints(this._userCash),
-            kups: this.coinsToKups(this._userCash)
-        });
+        this.updateUserCash();
+
+        // Init user insurance
+        this._userInsurance = this.kupsToCoins(userInsurance);
+        this.updateUserInsurance();
 
         this.userWin = userWin;
     }
@@ -64,6 +66,7 @@ export default class PointsController {
         this.props.panel.setDenomination(this._denomination);
 
         this.updateUserCash();
+        this.updateUserInsurance();
         this._updateTotalBet();
     }
 
@@ -112,10 +115,7 @@ export default class PointsController {
      */
     set userCash(cash) {
         this._userCash = cash;
-        this.props.panel.setUserCash({
-            points: this.coinsToPoints(this._userCash),
-            kups: this.coinsToKups(this._userCash)
-        });
+        this.updateUserCash();
     }
     get userCash() { return this._userCash; }
     get userCashInPoints() { return this.coinsToPoints(this._userCash); }
@@ -124,6 +124,13 @@ export default class PointsController {
         this.props.panel.setUserCash({
             points: this.coinsToPoints(this._userCash),
             kups: this.coinsToKups(this._userCash)
+        });
+    }
+
+    updateUserInsurance() {
+        this.props.panel.setUserInsurance({
+            points: this.coinsToPoints(this._userInsurance),
+            kups: this.coinsToKups(this._userInsurance)
         });
     }
 

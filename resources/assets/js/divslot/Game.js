@@ -5,7 +5,7 @@ import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 import APIController from './Controllers/APIController';
 
-const bonusSpinsTypes = {
+const BONUS_SPINS_TYPES = {
     freeSpin: 'free_spin',
     substitution: 'substitution',
 }
@@ -66,6 +66,7 @@ export default class Game {
             // Load some necessarily information, use it
             const playerData = await APIController.getPlayerData();
             const userCash = +playerData.cash;
+            const userInsurance = +playerData.insurance;
 
             // TODO: Move denom, betPerLine and lines to config.js
             settings.denomination = playerData.denomination ? playerData.denomination : settings.denomination;
@@ -79,6 +80,7 @@ export default class Game {
                 denominationBlock: this.interfaceController.denominationBlock,
             }, {
                 userCash: userCash,
+                userInsurance: userInsurance,
                 lines: 10,
                 // TODO: Get this values from cookie
                 betPerLine: settings.betPerLine[0],
@@ -215,7 +217,7 @@ export default class Game {
             console.log('Bonus spins starts');
 
             // If it is substitution bonus spins type
-            if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+            if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
                 // If it is substitution pre start
                 if (this.bonusSpins.currentSpinIndex === 0) {
                     // Disable whole interface
@@ -366,7 +368,7 @@ export default class Game {
 
                 // Show alert and wait for user to press start btn
                 // Based on bonus spins type
-                if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
                     // Show substitution alert
                     this.interfaceController.showAlert(`You won ${this.bonusSpins.standartSpinsAmount} bonus spins with substitution`);
                     this.interfaceController.panel.notifier.text = `You won ${this.bonusSpins.standartSpinsAmount} bonus spins with substitution`;
@@ -420,7 +422,7 @@ export default class Game {
             }
 
             // If bonus spins type is substitution
-            if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+            if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
                 // Replace symbols in reel
                 await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
 
@@ -443,7 +445,7 @@ export default class Game {
                 // Tun off bonus spins
                 this.bonusSpins.on = false;
 
-                if (this.bonusSpins.type === bonusSpinsTypes.substitution) {
+                if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
                     // Hide and reset substitution block
                     this.interfaceController.hideAndResetSubstitutionBlock();
                 }
