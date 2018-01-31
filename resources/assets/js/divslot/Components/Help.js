@@ -1,11 +1,12 @@
 export default class Help {
+    constructor(props) {
+        this.props = props;
 
-    constructor(linesAmount=1, betPerLine=1) {
         if (settings.helpType === "slider") {
             this.initSlider();
         }
-        this.linesAmount = linesAmount;
-        this.betPerLine = betPerLine;
+        this.linesAmount = 1;
+        this.betPerLine = 1;
         this.helpNode = document.getElementById("help");
         this.initPaytable();
         document.getElementById("helpBtnClose").addEventListener("click", () => this.onClose());
@@ -49,6 +50,10 @@ export default class Help {
 
     onClose() {
         this.helpNode.style.transform = "translateY(-100%)";
+
+        // Set proper interface state
+        this.props.setInterfaceIdle();
+        this.props.setSpinPossibility();
     }
 
     showNextSlide() {

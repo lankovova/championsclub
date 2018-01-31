@@ -17,7 +17,10 @@ export default class InterfaceController {
         // FIXME: DEV TEMP
         this._showControls();
 
-        this.helpWindow = new Help();
+        this.helpWindow = new Help({
+            setInterfaceIdle: this.setIdle,
+            setSpinPossibility: this.props.setSpinPossibility
+        });
 
         this.linePresenters = new LinePresenters({
             lines: this.props.lines,
@@ -45,7 +48,7 @@ export default class InterfaceController {
             maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
             // FIXME: Disable interface when help block is toggled toggled
-            helpBtnClickHandler: () => this.helpWindow.open(),
+            helpBtnClickHandler: this.openHelp,
             toggleLinesBlock: () => this.linesBlock.toggle(),
             toggleBetPerLineBlock: () => this.betPerLineBlock.toggle(),
             toggleDenominationBlock: () => this.denominationBlock.toggle(),
@@ -230,6 +233,11 @@ export default class InterfaceController {
     // Enable each btn of panel except buttons with multiple states(gamble, maxbet, sst)
     enableInterface() {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
+    }
+
+    openHelp = () => {
+        this.disableInterface();
+        this.helpWindow.open();
     }
 
     displaySubstitutionStart() {
