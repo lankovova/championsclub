@@ -2,6 +2,27 @@ import APIController from './../Controllers/APIController';
 import GambleModalButton from './buttons/GambleModalButton';
 import {capitalize} from './../Helpers/stringHelper';
 
+const redOverlayColor = 'rgba(255,0,0,0.3)';
+const blueOverlayColor = 'rgba(0,0,255,0.3)';
+
+class GambleTextField {
+    constructor(node) {
+        this.node = node;
+
+        if (this.node) {
+            this.valueNode = this.node.querySelector('.value');
+            this.titleNode = this.node.querySelector('.title');
+        }
+    }
+
+    set value(value) {
+        if (this.valueNode) this.valueNode.innerText = value;
+    }
+    set title(title) {
+        if (this.titleNode) this.titleNode.innerText = title;
+    }
+};
+
 export default class GambleModal {
     constructor(props) {
         this.props = props;
@@ -11,24 +32,30 @@ export default class GambleModal {
 
         this.bigCardNode;
 
-        this.previousCards = {
-            node: this.node.querySelector('#previousCardsSuits'),
-            add(cardSuit) {
-                // Add to markup
-                const cardToInsert = document.createElement('div');
-                cardToInsert.className = `suit-${cardSuit}`;
-                this.node.appendChild(cardToInsert);
-            },
-            removeOldest() {
-                // Remove oldest card from html markup
-                this.node.removeChild(this.node.children[0]);
-            }
+        this.valuesFields = {
+            amount: new GambleTextField(this.node.querySelector('#gambleAmount')),
+            toWinColor: new GambleTextField(this.node.querySelector('#gambleToWinColor')),
+            toWinSuit: new GambleTextField(this.node.querySelector('#gambleToWinSuit'))
         }
 
-        const redOverlayColor = 'rgba(255,0,0,0.3)';
-        const blueOverlayColor = 'rgba(0,0,255,0.3)';
+        this.previousCards = new (function(node) {
+            this.node = node;
+            this.titleNode = this.node.querySelector('.title');
+            this.suitsNode = this.node.querySelector('.suits');
 
-        // TODO: Handle if gamble is extended
+            // Add to markup
+            this.add = function(cardSuit) {
+                const cardToInsert = document.createElement('div');
+                cardToInsert.className = `suit-${cardSuit}`;
+                this.suitsNode.appendChild(cardToInsert);
+            }
+
+            // Remove oldest card from html markup
+            this.removeOldest = function() {
+                this.suitsNode.removeChild(this.suitsNode.children[0]);
+            }
+        })(this.node.querySelector('#previousCards'));
+
         // Init gamble modal btns depending on extended gamble or not
         if (settings.gambleExtended) {
             this.btns = {
@@ -200,12 +227,8 @@ export default class GambleModal {
     }
 
     setValues(points) {
-        const amountField     = document.querySelector('#gameAmountValue');
-        const winByColorField = document.querySelector('#gambleToWinColor');
-        const winBySuitField  = document.querySelector('#gambleToWinSuit');
-
-        if (amountField) amountField.innerText         = points;
-        if (winByColorField) winByColorField.innerText = points * 2;
-        if (winBySuitField) winBySuitField.innerText   = points * 4;
+        this.valuesFields.amount.value     = points;
+        this.valuesFields.toWinColor.value = points * 2;
+        this.valuesFields.toWinSuit.value  = points * 4;
     }
 }

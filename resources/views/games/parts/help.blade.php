@@ -11,5 +11,4 @@
             <div class="help__slide help__slide_2"></div>
         </div>
     </div>
-
 </div>
