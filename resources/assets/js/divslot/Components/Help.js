@@ -5,10 +5,12 @@ export default class Help {
         if (settings.helpType === "slider") {
             this.initSlider();
         }
+
         this.linesAmount = 1;
         this.betPerLine = 1;
         this.helpNode = document.getElementById("help");
         this.initPaytable();
+
         document.getElementById("helpBtnClose").addEventListener("click", () => this.onClose());
     }
 
