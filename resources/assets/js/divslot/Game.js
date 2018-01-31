@@ -131,7 +131,7 @@ export default class Game {
             this.interfaceController.panel.notifier.text = Translator.notEnoughCash;
             this.interfaceController.disableSpinAndAuto();
         } else {
-            this.interfaceController.panel.notifier.text = Translator.gameOverPlaceYourBet;
+            this.interfaceController.panel.notifier.text = Translator.gameOver;
             this.interfaceController.setIdle();
         }
     }
@@ -209,6 +209,7 @@ export default class Game {
         this.pointsController.userWin = this.pointsController.coinsToPoints(wonCoins);
     }
     gambleLose = () => {
+        this.interfaceController.panel.notifier.clear();
         // Clear win field
         this.pointsController.userWin = 0;
     }
@@ -262,7 +263,7 @@ export default class Game {
         // Enable auto btn if auto spins is on
         if (this.autoSpinIsOn) this.interfaceController.enableAuto();
 
-        this.interfaceController.panel.notifier.text = '';
+        this.interfaceController.panel.notifier.clear();
 
         APIController.getSpinData({
             linesAmount:  this.pointsController.lines,

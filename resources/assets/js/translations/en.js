@@ -5,10 +5,10 @@ export default {
 
     // Notifier
     "notEnoughCash": "not enough cash for this bet",
-    "gameOverPlaceYourBet": "game over, place your bet",
+    "gameOver": "game over, place your bet",
     "gambleUpOrTakeWin": "gamble up to 5x or take win",
-    "chooseRedOrBlackOrTakeWin": "choose red or black or take win",
-    "gameOverGambleCompletedPlaceYourBet": "game over - gamble completed, place your bet",
+    "gambleChoose": "choose red or black or take win",
+    "gambleOver": "game over - gamble completed, place your bet",
     "bonusSpin": "bonus spin",
     "bonusSpins": "bonus spins",
     "withSubstitution": "with substitution",
@@ -63,6 +63,4 @@ export default {
     "event": "event",
     "value": "value",
     "game": "game",
-    "denomination_choose_header": "select denomination",
-    "lang_choose_header": "select language",
 }

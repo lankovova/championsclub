@@ -5,10 +5,10 @@ export default {
 
     // Notifier
     "notEnoughCash": "недостаточно денег для этой ставки",
-    "gameOverPlaceYourBet": "игра закончена, сделайте вашу ставку",
+    "gameOver": "игра закончена, сделайте вашу ставку",
     "gambleUpOrTakeWin": "рисковать до 5x или забрать выигрыш",
-    "chooseRedOrBlackOrTakeWin": "выберите, красная или чёрная или заберите выигрыш",
-    "gameOverGambleCompletedPlaceYourBet": "игра закончена, риск закончен, сделайте вашу ставку",
+    "gambleChoose": "выберите, красная или чёрная или заберите выигрыш",
+    "gambleOver": "игра закончена, риск закончен, сделайте вашу ставку",
     "bonusSpin": "бонусная крутка",
     "bonusSpins": "бонусные крутки",
     "withSubstitution": "с подстановкой",
@@ -63,6 +63,4 @@ export default {
     "event": "событие",
     "value": "значение",
     "game": "игра",
-    "denomination_choose_header": "выберите стоимость одного кредита",
-    "lang_choose_header": "выберите язык",
 }
