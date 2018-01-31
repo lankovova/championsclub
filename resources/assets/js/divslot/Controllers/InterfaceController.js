@@ -12,7 +12,6 @@ import Help from './../Components/Help';
 export default class InterfaceController {
     constructor(props) {
         this.props = props;
-        const that = this;
 
         // FIXME: DEV TEMP
         this._showControls();
