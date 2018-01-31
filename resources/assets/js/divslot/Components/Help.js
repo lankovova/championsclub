@@ -28,7 +28,7 @@ export default class Help {
             for (const pay of paytable) {
                 if (+pay !== 0) {
                     const payEl = document.createElement('div');
-                    payEl.innerText = isScatter ? 
+                    payEl.innerText = isScatter ?
                         pay * this.betPerLine * this.linesAmount : pay * this.betPerLine;
                     container.prepend(payEl);
                 }
@@ -36,7 +36,7 @@ export default class Help {
         }
     }
 
-    refreshPaytable(linesAmount=1, betPerLine=1) {
+    refreshPaytable = (linesAmount=1, betPerLine=1) => {
         this.linesAmount = linesAmount;
         this.betPerLine = betPerLine;
 
