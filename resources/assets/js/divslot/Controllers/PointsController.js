@@ -22,8 +22,8 @@ export default class PointsController {
     _init({lines=settings.lines[0], betPerLine=settings.betPerLine[0], denomination=settings.denominations[0], userInsurance=0, userCash=0, userWin=0}) {
         // Init denom
         this._denomination = denomination;
-        this.props.denominationBlock.highlightItem(this._denomination);
-        this.props.panel.setDenomination(this._denomination);
+
+        this.props.onSetDenomination(this._denomination);
 
         this.setLines(lines);
         this.setBetPerLine(betPerLine);
@@ -62,11 +62,7 @@ export default class PointsController {
     setDenomination = denomination => {
         this._denomination = denomination;
 
-        this.props.denominationBlock.highlightItem(denomination);
-
-        // Update panel value
-        this.props.panel.setDenomination(this._denomination);
-
+        this.props.onSetDenomination(this.denomination);
         // Remember new denomination in cookies
         CookieController.set('denomination', this._denomination);
 
@@ -79,17 +75,7 @@ export default class PointsController {
     setLines = linesAmount => {
         this._linesAmount = linesAmount;
 
-        this.props.linesBlock.highlightItem(linesAmount);
-
-        // Update panel value
-        this.props.panel.setLinesAmount(this._linesAmount);
-
-        // Update line presenters text
-        this.props.linePresenters.setText(this._linesAmount, this._betPerLine);
-
-        // Update help paytables
-        this.props.updateHelpPaytables(this._linesAmount, this._betPerLine);
-
+        this.props.onSetLine(this.lines, this.betPerLine);
         // Remember new linesAmount in cookies
         CookieController.set('lines_amount', this._linesAmount);
 
@@ -100,17 +86,7 @@ export default class PointsController {
     setBetPerLine = betPerLine => {
         this._betPerLine = betPerLine;
 
-        this.props.betPerLineBlock.highlightItem(betPerLine);
-
-        // Update panel value
-        this.props.panel.setBetPerLine(this._betPerLine);
-
-        // Update line presenters text
-        this.props.linePresenters.setText(this._linesAmount, this._betPerLine);
-
-        // Update help paytables
-        this.props.updateHelpPaytables(this.lines, this.betPerLine);
-
+        this.props.onSetBetPerLine(this.lines, this.betPerLine);
         // Remember new linesAmount in cookies
         CookieController.set('bet_per_line', this._betPerLine);
 

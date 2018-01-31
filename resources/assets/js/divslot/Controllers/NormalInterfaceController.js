@@ -233,6 +233,32 @@ export default class NormalInterfaceController {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
     }
 
+    onSetLine = (linesAmount, betPerLine) => {
+        this.linesBlock.highlightItem(linesAmount);
+        // Update panel value
+        this.panel.setLinesAmount(linesAmount);
+        // Update line presenters text
+        this.linePresenters.setText(linesAmount, betPerLine);
+        // Update help paytables
+        this.helpWindow.refreshPaytable(linesAmount, betPerLine);
+    }
+
+    onSetBetPerLine = (linesAmount, betPerLine) => {
+        this.betPerLineBlock.highlightItem(betPerLine);
+        // Update panel value
+        this.panel.setBetPerLine(betPerLine);
+        // Update line presenters text
+        this.linePresenters.setText(linesAmount, betPerLine);
+        // Update help paytables
+        this.helpWindow.refreshPaytable(linesAmount, betPerLine);
+    }
+
+    onSetDenomination = (denomination) => {
+        this.denominationBlock.highlightItem(denomination);
+        // Update panel value
+        this.panel.setDenomination(denomination);
+    }
+
     openHelp = () => {
         this.disableInterface();
         this.helpWindow.open();

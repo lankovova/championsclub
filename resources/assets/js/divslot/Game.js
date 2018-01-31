@@ -75,11 +75,9 @@ export default class Game {
 
             this.pointsController = new PointsController({
                 panel: this.interfaceController.panel,
-                linePresenters: this.interfaceController.linePresenters,
-                linesBlock: this.interfaceController.linesBlock,
-                betPerLineBlock: this.interfaceController.betPerLineBlock,
-                denominationBlock: this.interfaceController.denominationBlock,
-                updateHelpPaytables: this.interfaceController.helpWindow.refreshPaytable
+                onSetLine: this.interfaceController.onSetLine,
+                onSetBetPerLine: this.interfaceController.onSetBetPerLine,
+                onSetDenomination: this.interfaceController.onSetDenomination,
             }, {
                 userCash: userCash,
                 userInsurance: userInsurance,
