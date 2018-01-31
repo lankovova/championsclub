@@ -431,7 +431,7 @@ export default class Game {
 
                 // Count win
                 if (previousBonusSpin.substitution.won) {
-                    await this.showWinningLines(previousBonusSpin.substitution.result);
+                    await this.showWinningLines(previousBonusSpin.substitution.spin_result);
 
                     // Unblur all symbols
                     this.linesController.unblurAllSymbols();
