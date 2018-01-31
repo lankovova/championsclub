@@ -9,7 +9,7 @@ import Translator from '../Translator';
 import CookieController from './CookieController';
 import Help from './../Components/Help';
 
-export default class InterfaceController {
+export default class NormalInterfaceController {
     constructor(props) {
         this.props = props;
 
