@@ -74,7 +74,10 @@ export default class Game {
             settings.betPerLine = playerData.bet_per_line ? playerData.bet_per_line : settings.betPerLine;
 
             this.pointsController = new PointsController({
+                // TODO: For old interface and correct arcitecture
+                // remove panel usage from points controller
                 panel: this.interfaceController.panel,
+
                 onSetLine: this.interfaceController.onSetLine,
                 onSetBetPerLine: this.interfaceController.onSetBetPerLine,
                 onSetDenomination: this.interfaceController.onSetDenomination,
