@@ -1,7 +1,7 @@
 <template>
     <div class="choose__container choose__container--lang">
         <div class="choose__header">
-            {{ $t("lang_choose_header") }}
+            {{ $t("selectLanguage") }}
         </div>
         <div v-for="(lang, key) in langs"
             :ref="lang"

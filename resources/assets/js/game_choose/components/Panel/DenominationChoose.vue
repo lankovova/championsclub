@@ -1,7 +1,7 @@
 <template>
     <div class="choose__container">
         <div class="choose__header">
-            {{ $t("denomination_choose_header") }}
+            {{ $t("selectDenomination") }}
         </div>
         <div v-for="(denomination, key) in denominations"
             :ref="denomination"
