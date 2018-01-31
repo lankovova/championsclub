@@ -45,7 +45,10 @@
                 <div class="credit_text">credit</div>
                 <div class="credit_amount" id="creditAmount">100</div>
 
-                <div class="denomination"></div>
+                <div class="denomination">
+                    <div class="denomination__header">1 credit =</div>
+                    <div class="denomination__value">0.01</div>
+                </div>
 
                 <div class="bet_per_line_text">bet/line</div>
                 <div class="bet_per_line_amount" id="betPerLineAmount">1</div>
@@ -53,7 +56,7 @@
                 <div class="lines_amount_text">lines bet</div>
                 <div class="lines_amount" id="linesAmount">1</div>
 
-                <div class="bet_text">1</div>
+                <div class="bet_text">bet</div>
                 <div class="bet_amount" id="betAmount">1</div>
 
 

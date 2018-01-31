@@ -132,6 +132,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 30px;
+    letter-spacing: 3px;
 }
 .credit_text {
     position: absolute;
@@ -144,17 +145,46 @@ body {
 }
 .credit_amount {
     position: absolute;
-    left: 374px;
-    top: 105px;
+    left: 354px;
+    top: 114px;
     font-size: 28px;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
     width: 227px;
     height: 51px;
     text-align: right;
     font-size: 47px;
-    padding-right: 12px;
+    font-family: 'digital-7';
+    font-style: italic;
     box-sizing: border-box;
     color: #f7f700;
+}
+.denomination {
+    width: 100px;
+    position: absolute;
+    right: 584px;
+    top: 29px;
+
+    &__header {
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #fcaf05;
+        text-shadow: 1px 1px #000;
+    }
+    &__value {
+        font-size: 43px;
+        font-weight: 700;
+        color: #f80800;
+        font-family: Oswald serif;
+        text-shadow: 
+            2px 2px #000,  
+            1px 1px #fcaf05, 
+            -1px -1px #fcaf05, 
+            1px -1px #fcaf05, 
+            -1px 1px #fcaf05;
+        text-align: center;
+        letter-spacing: 5px;
+    }
 }
 .bet_per_line_text {
     right: 337px;
@@ -169,7 +199,9 @@ body {
     right: 239px;
     position: absolute;
     top: 20px;
-    font-size: 29px;
+    font-size: 44px;
+    font-family: 'digital-7';
+    font-style: italic;
     letter-spacing: 2px;
     color: #f7f700;
 }
@@ -185,10 +217,12 @@ body {
 .lines_amount {
     right: 239px;
     position: absolute;
-    top: 59px;
-    font-size: 29px;
+    top: 54px;
+    font-size: 44px;
     letter-spacing: 2px;
-    color: #f7f700;
+    color: #429BDF;
+    font-family: 'digital-7';
+    font-style: italic;
 }
 .bet_text {
     right: 355px;
@@ -202,8 +236,10 @@ body {
 .bet_amount {
     right: 237px;
     position: absolute;
-    top: 118px;
-    font-size: 29px;
+    top: 114px;
+    font-size: 44px;
+    font-family: 'digital-7';
+    font-style: italic;
     letter-spacing: 2px;
     color: #f7f700;
 }
