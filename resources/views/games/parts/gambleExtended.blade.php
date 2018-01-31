@@ -1,17 +1,17 @@
 <div class="gamble" id="gamble">
     <div class="gamble__amount" id="gambleAmount">
-        <div class="gamble__amount-text title">gamble amount</div>
+        <div class="gamble__amount-text title"></div>
         <div class="gamble__amount-value value"></div>
     </div>
 
     <div class="gamble__to-win">
         <div class="gamble__to-win-suit" id="gambleToWinSuit">
-            <span class="title">suit gamble to win</span>
+            <span class="title"></span>
             <span class="value"></span>
             (x4)
         </div>
         <div class="gamble__to-win-color" id="gambleToWinColor">
-            <span class="title">color gamble to win</span>
+            <span class="title"></span>
             <span class="value"></span>
             (x2)
         </div>

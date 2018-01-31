@@ -1,18 +1,23 @@
 import APIController from './../Controllers/APIController';
 import GambleModalButton from './buttons/GambleModalButton';
 import {capitalize} from './../Helpers/stringHelper';
+import Translator from '../Translator';
 
 const redOverlayColor = 'rgba(255,0,0,0.3)';
 const blueOverlayColor = 'rgba(0,0,255,0.3)';
 
 class GambleTextField {
-    constructor(node) {
+    constructor({node, title}) {
         this.node = node;
 
         if (this.node) {
             this.valueNode = this.node.querySelector('.value');
             this.titleNode = this.node.querySelector('.title');
         }
+
+        // Set init values
+        this.value = '-';
+        this.title = title;
     }
 
     set value(value) {
@@ -33,25 +38,43 @@ export default class GambleModal {
         this.bigCardNode;
 
         this.valuesFields = {
-            amount: new GambleTextField(this.node.querySelector('#gambleAmount')),
-            toWinColor: new GambleTextField(this.node.querySelector('#gambleToWinColor')),
-            toWinSuit: new GambleTextField(this.node.querySelector('#gambleToWinSuit'))
+            amount: new GambleTextField({
+                node: this.node.querySelector('#gambleAmount'),
+                title: Translator.gambleAmount
+            }),
+            toWinColor: new GambleTextField({
+                node: this.node.querySelector('#gambleToWinColor'),
+                title: Translator.colorGambleToWin
+            }),
+            toWinSuit: new GambleTextField({
+                node: this.node.querySelector('#gambleToWinSuit'),
+                title: Translator.suitGambleToWin
+            })
         }
 
-        this.previousCards = new (function(node) {
-            this.node = node;
-            this.titleNode = this.node.querySelector('.title');
-            this.suitsNode = this.node.querySelector('.suits');
+        // Init previous cards
+        this.previousCards = new (class {
+            constructor(node) {
+                this.node = node;
+                this.titleNode = this.node.querySelector('.title');
+                this.suitsNode = this.node.querySelector('.suits');
+
+                this.title = Translator.previousCards;
+            }
+
+            set title(title) {
+                if (this.titleNode) this.titleNode.innerText = title;
+            }
 
             // Add to markup
-            this.add = function(cardSuit) {
+            add(cardSuit) {
                 const cardToInsert = document.createElement('div');
                 cardToInsert.className = `suit-${cardSuit}`;
                 this.suitsNode.appendChild(cardToInsert);
             }
 
             // Remove oldest card from html markup
-            this.removeOldest = function() {
+            removeOldest() {
                 this.suitsNode.removeChild(this.suitsNode.children[0]);
             }
         })(this.node.querySelector('#previousCards'));
@@ -62,7 +85,8 @@ export default class GambleModal {
                 red: new GambleModalButton({
                     node: this.node.querySelector('#red'),
                     onClick: this.props.pickSuit('red'),
-                    overlayColor: redOverlayColor
+                    overlayColor: redOverlayColor,
+                    title: Translator.red
                 }),
                 heart: new GambleModalButton({
                     node: this.node.querySelector('#heart'),
@@ -77,7 +101,8 @@ export default class GambleModal {
                 black: new GambleModalButton({
                     node: this.node.querySelector('#black'),
                     onClick: this.props.pickSuit('black'),
-                    overlayColor: blueOverlayColor
+                    overlayColor: blueOverlayColor,
+                    title: Translator.black
                 }),
                 club: new GambleModalButton({
                     node: this.node.querySelector('#club'),
@@ -95,12 +120,14 @@ export default class GambleModal {
                 red: new GambleModalButton({
                     node: this.node.querySelector('#red'),
                     onClick: this.props.pickSuit('red'),
-                    overlayColor: redOverlayColor
+                    overlayColor: redOverlayColor,
+                    title: Translator.red
                 }),
                 black: new GambleModalButton({
                     node: this.node.querySelector('#black'),
                     onClick: this.props.pickSuit('black'),
-                    overlayColor: blueOverlayColor
+                    overlayColor: blueOverlayColor,
+                    title: Translator.black
                 })
             };
         }
