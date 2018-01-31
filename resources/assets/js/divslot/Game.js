@@ -14,10 +14,6 @@ const BONUS_SPINS_TYPES = {
 
 export default class Game {
     constructor(gameName) {
-
-        // FIXME:
-        console.log(document.cookie);
-
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
 
