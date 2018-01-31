@@ -82,6 +82,9 @@ export default class PointsController {
         // Update line presenters text
         this.props.linePresenters.setText(this._linesAmount, this._betPerLine);
 
+        // Update help paytables
+        this.props.updateHelpPaytables(this.lines, this.betPerLine);
+
         this._updateTotalBet();
     }
 
@@ -96,6 +99,9 @@ export default class PointsController {
 
         // Update line presenters text
         this.props.linePresenters.setText(this._linesAmount, this._betPerLine);
+
+        // Update help paytables
+        this.props.updateHelpPaytables(this.lines, this.betPerLine);
 
         this._updateTotalBet();
     }

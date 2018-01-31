@@ -24,8 +24,8 @@ class GameController extends Controller
         $result = $gamble->getResult();
 
         $date = date("Y-m-d H:i:s");
-        $playerCash = $result["won"] ? 
-            ($this->player->getCash() - $this->player->getlastWonCash() + $result["won_coins"] / 100) : 
+        $playerCash = $result["won"] ?
+            ($this->player->getCash() - $this->player->getlastWonCash() + $result["won_coins"] / 100) :
             ($this->player->getCash() - $this->player->getlastWonCash());
 
         $action = $result["won"] ? "game gamble win" : "game gamble loose";
@@ -75,7 +75,7 @@ class GameController extends Controller
 
         // turn off bonus spins
         switch ($reqData["game"]) {
-            case "BookOfWinner":
+            // case "BookOfWinner":
             case "ComputerWorld":
             case "RollOfRamses":
             case "PepperSeven":

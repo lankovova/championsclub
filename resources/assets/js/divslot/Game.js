@@ -79,6 +79,7 @@ export default class Game {
                 linesBlock: this.interfaceController.linesBlock,
                 betPerLineBlock: this.interfaceController.betPerLineBlock,
                 denominationBlock: this.interfaceController.denominationBlock,
+                updateHelpPaytables: this.interfaceController.helpWindow.refreshPaytable
             }, {
                 userCash: userCash,
                 userInsurance: userInsurance,
