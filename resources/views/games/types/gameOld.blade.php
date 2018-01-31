@@ -18,10 +18,10 @@
             </div>
 
             <div class="jackpot-bonus">
-                <div class="jackpot_text"></div>
-                <div class="jackpot_amount"></div>
-                <div class="bonus_text"></div>
-                <div class="bonus_amount"></div>
+                <div class="jackpot_text">jackpot:</div>
+                <div class="jackpot_amount">6.234,34</div>
+                <div class="bonus_text">bonus:</div>
+                <div class="bonus_amount">6.234,34</div>
                 <div class="grid"></div>
             </div>
 
