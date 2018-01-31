@@ -101,7 +101,7 @@ class Substitution {
 
                 if ($curr_symbol == $this->substitutionSymbol) {
                     $symbolsInLine++;
-                    $list = [
+                    $list[] = [
                         "row" => $symMap[0],
                         "col" => $symMap[1],
                         "value" => $this->substitutionSymbol
