@@ -117,7 +117,7 @@ class Substitution {
                         $result["won_points"] += $comboPay;
                         
                         $result["spin_result"][] = [
-                            "line" => $lineIndex,
+                            "line_index" => $lineIndex,
                             "symbols_in_line" => $symbolsInLine,
                             "list" => $list,
                             "points" => $comboPay,

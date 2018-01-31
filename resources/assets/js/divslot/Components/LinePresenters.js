@@ -7,6 +7,14 @@ export default class LinePresenters {
         this.lines = lines;
         this.container = containerNode;
 
+        if (settings.gameType === 'old') {
+            this.linePresenterLeftLines = settings.linePresenter;
+            this.linePresenterRightLines = settings.linePresenter;
+        } else {
+            this.linePresenterLeftLines = settings.linePresenterLeftLines;
+            this.linePresenterRightLines = settings.linePresenterRightLines;
+        }
+        
         this._init();
     }
 
@@ -32,13 +40,13 @@ export default class LinePresenters {
         this.container.appendChild(pRight);
         pRight.className += 'line_presenters_container right';
 
-        for (const presenterInfo of settings.linePresenterLeftLines) {
+        for (const presenterInfo of this.linePresenterLeftLines) {
             const presenter = new LinePresenter(this.lines[presenterInfo.lineIndex], presenterInfo.color);
             pLeft.appendChild(presenter.node);
             this.linePresenters.push(presenter);
         }
 
-        for (const presenterInfo of settings.linePresenterRightLines) {
+        for (const presenterInfo of this.linePresenterRightLines) {
             const presenter = new LinePresenter(this.lines[presenterInfo.lineIndex], presenterInfo.color);
             pRight.appendChild(presenter.node);
             this.linePresenters.push(presenter);
