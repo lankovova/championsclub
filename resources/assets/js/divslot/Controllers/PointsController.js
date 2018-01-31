@@ -1,3 +1,5 @@
+import CookieController from "./CookieController";
+
 let userWinTransferDelta;
 
 export default class PointsController {
@@ -65,6 +67,9 @@ export default class PointsController {
         // Update panel value
         this.props.panel.setDenomination(this._denomination);
 
+        // Remember new denomination in cookies
+        CookieController.set('denomination', this._denomination);
+
         this.updateUserCash();
         this.updateUserInsurance();
         this._updateTotalBet();
@@ -83,7 +88,10 @@ export default class PointsController {
         this.props.linePresenters.setText(this._linesAmount, this._betPerLine);
 
         // Update help paytables
-        this.props.updateHelpPaytables(this.lines, this.betPerLine);
+        this.props.updateHelpPaytables(this._linesAmount, this._betPerLine);
+
+        // Remember new linesAmount in cookies
+        CookieController.set('lines_amount', this._linesAmount);
 
         this._updateTotalBet();
     }
@@ -102,6 +110,9 @@ export default class PointsController {
 
         // Update help paytables
         this.props.updateHelpPaytables(this.lines, this.betPerLine);
+
+        // Remember new linesAmount in cookies
+        CookieController.set('bet_per_line', this._betPerLine);
 
         this._updateTotalBet();
     }

@@ -5,6 +5,7 @@ import LinesController from './Controllers/LinesController';
 import InterfaceController from './Controllers/InterfaceController';
 import APIController from './Controllers/APIController';
 import Translator from './Translator';
+import CookieController from './Controllers/CookieController';
 
 const BONUS_SPINS_TYPES = {
     freeSpin: 'free_spin',
@@ -13,6 +14,10 @@ const BONUS_SPINS_TYPES = {
 
 export default class Game {
     constructor(gameName) {
+
+        // FIXME:
+        console.log(document.cookie);
+
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
 
@@ -69,7 +74,6 @@ export default class Game {
             const userCash = +playerData.cash;
             const userInsurance = +playerData.insurance;
 
-            // TODO: Move denom, betPerLine and lines to config.js
             settings.denomination = playerData.denomination ? playerData.denomination : settings.denomination;
             settings.betPerLine = playerData.bet_per_line ? playerData.bet_per_line : settings.betPerLine;
 
@@ -83,10 +87,18 @@ export default class Game {
             }, {
                 userCash: userCash,
                 userInsurance: userInsurance,
-                lines: 10,
-                // TODO: Get this values from cookie
-                betPerLine: settings.betPerLine[0],
-                denomination: settings.denomination[0],
+                lines:
+                    (CookieController.get('lines_amount'))
+                        ? +CookieController.get('lines_amount')
+                        : settings.lines[Math.floor((settings.lines.length - 1) / 2)],
+                betPerLine:
+                    (CookieController.get('bet_per_line'))
+                        ? +CookieController.get('bet_per_line')
+                        : settings.betPerLine[0],
+                denomination:
+                    (CookieController.get('denomination'))
+                        ? +CookieController.get('denomination')
+                        : settings.denomination[0],
             });
 
             // FIXME: Rethink abount set idle here
