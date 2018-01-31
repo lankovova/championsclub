@@ -47,7 +47,6 @@ export default class InterfaceController {
             autoSpinClick: this.autoSpinClick,
             maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
-            // FIXME: Disable interface when help block is toggled toggled
             helpBtnClickHandler: this.openHelp,
             toggleLinesBlock: () => this.linesBlock.toggle(),
             toggleBetPerLineBlock: () => this.betPerLineBlock.toggle(),
