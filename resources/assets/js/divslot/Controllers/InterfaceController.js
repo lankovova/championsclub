@@ -7,6 +7,7 @@ import SubstitutionBlock from './../Components/SubstitutionBlock';
 import GambleModal from '../Components/GambleModal';
 import Translator from '../Translator';
 import CookieController from './CookieController';
+import Help from './../Components/Help';
 
 export default class InterfaceController {
     constructor(props) {
@@ -15,6 +16,8 @@ export default class InterfaceController {
 
         // FIXME: DEV TEMP
         this._showControls();
+
+        this.helpWindow = new Help();
 
         this.linePresenters = new LinePresenters({
             lines: this.props.lines,
@@ -41,6 +44,8 @@ export default class InterfaceController {
             autoSpinClick: this.autoSpinClick,
             maxBetClickHandler: this.maxBetClickHandler,
             gambleClick: this.gambleClick,
+            // FIXME: Disable interface when help block is toggled toggled
+            helpBtnClickHandler: () => this.helpWindow.open(),
             toggleLinesBlock: () => this.linesBlock.toggle(),
             toggleBetPerLineBlock: () => this.betPerLineBlock.toggle(),
             toggleDenominationBlock: () => this.denominationBlock.toggle(),

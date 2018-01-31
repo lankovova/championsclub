@@ -10,20 +10,24 @@ export default class Help {
 
     initPrizeContainers() {
         let containers = document.getElementsByClassName("help__prize_container");
-        
+
         for (let container of containers) {
-            // convert to array 
+            // convert to array
             let symbols = container.dataset.symbols.split(' ');
             let paytable = settings.symbols[symbols[0]].paytable;
-            
+
             for (const pay of paytable) {
                 if (+pay !== 0) {
                     let payEl = document.createElement('div');
                     payEl.innerText = pay;
                     container.prepend(payEl);
-                }  
-            }   
+                }
+            }
         }
+    }
+
+    open() {
+        document.getElementById("help").style.transform = "translateY(0)";
     }
 
     onClose() {
@@ -81,7 +85,7 @@ export default class Help {
         this.slidesAmount = this.sliderTracker.children.length;
         this.slideLength = this.sliderTracker.children[0].offsetWidth;
         this.slideCurrent = 1;
-        this.disableButtons = false; 
+        this.disableButtons = false;
         this.sliderTracker.style.transform = `translateX(-${this.slideLength}px)`
         this.sliderTracker.style.transitionDuration = `${this.trasitionTime}ms`
 
