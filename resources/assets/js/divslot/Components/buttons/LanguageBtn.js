@@ -5,7 +5,9 @@ export default class LanguageBtn extends Button {
     constructor(props) {
         super(props);
 
-        this.setBg(CookieController.get('lang'));
+        const langFromCookie = CookieController.get('lang');
+        const lang = langFromCookie ? langFromCookie : 'en';
+        this.setBg(lang);
     }
 
     setBg(countryName) {

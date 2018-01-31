@@ -260,7 +260,9 @@ export default class InterfaceController {
     }
 
     setLanguage = (value) => {
+        // Set new lang to cookies
         CookieController.set('lang', value);
+        // Reload page from cache
         window.location.reload(false);
     }
 
