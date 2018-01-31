@@ -11,7 +11,7 @@ export default class CookieController {
                 return unescape(document.cookie.substring(c_start, c_end));
             }
         }
-        return "";
+        return undefined;
     }
 
     static set(name, value, days) {
