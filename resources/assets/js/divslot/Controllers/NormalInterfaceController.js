@@ -233,6 +233,9 @@ export default class NormalInterfaceController {
         Object.keys(this.panel.btns).forEach(btnKey => this.panel.btns[btnKey].enable());
     }
 
+    /**
+     * Triggered when lines amount was changed
+     */
     onSetLine = (linesAmount, betPerLine) => {
         this.linesBlock.highlightItem(linesAmount);
         // Update panel value
@@ -243,6 +246,9 @@ export default class NormalInterfaceController {
         this.helpWindow.refreshPaytable(linesAmount, betPerLine);
     }
 
+    /**
+     * Triggered when bet per line was changed
+     */
     onSetBetPerLine = (linesAmount, betPerLine) => {
         this.betPerLineBlock.highlightItem(betPerLine);
         // Update panel value
@@ -253,6 +259,9 @@ export default class NormalInterfaceController {
         this.helpWindow.refreshPaytable(linesAmount, betPerLine);
     }
 
+    /**
+     * Triggered when denomination was changed
+     */
     onSetDenomination = (denomination) => {
         this.denominationBlock.highlightItem(denomination);
         // Update panel value
