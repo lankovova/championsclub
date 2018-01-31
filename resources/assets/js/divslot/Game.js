@@ -2,7 +2,7 @@ import {getNextArrayItem, getMultiplyNearestLowerNumbers, shuffleArray} from './
 import PointsController from './Controllers/PointsController';
 import ReelsController from './Controllers/ReelsController';
 import LinesController from './Controllers/LinesController';
-import InterfaceController from './Controllers/InterfaceController';
+import InterfaceController from './Controllers/InterfacePicker';
 import APIController from './Controllers/APIController';
 import Translator from './Translator';
 import CookieController from './Controllers/CookieController';
