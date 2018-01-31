@@ -71,7 +71,7 @@ class Substitution {
             $report["final_symbols"] = $this->finalSymbols;
             $report["won"] = $result["won"];
 
-            $report["substitution"]["result"] = $sResult["spin_result"];
+            $report["substitution"]["spin_result"] = $sResult["spin_result"];
             $report["substitution"]["won"] = $sResult["won"];
             $report["substitution"]["final_symbols"] = $this->substitutionFinalSymbols;
 
@@ -87,8 +87,8 @@ class Substitution {
             "spin_result" => []
         ];
 
-        foreach ($this->linesTypes as $line_i => $line) {
-            if ($this->linesAmount < $line_i) {
+        foreach ($this->linesTypes as $lineIndex => $line) {
+            if ($this->linesAmount < $lineIndex) {
                 break;
             }
 
@@ -116,8 +116,8 @@ class Substitution {
 
                         $result["won_points"] += $comboPay;
                         
-                        $result[] = [
-                            "line" => $line_i,
+                        $result["spin_result"][] = [
+                            "line" => $lineIndex,
                             "symbols_in_line" => $symbolsInLine,
                             "list" => $list,
                             "points" => $comboPay,
