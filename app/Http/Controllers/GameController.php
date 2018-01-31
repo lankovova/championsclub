@@ -75,7 +75,7 @@ class GameController extends Controller
 
         // turn off bonus spins
         switch ($reqData["game"]) {
-            // case "BookOfWinner":
+            case "BookOfWinner":
             case "ComputerWorld":
             case "RollOfRamses":
             case "PepperSeven":
