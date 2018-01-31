@@ -1,4 +1,6 @@
 var settings = {
+    "gameType": "old",
+
     "symbolSize": 170,
     "spaceBetweenReels": 60,
 
@@ -41,7 +43,7 @@ var settings = {
         {"image": "12.png"},
         {"image": "13.png"}
     ],
-    "linePresenterLeftLines": [
+    "linePresenter": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
         {lineIndex: 1, color: "rgb(255, 0, 0)"},
         {lineIndex: 7, color: "rgb(255, 181, 0)"},
@@ -50,7 +52,6 @@ var settings = {
         {lineIndex: 0, color: "rgb(252, 252, 252)"},
         {lineIndex: 6, color: "rgb(142, 252, 252)"},
         {lineIndex: 8, color: "rgb(0, 213, 0)"},
-        {lineIndex: 2, color: "rgb(116, 89, 249)"},
-        {lineIndex: 4, color: "rgb(231, 60, 204)"}
+        {lineIndex: 2, color: "rgb(116, 89, 249)"}
     ]
 }
