@@ -3,7 +3,8 @@
 @section('content')
     <div id="preloader"></div>
     <div class="game_wrapper" id="game_wrapper">
-        {{--  @include('games.parts.loading')  --}}
+        @yield('help')
+        @include('games.parts.loading')
         <div id="game">
             <div class="substitutionBlock-wrapper start" id="substitutionBlock">
                 <div class="substitutionBlock">
