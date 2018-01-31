@@ -1,37 +1,54 @@
 export default class Help {
 
-    constructor() {
+    constructor(linesAmount=1, betPerLine=1) {
         if (settings.helpType === "slider") {
             this.initSlider();
         }
-        this.initPrizeContainers();
+        this.linesAmount = linesAmount;
+        this.betPerLine = betPerLine;
+        this.helpNode = document.getElementById("help");
+        this.initPaytable();
         document.getElementById("helpBtnClose").addEventListener("click", () => this.onClose());
     }
 
-    initPrizeContainers() {
-        let containers = document.getElementsByClassName("help__prize_container");
+    initPaytable() {
+        const containers = document.getElementsByClassName("help__prize_container");
 
-        for (let container of containers) {
+        for (const container of containers) {
             // convert to array
-            let symbols = container.dataset.symbols.split(' ');
-            let paytable = settings.symbols[symbols[0]].paytable;
+            const symbols = container.dataset.symbols.split(' ');
+            const paytable = settings.symbols[symbols[0]].paytable;
+            const isScatter = settings.symbols[symbols[0]].isScatter;
+
+            // clear prev values
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
 
             for (const pay of paytable) {
                 if (+pay !== 0) {
-                    let payEl = document.createElement('div');
-                    payEl.innerText = pay;
+                    const payEl = document.createElement('div');
+                    payEl.innerText = isScatter ? 
+                        pay * this.betPerLine * this.linesAmount : pay * this.betPerLine;
                     container.prepend(payEl);
                 }
             }
         }
     }
 
+    refreshPaytable(linesAmount=1, betPerLine=1) {
+        this.linesAmount = linesAmount;
+        this.betPerLine = betPerLine;
+
+        this.initPaytable();
+    }
+
     open() {
-        document.getElementById("help").style.transform = "translateY(0)";
+        this.helpNode.style.transform = "translateY(0)";
     }
 
     onClose() {
-        document.getElementById("help").style.transform = "translateY(-100%)";
+        this.helpNode.style.transform = "translateY(-100%)";
     }
 
     showNextSlide() {

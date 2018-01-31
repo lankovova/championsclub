@@ -20,13 +20,13 @@ const config = {
         ]
     },
     devServer: {
-        allowedHosts: ['.slot.com'],
+        allowedHosts: ['php-slots', '.slot.com'],
         contentBase: path.join(__dirname, ''),
         publicPath: "/public/js/",
         compress: true,
         port: 9000,
         proxy: {
-            "/": "http://slot.com"
+            "/": "http://localhost/"
         }
     }
 };
