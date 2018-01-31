@@ -120,18 +120,45 @@
 }
 .help__prize_container {
     position: absolute;
-}
-.help__prize_container[data-symbols='6'] {
-    top: 270px;
-    left: 255px;
-}
-.help__prize_container div {
-    font-size: 26px;
-    line-height: 43px;
-    text-align: center;
-    color: #fff;
-    letter-spacing: 3px;
-    text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
-    width: 177px;
-    height: 43px;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='6'] {
+        top: 270px;
+        left: 255px;
+    }
+    &[data-symbols='3'] {
+        top: 510px;
+        left: 255px;
+    }
+    &[data-symbols='1 5'] {
+        top: 750px;
+        left: 255px;
+    }
+
+    &[data-symbols='0'] {
+        top: 326px;
+        left: 674px;
+    }
+
+    &[data-symbols='8'] {
+        top: 270px;
+        right: 255px;
+    }
+    &[data-symbols='9'] {
+        top: 510px;
+        right: 255px;
+    }
+    &[data-symbols='2 4'] {
+        top: 750px;
+        right: 255px;
+    }
 }
