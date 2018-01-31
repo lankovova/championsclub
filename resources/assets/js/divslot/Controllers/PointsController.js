@@ -19,7 +19,7 @@ export default class PointsController {
         this._init(options);
     }
 
-    _init({lines = settings.lines[0], betPerLine = settings.betPerLine[0], denomination = settings.denominations[0], userInsurance = 0, userCash = 0, userWin = 0}) {
+    _init({lines=settings.lines[0], betPerLine=settings.betPerLine[0], denomination=settings.denominations[0], userInsurance=0, userCash=0, userWin=0}) {
         // Init denom
         this._denomination = denomination;
         this.props.denominationBlock.highlightItem(this._denomination);
