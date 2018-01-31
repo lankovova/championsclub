@@ -38,8 +38,6 @@ trait Helper {
      * @return void
      */
     protected function generateFinalSymbols() {
-        $this->finalSymbols = [[1,6,7,6,4],[2,3,4,9,5],[7,0,0,8,9]];
-        return;
         $this->fillSymbols();
         $this->finalSymbols = [];
         // no same symbols in one row

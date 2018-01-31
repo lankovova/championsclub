@@ -86,7 +86,7 @@ var settings = {
                 "image": "8.png",
                 "frames": 11
             },
-            "paytable": [0, 0, 5, 25, 100]
+            "paytable": [0, 0, 3, 30, 300]
         }, {
             "image": "9.png",
             "animation": {
