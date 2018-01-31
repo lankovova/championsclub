@@ -1,42 +1,42 @@
 export default class Help {
     constructor(props) {
-        this.props = props;
+        // this.props = props;
 
-        if (settings.helpType === "slider") {
-            this.initSlider();
-        }
+        // if (settings.helpType === "slider") {
+        //     this.initSlider();
+        // }
 
-        this.linesAmount = 1;
-        this.betPerLine = 1;
-        this.node = props.node;
-        this.initPaytable();
+        // this.linesAmount = 1;
+        // this.betPerLine = 1;
+        // this.node = props.node;
+        // this.initPaytable();
 
-        this.node.querySelector('#helpBtnClose').onclick = () => this.onClose();
+        // this.node.querySelector('#helpBtnClose').onclick = () => this.onClose();
     }
 
     initPaytable() {
-        const containers = document.getElementsByClassName("help__prize_container");
+        // const containers = document.getElementsByClassName("help__prize_container");
 
-        for (const container of containers) {
-            // convert to array
-            const symbols = container.dataset.symbols.split(' ');
-            const paytable = settings.symbols[symbols[0]].paytable;
-            const isScatter = settings.symbols[symbols[0]].isScatter;
+        // for (const container of containers) {
+        //     // convert to array
+        //     const symbols = container.dataset.symbols.split(' ');
+        //     const paytable = settings.symbols[symbols[0]].paytable;
+        //     const isScatter = settings.symbols[symbols[0]].isScatter;
 
-            // clear prev values
-            while (container.firstChild) {
-                container.removeChild(container.firstChild);
-            }
+        //     // clear prev values
+        //     while (container.firstChild) {
+        //         container.removeChild(container.firstChild);
+        //     }
 
-            for (const pay of paytable) {
-                if (+pay !== 0) {
-                    const payEl = document.createElement('div');
-                    payEl.innerText = isScatter ?
-                        pay * this.betPerLine * this.linesAmount : pay * this.betPerLine;
-                    container.prepend(payEl);
-                }
-            }
-        }
+        //     for (const pay of paytable) {
+        //         if (+pay !== 0) {
+        //             const payEl = document.createElement('div');
+        //             payEl.innerText = isScatter ?
+        //                 pay * this.betPerLine * this.linesAmount : pay * this.betPerLine;
+        //             container.prepend(payEl);
+        //         }
+        //     }
+        // }
     }
 
     refreshPaytable = (linesAmount=1, betPerLine=1) => {
@@ -47,7 +47,7 @@ export default class Help {
     }
 
     open() {
-        this.node.style.transform = "translateY(0)";
+        // this.node.style.transform = "translateY(0)";
     }
 
     onClose() {
