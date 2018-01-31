@@ -19,12 +19,12 @@
 
     <div class="button__suit-color button__red" id="red">
         <div class="overflow-layer">
-            <span class="title">red</span>
+            <span class="title"></span>
         </div>
     </div>
     <div class="button__suit-color button__black" id="black">
         <div class="overflow-layer">
-            <span class="title">black</span>
+            <span class="title"></span>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
     <div class="card__suit card__heart" id="suitHeart"></div>
     <div class="card__suit card__diamond" id="suitDiamond"></div>
     <div class="previous-cards" id="previousCards">
-        <div class="previous-cards__text title">previous cards</div>
+        <div class="previous-cards__text title"></div>
         <div class="previous-cards__suits suits"></div>
     </div>
 </div>
