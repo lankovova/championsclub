@@ -8,10 +8,10 @@ export default class Help {
 
         this.linesAmount = 1;
         this.betPerLine = 1;
-        this.helpNode = document.getElementById("help");
+        this.node = props.node;
         this.initPaytable();
 
-        document.getElementById("helpBtnClose").addEventListener("click", () => this.onClose());
+        this.node.querySelector('#helpBtnClose').onclick = () => this.onClose();
     }
 
     initPaytable() {
@@ -47,15 +47,14 @@ export default class Help {
     }
 
     open() {
-        this.helpNode.style.transform = "translateY(0)";
+        this.node.style.transform = "translateY(0)";
     }
 
     onClose() {
-        this.helpNode.style.transform = "translateY(-100%)";
+        this.node.style.transform = "translateY(-100%)";
 
         // Set proper interface state
-        this.props.setInterfaceIdle();
-        this.props.setSpinPossibility();
+        this.props.onClose();
     }
 
     showNextSlide() {

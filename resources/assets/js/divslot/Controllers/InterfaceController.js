@@ -17,8 +17,8 @@ export default class InterfaceController {
         this._showControls();
 
         this.helpWindow = new Help({
-            setInterfaceIdle: this.setIdle,
-            setSpinPossibility: this.props.setSpinPossibility
+            node: document.querySelector('#help'),
+            onClose: this.onCloseHelp
         });
 
         this.linePresenters = new LinePresenters({
@@ -236,6 +236,11 @@ export default class InterfaceController {
     openHelp = () => {
         this.disableInterface();
         this.helpWindow.open();
+    }
+
+    onCloseHelp = () => {
+        this.setIdle();
+        this.props.setSpinPossibility();
     }
 
     displaySubstitutionStart() {
