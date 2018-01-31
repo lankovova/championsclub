@@ -57,7 +57,6 @@ var settings = {
         [ [2, 0], [2, 1], [1, 2] ],
         [ [0, 0], [0, 1], [1, 2] ],
     ],
-
     "linePresenterLeftLines": [
         {lineIndex: 3, color: "rgb(255, 199, 0)"},
         {lineIndex: 1, color: "rgb(255, 199, 0)"},
