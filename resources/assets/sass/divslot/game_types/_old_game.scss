@@ -1,5 +1,5 @@
 @import "../reset";
-@import "../fonts";
+@import "../fonts_old";
 @import "../loading";
 @import "../media/media_old_game";
 * {
@@ -10,7 +10,7 @@
 }
 
 body {
-    font-family: "Oswald",  sans-serif;
+    font-family: "Franklin Gothic Demi",  sans-serif;
     overflow: hidden;
     text-transform: uppercase;
 }
