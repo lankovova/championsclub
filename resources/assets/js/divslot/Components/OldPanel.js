@@ -38,29 +38,10 @@ export default class OldPanel {
                 node: document.querySelector('#helpBtn'),
                 onClick: this.props.helpBtnClickHandler
             }),
-
-            // FIXME: Maybe create one component with all lines inside and only one state
-            oneLine: new Buttons.OldButton({
-                node: document.querySelector('#oneLinesBtn'),
-                onClick: () => this.props.setLines(1)
+            lines: new Buttons.OldLinesBtns({
+                node: document.querySelector('#linesBtns'),
+                onClick: this.props.setLines
             }),
-            threeLines: new Buttons.OldButton({
-                node: document.querySelector('#threeLinesBtn'),
-                onClick: () => this.props.setLines(3)
-            }),
-            fiveLines: new Buttons.OldButton({
-                node: document.querySelector('#fiveLinesBtn'),
-                onClick: () => this.props.setLines(5)
-            }),
-            sevenLines: new Buttons.OldButton({
-                node: document.querySelector('#sevenLinesBtn'),
-                onClick: () => this.props.setLines(7)
-            }),
-            nineLines: new Buttons.OldButton({
-                node: document.querySelector('#nineLinesBtn'),
-                onClick: () => this.props.setLines(9)
-            }),
-            // FIXME: END
         };
 
         this.notifier = new Notifier();
