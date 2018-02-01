@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class SnowWhite extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = [11,7,8];
-    public static $joker = 6;
+    public static $scatter = [10, 6, 7];
+    public static $joker = 5;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 12;
     public static $paytable = [
@@ -30,15 +30,16 @@ class SnowWhite extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombosTrippleScatter", "generateFinalSymbolsTrippleScatter");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        // return $this->game->bonusSpin("FreeSpinsTrippleScatter");
     }
 
     public function areBonusSpins() {
-        return $this->game->areBonusSpins();
+        return false;
+        // return $this->game->areBonusSpins();
     }
 
 }

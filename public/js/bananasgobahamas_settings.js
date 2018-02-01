@@ -23,7 +23,7 @@ var settings = {
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
-    "gambleExtended": true,
+    "gambleExtended": false,
 
     "symbolsImagesPath": "public/img/games/bananas/symbols/",
     "symbolsAnimationsPath": "public/img/games/bananas/symbols/animations/",
