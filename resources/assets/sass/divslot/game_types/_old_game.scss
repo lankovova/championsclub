@@ -367,23 +367,25 @@ body {
     font-size: 50px;
     text-transform: uppercase;
     font-family: "Fira Mono" monospace;
+    letter-spacing: 5px;
 }
 .jackpot_text {
     position: absolute;
     color: #f3ed00;
     left: 40px;
-    letter-spacing: 5px;
 }
 .jackpot_amount {
     position: absolute;
-    right: 0;
+    left: 277px;
     color: #f3ed00;
 }
 .bonus_text {
     position: absolute;
-    right: 0;
+    left: 1193px;
+    color: #f67900;
 }
 .bonus_amount {
     position: absolute;
-    right: 0;
+    left: 1388px;
+    color: #f67900;
 }
