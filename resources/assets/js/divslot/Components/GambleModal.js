@@ -6,6 +6,7 @@ import Translator from '../Translator';
 const redOverlayColor = 'rgba(255,0,0,0.3)';
 const blueOverlayColor = 'rgba(0,0,255,0.3)';
 
+// FIXME: Use TextValue component instead
 class GambleTextField {
     constructor({node, title}) {
         this.node = node;

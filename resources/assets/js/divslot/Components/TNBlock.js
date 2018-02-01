@@ -1,3 +1,4 @@
+// FIXME: Extend standart TitleValue component here
 export default class TNBlock {
     constructor(props) {
         this.node = props.node;

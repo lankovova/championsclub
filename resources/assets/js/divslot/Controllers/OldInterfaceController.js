@@ -160,9 +160,9 @@ export default class OldInterfaceController {
     setIdle = () => {
         this.enableInterface();
 
-        this.panel.btns.gamble.disable();
         this.panel.btns.SST.enable('spin');
-        this.panel.btns.maxBet.enable('maxbet');
+        // this.panel.btns.gamble.disable();
+        // this.panel.btns.maxBet.enable('maxbet');
     }
 
     setTakeWin = () => {

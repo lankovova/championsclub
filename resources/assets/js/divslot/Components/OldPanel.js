@@ -1,10 +1,9 @@
 import Translator from '../Translator';
 import Notifier from '../Components/Notifier';
 import JackpotBonus from './JackpotBonus';
+import TitleValue from './TitleValue';
 
-import TNWinBlock from './TNWinBlock';
 import * as Buttons from './buttons';
-import TNBlock from './TNBlock';
 
 export default class OldPanel {
     constructor(node, props) {
@@ -60,52 +59,55 @@ export default class OldPanel {
         // Start jackpot bonus counter
         this.jb.run();
 
-        // FIXME: Only one points field
-        this.userCashFields = new function() {
-            this.node = document.querySelector('#userCash');
-            this.title = this.node.querySelector('.title');
-            this.points = this.node.querySelector('.points');
-            this.kups = this.node.querySelector('.kups');
-
-            this.title.innerText = Translator.credit;
-        };
-        this.betBlock = new TNBlock({
-            node: document.querySelector('#betBlock'),
+        this.lines = new TitleValue({
+            node: document.querySelector('#lines'),
+            title: Translator.lines
+        });
+        this.betPerLine = new TitleValue({
+            node: document.querySelector('#betPerLine'),
+            title: Translator.betPerLine
+        });
+        this.denomination = new TitleValue({
+            node: document.querySelector('#denomination'),
+            title: Translator.denomination
+        });
+        this.userCash = new TitleValue({
+            node: document.querySelector('#userCash'),
+            title: Translator.credit
+        });
+        this.betBlock = new TitleValue({
+            node: document.querySelector('#bet'),
             title: Translator.bet
         });
-        this.winBlock = new TNWinBlock({
-            node: document.querySelector('#winBlock')
-        });
+        // this.winBlock = new TitleValue({
+        //     node: document.querySelector('#winBlock')
+        // });
     }
 
     setDenomination(denom) {
-        this.btns.denomination.number = denom.toFixed(2);
+        this.denomination.value = denom.toFixed(2);
     }
     setLinesAmount(lines) {
-        this.btns.lines.number = lines;
+        this.lines.value = lines;
     }
     setBetPerLine(betPerLine) {
-        this.btns.betPerLine.number = betPerLine;
+        this.betPerLine.value = betPerLine;
     }
 
-    setUserCash({points, kups}) {
-        this.userCashFields.points.innerText = points;
-        this.userCashFields.kups.innerText = `${kups.toFixed(2)} Kup`;
+    setUserCash({points}) {
+        this.userCash.value = points;
     }
-    setUserInsurance({points, kups}) {
-        this.userInsurance.points.innerText = points;
-        this.userInsurance.kups.innerText = `${kups.toFixed(2)} Kup`;
-    }
-
-    setUserWin({points, kups}) {
-        this.winBlock.setWin({points, kups});
+    setUserWin({points}) {
+        // this.winBlock.setWin({points, kups});
+        console.log(`set new win ${points}`);
     }
     setUserPreviousWin({points, kups}) {
-        this.winBlock.setPreviousWin({points, kups});
+        // this.winBlock.setPreviousWin({points, kups});
+        console.log(`set previous win ${points}`);
     }
-
+    setUserInsurance() { /* Silence is gold */ }
     setTotalBet({points, kups}) {
-        this.betBlock.setValues({points, kups});
+        this.betBlock.value = points;
     }
 
 }
