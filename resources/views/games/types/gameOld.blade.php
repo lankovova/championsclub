@@ -38,7 +38,7 @@
             </div>
 
             @section('gamble')
-                @include('games.parts.gambleExtended')
+                @include('games.parts.gamble')
             @show
 
             <div class="panel">
