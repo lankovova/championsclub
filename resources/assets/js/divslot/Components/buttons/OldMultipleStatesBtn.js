@@ -1,6 +1,6 @@
-import Button from './Button';
+import OldButton from './OldButton';
 
-export default class MultipleStatesButton extends Button {
+export default class OldMultipleStatesBtn extends OldButton {
     constructor(props) {
         super(props);
     }

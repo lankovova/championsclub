@@ -20,7 +20,7 @@ export default class OldPanel {
             // gamble: new Buttons.GambleBtn({
             //     node: document.querySelector('#gambleBtn'),
             //     onClick: this.props.gambleClick
-            // })
+            // }),
             // TODO: MaxBet + Black
             // maxBet: new Buttons.MaxBetBtn({
             //     node: document.querySelector('#maxBetBtn'),
@@ -47,8 +47,6 @@ export default class OldPanel {
                 onClick: this.props.helpBtnClickHandler
             }),
         };
-
-        // TODO: Add CashOutButton
 
         this.notifier = new Notifier();
 

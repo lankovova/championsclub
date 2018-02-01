@@ -1,7 +1,7 @@
-import MultipleStatesButton from './MultipleStatesButton';
+import MultipleStatesBtn from './MultipleStatesBtn';
 import Translator from './../../Translator';
 
-export default class SSTBtn extends MultipleStatesButton {
+export default class SSTBtn extends MultipleStatesBtn {
     constructor(props) {
         super(props);
 

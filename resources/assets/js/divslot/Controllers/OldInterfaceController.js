@@ -120,18 +120,23 @@ export default class OldInterfaceController {
     enableSpin = () => this.panel.btns.SST.enable('spin');
     disableSpin = () => this.panel.btns.SST.state.spin = false;
 
-    enableGamble = () => this.panel.btns.gamble.enable('gamble');
+    enableGamble = () => {
+        // TODO:
+        // this.panel.btns.gamble.enable('gamble');
+    }
 
     enableAuto = () => this.panel.btns.auto.state = true;
     disableAuto = () => this.panel.btns.auto.state = false;
 
     disablePanelGambleBtns = () => {
-        this.panel.btns.gamble.disable();
-        this.panel.btns.maxBet.disable();
+        // TODO:
+        // this.panel.btns.gamble.disable();
+        // this.panel.btns.maxBet.disable();
     }
     enablePanelGambleBtns = () => {
-        this.panel.btns.gamble.enable('red');
-        this.panel.btns.maxBet.enable('black');
+        // TODO:
+        // this.panel.btns.gamble.enable('red');
+        // this.panel.btns.maxBet.enable('black');
     }
 
     enableSpinAndAuto = () => {

@@ -176,11 +176,11 @@ body {
         font-weight: 700;
         color: #f80800;
         font-family: Oswald serif;
-        text-shadow: 
-            2px 2px #000,  
-            1px 1px #fcaf05, 
-            -1px -1px #fcaf05, 
-            1px -1px #fcaf05, 
+        text-shadow:
+            2px 2px #000,
+            1px 1px #fcaf05,
+            -1px -1px #fcaf05,
+            1px -1px #fcaf05,
             -1px 1px #fcaf05;
         text-align: center;
         letter-spacing: 5px;
@@ -254,7 +254,7 @@ body {
 }
 .info_btn {
     background-image: url(../img/old_game/info_btn_bg.png);
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     left: 303px;
     top: 194px;
@@ -263,7 +263,7 @@ body {
 }
 .auto_btn {
     background-image: url(../img/old_game/auto_btn_bg.png);
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     left: 272px;
     bottom: 13px;
@@ -272,7 +272,7 @@ body {
 }
 .exit_btn {
     background-image: url(../img/old_game/exit_btn_bg.png);
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     left: 66px;
     bottom: 13px;
@@ -281,7 +281,7 @@ body {
 }
 
 .lines_btn {
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     bottom: 18px;
     height: 61px;
@@ -310,7 +310,7 @@ body {
 }
 .bet_btn {
     background: url(../img/old_game/bet_btn_bg.png);
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     right: 276px;
     top: 186px;
@@ -319,7 +319,7 @@ body {
 }
 .maxbet_btn {
     background: url(../img/old_game/maxbet_btn_bg.png);
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     right: 72px;
     top: 189px;
@@ -328,7 +328,7 @@ body {
 }
 .start_btn {
     background: url(../img/old_game/start_btn_bg.png);
-    background-size: 200%;
+    background-size: 200% 200%;
     position: absolute;
     right: 127px;
     bottom: 17px;
@@ -406,6 +406,6 @@ body {
         padding-right: 10px;
     }
     &__value {
-    
+
     }
 }

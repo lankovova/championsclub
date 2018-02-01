@@ -1,7 +1,7 @@
-import MultipleStatesButton from './MultipleStatesButton';
+import OldMultipleStatesBtn from './OldMultipleStatesBtn';
 import Translator from './../../Translator';
 
-export default class OldSSTBtn extends MultipleStatesButton {
+export default class OldSSTBtn extends OldMultipleStatesBtn {
     constructor(props) {
         super(props);
 
@@ -14,33 +14,21 @@ export default class OldSSTBtn extends MultipleStatesButton {
             _speedUpTakeWin: false,
             get spin() { return this._spin; },
             set spin(newState) {
-                if (newState)
-                    self.text = Translator.start;
-
                 this._spin = newState;
                 self._handleDisabling();
             },
             get stop() { return this._stop; },
             set stop(newState) {
-                if (newState)
-                    self.text = Translator.stop;
-
                 this._stop = newState;
                 self._handleDisabling();
             },
             get takeWin() { return this._takeWin; },
             set takeWin(newState) {
-                if (newState)
-                    self.text = Translator.take;
-
                 this._takeWin = newState;
                 self._handleDisabling();
             },
             get speedUpTakeWin() { return this._speedUpTakeWin; },
             set speedUpTakeWin(newState) {
-                if (newState)
-                    self.text = Translator.take;
-
                 this._speedUpTakeWin = newState;
                 self._handleDisabling();
             }
