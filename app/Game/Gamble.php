@@ -54,7 +54,12 @@ class Gamble {
         ];
     }
 
-    private function randCard() {
+    /**
+     * Random card
+     *
+     * @return string
+     */
+    private function randCard(): string {
         $key = array_rand($this->cards, 1);
         return $this->cards[$key];
     }
