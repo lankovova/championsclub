@@ -389,3 +389,23 @@ body {
     left: 1388px;
     color: #f67900;
 }
+.win {
+    color: #fcaf05;
+    text-shadow: 1px 1px #000;
+    letter-spacing: 2px;
+    font-size: 23px;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: absolute;
+    top: 122px;
+    left: 900px;
+    display: flex;
+
+
+    &__text {
+        padding-right: 10px;
+    }
+    &__value {
+    
+    }
+}

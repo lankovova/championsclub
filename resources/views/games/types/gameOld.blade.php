@@ -46,6 +46,11 @@
                     <div class="credit_amount value"></div>
                 </div>
 
+                <div class="win" id="win">
+                    <div class="win__text">winner paid</div>
+                    <div class="win__value">400</div>
+                </div>
+
                 <div class="denomination" id="denomination">
                     <div class="denomination__header">1 <span class="title"></span>=</div>
                     <div class="denomination__value value"></div>
