@@ -6,7 +6,7 @@ function getTranslation() {
     const lang = langFromCookie ? langFromCookie : 'en';
 
     // Always return english translation if it is old game
-    return (settings.gameType === 'old') ? translations[lang] : translations['en'];
+    return (settings.gameType === 'old') ? translations['en'] : translations[lang];
 }
 
 export default getTranslation();
