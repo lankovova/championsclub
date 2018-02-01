@@ -1,7 +1,7 @@
-import MultipleStatesButton from "./MultipleStatesButton";
+import MultipleStatesBtn from "./MultipleStatesBtn";
 import Translator from './../../Translator';
 
-export default class GambleBtn extends MultipleStatesButton {
+export default class GambleBtn extends MultipleStatesBtn {
     constructor(props) {
         super(props);
 

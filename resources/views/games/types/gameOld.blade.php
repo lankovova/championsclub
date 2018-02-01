@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="win" id="win">
-                    <div class="win__text">winner paid</div>
-                    <div class="win__value">400</div>
+                    <div class="win__text title"></div>
+                    <div class="win__value value"></div>
                 </div>
 
                 <div class="denomination" id="denomination">
@@ -79,11 +79,11 @@
                 <div class="lines_btn one_lines_btn" id="oneLinesBtn"></div>
                 <div class="lines_btn three_lines_btn" id="threeLinesBtn"></div>
                 <div class="lines_btn five_lines_btn" id="fiveLinesBtn"></div>
-                <div class="lines_btn sevens_lines_btn" id="sevensLinesBtn"></div>
+                <div class="lines_btn sevens_lines_btn" id="sevenLinesBtn"></div>
                 <div class="lines_btn nine_lines_btn" id="nineLinesBtn"></div>
 
-                <div class="bet_btn" id="betBtn"></div>
-                <div class="maxbet_btn" id="maxbetBtn"></div>
+                <div class="bet_btn" id="betOneBtn"></div>
+                <div class="maxbet_btn" id="maxBetBtn"></div>
                 <div class="start_btn" id="SSTBtn"></div>
             </div>
 
