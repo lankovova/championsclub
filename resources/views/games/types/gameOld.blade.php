@@ -80,11 +80,13 @@
                 <div class="auto_btn" id="autoBtn"></div>
                 <div class="exit_btn" id="menuBtn"></div>
 
-                <div class="lines_btn one_lines_btn" id="oneLinesBtn"></div>
-                <div class="lines_btn three_lines_btn" id="threeLinesBtn"></div>
-                <div class="lines_btn five_lines_btn" id="fiveLinesBtn"></div>
-                <div class="lines_btn sevens_lines_btn" id="sevenLinesBtn"></div>
-                <div class="lines_btn nine_lines_btn" id="nineLinesBtn"></div>
+                <div id="linesBtns">
+                    <div data-value="1" class="lines_btn one_lines_btn"></div>
+                    <div data-value="3" class="lines_btn three_lines_btn"></div>
+                    <div data-value="5" class="lines_btn five_lines_btn"></div>
+                    <div data-value="7" class="lines_btn sevens_lines_btn"></div>
+                    <div data-value="9" class="lines_btn nine_lines_btn"></div>
+                </div>
 
                 <div class="bet_btn" id="betOneBtn"></div>
                 <div class="maxbet_btn" id="maxBetBtn"></div>

@@ -14,6 +14,7 @@ export {default as LanguageBtn} from './LanguageBtn';
 
 // Old game type buttons
 export {default as OldButton} from './OldButton';
+export {default as OldLinesBtns} from './OldLinesBtns';
 export {default as OldAutoBtn} from './OldAutoBtn';
 export {default as OldMultipleStatesBtn} from './OldMultipleStatesBtn';
 export {default as OldSSTBtn} from './OldSSTBtn';

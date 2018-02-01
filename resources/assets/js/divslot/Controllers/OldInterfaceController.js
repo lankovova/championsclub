@@ -68,10 +68,14 @@ export default class OldInterfaceController {
 
     setLines = (linesAmount) => {
         // Check if user able to change lines amount
-        // can use state for check in any of five lines btn
-        // FIXME: Somehow use one common lines state for lines btns
-        if (this.panel.btns.oneLine.state) {
+        if (this.panel.btns.lines.state) {
             this.props.setLines(linesAmount);
+        }
+    }
+
+    setBetPerLine = () => {
+        if (this.panel.btns.betOne.state.betOne) {
+            this.props.setBetPerLine();
         }
     }
 
@@ -129,8 +133,6 @@ export default class OldInterfaceController {
     disableSpin = () => this.panel.btns.SST.state.spin = false;
 
     enableGamble = () => {
-        // TODO: Test
-        console.log('enable gamble btn');
         this.panel.btns.betOne.enable('double');
     }
 
@@ -165,10 +167,6 @@ export default class OldInterfaceController {
 
     enableSpeedUpTransferWin = () => this.panel.btns.SST.enable('speedUpTakeWin');
     disableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = false;
-
-    enableLines = () => this.panel.btns.lines.enable();
-    enableBetPerLines = () => this.panel.btns.betPerLine.enable();
-    enableLanguage = () => this.panel.btns.language.enable();
 
     setIdle = () => {
         this.enableInterface();
@@ -251,6 +249,8 @@ export default class OldInterfaceController {
         this.linePresenters.setText(linesAmount, betPerLine);
         // Update help paytables
         this.helpWindow.refreshPaytable(linesAmount, betPerLine);
+        // Notify lines btns component to highlight appropriate line btn
+        this.panel.btns.lines.highlightAppropriateBtn(linesAmount);
     }
 
     /**
@@ -318,12 +318,11 @@ export default class OldInterfaceController {
                     this.spinStopTakeClickHandler();
                     break;
                 case 188: // <
-                    // FIXME: Check state
                     this.setLines();
                     break;
                 case 190: // >
                     // FIXME: Check state
-                    this.props.setBetPerLine();
+                    this.setBetPerLine();
                     break;
                 case 77: // m
                     this.maxBetClickHandler();
