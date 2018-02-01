@@ -14,6 +14,7 @@ export default class OldBetOneBtn extends OldMultipleStatesBtn {
             get betOne() { return this._betOne; },
             set betOne(newState) {
                 if (newState) {
+                    // Remove double btn bg to restore bet one bg
                     self.node.classList.remove('double');
                 }
 
@@ -23,6 +24,7 @@ export default class OldBetOneBtn extends OldMultipleStatesBtn {
             get double() { return this._double; },
             set double(newState) {
                 if (newState) {
+                    // Add double btn bg
                     self.node.classList.add('double');
                 }
 
