@@ -14,6 +14,7 @@ class FreeSpins {
     protected $spinResult;
     protected $wonPoints;
     protected $leftToSpin;
+    protected $areBonusSpins = false;
 
     protected $symbolsAmount;
     protected $scatter;
@@ -59,7 +60,7 @@ class FreeSpins {
             $result = $this->checkForWinCombos($this->multiplier);
         } while (!$this->canUserWin($result["won_points"] * $this->denomination));
 
-        if ($result["scatter_count"] > 2) {
+        if ($this->areBonusSpins) {
             $this->leftToSpin +=  $this->spinsAmount;
         }
 

@@ -31,15 +31,14 @@ class Game {
      * Return spin result accoding to $checkType.
      *
      * @param string $checkType
+     * @param string $generateFinalSymbolsType
      * @return array
      */
-    public function spin(string $checkType) {
+    public function spin(string $checkType, string $generateFinalSymbolsType="generateFinalSymbols"): array {
         do {
-            $this->generateFinalSymbols();
+            $this->$generateFinalSymbolsType();
             $result = $this->$checkType();
         } while (!$this->canUserWin($result["won_points"] * $this->denomination));
-
-        $this->areBonusSpins = $result["scatter_count"] > 2;
 
         $result["won_coins"] = $result["won_points"] * $this->denomination;
         $result["final_symbols"] = $this->finalSymbols;
@@ -47,13 +46,14 @@ class Game {
 
         return $result;
     }
+
     /**
      * Return bonus spin result accoding to $bonusType.
      *
      * @param string $bonusType
      * @return array
      */
-    public function bonusSpin(string $bonusType) {
+    public function bonusSpin(string $bonusType): array {
         $bonusClass = "App\\Game\\Bonus\\$bonusType";
         $freeSpinsObj = new $bonusClass([
             "symbolsAmount" => $this->symbolsAmount,
@@ -76,9 +76,9 @@ class Game {
      * Return true if player won bonus game.
      * Return false if doesn`t.
      *
-     * @return bool
+     * @return boolean
      */
-    public function areBonusSpins() {
+    public function areBonusSpins(): bool {
         return $this->areBonusSpins;
     }
 

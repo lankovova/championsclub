@@ -5,12 +5,12 @@ namespace App\Game\Traits;
 trait WinChecker {
 
     /**
-     * Checks for combos
-     * Scatter plays like joker
+     * Checks for lines win
+     * Scatter substitutes for all symbols
      *
-     * @return [] $spinResult;
+     * @return array
      */
-    private function checkForWinCombosScatterAsJoker() {
+    private function checkForWinCombosScatterAsJoker(): array {
         $spinResult = [
             'won_points' => 0,
             "spin_result" => []
@@ -98,7 +98,15 @@ trait WinChecker {
         return $spinResult;
     }
 
-    private function checkForWinCombos($multiplier=1) {
+    /**
+     * Checks for lines win 
+     * Win cash multiply for each line
+     * Joker substitutes for all symbols except scatter
+     *
+     * @param integer $multiplier
+     * @return array
+     */
+    private function checkForWinCombos(int $multiplier=1): array {
         $result = [
             'won_points' => 0,
             "spin_result" => []
@@ -168,6 +176,7 @@ trait WinChecker {
 
                     if ($comboPay > 0) {
                         $comboPay *= $this->betPerLine;
+                        // 2x if joker in line
                         $comboPay = $isJoker ? ($comboPay * 2) : $comboPay;
                         $comboPay *= $multiplier;
                         $result['won_points'] += $comboPay;
@@ -193,7 +202,13 @@ trait WinChecker {
         return $spinResult;
     }
 
-    private function checkForWinCombosFromAnyPosition() {
+    /**
+     * Checks for lines win
+     * Line can start from any reel
+     *
+     * @return array
+     */
+    private function checkForWinCombosFromAnyPosition(): array {
         $result = [
             'won_points' => 0,
             "spin_result" => []
@@ -205,14 +220,14 @@ trait WinChecker {
             }
 
             $symbolsInLine = 0;
-            $firstSymbol = -1; // first symbol in line
+            $lineSymbol = -1; // first symbol in line
             $currSymbol = -1;
             $list = [];
 
             foreach ($line as $symMapIndex => $symMap) {
                 $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
                 
-                if ($currSymbol === $firstSymbol) {
+                if ($currSymbol === $lineSymbol) {
                     $symbolsInLine++;
                     $list[] = [
                         'row' => $symMap[0],
@@ -234,11 +249,11 @@ trait WinChecker {
                     // reset
                     $list = [];
                     $symbolsInLine = 0;
-                    $firstSymbol = $currSymbol;
+                    $lineSymbol = $currSymbol;
                 }
                 // 3 symbols - minimum cashpay
                 if ($symbolsInLine > 2 && $symMapIndex === ($this->reelsAmount - 1)) {
-                    $comboPay = $this->paytable[ $firstSymbol ][ $symbolsInLine - 1 ];
+                    $comboPay = $this->paytable[ $lineSymbol ][ $symbolsInLine - 1 ];
 
                     if ($comboPay > 0) {
                         $comboPay *= $this->betPerLine;
@@ -247,7 +262,7 @@ trait WinChecker {
 
                         $result['spin_result'][] = [
                             'line_index' => $lineIndex,
-                            'line_symbol' => $firstSymbol,
+                            'line_symbol' => $lineSymbol,
                             'list' => $list,
                             'points' => $comboPay
                         ];
@@ -262,7 +277,112 @@ trait WinChecker {
         return $spinResult;
     }
 
-    private function checkForScatterWin ($spinResult) {
+    /**
+     * Checks for lines win
+     * Joker substitutes for all symbols except scatters
+     *
+     * @return array
+     */
+    private function checkForWinCombosTrippleScatter(): array {
+        $result = [
+            'won_points' => 0,
+            "spin_result" => []
+        ];
+        foreach ($this->linesTypes as $lineIndex => $line) {
+            if ($this->linesAmount < $lineIndex) {
+                break;
+            }
+
+            $symbolsInLine = 0;
+            $lineSymbol;
+            $currSymbol;
+            $list = [];
+            $isJoker = false;
+
+            // found first symbol that is not joker
+            foreach ($line as $symMapIndex => $symMap) {
+                $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
+
+                if ($currSymbol !== $this->joker || $symMapIndex === ($this->reelsAmount - 1)) {
+                    $lineSymbol = $currSymbol;
+                    break;
+                }
+            }
+
+            // scatter doesnt play in line
+            if ($lineSymbol === $this->scatter) {
+                break;
+            }
+
+            foreach ($line as $symMapIndex => $symMap) {
+                $currSymbol = $this->finalSymbols[ $symMap[0] ][ $symMap[1] ];
+                
+                if ($currSymbol === $lineSymbol || $currSymbol === $this->joker) {
+                    $symbolsInLine++;
+                    $list[] = [
+                        'row' => $symMap[0],
+                        'col' => $symMap[1],
+                        'value' => $currSymbol
+                    ];
+                }
+                
+                if ($currSymbol !== $lineSymbol && $currSymbol !== $this->joker || $symbolsInLine === ($this->reelsAmount - 1)) {
+                    $comboPay = $this->paytable[ $lineSymbol ][ $symbolsInLine - 1 ];
+
+                    if ($comboPay > 0) {
+                        $comboPay *= $this->betPerLine;
+
+                        $result['won_points'] += $comboPay;
+                        $result['spin_result'][] = [
+                            'line_index' => $lineIndex,
+                            'line_symbol' => $lineSymbol,
+                            'list' => $list,
+                            'points' => $comboPay
+                        ];
+                    }
+                }
+
+                if ($currSymbol !== $lineSymbol && $currSymbol !== $this->joker) {
+                    break;
+                }
+            }
+        }
+
+        $this->checkForTrippleScatterWin();
+        $result['won'] = $result['won_points'] > 0;
+
+        return $result;    
+    }
+
+    /**
+     * Check if there are bonus spins
+     *
+     * @return void
+     */
+    private function checkForTrippleScatterWin() {
+        $scatterCount = 0;
+        
+        foreach ($this->finalSymbols as $row) {
+            foreach ($row as $currSymbol) {
+                foreach($this->scatter as $scatter) {
+                    if ($currSymbol === $scatter) {
+                        $scatterCount++;
+                    }
+                }
+            }
+        }
+
+        $this->areBonusSpins = $scatterCount > 2;
+    }
+
+    /**
+     * Checks if scatter win in paytable
+     * Check if there are bonus spins
+     *
+     * @param array $spinResult
+     * @return array
+     */
+    private function checkForScatterWin(array $spinResult): array {
         $scatterCount = 0;
         $list = [];
         $comboPay = 0;
@@ -281,9 +401,10 @@ trait WinChecker {
             }
         }
 
-        $spinResult['scatter_count'] = $scatterCount;
+        // Check if there are bonus spins
+        $this->areBonusSpins = $scatterCount > 2;
 
-        if ( $scatterCount > 0) {
+        if ($scatterCount > 0) {
             $comboPay = $this->paytable[ $this->scatter ][ $scatterCount-1 ];
         }
 
@@ -303,10 +424,11 @@ trait WinChecker {
     /**
      * Return true if user can win and
      * return false if can`t
-     *
-     * @return bool
+     *  
+     * @param integer $wonCash
+     * @return boolean
      */
-    private function canUserWin($wonCash) {
+    private function canUserWin(int $wonCash): bool {
         $res = $this->cashPool - $wonCash;
         return $res >= 0;
     }
