@@ -14,24 +14,16 @@ export default class OldPanel {
         this.btns = {
             SST: new Buttons.OldSSTBtn({
                 node: document.querySelector('#SSTBtn'),
-                onClick: this.props.spinStopTake
+                onClick: this.props.spinStopTakeClickHandler
             }),
-            // TODO: BetOne(Simple bet increase) + Gamble + Red
-            // gamble: new Buttons.GambleBtn({
-            //     node: document.querySelector('#gambleBtn'),
-            //     onClick: this.props.gambleClick
-            // }),
-            // TODO: MaxBet + Black
-            // maxBet: new Buttons.MaxBetBtn({
-            //     node: document.querySelector('#maxBetBtn'),
-            //     onClick: this.props.maxBetClickHandler
-            // }),
-            // TODO: 5 separate buttons with static lines amount on them
-            // lines: new Buttons.ButtonWithNumber({
-            //     node: document.querySelector('#linesBtn'),
-            //     onClick: this.props.toggleLinesBlock,
-            //     title: Translator.lines
-            // }),
+            betOne: new Buttons.OldBetOneBtn({
+                node: document.querySelector('#betOneBtn'),
+                onClick: this.props.betOneClickHandler
+            }),
+            maxBet: new Buttons.OldMaxBetBtn({
+                node: document.querySelector('#maxBetBtn'),
+                onClick: this.props.maxBetClickHandler
+            }),
             auto: new Buttons.OldAutoBtn({
                 node: document.querySelector('#autoBtn'),
                 onClick: this.props.autoSpinClick,
@@ -46,6 +38,29 @@ export default class OldPanel {
                 node: document.querySelector('#helpBtn'),
                 onClick: this.props.helpBtnClickHandler
             }),
+
+            // FIXME: Maybe create one component with all lines inside and only one state
+            oneLine: new Buttons.OldButton({
+                node: document.querySelector('#oneLinesBtn'),
+                onClick: () => this.props.setLines(1)
+            }),
+            threeLines: new Buttons.OldButton({
+                node: document.querySelector('#threeLinesBtn'),
+                onClick: () => this.props.setLines(3)
+            }),
+            fiveLines: new Buttons.OldButton({
+                node: document.querySelector('#fiveLinesBtn'),
+                onClick: () => this.props.setLines(5)
+            }),
+            sevenLines: new Buttons.OldButton({
+                node: document.querySelector('#sevenLinesBtn'),
+                onClick: () => this.props.setLines(7)
+            }),
+            nineLines: new Buttons.OldButton({
+                node: document.querySelector('#nineLinesBtn'),
+                onClick: () => this.props.setLines(9)
+            }),
+            // FIXME: END
         };
 
         this.notifier = new Notifier();

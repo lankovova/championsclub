@@ -42,12 +42,11 @@ export default class OldInterfaceController {
         this.substitutionBlock = new SubstitutionBlock({node: document.querySelector('#substitutionBlock')});
 
         this.panel = new OldPanel(document.querySelector('#panel'), {
-            spinStopTake: this.spinStopTake,
+            setLines: this.setLines,
+            spinStopTakeClickHandler: this.spinStopTakeClickHandler,
+            betOneClickHandler: this.betOneClickHandler,
+            maxBetClickHandler: this.maxBetClickHandler,
             autoSpinClick: this.autoSpinClick,
-            // TODO:
-            // maxBetClickHandler: this.maxBetClickHandler,
-            // TODO:
-            // gambleClick: this.gambleClick,
             helpBtnClickHandler: this.openHelp,
             menuClickHandler: () => window.location.href = "/"
         });
@@ -67,7 +66,16 @@ export default class OldInterfaceController {
         );
     }
 
-    spinStopTake = () => {
+    setLines = (linesAmount) => {
+        // Check if user able to change lines amount
+        // can use state for check in any of five lines btn
+        // FIXME: Somehow use one common lines state for lines btns
+        if (this.panel.btns.oneLine.state) {
+            this.props.setLines(linesAmount);
+        }
+    }
+
+    spinStopTakeClickHandler = () => {
         if (this.panel.btns.SST.state.spin) {
             this.props.spinReels();
         } else if (this.panel.btns.SST.state.stop) {
@@ -79,6 +87,24 @@ export default class OldInterfaceController {
         }
     }
 
+    betOneClickHandler = () => {
+        if (this.panel.btns.betOne.state.betOne) {
+            this.props.setBetPerLine();
+        } else if (this.panel.btns.betOne.state.double) {
+            this.props.startGamble();
+        } else if (this.panel.btns.betOne.state.red) {
+            this.pickSuit('red')();
+        }
+    }
+
+    maxBetClickHandler = () => {
+        if (this.panel.btns.maxBet.state.maxBet) {
+            this.props.setMaxBet();
+        } else if (this.panel.btns.maxBet.state.black) {
+            this.pickSuit('black')();
+        }
+    }
+
     autoSpinClick = () => {
         if (this.panel.btns.auto.state) {
             if (!this.panel.btns.auto.isOn) {
@@ -87,24 +113,6 @@ export default class OldInterfaceController {
                 this.props.stopAutoSpin();
             }
             this.panel.btns.auto.isOn = !this.panel.btns.auto.isOn;
-        }
-    }
-
-    // TODO: Rework for old
-    maxBetClickHandler = () => {
-        if (this.panel.btns.maxBet.state.maxbet) {
-            this.props.setMaxBet();
-        } else if (this.panel.btns.maxBet.state.black) {
-            this.pickSuit('black')();
-        }
-    }
-
-    // TODO: Rework for old
-    gambleClick = () => {
-        if (this.panel.btns.gamble.state.gamble) {
-            this.props.startGamble();
-        } else if (this.panel.btns.gamble.state.red) {
-            this.pickSuit('red')();
         }
     }
 
@@ -121,22 +129,23 @@ export default class OldInterfaceController {
     disableSpin = () => this.panel.btns.SST.state.spin = false;
 
     enableGamble = () => {
-        // TODO:
-        // this.panel.btns.gamble.enable('gamble');
+        // TODO: Test
+        console.log('enable gamble btn');
+        this.panel.btns.betOne.enable('double');
     }
 
     enableAuto = () => this.panel.btns.auto.state = true;
     disableAuto = () => this.panel.btns.auto.state = false;
 
     disablePanelGambleBtns = () => {
-        // TODO:
-        // this.panel.btns.gamble.disable();
-        // this.panel.btns.maxBet.disable();
+        // TODO: Test
+        this.panel.btns.betOne.disable();
+        this.panel.btns.maxBet.disable();
     }
     enablePanelGambleBtns = () => {
-        // TODO:
-        // this.panel.btns.gamble.enable('red');
-        // this.panel.btns.maxBet.enable('black');
+        // TODO: Test
+        this.panel.btns.betOne.enable('red');
+        this.panel.btns.maxBet.enable('black');
     }
 
     enableSpinAndAuto = () => {
@@ -165,9 +174,8 @@ export default class OldInterfaceController {
         this.enableInterface();
 
         this.panel.btns.SST.enable('spin');
-        // TODO:
-        // this.panel.btns.gamble.disable();
-        // this.panel.btns.maxBet.enable('maxbet');
+        this.panel.btns.betOne.enable('betOne');
+        this.panel.btns.maxBet.enable('maxBet');
     }
 
     setTakeWin = () => {
@@ -307,11 +315,11 @@ export default class OldInterfaceController {
 
             switch (keyCode) {
                 case 32: // Space
-                    this.spinStopTake();
+                    this.spinStopTakeClickHandler();
                     break;
                 case 188: // <
                     // FIXME: Check state
-                    this.props.setLines();
+                    this.setLines();
                     break;
                 case 190: // >
                     // FIXME: Check state
