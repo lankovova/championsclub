@@ -1,11 +1,11 @@
 const spriteParts = {
     enabled: 'left top',
-    hovered: 'right top',
-    pressed: 'left bottom',
-    disabled: 'right bottom',
+    hovered: '',
+    pressed: 'right top',
+    disabled: 'left bottom',
 }
 
-export default class Button {
+export default class OldButton {
     constructor(props) {
         this.props = props;
         this.node = this.props.node;
@@ -14,11 +14,6 @@ export default class Button {
 
         this._state = false;
         this.isDisabled = true;
-
-        this.titleNode = this.node.querySelector('.title');
-        if (this.titleNode && this.props.title) {
-            this.titleNode.innerText = this.props.title;
-        }
 
         this.node.onclick = () => this.onClick();
 
@@ -78,9 +73,5 @@ export default class Button {
     set state(newState) {
         (newState) ? this.enableView() : this.disableView();
         this._state = newState;
-    }
-
-    set text(newText) {
-        this.node.innerText = newText;
     }
 }

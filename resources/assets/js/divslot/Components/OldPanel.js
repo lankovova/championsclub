@@ -32,17 +32,17 @@ export default class OldPanel {
             //     onClick: this.props.toggleLinesBlock,
             //     title: Translator.lines
             // }),
-            auto: new Buttons.AutoBtn({
+            auto: new Buttons.OldAutoBtn({
                 node: document.querySelector('#autoBtn'),
                 onClick: this.props.autoSpinClick,
                 title: Translator.auto
             }),
-            menu: new Buttons.Button({
+            menu: new Buttons.OldButton({
                 node: document.querySelector('#menuBtn'),
                 onClick: this.props.menuClickHandler,
                 title: Translator.menu
             }),
-            help: new Buttons.Button({
+            help: new Buttons.OldButton({
                 node: document.querySelector('#helpBtn'),
                 onClick: this.props.helpBtnClickHandler
             }),
@@ -81,7 +81,7 @@ export default class OldPanel {
             title: Translator.bet
         });
         this.winBlock = new OldWinField({
-            node: document.querySelector('#winBlock')
+            node: document.querySelector('#win')
         });
     }
 

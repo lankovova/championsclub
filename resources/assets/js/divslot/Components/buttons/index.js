@@ -8,3 +8,7 @@ export {default as AutoBtn} from './AutoBtn';
 export {default as GambleBtn} from './GambleBtn';
 export {default as MaxBetBtn} from './MaxBetBtn';
 export {default as LanguageBtn} from './LanguageBtn';
+
+// Old game
+export {default as OldButton} from './OldButton';
+export {default as OldAutoBtn} from './OldAutoBtn';
