@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="win" id="win">
-                    <div class="win__text">winner paid</div>
-                    <div class="win__value">400</div>
+                    <div class="win__text title"></div>
+                    <div class="win__value value"></div>
                 </div>
 
                 <div class="denomination" id="denomination">

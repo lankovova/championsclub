@@ -7,7 +7,7 @@ export default class TitleValue {
             this.titleNode = this.node.querySelector('.title');
             this.valueNode = this.node.querySelector('.value');
         } else {
-            console.error(`No node property passed in ${this.constructor.name} component`);
+            console.error(`Bad node property passed in ${this.constructor.name} component`);
         }
 
         // Set init values

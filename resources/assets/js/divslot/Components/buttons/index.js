@@ -12,3 +12,4 @@ export {default as LanguageBtn} from './LanguageBtn';
 // Old game
 export {default as OldButton} from './OldButton';
 export {default as OldAutoBtn} from './OldAutoBtn';
+export {default as OldSSTBtn} from './OldSSTBtn';

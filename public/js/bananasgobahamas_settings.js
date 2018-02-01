@@ -7,7 +7,7 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": 'fall',
+    "animationType": "spin",
 
     "numOfSpinsBeforeStop": 3,
 
@@ -28,6 +28,8 @@ var settings = {
     "symbolsImagesPath": "public/img/games/bananas/symbols/",
     "symbolsAnimationsPath": "public/img/games/bananas/symbols/animations/",
 
+    "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+
     "symbols": [
         {"image": "1.png"},
         {"image": "2.png"},
@@ -46,12 +48,12 @@ var settings = {
     "linePresenter": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
         {lineIndex: 1, color: "rgb(255, 0, 0)"},
-        {lineIndex: 7, color: "rgb(255, 181, 0)"},
-        {lineIndex: 5, color: "rgb(139, 251, 155)"},
-        {lineIndex: 9, color: "rgb(133, 213, 254)"},
-        {lineIndex: 0, color: "rgb(252, 252, 252)"},
-        {lineIndex: 6, color: "rgb(142, 252, 252)"},
-        {lineIndex: 8, color: "rgb(0, 213, 0)"},
-        {lineIndex: 2, color: "rgb(116, 89, 249)"}
+        {lineIndex: 6, color: "rgb(255, 181, 0)"},
+        {lineIndex: 4, color: "rgb(139, 251, 155)"},
+        {lineIndex: 0, color: "rgb(133, 213, 254)"},
+        {lineIndex: 8, color: "rgb(252, 252, 252)"},
+        {lineIndex: 5, color: "rgb(142, 252, 252)"},
+        {lineIndex: 2, color: "rgb(0, 213, 0)"},
+        {lineIndex: 7, color: "rgb(116, 89, 249)"}
     ]
 }

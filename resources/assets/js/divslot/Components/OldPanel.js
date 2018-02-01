@@ -12,7 +12,7 @@ export default class OldPanel {
         this.props = props;
 
         this.btns = {
-            SST: new Buttons.SSTBtn({
+            SST: new Buttons.OldSSTBtn({
                 node: document.querySelector('#SSTBtn'),
                 onClick: this.props.spinStopTake
             }),
