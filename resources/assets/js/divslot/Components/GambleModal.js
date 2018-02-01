@@ -2,32 +2,10 @@ import APIController from './../Controllers/APIController';
 import GambleModalButton from './buttons/GambleModalButton';
 import {capitalize} from './../Helpers/stringHelper';
 import Translator from '../Translator';
+import TitleValue from './TitleValue';
 
 const redOverlayColor = 'rgba(255,0,0,0.3)';
 const blueOverlayColor = 'rgba(0,0,255,0.3)';
-
-// FIXME: Use TextValue component instead
-class GambleTextField {
-    constructor({node, title}) {
-        this.node = node;
-
-        if (this.node) {
-            this.valueNode = this.node.querySelector('.value');
-            this.titleNode = this.node.querySelector('.title');
-        }
-
-        // Set init values
-        this.value = '-';
-        this.title = title;
-    }
-
-    set value(value) {
-        if (this.valueNode) this.valueNode.innerText = value;
-    }
-    set title(title) {
-        if (this.titleNode) this.titleNode.innerText = title;
-    }
-};
 
 export default class GambleModal {
     constructor(props) {
@@ -39,15 +17,15 @@ export default class GambleModal {
         this.bigCardNode;
 
         this.valuesFields = {
-            amount: new GambleTextField({
+            amount: new TitleValue({
                 node: this.node.querySelector('#gambleAmount'),
                 title: Translator.gambleAmount
             }),
-            toWinColor: new GambleTextField({
+            toWinColor: new TitleValue({
                 node: this.node.querySelector('#gambleToWinColor'),
                 title: Translator.colorGambleToWin
             }),
-            toWinSuit: new GambleTextField({
+            toWinSuit: new TitleValue({
                 node: this.node.querySelector('#gambleToWinSuit'),
                 title: Translator.suitGambleToWin
             })
@@ -212,8 +190,6 @@ export default class GambleModal {
             // After delay setup gamble to one more pick
             setTimeout(() => {
                 this.hideDroppedCard();
-
-                this.setValues(gambleResponse.won_coins);
 
                 // Enable gamble btns
                 this.enableBtns();

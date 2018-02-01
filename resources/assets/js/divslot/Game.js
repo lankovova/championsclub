@@ -217,6 +217,9 @@ export default class Game {
 
         // Update win field
         this.pointsController.userWin = this.pointsController.coinsToPoints(wonCoins);
+
+        // Update gamble fields values
+        this.interfaceController.gambleModal.setValues(this.pointsController.userWin);
     }
     gambleLose = () => {
         this.interfaceController.panel.notifier.clear();
