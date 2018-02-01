@@ -2,6 +2,7 @@ import Translator from '../Translator';
 import Notifier from '../Components/Notifier';
 import JackpotBonus from './JackpotBonus';
 import TitleValue from './TitleValue';
+import OldWinField from './OldWinField';
 
 import * as Buttons from './buttons';
 
@@ -69,7 +70,7 @@ export default class OldPanel {
         });
         this.denomination = new TitleValue({
             node: document.querySelector('#denomination'),
-            title: Translator.denomination
+            title: Translator.credit
         });
         this.userCash = new TitleValue({
             node: document.querySelector('#userCash'),
@@ -79,9 +80,9 @@ export default class OldPanel {
             node: document.querySelector('#bet'),
             title: Translator.bet
         });
-        // this.winBlock = new TitleValue({
-        //     node: document.querySelector('#winBlock')
-        // });
+        this.winBlock = new OldWinField({
+            node: document.querySelector('#winBlock')
+        });
     }
 
     setDenomination(denom) {
@@ -93,21 +94,18 @@ export default class OldPanel {
     setBetPerLine(betPerLine) {
         this.betPerLine.value = betPerLine;
     }
-
     setUserCash({points}) {
         this.userCash.value = points;
     }
     setUserWin({points}) {
-        // this.winBlock.setWin({points, kups});
-        console.log(`set new win ${points}`);
+        this.winBlock.setWin(points);
     }
     setUserPreviousWin({points, kups}) {
-        // this.winBlock.setPreviousWin({points, kups});
-        console.log(`set previous win ${points}`);
+        this.winBlock.setPreviousWin(points);
     }
-    setUserInsurance() { /* Silence is gold */ }
     setTotalBet({points, kups}) {
         this.betBlock.value = points;
     }
+    setUserInsurance() { /* Silence is gold */ }
 
 }

@@ -44,9 +44,9 @@ export default class OldInterfaceController {
         this.panel = new OldPanel(document.querySelector('#panel'), {
             spinStopTake: this.spinStopTake,
             autoSpinClick: this.autoSpinClick,
-            // FIXME:
+            // TODO:
             // maxBetClickHandler: this.maxBetClickHandler,
-            // FIXME:
+            // TODO:
             // gambleClick: this.gambleClick,
             helpBtnClickHandler: this.openHelp,
             menuClickHandler: () => window.location.href = "/"
@@ -62,13 +62,11 @@ export default class OldInterfaceController {
             space - Spin
             < - Increase lines
             > - Increase bet per line
-            d - Increase denomination
             m - Set max bet
             Esc - Menu`
         );
     }
 
-    // TODO: Move state into component in multi state component
     spinStopTake = () => {
         if (this.panel.btns.SST.state.spin) {
             this.props.spinReels();
@@ -92,6 +90,7 @@ export default class OldInterfaceController {
         }
     }
 
+    // TODO: Rework for old
     maxBetClickHandler = () => {
         if (this.panel.btns.maxBet.state.maxbet) {
             this.props.setMaxBet();
@@ -100,6 +99,7 @@ export default class OldInterfaceController {
         }
     }
 
+    // TODO: Rework for old
     gambleClick = () => {
         if (this.panel.btns.gamble.state.gamble) {
             this.props.startGamble();
@@ -154,13 +154,13 @@ export default class OldInterfaceController {
 
     enableLines = () => this.panel.btns.lines.enable();
     enableBetPerLines = () => this.panel.btns.betPerLine.enable();
-    enableDenomination = () => this.panel.btns.denomination.enable();
     enableLanguage = () => this.panel.btns.language.enable();
 
     setIdle = () => {
         this.enableInterface();
 
         this.panel.btns.SST.enable('spin');
+        // TODO:
         // this.panel.btns.gamble.disable();
         // this.panel.btns.maxBet.enable('maxbet');
     }
@@ -229,11 +229,9 @@ export default class OldInterfaceController {
     }
 
     /**
-     * Triggered when lines amount was changed
+     * Triggers when lines amount was changed
      */
     onSetLine = (linesAmount, betPerLine) => {
-        // FIXME:
-        // this.linesBlock.highlightItem(linesAmount);
         // Update panel value
         this.panel.setLinesAmount(linesAmount);
         // Update line presenters text
@@ -243,11 +241,9 @@ export default class OldInterfaceController {
     }
 
     /**
-     * Triggered when bet per line was changed
+     * Triggers when bet per line was changed
      */
     onSetBetPerLine = (linesAmount, betPerLine) => {
-        // FIXME:
-        // this.betPerLineBlock.highlightItem(betPerLine);
         // Update panel value
         this.panel.setBetPerLine(betPerLine);
         // Update line presenters text
@@ -257,12 +253,9 @@ export default class OldInterfaceController {
     }
 
     /**
-     * Triggered when denomination was changed
+     * Triggers when denomination was changed
      */
     onSetDenomination = (denomination) => {
-        // FIXME:
-        // this.denominationBlock.highlightItem(denomination);
-        // Update panel value
         this.panel.setDenomination(denomination);
     }
 
@@ -312,16 +305,15 @@ export default class OldInterfaceController {
                     this.spinStopTake();
                     break;
                 case 188: // <
-                    this.linesBlock.setValue();
+                    // FIXME: Check state
+                    this.props.setLines();
                     break;
                 case 190: // >
-                    this.betPerLineBlock.setValue();
+                    // FIXME: Check state
+                    this.props.setBetPerLine();
                     break;
                 case 77: // m
                     this.maxBetClickHandler();
-                    break;
-                case 68: // d
-                    this.denominationBlock.setValue();
                     break;
                 case 27: // ESC
                     this.panel.btns.menu.onClick();

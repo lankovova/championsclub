@@ -39,33 +39,31 @@
 
             <div class="panel">
 
-                <div class="notifier" id="notifier">game over</div>
+                <div class="notifier" id="notifier"></div>
 
                 <div id="userCash">
-                    <div class="credit_text title">credit</div>
-                    <div class="credit_amount points">100</div>
+                    <div class="credit_text title"></div>
+                    <div class="credit_amount value"></div>
                 </div>
 
                 <div class="denomination" id="denomination">
-                    <div class="denomination__header">1 <span class="title">credit</span>=</div>
-                    <div class="denomination__value">
-                        <div class="value">0.0.1</div>
-                    </div>
+                    <div class="denomination__header">1 <span class="title"></span>=</div>
+                    <div class="denomination__value value"></div>
                 </div>
 
                 <div id="betPerLine">
-                    <div class="bet_per_line_text title">bet/line</div>
-                    <div class="bet_per_line_amount value">1</div>
+                    <div class="bet_per_line_text title"></div>
+                    <div class="bet_per_line_amount value"></div>
                 </div>
 
                 <div id="lines">
-                    <div class="lines_amount_text title">lines bet</div>
-                    <div class="lines_amount value">1</div>
+                    <div class="lines_amount_text title"></div>
+                    <div class="lines_amount value"></div>
                 </div>
 
                 <div id="bet">
-                    <div class="bet_text title">bet</div>
-                    <div class="bet_amount value">1</div>
+                    <div class="bet_text title"></div>
+                    <div class="bet_amount value"></div>
                 </div>
 
                 <div class="cash_out_btn" id="cashOutBtn"></div>
