@@ -141,7 +141,7 @@ body {
     font-size: 28px;
     letter-spacing: 2px;
     color: #fcaf05;
-    text-shadow: 1px 1px #000;
+    text-shadow: 1px 1px #000, -1px -1px #000, -1px 1px #000, 1px -1px #000;
 }
 .credit_amount {
     position: absolute;
@@ -169,7 +169,7 @@ body {
         text-align: center;
         letter-spacing: 2px;
         color: #fcaf05;
-        text-shadow: 1px 1px #000;
+        text-shadow: 1px 1px #000, -1px -1px #000, -1px 1px #000, 1px -1px #000;
     }
     &__value {
         font-size: 43px;
@@ -193,7 +193,7 @@ body {
     font-size: 29px;
     letter-spacing: 2px;
     color: #fcaf05;
-    text-shadow: 1px 1px #000;
+    text-shadow: 1px 1px #000, -1px -1px #000, -1px 1px #000, 1px -1px #000;
 }
 .bet_per_line_amount {
     right: 239px;
@@ -212,7 +212,7 @@ body {
     font-size: 29px;
     letter-spacing: 2px;
     color: #fcaf05;
-    text-shadow: 1px 1px #000;
+    text-shadow: 1px 1px #000, -1px -1px #000, -1px 1px #000, 1px -1px #000;
 }
 .lines_amount {
     right: 239px;
@@ -231,7 +231,7 @@ body {
     font-size: 29px;
     letter-spacing: 2px;
     color: #fcaf05;
-    text-shadow: 1px 1px #000;
+    text-shadow: 1px 1px #000, -1px -1px #000, -1px 1px #000, 1px -1px #000;
 }
 .bet_amount {
     right: 237px;
@@ -395,7 +395,7 @@ body {
 }
 .win {
     color: #fcaf05;
-    text-shadow: 1px 1px #000;
+    text-shadow: 1px 1px #000, -1px -1px #000, -1px 1px #000, 1px -1px #000;
     letter-spacing: 2px;
     font-size: 23px;
     font-weight: 500;
