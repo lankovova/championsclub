@@ -7,9 +7,9 @@ trait Helper {
     /**
      * Return number number from randomSymbols
      *
-     * @return int
+     * @return integer
      */
-    protected function generateRandomSymbol() {
+    protected function generateRandomSymbol(): int {
         $key = array_rand($this->randomSymbols, 1);
         return $this->randomSymbols[$key];
     }
@@ -17,18 +17,18 @@ trait Helper {
     /**
      * Return bet amount without denomination
      *
-     * @return int
+     * @return integer
      */
-    protected function bet() {
+    protected function bet(): int {
         return $this->linesAmount * $this->betPerLine;
     }
 
     /**
      * Return bet amount with denomination
      *
-     * @return int
+     * @return integer
      */
-    protected function coinBet() {
+    protected function coinBet(): int {
         return $this->bet() * $this->denomination;
     }
 
@@ -72,6 +72,12 @@ trait Helper {
           
     }
 
+    /**
+     * Fill finalSymbols with random numbers
+     * from randomSymbols
+     *
+     * @return void
+     */
     protected function generateFinalSymbolsTrippleScatter() {
         $this->fillSymbolsTrippleScatter();
         $this->finalSymbols = [];
