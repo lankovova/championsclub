@@ -12,4 +12,19 @@ export default class OldGambleModal extends GambleModal {
         this.previousCards.add('back');
     }
 
+    showDroppedCard(randomSuit) {
+        // Change flipping card suit
+        this.bigCardNode.style.zIndex = 1;
+        // Add randomed card to previous cards
+        const suitBackNode = this.previousCards.node.querySelector('.suit-back');
+        // Set suit back card bg ro randomed card
+        suitBackNode.className = `suit-${randomSuit}`;
+    }
+
+    hideDroppedCard() {
+        super.hideDroppedCard();
+        // Add suit back card after all
+        this.previousCards.add('back');
+    }
+
 }
