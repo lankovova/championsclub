@@ -3,8 +3,18 @@
 
 .alert .content {
     background: url('../img/games/snowwhite/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+    width: 611px;
+    height: 315px;
+    box-sizing: border-box;
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: -1px -1px 1px #000, 1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000;
+    color: #FEF59F;
 }
 .main {
     background: url('../img/games/snowwhite/game_bg.png') center center;
