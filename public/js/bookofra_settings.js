@@ -26,8 +26,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
-    "symbolsAnimationsPath": "public/img/games/bananasgobahamas/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/bookofra/symbols/",
+    "symbolsAnimationsPath": "public/img/games/bookofra/symbols/animations/",
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
@@ -40,11 +40,8 @@ var settings = {
         {"image": "6.png"},
         {"image": "7.png"},
         {"image": "8.png"},
-        {"image": "9.png", "isScatter": true},
-        {"image": "10.png"},
-        {"image": "11.png"},
-        {"image": "12.png"},
-        {"image": "13.png"}
+        {"image": "9.png"},
+        {"image": "10.png", "isScatter": true}
     ],
     "linePresenter": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
