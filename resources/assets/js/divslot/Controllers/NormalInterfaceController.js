@@ -157,11 +157,6 @@ export default class NormalInterfaceController {
     enableSpeedUpTransferWin = () => this.panel.btns.SST.enable('speedUpTakeWin');
     disableSpeedUpTransferWin = () => this.panel.btns.SST.state.speedUpTakeWin = false;
 
-    enableLines = () => this.panel.btns.lines.enable();
-    enableBetPerLines = () => this.panel.btns.betPerLine.enable();
-    enableDenomination = () => this.panel.btns.denomination.enable();
-    enableLanguage = () => this.panel.btns.language.enable();
-
     setIdle = () => {
         this.enableInterface();
 
