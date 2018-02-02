@@ -29,7 +29,7 @@ export default class SymbolFallAnimation extends Symbol {
         return new Promise(resolve => {
             this.indexInReel = indexInReel;
             this.symbolNode.style.transition = `transform ${1000 / 6 * (settings.numOfRows - this.indexInReel)}ms ${settings.fallAnimTimingFunc}`;
-            this.symbolNode.style.transform = `translateY(${(settings.numOfRows - this.indexInReel) * settings.symbolSize}px)`;
+            this.symbolNode.style.transform = `translateY(${(settings.numOfRows - this.indexInReel) * settings.symbolHeight}px)`;
 
             setTimeout(() => {
                 resolve();

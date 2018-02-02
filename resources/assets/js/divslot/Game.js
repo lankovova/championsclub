@@ -21,6 +21,12 @@ export default class Game {
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
 
+        // FIXME:
+        // Set symbol height and width if set only symbol square side size
+        if (settings.symbolSize) {
+            settings.symbolHeight = settings.symbolWidth = settings.symbolSize;
+        }
+
         // Store for spin response data
         this.spinResponse = {};
 
@@ -74,6 +80,7 @@ export default class Game {
             const userCash = +playerData.cash;
             const userInsurance = +playerData.insurance;
 
+            // FIXME:
             settings.denomination = playerData.denomination ? playerData.denomination : settings.denomination;
             settings.betPerLine = playerData.bet_per_line ? playerData.bet_per_line : settings.betPerLine;
 

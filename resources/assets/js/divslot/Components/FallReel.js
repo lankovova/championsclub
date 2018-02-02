@@ -23,8 +23,8 @@ export default class FallReel {
         this.reelNode = document.createElement('div');
         this.reelNode.className = 'reel';
         this.reelNode.style.transition = `transform ${settings.spinAnimationTimeInMs}ms ${settings.spinAnimTimingFunc}`;
-        this.reelNode.style.height = `${settings.symbolSize * (settings.numOfRows + 1)}px`; // + bonus slot for hidden symbol
-        this.reelNode.style.width = `${settings.symbolSize}px`;
+        this.reelNode.style.height = `${settings.symbolHeight * (settings.numOfRows + 1)}px`; // + bonus slot for hidden symbol
+        this.reelNode.style.width = `${settings.symbolWidth}px`;
 
         // Init starting symbols
         for (let i = 0; i < settings.numOfRows; i++) {
@@ -34,7 +34,7 @@ export default class FallReel {
                 symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
             } while (symbol.isScatter);
 
-            symbol.node.style.transform = `translateY(${settings.symbolSize * (settings.numOfRows - i)}px)`;
+            symbol.node.style.transform = `translateY(${settings.symbolHeight * (settings.numOfRows - i)}px)`;
 
             this.finalSymbols.unshift(symbol);
             // Add symbol into reel node
@@ -43,8 +43,8 @@ export default class FallReel {
 
         const reelWrapperNode = document.createElement('div');
         reelWrapperNode.className = 'reel_wrapper';
-        reelWrapperNode.style.width = `${settings.symbolSize}px`;
-        reelWrapperNode.style.height = `${settings.symbolSize * settings.numOfRows}px`;
+        reelWrapperNode.style.width = `${settings.symbolWidth}px`;
+        reelWrapperNode.style.height = `${settings.symbolHeight * settings.numOfRows}px`;
         reelWrapperNode.style.margin = `0 ${settings.spaceBetweenReels / 2}px`;
         reelWrapperNode.appendChild(this.reelNode);
 

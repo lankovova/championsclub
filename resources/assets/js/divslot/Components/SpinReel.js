@@ -40,8 +40,8 @@ export default class Reel {
 
         const reelWrapperNode = document.createElement('div');
         reelWrapperNode.className = 'reel_wrapper';
-        reelWrapperNode.style.width = `${settings.symbolSize}px`;
-        reelWrapperNode.style.height = `${settings.symbolSize * settings.numOfRows}px`;
+        reelWrapperNode.style.width = `${settings.symbolWidth}px`;
+        reelWrapperNode.style.height = `${settings.symbolHeight * settings.numOfRows}px`;
         reelWrapperNode.style.margin = `0 ${settings.spaceBetweenReels / 2}px`;
         reelWrapperNode.appendChild(this.reelNode);
 
@@ -69,7 +69,7 @@ export default class Reel {
         this.addFinalSymbols(finalSymbols);
 
         // Animate spin
-        this.reelNode.style.transform = `translate(0, ${((settings.numOfSpinsBeforeStop + 1) * settings.numOfRows) * settings.symbolSize}px)`;
+        this.reelNode.style.transform = `translateY(${((settings.numOfSpinsBeforeStop + 1) * settings.numOfRows) * settings.symbolHeight}px)`;
     }
 
     addSpinningSymbols() {

@@ -1,8 +1,9 @@
 var settings = {
     "gameType": "old",
 
-    "symbolSize": 170,
-    "spaceBetweenReels": 62,
+    "symbolWidth": 202,
+    "symbolHeight": 170,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,

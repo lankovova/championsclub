@@ -16,10 +16,11 @@ export default class Symbol {
     initSymbol() {
         this.symbolNode = document.createElement('div');
         this.symbolNode.style.position = 'relative';
-        this.symbolNode.style.width = `${settings.symbolSize}px`;
-        this.symbolNode.style.height = `${settings.symbolSize}px`;
+
+        this.symbolNode.style.width = `${settings.symbolWidth}px`;
+        this.symbolNode.style.height = `${settings.symbolHeight}px`;
         this.symbolNode.style.backgroundImage = `url('${settings.symbolsImagesPath + settings.symbols[this.symbolNum].image}')`;
-        this.symbolNode.style.backgroundSize = 'contain';
+        this.symbolNode.style.backgroundSize = '100% 100%';
 
         this.overflowLayer = document.createElement('div');
         this.overflowLayer.style.position = 'absolute';

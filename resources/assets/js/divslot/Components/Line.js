@@ -52,10 +52,10 @@ export default class Line {
         this.svgNode.appendChild(rectNode);
         this.rectNodes.push(rectNode);
 
-        rectNode.setAttributeNS(null, "width", settings.symbolSize - this.strokeWidth);
-        rectNode.setAttributeNS(null, "height", settings.symbolSize - this.strokeWidth);
-        rectNode.setAttributeNS(null, "x", reel * (settings.symbolSize + settings.spaceBetweenReels) + (this.strokeWidth / 2));
-        rectNode.setAttributeNS(null, "y", (symbol * settings.symbolSize ) + (this.strokeWidth / 2));
+        rectNode.setAttributeNS(null, "width", settings.symbolWidth - this.strokeWidth);
+        rectNode.setAttributeNS(null, "height", settings.symbolHeight - this.strokeWidth);
+        rectNode.setAttributeNS(null, "x", reel * (settings.symbolWidth + settings.spaceBetweenReels) + (this.strokeWidth / 2));
+        rectNode.setAttributeNS(null, "y", (symbol * settings.symbolHeight ) + (this.strokeWidth / 2));
         rectNode.setAttributeNS(null, "stroke", this.strokeColor);
         rectNode.setAttributeNS(null, "fill", 'transparent');
         rectNode.setAttributeNS(null, "stroke-width", this.strokeWidth);
@@ -94,11 +94,11 @@ export default class Line {
     _createFirstConnection() {
         let start = {
             x: 0,
-            y: this.lineType[0][0] * settings.symbolSize + settings.symbolSize / 2
+            y: this.lineType[0][0] * settings.symbolHeight + settings.symbolHeight / 2
         }
         let end = {
-            x: settings.symbolSize / 2,
-            y: this.lineType[0][0] * settings.symbolSize + settings.symbolSize / 2
+            x: settings.symbolWidth / 2,
+            y: this.lineType[0][0] * settings.symbolHeight + settings.symbolHeight / 2
         }
 
         this._setLineAttrs(start, end);
@@ -106,12 +106,12 @@ export default class Line {
 
     _createLastConnection() {
         let start = {
-            x: (settings.symbolSize + settings.spaceBetweenReels) * settings.numOfReels - settings.symbolSize / 2 - settings.spaceBetweenReels,
-            y: this.lineType[settings.numOfReels - 1][0] * settings.symbolSize + settings.symbolSize / 2
+            x: (settings.symbolWidth + settings.spaceBetweenReels) * settings.numOfReels - settings.symbolWidth / 2 - settings.spaceBetweenReels,
+            y: this.lineType[settings.numOfReels - 1][0] * settings.symbolHeight + settings.symbolHeight / 2
         }
         let end = {
-            x: (settings.symbolSize + settings.spaceBetweenReels) * settings.numOfReels - settings.spaceBetweenReels,
-            y: this.lineType[settings.numOfReels - 1][0] * settings.symbolSize + settings.symbolSize / 2
+            x: (settings.symbolWidth + settings.spaceBetweenReels) * settings.numOfReels - settings.spaceBetweenReels,
+            y: this.lineType[settings.numOfReels - 1][0] * settings.symbolHeight + settings.symbolHeight / 2
         }
 
         this._setLineAttrs(start, end);
@@ -122,23 +122,23 @@ export default class Line {
         let end = {};
 
         start.x = sPrev.highlighted ?
-            ((sPrev.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels :
-            ((sPrev.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize / 2;
+            ((sPrev.reelIndex + 1) * (settings.symbolWidth + settings.spaceBetweenReels)) - settings.spaceBetweenReels :
+            ((sPrev.reelIndex + 1) * (settings.symbolWidth + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolWidth / 2;
 
         end.x = symbol.highlighted ?
-            ((symbol.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize:
-            ((symbol.reelIndex + 1) * (settings.symbolSize + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolSize / 2;
+            ((symbol.reelIndex + 1) * (settings.symbolWidth + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolWidth:
+            ((symbol.reelIndex + 1) * (settings.symbolWidth + settings.spaceBetweenReels)) - settings.spaceBetweenReels - settings.symbolWidth / 2;
 
-        start.y = sPrev.symbolIndex * settings.symbolSize + settings.symbolSize / 2;
-        end.y = symbol.symbolIndex * settings.symbolSize + settings.symbolSize / 2;
+        start.y = sPrev.symbolIndex * settings.symbolHeight + settings.symbolHeight / 2;
+        end.y = symbol.symbolIndex * settings.symbolHeight + settings.symbolHeight / 2;
 
         if (symbol.highlighted) {
             // symbol below prev
             if (symbol.symbolIndex > sPrev.symbolIndex) {
-                end.y -= settings.symbolSize / 4;
+                end.y -= settings.symbolHeight / 4;
             // symbol under prev
             } else if (symbol.symbolIndex < sPrev.symbolIndex) {
-                end.y += settings.symbolSize / 4;
+                end.y += settings.symbolHeight / 4;
             }
             // fix so lines cross pretty
             end.x += 3;
@@ -146,10 +146,10 @@ export default class Line {
         if (sPrev.highlighted) {
             // symbol below prev
             if (symbol.symbolIndex > sPrev.symbolIndex) {
-                start.y += settings.symbolSize / 4;
+                start.y += settings.symbolHeight / 4;
             // symbol under prev
             } else if (symbol.symbolIndex < sPrev.symbolIndex) {
-                start.y -= settings.symbolSize / 4;
+                start.y -= settings.symbolHeight / 4;
             }
             // fix so lines cross pretty
             start.x -= 3;
