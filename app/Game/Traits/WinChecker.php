@@ -215,7 +215,7 @@ trait WinChecker {
         ];
 
         foreach ($this->linesTypes as $lineIndex => $line) {
-            if ($this->linesAmount < $lineIndex) {
+            if ($this->linesAmount === $lineIndex) {
                 break;
             }
 
@@ -284,12 +284,17 @@ trait WinChecker {
      * @return array
      */
     private function checkForWinCombosTrippleScatter(): array {
+        $this->finalSymbols = [    
+            [8, 2, 4, 1, 7],
+            [10, 11, 6, 8, 3],
+            [4, 4, 1, 0, 8],
+        ];
         $result = [
             'won_points' => 0,
             "spin_result" => []
         ];
         foreach ($this->linesTypes as $lineIndex => $line) {
-            if ($this->linesAmount < $lineIndex) {
+            if ($this->linesAmount === $lineIndex) {
                 break;
             }
 
@@ -310,7 +315,7 @@ trait WinChecker {
             }
 
             // scatter doesnt play in line
-            if ($lineSymbol === $this->scatter) {
+            if (in_array($lineSymbol, $this->scatter, true)) {
                 break;
             }
 
@@ -364,10 +369,8 @@ trait WinChecker {
         
         foreach ($this->finalSymbols as $row) {
             foreach ($row as $currSymbol) {
-                foreach($this->scatter as $scatter) {
-                    if ($currSymbol === $scatter) {
-                        $scatterCount++;
-                    }
+                if (in_array($currSymbol, $this->scatter, true)) {
+                    $scatterCount++;
                 }
             }
         }

@@ -34,12 +34,11 @@ class SnowWhite extends Game {
     }
 
     public function bonusSpin() {
-        // return $this->game->bonusSpin("FreeSpinsTrippleScatter");
+        return $this->game->bonusSpin("FreeSpinsTrippleScatter");
     }
 
     public function areBonusSpins() {
-        return false;
-        // return $this->game->areBonusSpins();
+        return $this->game->areBonusSpins();
     }
 
 }
