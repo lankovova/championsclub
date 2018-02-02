@@ -7,7 +7,6 @@ export default class OldGambleModal extends GambleModal {
 
     _initializePreviousCards() {
         super._initializePreviousCards();
-
         // Add suit back card after all
         this.previousCards.add('back');
     }
