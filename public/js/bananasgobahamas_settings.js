@@ -25,8 +25,8 @@ var settings = {
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": false,
 
-    "symbolsImagesPath": "public/img/games/bananas/symbols/",
-    "symbolsAnimationsPath": "public/img/games/bananas/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
+    "symbolsAnimationsPath": "public/img/games/bananasgobahamas/symbols/animations/",
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
