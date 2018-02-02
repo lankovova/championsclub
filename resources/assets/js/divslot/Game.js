@@ -77,29 +77,34 @@ export default class Game {
             settings.denomination = playerData.denomination ? playerData.denomination : settings.denomination;
             settings.betPerLine = playerData.bet_per_line ? playerData.bet_per_line : settings.betPerLine;
 
-            this.pointsController = new PointsController({
-                // TODO: For old interface and correct arcitecture
-                // remove panel usage from points controller
-                panel: this.interfaceController.panel,
+            // Get game values
+            const linesFromCookies = +CookieController.get('lines_amount');
+            const betPerLineFromCookies = +CookieController.get('bet_per_line');
+            const denominationFromCookies = +CookieController.get('denomination');
 
+            const linesAmountToSet = (linesFromCookies && settings.lines.includes(linesFromCookies))
+                                        ? linesFromCookies
+                                        : settings.lines[Math.floor((settings.lines.length - 1) / 2)];
+
+            const betPerLineToSet = (betPerLineFromCookies && settings.betPerLine.includes(betPerLineFromCookies))
+                                        ? betPerLineFromCookies
+                                        : settings.betPerLine[0];
+
+            const denominationToSet = (denominationFromCookies && settings.denomination.includes(denominationFromCookies))
+                                        ? denominationFromCookies
+                                        : settings.denomination[0];
+
+            this.pointsController = new PointsController({
+                panel: this.interfaceController.panel,
                 onSetLine: this.interfaceController.onSetLine,
                 onSetBetPerLine: this.interfaceController.onSetBetPerLine,
                 onSetDenomination: this.interfaceController.onSetDenomination,
             }, {
                 userCash: userCash,
                 userInsurance: userInsurance,
-                lines:
-                    (CookieController.get('lines_amount'))
-                        ? +CookieController.get('lines_amount')
-                        : settings.lines[Math.floor((settings.lines.length - 1) / 2)],
-                betPerLine:
-                    (CookieController.get('bet_per_line'))
-                        ? +CookieController.get('bet_per_line')
-                        : settings.betPerLine[0],
-                denomination:
-                    (CookieController.get('denomination'))
-                        ? +CookieController.get('denomination')
-                        : settings.denomination[0],
+                lines: linesAmountToSet,
+                betPerLine: betPerLineToSet,
+                denomination: denominationToSet
             });
 
             // FIXME: Rethink abount set idle here
