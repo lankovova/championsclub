@@ -56,5 +56,7 @@ var settings = {
         {lineIndex: 5, color: "rgb(142, 252, 252)"},
         {lineIndex: 2, color: "rgb(0, 213, 0)"},
         {lineIndex: 7, color: "rgb(116, 89, 249)"}
-    ], #1E4415
+    ], 
+
+    "presentersDefaultColor": "#1E4415"
 }
