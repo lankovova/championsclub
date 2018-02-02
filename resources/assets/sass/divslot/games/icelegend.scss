@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 
 .alert .content {
     background: url('../img/games/icelegend/images/freeSpinBg.png');
@@ -52,4 +52,111 @@
     top: 153px;
     width: 1365px;
     height: 674px;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/icelegend/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/icelegend/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='2 3'] {
+        top: 319px;
+        left: 22px;
+    }
+    &[data-symbols='2 3'][data-joker] {
+        top: 319px;
+        left: 207px;
+    }
+    &[data-symbols='11 12'] {
+        top: 557px;
+        left: 17px;
+    }
+    &[data-symbols='11 12'][data-joker] {
+        top: 557px;
+        left: 207px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='8 9 10'] {
+        top: 797px;
+        left: 111px;
+        div {
+            margin-bottom: 1px;
+        }
+    }
+    
+    &[data-symbols='8 9 10'][data-joker] {
+        top: 797px;
+        left: 303px;
+    }
+    &[data-symbols='4']{
+        top: 236px;
+        left: 681px;
+    }
+    &[data-symbols='6'] {
+        top: 595px;
+        left: 555px;
+        }
+    &[data-symbols='0 1'] {
+        top: 306px;
+        left: 1153px;
+        }
+    &[data-symbols='0 1'][data-joker] {
+        top: 306px;
+        left: 950px;
+        }
+    &[data-symbols='5'] {
+        top: 542px;
+        right: 10px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='5'][data-joker] {
+        top: 542px;
+        right: 206px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='7'] {
+        top: 763px;
+        right: 87px;
+    }
+    &[data-symbols='7'][data-joker] {
+        top: 760px;
+        right: 257px;
+        div {
+            margin-bottom: 3px;
+        }
+    }
+    
+    
 }
