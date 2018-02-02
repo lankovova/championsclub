@@ -92,7 +92,7 @@ class Substitution {
         ];
 
         foreach ($this->linesTypes as $lineIndex => $line) {
-            if ($this->linesAmount <= $lineIndex) {
+            if ($this->linesAmount === $lineIndex) {
                 break;
             }
 
