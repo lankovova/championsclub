@@ -321,7 +321,6 @@ export default class OldInterfaceController {
                     this.setLines();
                     break;
                 case 190: // >
-                    // FIXME: Check state
                     this.setBetPerLine();
                     break;
                 case 77: // m

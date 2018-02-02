@@ -379,6 +379,8 @@ body {
 .jackpot {
     position: absolute;
     display: flex;
+    align-items: center;
+    height: 100%;
     left: 40px;
     color: #f3ed00;
 
@@ -389,6 +391,8 @@ body {
 .bonus {
     position: absolute;
     display: flex;
+    align-items: center;
+    height: 100%;
     right: 44px;
     color: #f67900;
 
