@@ -2,7 +2,7 @@ var settings = {
     "gameType": "old",
 
     "symbolSize": 170,
-    "spaceBetweenReels": 60,
+    "spaceBetweenReels": 62,
 
     "numOfRows": 3,
     "numOfReels": 5,
