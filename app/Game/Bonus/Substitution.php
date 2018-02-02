@@ -54,7 +54,6 @@ class Substitution {
         while ($spinsAmount > 0) {
             $report = [];
             do {
-                $this->fillSymbols();
                 $this->generateFinalSymbols();
                 $result = $this->checkForWinCombosScatterAsJoker();
 
@@ -81,14 +80,19 @@ class Substitution {
         }
     }
 
-    protected function checkForSubstitutionWin() {
+    /**
+     * Check for substitution wins
+     *
+     * @return array
+     */
+    protected function checkForSubstitutionWin(): array {
         $result = [
             "won_points" => 0,
             "spin_result" => []
         ];
 
         foreach ($this->linesTypes as $lineIndex => $line) {
-            if ($this->linesAmount < $lineIndex) {
+            if ($this->linesAmount <= $lineIndex) {
                 break;
             }
 
@@ -131,6 +135,7 @@ class Substitution {
 
         return $result;
     }
+
     /**
      * Generate symbol that will be substituted.
      * Can`t be scatter.
@@ -144,6 +149,7 @@ class Substitution {
             $this->generateSubstitutionSymbol();
         }
     }
+
     /**
      * Generates substitution final symbols.
      *
@@ -163,37 +169,6 @@ class Substitution {
         }
     }
 
-    protected function generateFinalSymbols() {
-        $this->finalSymbols = [];
-        // No same symbols in one row
-        // 3 row of symbols
-        for ($i = 0; $i < 3; $i++) {
-            for ($j = 0; $j < $this->reelsAmount; $j++) {
-                $symbol = $this->generateRandomSymbol();
-                switch ($i) {
-                    case 0:
-                        $this->finalSymbols[$i][$j] = $symbol;
-                    break;
-                    case 1:
-                        do {
-                            $symbol = $this->generateRandomSymbol();
-                        } while ($this->finalSymbols[0][$j] === $symbol);
-
-                        $this->finalSymbols[$i][$j] = $symbol;
-                    break;
-                    case 2:
-                        do {
-                            $symbol = $this->generateRandomSymbol();
-                        } while ($this->finalSymbols[0][$j] === $symbol || $this->finalSymbols[1][$j] === $symbol);
-
-                        $this->finalSymbols[$i][$j] = $symbol;
-                    break;
-                    default:
-                    break;
-                }
-            }
-        }        
-    }
     /**
      * Fill randomSymbols with random numbers
      * that represent symbols.
@@ -213,6 +188,7 @@ class Substitution {
             }
         }
     }
+
     /**
      * Return substitution result.
      *
