@@ -63,14 +63,19 @@ body {
 
     &.left {
         left: 0;
+        .line_presenter {
+            box-shadow: 1px 3px 3px 3px #000;
+        }
     }
     &.right {
         right: 0;
+        .line_presenter {
+            box-shadow: -1px 3px 3px 3px #000;
+        }
     }
 }
 
 .line_presenter {
-    background-image: url('../img/line_presenter_glare.png');
     background-size: 100% 100%;
     font-size: 32px;
     width: 54px;
