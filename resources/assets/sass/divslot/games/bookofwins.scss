@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 .alert .content {
     background: url('../img/games/bookofwins/images/freeSpinBg.png');
     width: 541px;
@@ -42,4 +42,78 @@
     width: 1400px;
     height: 681px;
     top: 152px;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/bookofwins/help/slide_bg_1.png');
+    background-size: 100% 100%;
+}
+.help__slide_2 {
+    background-image: url('../img/games/bookofwins/help/slide_bg_2.png');
+    background-size: 100% 100%;
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='3'] {
+        top: 215px;
+        left: 276px;
+    }
+    &[data-symbols='0'] {
+        top: 510px;
+        left: 255px;
+    }
+    &[data-symbols='2 3'] {
+        top: 798px;
+         left: 315px;
+        div {
+            margin-bottom: 15px;
+        }
+    }
+
+    &[data-symbols='5'] {
+        top: 180px;
+        left: 704px;
+        div {
+            margin-bottom: 15px;
+        }
+    }
+
+    &[data-symbols='4'] {
+        top: 217px;
+        right: 23px;
+    }
+    &[data-symbols='9'] {
+        top: 513px;
+        right: 27px;
+    }
+    &[data-symbols='6 7 8'] {
+        top: 795px;
+        right: 200px;
+        div {
+            margin-bottom: 15px;
+        }
+    }
 }
