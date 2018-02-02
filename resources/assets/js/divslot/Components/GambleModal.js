@@ -4,6 +4,7 @@ import { capitalize } from './../Helpers/stringHelper';
 import Translator from '../Translator';
 import TitleValue from './TitleValue';
 import { transitionEnd } from '../events';
+import { raf } from './../Helpers/windowHelper';
 
 const redOverlayColor = 'rgba(255,0,0,0.3)';
 const blueOverlayColor = 'rgba(0,0,255,0.3)';
@@ -137,7 +138,7 @@ export default class GambleModal {
 
         this.node.style.display = 'block';
         // TODO: Disable interface while toggling
-        this.node.style.transform = 'translateX(0)';
+        raf(() => this.node.style.transform = 'translateX(0)');
     }
 
     hide() {

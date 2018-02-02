@@ -1,4 +1,4 @@
-function getTransitionEndEventName(){
+function getTransitionEndEventName() {
     const el = document.createElement("fakeelement");
 
     const transitions = {
