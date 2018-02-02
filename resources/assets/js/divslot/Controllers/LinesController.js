@@ -193,7 +193,12 @@ export default class LinesController {
      * @returns Returns line color in any available css format (rgb, rgba, hex, etc.)
      */
     _getLineColorBasedOnItsIndex(lineIndex) {
-        const presenterArr = lineIndex < 10 ? settings.linePresenterLeftLines : settings.linePresenterRightLines;
+        let presenterArr;
+        if (settings.gameType === 'old') {
+            presenterArr = settings.linePresenter;
+        } else {
+            presenterArr = lineIndex < 10 ? settings.linePresenterLeftLines : settings.linePresenterRightLines;
+        }
 
         for (const presenter of presenterArr) {
             if (presenter.lineIndex === lineIndex)
