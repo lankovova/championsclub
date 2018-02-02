@@ -374,7 +374,7 @@ export default class NormalInterfaceController {
 
         this.langBlock = new ToggleLanguageBlock({
             node: document.querySelector('#languageBlock'),
-            items: ['en', 'ru', 'ua'],
+            items: ['al', 'cz', 'de', 'en', 'es', 'fr', 'gr', 'hr', 'hu', 'it', 'nl', 'pl', 'pt', 'ro', 'rs', 'ru', 'ua'],
             title: Translator.selectLanguage
         }, {
             setValue: this.setLanguage,
