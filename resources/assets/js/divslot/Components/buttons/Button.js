@@ -65,7 +65,7 @@ export default class Button {
     enableView() {
         this.isDisabled = false;
         this.node.style.backgroundPosition = spriteParts.enabled;
-        this.node.style.cursor = '';
+        this.node.style.cursor = 'pointer';
     }
 
     disableView() {
