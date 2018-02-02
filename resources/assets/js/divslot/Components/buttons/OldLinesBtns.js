@@ -8,6 +8,7 @@ export default class OldLinesBtns {
         this.state = false;
 
         this.btns = [];
+        this.activeBtn;
 
         this._initLinesBtns();
     }
@@ -25,8 +26,7 @@ export default class OldLinesBtns {
                     node: lineBtnNode,
                     onClick: () => this.setLines(lineBtnNodeValueAttr)
                 }),
-                value: lineBtnNodeValueAttr,
-                previousState: false
+                value: lineBtnNodeValueAttr
             }
 
             // Add line btn to all lines array
@@ -42,32 +42,24 @@ export default class OldLinesBtns {
         this.props.onClick(linesAmount);
     }
 
+    // Save active btn
     highlightAppropriateBtn(linesAmount) {
-        this.btns.forEach(btn => {
-            (btn.value === linesAmount) ? btn.button.disable() : btn.button.enable();
-        });
+        this.activeBtn = this.btns.find(lineBtn => lineBtn.value === linesAmount);
     }
 
-    // TODO: Separate oldLinesBtns state and lines buttons state change
     enable() {
+        // Change state of lines buttons wrapper
         this.state = true;
-
-        // Restore all lines btns previous states
-        this.btns.forEach(btn => {
-            if (btn.previousState) {
-                btn.button.enable();
-            }
-        });
+        // Enable all buttons
+        this.btns.forEach(btn => btn.button.enable());
+        // And disable active button if it exists
+        if (this.activeBtn) this.activeBtn.button.disable();
     }
 
-    // TODO: Separate oldLinesBtns state and lines buttons state change
     disable() {
+        // Change state of lines buttons wrapper
         this.state = false;
-
-        // Save to previousState store all lines btns states
-        this.btns.forEach(btn => {
-            btn.previousState = btn.button.state;
-            btn.button.disable();
-        });
+        // Disable all lines buttons
+        this.btns.forEach(btn => btn.button.disable());
     }
 }

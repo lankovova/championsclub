@@ -340,6 +340,7 @@ body {
 }
 
 .panel {
+    z-index: 2;
     background: url("../img/old_game/panel_bg.png") center center;
     background-size: contain;
     position: absolute;
