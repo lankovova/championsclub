@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 
 .alert .content {
     background: url('../img/games/casinoworld/images/freeSpinBg.png');
@@ -56,4 +56,131 @@
     height: 680px;
 
     border-radius: 20px;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/casinoworld/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/casinoworld/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 35px;
+    }
+    &[data-symbols='11 6'] {
+        top: 178px;
+        left: 190px;
+        
+    }
+    &[data-symbols='11 6'][data-joker] {
+        top: 178px;
+        left: 320px;
+    }
+    &[data-symbols='2 8'] {
+        top: 456px;
+        left: 175px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='2 8'][data-joker] {
+        top: 456px;
+        left: 318px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='4'] {
+        top: 627px;
+    left: 323px;
+        div {
+            margin-bottom: 5px;
+        }
+    }
+    &[data-symbols='3'] {
+        top: 154px;
+        left: 540px;
+        div {
+            margin-bottom: 5px;
+        }
+    }
+    &[data-symbols='3'][data-joker] {
+        top: 154px;
+        left: 670px;
+        div {
+            margin-bottom: 5px;
+        }
+    }
+    &[data-symbols='9'] {
+        top: 324px;
+        left: 679px;
+    }
+ 
+    
+    &[data-symbols='1 7 10'] {
+        top: 598px;
+        left: 541px;
+        div {
+            margin-bottom: 0px;
+        }
+    }
+    &[data-symbols='1 7 10'][data-joker] {
+        top: 598px;
+        left: 676px;
+        div {
+            margin-bottom: 0px;
+        }
+    }
+    &[data-symbols='12 5'] {
+        top: 195px;
+        right: 170px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='12 5'][data-joker] {
+        top: 195px;
+        right: 311px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='0'] {
+        top: 438px;
+        right: 160px;
+        div {
+            margin-bottom: 3px;
+        }
+    }
+    &[data-symbols='0'][data-joker] {
+        top: 438px;
+        right: 300px;
+        div {
+            margin-bottom: 3px;
+        }
+    }
+    
+    
 }
