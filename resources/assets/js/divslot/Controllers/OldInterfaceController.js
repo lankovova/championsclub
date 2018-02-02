@@ -4,7 +4,7 @@ import ToggleBlock from '../Components/ToggleBlock';
 import ToggleLanguageBlock from '../Components/ToggleLanguageBlock';
 import Alert from '../Components/Alert';
 import SubstitutionBlock from './../Components/SubstitutionBlock';
-import GambleModal from '../Components/GambleModal';
+import OldGambleModal from '../Components/OldGambleModal';
 import Translator from '../Translator';
 import CookieController from './CookieController';
 import Help from './../Components/Help';
@@ -26,7 +26,7 @@ export default class OldInterfaceController {
             containerNode: this.props.containerNode
         });
 
-        this.gambleModal = new GambleModal({
+        this.gambleModal = new OldGambleModal({
             node: document.querySelector('#gamble'),
             pickSuit: this.pickSuit,
             gambleReadyToPick: this.gambleReadyToPick,

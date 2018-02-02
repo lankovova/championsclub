@@ -4,7 +4,7 @@ export default class GambleModalButton extends Button {
     constructor(props) {
         super(props);
 
-        this.overlayColor = props.overlayColor;
+        this.overlayClass = props.overlayClass;
     }
 
     _initEffects() {
@@ -12,7 +12,7 @@ export default class GambleModalButton extends Button {
         this.node.onmouseenter = function() {
             if (!self.isDisabled) {
                 self.isDisabled = false;
-                this.querySelector('.overflow-layer').style.backgroundColor = self.overlayColor;
+                this.querySelector('.overflow-layer').classList.add(self.overlayClass);
             }
         };
         this.node.onmousedown = function() {
@@ -23,13 +23,13 @@ export default class GambleModalButton extends Button {
         this.node.onmouseup = function() {
             if (!self.isDisabled) {
                 self.isDisabled = false;
-                this.querySelector('.overflow-layer').style.backgroundColor = '';
+                this.querySelector('.overflow-layer').classList.remove(self.overlayClass);
             }
         };
         this.node.onmouseleave = function() {
             if (!self.isDisabled) {
                 self.isDisabled = false;
-                this.querySelector('.overflow-layer').style.backgroundColor = '';
+                this.querySelector('.overflow-layer').classList.remove(self.overlayClass);
             }
         };
     }

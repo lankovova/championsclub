@@ -6,9 +6,6 @@ import TitleValue from './TitleValue';
 import { transitionEnd } from '../events';
 import { raf } from './../Helpers/windowHelper';
 
-const redOverlayColor = 'rgba(255,0,0,0.3)';
-const blueOverlayColor = 'rgba(0,0,255,0.3)';
-
 class PreviousCards {
     constructor(node) {
         this.node = node;
@@ -67,13 +64,13 @@ export default class GambleModal {
             red: new GambleModalButton({
                 node: this.node.querySelector('#red'),
                 onClick: this.props.pickSuit('red'),
-                overlayColor: redOverlayColor,
+                overlayClass: 'red',
                 title: Translator.red
             }),
             black: new GambleModalButton({
                 node: this.node.querySelector('#black'),
                 onClick: this.props.pickSuit('black'),
-                overlayColor: blueOverlayColor,
+                overlayClass: 'black',
                 title: Translator.black
             })
         }
@@ -84,22 +81,22 @@ export default class GambleModal {
                 heart: new GambleModalButton({
                     node: this.node.querySelector('#heart'),
                     onClick: this.props.pickSuit('heart'),
-                    overlayColor: redOverlayColor
+                    overlayClass: 'red'
                 }),
                 diamond: new GambleModalButton({
                     node: this.node.querySelector('#diamond'),
                     onClick: this.props.pickSuit('diamond'),
-                    overlayColor: redOverlayColor
+                    overlayClass: 'red'
                 }),
                 club: new GambleModalButton({
                     node: this.node.querySelector('#club'),
                     onClick: this.props.pickSuit('club'),
-                    overlayColor: blueOverlayColor
+                    overlayClass: 'black'
                 }),
                 spade: new GambleModalButton({
                     node: this.node.querySelector('#spade'),
                     onClick: this.props.pickSuit('spade'),
-                    overlayColor: blueOverlayColor
+                    overlayClass: 'black'
                 }),
             }
 

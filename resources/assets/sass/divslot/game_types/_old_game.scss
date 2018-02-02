@@ -447,11 +447,17 @@ body {
         text-transform: uppercase;
         font-weight: 700;
         letter-spacing: 7px;
-        & .overflow-layer {
+        .overflow-layer {
             border-radius: 50%;
             position: absolute;
             width: 100%;
             height: 100%;
+            &.red {
+                background-color: rgba(255,0,0,0.3);
+            }
+            &.black {
+                background-color: rgba(0,0,0,0.3);
+            }
         }
     }
     .button__red {
@@ -475,6 +481,12 @@ body {
             position: absolute;
             width: 100%;
             height: 100%;
+            &.red {
+                background-color: rgba(255,0,0,0.3);
+            }
+            &.black {
+                background-color: rgba(0,0,0,0.3);
+            }
         }
     }
     .button__spade {
@@ -595,6 +607,7 @@ body {
     align-items: center;
     box-sizing: border-box;
 }
+.suit-back,
 .suit-spade,
 .suit-club,
 .suit-heart,
@@ -602,8 +615,11 @@ body {
     background-size: 100% 100%;
     background-position: center center;
     width: 89px;
-    height: 84px;
+    height: 70px;
     margin-right: 7px;
+}
+.suit-back {
+    background-image: url('../img/gamble/suits/back_old.png');
 }
 .suit-spade {
     background-image: url('../img/gamble/suits/spade_old.png');
