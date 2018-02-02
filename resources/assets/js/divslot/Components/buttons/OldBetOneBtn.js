@@ -33,6 +33,11 @@ export default class OldBetOneBtn extends OldMultipleStatesBtn {
             },
             get red() { return this._red; },
             set red(newState) {
+                if (newState) {
+                    // Remove double btn bg to restore bet one bg
+                    self.node.classList.remove('double');
+                }
+
                 this._red = newState;
                 self._handleDisabling();
             }

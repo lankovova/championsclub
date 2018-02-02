@@ -23,7 +23,7 @@ var settings = {
     "spinAnimTimingFunc": "ease-in-out",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-    "gamblePreviousCardsAmount": 7,
+    "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
     "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
