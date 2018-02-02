@@ -284,11 +284,6 @@ trait WinChecker {
      * @return array
      */
     private function checkForWinCombosTrippleScatter(): array {
-        $this->finalSymbols = [    
-            [8, 2, 4, 1, 7],
-            [10, 11, 6, 8, 3],
-            [4, 4, 1, 0, 8],
-        ];
         $result = [
             'won_points' => 0,
             "spin_result" => []
