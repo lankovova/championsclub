@@ -337,6 +337,10 @@ export default class Game {
 
     stopAutoSpin = () => {
         this.autoSpinIsOn = false;
+
+        // Disable interface when user turns of auto spins
+        // until next action(take, spin, etc..)
+        this.interfaceController.disableInterface();
     }
 
     bonusSpin = () => {
