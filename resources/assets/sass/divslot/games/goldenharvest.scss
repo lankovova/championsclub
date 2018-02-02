@@ -1,12 +1,11 @@
 @import "../game_types/without_borders";
-
+@import "../help_types/help_substitution";
 .main {
     background: url('../img/games/goldenharvest/game_bg.gif') center center;
 }
 
 .line_presenter {
     background-image: url('../img/line_presenter_glare.png');
-
     background-size: 100% 100%;
     font-size: 32px;
     width: 54px;
@@ -46,4 +45,128 @@
 }
 .gamble {
     background-image: url('../img/games/goldenharvest/gamble/gamble_bg.png');
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/goldenharvest/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/goldenharvest/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='5 12'] {
+        top: 252px;
+        left: 81px;
+    }
+    &[data-symbols='5 12'][data-joker] {
+        top: 252px;
+        left: 259px;
+    }
+    &[data-symbols='2 9'] {
+        top: 533px;
+        left: 76px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='2 9'][data-joker] {
+        top: 533px;
+        left: 276px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='1 7 11'] {
+        top: 813px;
+            left: 221px;
+        div {
+            margin-bottom: 2px;
+        }
+    }
+    &[data-symbols='1 7 11'][data-joker] {
+        top: 813px;
+        left: 421px;
+        div {
+            margin-bottom: 2px;
+        }
+    }
+    &[data-symbols='8'] {
+        top: 113px;
+        left: 679px; 
+    }
+  
+    &[data-symbols='10'] {
+        top: 333px;
+    left: 645px;
+        div {
+            margin-bottom: 0px;
+        }
+    }
+   
+    &[data-symbols='3 7'] {
+        top: 246px;
+        right: 258px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='3 7'][data-joker] {
+        top: 246px;
+        right: 63px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='4'] {
+        top: 576px;
+        right: 262px;
+        div {
+            margin-bottom: 3px;
+        }
+    }
+    &[data-symbols='4'][data-joker] {
+        top: 576px;
+        right: 62px;
+        div {
+            margin-bottom: 3px;
+        }
+    }
+    &[data-symbols='0'] {
+        top: 750px;
+        right: 417px;
+        div {
+            margin-bottom: 2px;
+        }
+    }
+    &[data-symbols='0'][data-joker] {
+        top: 750px;
+        right: 217px;
+        div {
+            margin-bottom: 2px;
+        }
+    }
 }
