@@ -6,22 +6,27 @@
 
 @section('help')
 
-    @component('games.parts.help')
-        @slot('helpValues')
-            <div data-symbols="6" class="help__prize_container"></div>
-            <div data-symbols="3" class="help__prize_container"></div>
-            <div data-symbols="1 5" class="help__prize_container"></div>
+@component('games.parts.help')
+    @slot('helpValues')
+        <div data-symbols="12 11" class="help__prize_container"></div>
+        <div data-symbols="12 11" data-joker class="help__prize_container"></div>
+        <div data-symbols="2 6" class="help__prize_container"></div>
+        <div data-symbols="2 6" data-joker class="help__prize_container"></div>
+        <div data-symbols="1 5 10" class="help__prize_container"></div>
+        <div data-symbols="1 5 10" data-joker class="help__prize_container"></div>
+        <div data-symbols="8" class="help__prize_container"></div>
+        <div data-symbols="3" class="help__prize_container"></div>
+        <div data-symbols="7 9" class="help__prize_container"></div>
+        <div data-symbols="7 9" data-joker class="help__prize_container"></div>
+        <div data-symbols="4" class="help__prize_container"></div>
+        <div data-symbols="4" data-joker class="help__prize_container"></div>
+        <div data-symbols="0" class="help__prize_container"></div>
+        <div data-symbols="0" data-joker class="help__prize_container"></div>
 
-            <div data-symbols="0" class="help__prize_container"></div>
+    @endslot
+@endcomponent
 
-            <div data-symbols="8" class="help__prize_container"></div>
-            <div data-symbols="9" class="help__prize_container"></div>
-            <div data-symbols="2 4" class="help__prize_container"></div>
-        @endslot
-    @endcomponent
-
-@endsection
-
+@endsection   
 @section('js')
     @parent
     <script src="{{asset('public/js/nautilus_settings.js')}}"></script>

@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 .alert .content {
     background: url('../img/games/beautydolphins/images/freeSpinBg.png');
     width: 1015px;
@@ -55,4 +55,111 @@
     height: 679px;
     background-size: 100% 100%;
     border-radius: 20px;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/beautydolphins/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/beautydolphins/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='4 8'] {
+        top: 320px;
+        left: 22px;
+    }
+    &[data-symbols='4 8'][data-joker] {
+        top: 324px;
+        left: 207px;
+    }
+    &[data-symbols='2 12'] {
+        top: 568px;
+        left: 17px;
+    }
+    &[data-symbols='2 12'][data-joker] {
+        top: 568px;
+        left: 207px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='6 1 5'] {
+        top: 806px;
+        left: 111px;
+        div {
+            margin-bottom: 1px;
+        }
+    }
+    
+    &[data-symbols='6 1 5'][data-joker] {
+        top: 806px;
+        left: 303px;
+    }
+    &[data-symbols='3']{
+        top: 201px;
+        left: 678px;
+    }
+    &[data-symbols='9'] {
+        top: 548px;
+        left: 555px;
+        }
+    &[data-symbols='11 10'] {
+        top: 319px;
+        left: 1153px;
+        }
+    &[data-symbols='11 10'][data-joker] {
+        top: 320px;
+        left: 950px;
+        }
+    &[data-symbols='0'] {
+        top: 556px;
+        right: 10px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='0'][data-joker] {
+        top: 556px;
+        right: 206px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='7'] {
+        top: 775px;
+        right: 93px;
+    }
+    &[data-symbols='7'][data-joker] {
+        top: 775px;
+        right: 283px;
+        div {
+            margin-bottom: 3px;
+        }
+    }
+    
+    
 }
