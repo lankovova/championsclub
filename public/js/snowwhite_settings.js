@@ -21,6 +21,8 @@ var settings = {
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/snowwhite/symbols/",
     "symbolsAnimationsPath": "public/img/games/snowwhite/symbols/animations/",
 
@@ -30,12 +32,12 @@ var settings = {
         {"image": "3.png"},
         {"image": "4.png"},
         {"image": "5.png"},
-        {"image": "6.png", "isScatter": true},
+        {"image": "6.png"},
         {"image": "7.png", "isScatter": true},
-        {"image": "8.png"},
+        {"image": "8.png", "isScatter": true},
         {"image": "9.png"},
-        {"image": "10.png", "isScatter": true},
-        {"image": "11.png"},
+        {"image": "10.png"},
+        {"image": "11.png", "isScatter": true},
         {"image": "12.png"}
     ]
 }

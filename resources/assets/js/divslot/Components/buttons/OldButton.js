@@ -14,6 +14,8 @@ export default class OldButton {
 
         this._state = false;
         this.isDisabled = true;
+        // Flag for always disabled button
+        this.isDead = false;
 
         this.node.onclick = () => this.onClick();
 
@@ -71,7 +73,7 @@ export default class OldButton {
 
     get state() { return this._state; }
     set state(newState) {
-        (newState) ? this.enableView() : this.disableView();
-        this._state = newState;
+        this._state = (this.isDead) ? false : newState;
+        (this._state) ? this.enableView() : this.disableView();
     }
 }

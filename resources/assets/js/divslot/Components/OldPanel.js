@@ -44,6 +44,11 @@ export default class OldPanel {
             }),
         };
 
+        // FIXME:
+        if (settings.helpDisabled) {
+            this.btns.help.isDead = true;
+        }
+
         this.notifier = new Notifier();
 
         this.jb = new JackpotBonus(
