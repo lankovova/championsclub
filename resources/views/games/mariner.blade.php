@@ -3,7 +3,11 @@
 @section('css')
     <link href="{{asset('public/css/mariner.css')}}" rel=stylesheet type=text/css>
 @endsection
-    
+
+@section('gamble')
+    @include('games.parts.gamble')
+@endsection
+
 @section('js')
     @parent
     <script src="{{asset('public/js/mariner_settings.js')}}"></script>

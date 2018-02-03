@@ -2,12 +2,23 @@
 
 
 .alert .content {
-    background: url('../img/games/mariner/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+    background-image: url('../img/games/mariner/images/freeSpinBg.png');
+    background-size: 100% 100%;
+    width: 700px;
+    height: 400px;
+
+    color: rgb(255, 255, 92);
+    font-size: 50px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px black, -1px 1px black, 1px -1px black, -1px -1px black;
+
+    padding: 0 100px;
+    box-sizing: border-box;
+    text-align: center;
 }
 .main {
     background: url('../img/games/mariner/game_bg.png') center center;
+    top: 158px;
 }
 
 .line_presenter {
@@ -33,5 +44,10 @@
     background: url('../img/games/mariner/header.png');
 }
 .gamble {
-    background: url('../img/games/mariner/gamble/gamble_bg.png');
+    background-image: url('../img/games/mariner/gamble/gamble_bg.png');
+    background-size: 100% 100%;
+    border-radius: 20px;
+    top: 152px;
+    width: 1400px;
+    height: 683px;
 }

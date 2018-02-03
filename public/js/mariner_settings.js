@@ -1,6 +1,6 @@
 var settings = {
-    "symbolSize": 233,
-    "spaceBetweenReels": 35,
+    "symbolSize": 220,
+    "spaceBetweenReels": 30,
 
     "numOfRows": 3,
     "numOfReels": 5,
@@ -21,7 +21,9 @@ var settings = {
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
-    "gambleExtended": true,
+    "gambleExtended": false,
+
+    "helpDisabled": true,
 
     "symbolsImagesPath": "public/img/games/mariner/symbols/",
     "symbolsAnimationsPath": "public/img/games/mariner/symbols/animations/",
@@ -29,9 +31,9 @@ var settings = {
     "symbols": [
         {"image": "1.png"},
         {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png", "animation": "4Anim.png"},
-        {"image": "5.png"},
+        {"image": "3.png", "isScatter": true},
+        {"image": "4.png", "isScatter": true},
+        {"image": "5.png", "isScatter": true},
         {"image": "6.png"},
         {"image": "7.png"},
         {"image": "8.png"},

@@ -6,8 +6,8 @@ use App\Game\Games\Game;
 
 class Mariner extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = [3,4,5];
-    public static $joker = 6;
+    public static $scatter = [2,3,4];
+    public static $joker = 5;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 12;
     public static $paytable = [
@@ -30,11 +30,11 @@ class Mariner extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombos");
+        return $this->game->spin("checkForWinCombosTrippleScatter", "generateFinalSymbolsTrippleScatter");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpins");
+        return $this->game->bonusSpin("FreeSpinsTrippleScatter");
     }
 
     public function areBonusSpins() {

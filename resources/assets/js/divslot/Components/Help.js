@@ -11,7 +11,9 @@ export default class Help {
         this.node = props.node;
         this.initPaytable();
 
-        this.node.querySelector('#helpBtnClose').onclick = () => this.onClose();
+        if (this.node) {
+            this.node.querySelector('#helpBtnClose').onclick = () => this.onClose();
+        }
     }
 
     initPaytable() {
