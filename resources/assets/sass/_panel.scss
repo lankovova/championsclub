@@ -169,11 +169,53 @@
     &-en {
         background: url("../img/lang_flags/en_btn_bg.png");
     }
+    &-ru {
+        background: url("../img/lang_flags/ru_btn_bg.png");
+    }
+    &-es {
+        background: url("../img/lang_flags/es_btn_bg.png");
+    }
+    &-hr {
+        background: url("../img/lang_flags/hr_btn_bg.png");
+    }
+    &-cz {
+        background: url("../img/lang_flags/cz_btn_bg.png");
+    }
+    &-fr {
+        background: url("../img/lang_flags/fr_btn_bg.png");
+    }
+    &-it {
+        background: url("../img/lang_flags/it_btn_bg.png");
+    }
+    &-de {
+        background: url("../img/lang_flags/de_btn_bg.png");
+    }
+    &-hu {
+        background: url("../img/lang_flags/hu_btn_bg.png");
+    }
+    &-pl {
+        background: url("../img/lang_flags/pl_btn_bg.png");
+    }
+    &-pt {
+        background: url("../img/lang_flags/pt_btn_bg.png");
+    }
+    &-ro {
+        background: url("../img/lang_flags/ro_btn_bg.png");
+    }
+    &-gr {
+        background: url("../img/lang_flags/gr_btn_bg.png");
+    }
+    &-nl {
+        background: url("../img/lang_flags/nl_btn_bg.png");
+    }
+    &-al {
+        background: url("../img/lang_flags/al_btn_bg.png");
+    }
     &-ua {
         background: url("../img/lang_flags/ua_btn_bg.png");
     }
-    &-ru {
-        background: url("../img/lang_flags/ru_btn_bg.png");
+    &-rs {
+        background: url("../img/lang_flags/rs_btn_bg.png");
     }
     &-active {
         // rewrite hover effect
@@ -213,6 +255,7 @@
 }
 .choose__container--lang {
     left: 532px;
+    width: 900px;
 }
 .choose__header {
     background: url(../img/choose/header_bg.png) no-repeat;
@@ -229,6 +272,12 @@
     text-transform: uppercase;
     line-height: 35px;
     color: #cdc700;
+}
+.choose__content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap-reverse;
+    flex-direction: row-reverse;
 }
 
 .denomination-choose__variant {

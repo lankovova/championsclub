@@ -3,12 +3,14 @@
         <div class="choose__header">
             {{ $t("selectLanguage") }}
         </div>
-        <div v-for="(lang, key) in langs"
-            :ref="lang"
-            :key="key"
-            @click="choose(lang, $event)"
-            :class="['lang ' + 'lang-' + lang ]"
-        ></div>
+        <div class="choose__content">        
+            <div v-for="(lang, key) in langs"
+                :ref="lang"
+                :key="key"
+                @click="choose(lang, $event)"
+                :class="['lang ' + 'lang-' + lang ]"
+            ></div>
+        </div>
     </div>
 </template>
 
@@ -19,7 +21,8 @@ export default {
     data() {
         return {
             langs: [
-                "en", "ua", "ru"
+                "rs", "ua", "al", "nl", "gr", "ro", "pt", "pl",
+                "hu", "de", "it", "fr", "cz", "hr", "es", "ru", "en"
             ],
             shown: false
         }
