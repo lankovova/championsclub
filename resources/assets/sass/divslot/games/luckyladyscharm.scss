@@ -1,0 +1,50 @@
+@import "../game_types/old_game";
+.header {
+    position: absolute;
+    top: 62px;
+    background: url(../img/games/bananasgobahamas/header_bg.png);
+    height: 119px;
+    width: 1313px;
+    left: 182px;
+    background-size: cover;
+}
+
+.alert .content {
+    background: url('../img/games/bananas/images/freeSpinBg.png');
+    width: 541px;
+    height: 497px;
+    font-size: 44px;
+    color: #8400a6;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 200px 120px 100px 120px;
+}
+
+.main {
+    background: url("../img/games/bananasgobahamas/game_bg.png") center center;
+    background-color: #080038;
+}
+.line_presenters_container {
+    height: 513px;
+
+    &.left {
+        top: 0px;
+    }
+    &.right {
+        top: 0px;
+        right: 1px;
+    }
+}
+.line_presenter {
+    width: 57px;
+    height: 45px;
+    border-radius: 0px;
+}
+.gamble {
+    background-image: url('../img/games/bananasgobahamas/gamble/gamble_bg.png');
+}
