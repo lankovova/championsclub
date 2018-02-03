@@ -24,8 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
-    "symbolsAnimationsPath": "public/img/games/bananasgobahamas/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/firefrenzy/symbols/",
+    "symbolsAnimationsPath": "public/img/games/firefrenzy/symbols/animations/",
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
@@ -56,5 +56,5 @@ var settings = {
         {lineIndex: 4, color: "#de20ff"}
     ],
 
-    "presentersDefaultColor": "#a8bcc8"
+    "presentersDefaultColor": "#9c9cd4"
 }
