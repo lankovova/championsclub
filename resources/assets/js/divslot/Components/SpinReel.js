@@ -1,5 +1,5 @@
 import Symbol from './Symbol';
-import {transitionEnd} from '../events';
+import { transitionEnd } from '../events';
 
 export default class Reel {
     /**

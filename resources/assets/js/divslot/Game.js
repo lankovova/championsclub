@@ -437,23 +437,26 @@ export default class Game {
                 this.linesController.unblurAllSymbols();
             }
 
-            // If dropped more bonus spins then increase counter
-            // Also show alert and notify user about more bonus spins
-            if (this.reelsController.isThereBonusSpins()) {
-                await (() => {
-                    return new Promise(resolve => {
-                        this.interfaceController.showAlert(`${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.more} ${Translator.bonusSpins}`);
-                        this.interfaceController.panel.notifier.text = `${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.more} ${Translator.bonusSpins}`;
+            // If bonus spins are not substitution
+            if (this.bonusSpins.type !== BONUS_SPINS_TYPES.substitution) {
+                // If dropped more bonus spins then increase counter
+                // Also show alert and notify user about more bonus spins
+                if (this.reelsController.isThereBonusSpins()) {
+                    await (() => {
+                        return new Promise(resolve => {
+                            this.interfaceController.showAlert(`${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.more} ${Translator.bonusSpins}`);
+                            this.interfaceController.panel.notifier.text = `${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.more} ${Translator.bonusSpins}`;
 
-                        setTimeout(() => {
-                            this.interfaceController.hideAlert();
-                            resolve();
-                        }, 1500);
-                    });
-                })();
+                            setTimeout(() => {
+                                this.interfaceController.hideAlert();
+                                resolve();
+                            }, 1500);
+                        });
+                    })();
 
-                // Increase
-                this.bonusSpins.amount += this.bonusSpins.standartSpinsAmount;
+                    // Increase
+                    this.bonusSpins.amount += this.bonusSpins.standartSpinsAmount;
+                }
             }
 
             // If bonus spins type is substitution
