@@ -65,7 +65,7 @@ mix.sass('resources/assets/sass/divslot/games/bookofwinner.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/crazybarmenold.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/cinema.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/computerworldold.scss', 'public/css')
-    // .sass('resources/assets/sass/divslot/games/nautilusold.scss', 'public/css')
+    .sass('resources/assets/sass/divslot/games/nautilusold.scss', 'public/css')
     // .sass('resources/assets/sass/divslot/games/gulliver.scss', 'public/css')
     .options({
         processCssUrls: false
