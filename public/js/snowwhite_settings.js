@@ -23,6 +23,8 @@ var settings = {
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/snowwhite/symbols/",
     "symbolsAnimationsPath": "public/img/games/snowwhite/symbols/animations/",
 

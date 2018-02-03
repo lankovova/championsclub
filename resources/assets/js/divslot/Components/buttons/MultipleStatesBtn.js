@@ -10,12 +10,12 @@ export default class MultipleStatesBtn extends Button {
     }
 
     enable(stateToEnable) {
-        // Disable all states of button
+        // Disable all other states of button
         this.disable();
 
         // If state to enable exists
         if (stateToEnable && this.state[stateToEnable] !== undefined) {
-            // Enable given state
+            // Enable passed state
             this.state[stateToEnable] = true;
         }
     }

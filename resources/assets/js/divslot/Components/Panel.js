@@ -59,6 +59,11 @@ export default class Panel {
         };
 
         // FIXME:
+        if (settings.helpDisabled) {
+            this.btns.help.isDead = true;
+        }
+
+        // FIXME:
         // Translate history btn
         document.querySelector('#serviceBtn').innerText = Translator.service;
 

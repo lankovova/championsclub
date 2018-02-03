@@ -14,6 +14,8 @@ export default class Button {
 
         this._state = false;
         this.isDisabled = true;
+        // Flag for always disabled button
+        this.isDead = false;
 
         this.titleNode = this.node.querySelector('.title');
         if (this.titleNode && this.props.title) {
@@ -21,7 +23,6 @@ export default class Button {
         }
 
         this.node.onclick = () => this.onClick();
-
         this._initEffects();
     }
 
@@ -76,8 +77,8 @@ export default class Button {
 
     get state() { return this._state; }
     set state(newState) {
-        (newState) ? this.enableView() : this.disableView();
-        this._state = newState;
+        this._state = (this.isDead) ? false : newState;
+        (this._state) ? this.enableView() : this.disableView();
     }
 
     set text(newText) {

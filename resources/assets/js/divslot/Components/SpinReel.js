@@ -103,6 +103,7 @@ export default class Reel {
                     symbolCanPass = false;
                     continue;
                 }
+                // FIXME: Fix usage of number 4 here
                 // Rerandom if randomed symbol in not uniqe in 3 or less symbols generated before
                 for (let i = spawnedSymbols.length - 1; i > spawnedSymbols.length - 4; i--) {
                     if (i < 0) break;
