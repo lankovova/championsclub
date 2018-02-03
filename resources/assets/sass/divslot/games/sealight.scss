@@ -1,0 +1,56 @@
+@import "../game_types/old_game";
+
+.header {
+    position: absolute;
+    top: 62px;
+    background: url('../img/games/sealight/header_bg.png');
+    height: 119px;
+    width: 1313px;
+    left: 182px;
+    background-size: 100% 100%;
+}
+
+.alert .content {
+    background: url('../img/games/sealight/images/freeSpinBg.png');
+    width: 813px;
+    height: 327px;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 50px;
+    padding-bottom: 70px;
+}
+
+.main {
+    background: url("../img/games/sealight/game_bg.png") center center;
+    background-color: #142c48;
+}
+.line_presenters_container {
+    height: 513px;
+
+    &.left {
+        top: 0px;
+    }
+    &.right {
+        top: 0px;
+        right: 1px;
+    }
+}
+.line_presenter {
+    width: 57px;
+    height: 45px;
+    border-radius: 0px;
+}
+.gamble {
+    background-image: url('../img/games/sealight/gamble/gamble_bg.png');
+}
+.panel {
+    background-image: url("../img/games/sealight/panel_bg.png");
+    background-position:  center center;
+}
