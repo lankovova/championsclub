@@ -15,9 +15,9 @@ trait WinChecker {
         if ($this->switcher) {
             $this->switcher = false;
             $this->finalSymbols = [
-                [1,2,3,8,8],
-                [9,9,9,4,5],
-                [1,1,1,4,5]
+                [6,2,3,8,8],
+                [9,6,9,4,9],
+                [0,1,6,0,5]
             ];
         }
         $spinResult = [

@@ -24,23 +24,54 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
     
-    "imagesPath": "public/img/games/bookofwinner/",
+    "imagesPath": "public/img/games/bookofra/",
     "symbolsImagesPath": "public/img/games/bookofra/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofra/symbols/animations/",
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png"},
-        {"image": "5.png"},
-        {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png"},
-        {"image": "10.png", "isScatter": true}
+        {
+            "image": "1.png",
+            "paytable": [0, 0, 5, 25, 100], 
+        },
+        {
+            "image": "2.png",
+            "paytable": [0, 0, 5, 40, 150],
+        },
+        {
+            "image": "3.png",
+            "paytable": [0, 0, 3, 30, 300], 
+        },
+        {
+            "image": "4.png",
+            "paytable": [0, 5, 30, 100, 750], 
+        },
+        {
+            "image": "5.png",
+            "paytable": [0, 0, 5, 25, 100],
+        },
+        {
+            "image": "6.png",
+            "paytable": [0, 0, 5, 40, 150], 
+        },
+        {
+            "image": "7.png",
+            "paytable": [0, 10, 100, 1000, 5000], 
+        },
+        {
+            "image": "8.png",
+            "paytable": [0, 0, 3, 30, 300], 
+        },
+        {
+            "image": "9.png",
+            "paytable": [0, 5, 40, 400, 2000], 
+        },
+        {
+            "image": "10.png", 
+            "paytable": [0, 5, 30, 100, 750],  
+            "isScatter": true
+        }
     ],
     "linePresenter": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},

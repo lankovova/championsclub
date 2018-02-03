@@ -21,7 +21,7 @@ var settings = {
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": true,
 
-    "imagesPath": "public/img/games/bookofwinner/",
+    "imagesPath": "public/img/games/computerworld/",
     "helpType": "slider",
 
     "symbolsImagesPath": "public/img/games/computerworld/symbols/",
