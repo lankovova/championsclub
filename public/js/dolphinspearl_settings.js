@@ -24,8 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "symbolsImagesPath": "public/img/games/luckyladyscharm/symbols/",
-    "symbolsAnimationsPath": "public/img/games/luckyladyscharm/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/dolphinspearl/symbols/",
+    "symbolsAnimationsPath": "public/img/games/dolphinspearl/symbols/animations/",
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
@@ -56,5 +56,5 @@ var settings = {
         {lineIndex: 4, color: "#de20ff"}
     ],
 
-    "presentersDefaultColor": "#949cd0"
+    "presentersDefaultColor": "#142458"
 }
