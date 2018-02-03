@@ -412,21 +412,25 @@
             background: url(../img/history/start_btn_bg.png);
             width: 35px;
             height: 33px;
+            cursor: pointer;
         }
         &__back {
             background: url(../img/history/back_btn_bg.png);
             width: 35px;
             height: 33px;
+            cursor: pointer;
         }
         &__end {
             background: url(../img/history/end_btn_bg.png);
             width: 35px;
             height: 33px;
+            cursor: pointer;
         }
         &__next {
             background: url(../img/history/next_btn_bg.png);
             width: 35px;
             height: 33px;
+            cursor: pointer;
         }
         &__number {
             background: url(../img/history/number_btn_bg.png);
@@ -450,4 +454,5 @@
     top: 0;
     bottom: 0;
     margin: auto;
+    cursor: pointer;
 }

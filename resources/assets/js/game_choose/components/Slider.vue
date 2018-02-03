@@ -53,6 +53,34 @@ export default {
                     {class:'beauty-dolphins', url:'beautydolphins'},
                     {class:'savanna-queen', url:'savannaqueen'},
                 ],
+                [
+                    {class:'book-of-ra', url:'bookofra'},
+                    {class:'computer-world-old', url:'computerworldold'},
+                    {class:'bananas-go-bahamas', url:'bananasgobahamas'},
+                    {class:'the-money-game', url:'themoneygame'},
+                    {class:'lucky-ladys-charm', url:'luckyladyscharm'},
+                ],
+                [
+                    {class:'dolphins-pearl', url:'dolphinspearl'},
+                    {class:'fire-frenzy', url:'firefrenzy'},
+                    {class:'sea-light', url:'sealight'},
+                    {class:'gryphons-gold', url:'gryphonsgold'},
+                    {class:'nautilus-old', url:'nautilusold'},
+                ],
+                [
+                    {class:'crazy-barmen', url:'crazybarmen'},
+                    {class:'snow-white', url:'snowwhite'},
+                    {class:'mariner', url:'mariner'},
+                    {class:'riddle-of-the-sphinx', url:'riddleofthesphinx'},
+                    {class:'columbus', url:'columbus'},
+                ],
+                [
+                    {class:'gulliver', url:'gulliver'},
+                    {class:''},
+                    {class:''},
+                    {class:''},
+                    {class:''}
+                ],
                 // [
                 //     {class:'book-of-winner', url:'bookofwinner'},
                 //     {class:'sevens-on-fire-plus', url:'sevensonfireplus'},
