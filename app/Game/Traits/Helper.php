@@ -240,7 +240,7 @@ trait Helper {
         }
 
         foreach ($this->scatter as $scatter) {
-            for($i = 0; $i < 5; $i++) {
+            for($i = 0; $i < 1; $i++) {
                 $this->randomSymbols[] = $scatter;;
             }
         }
