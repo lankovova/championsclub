@@ -30,8 +30,74 @@
 
 .alert .content {
     background: url("../img/games/computerworld/images/freeSpinBg.png");
-    width: 1184px;
-    height: 626px;
+    background-size: 100% 100%;
+    width: 950px;
+    height: 500px;
+    padding: 50px 100px 100px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(233, 251, 0);
+    text-shadow: 2px 2px 5px darkslategrey;
+    text-transform: uppercase;
+
+}
+.substitutionBlock-wrapper {
+    display: none;
+
+    position: absolute;
+    z-index: 51;
+    width: 260px;
+    height: 130px;
+
+    background-size: 100% 100%;
+
+    transition: top    1000ms ease-in-out,
+                bottom 1000ms ease-in-out,
+                left   1000ms ease-in-out,
+                right  1000ms ease-in-out;
+
+    & .substitutionBlock {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+
+        & .substitutionSymbol-container {
+            width: 50%;
+            height: 100%;
+            padding: 25px 28px 31px;
+            box-sizing: border-box;
+
+            & .substitutionSymbol {
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        & .substitutionPaytable-container {
+            width: 50%;
+            padding: 25px 10px 31px;
+            box-sizing: border-box;
+
+            & .substitutionPaytable {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    &.start {
+        top: 50%;
+        left: calc(50% - 130px);
+    }
+    &.finish {
+        top: -13px;
+        left: calc(50% - 130px);
+    }
 }
 .gamble {
     background: url('../img/games/computerworld/gamble/gamble_bg.png');
