@@ -16,18 +16,19 @@
 
 .alert .content {
     background: url('../img/games/bookofra/images/freeSpinBg.png');
-    width: 500px;
-    height: 280px;
-    font-size: 44px;
-    color: #000;
-    font-weight: 600;
+    background-size: 100% 100%;
+    width: 950px;
+    height: 500px;
+    box-sizing: border-box;
     text-align: center;
-    text-transform: uppercase;
+    font-size: 50px;
+    color: rgb(233, 251, 0);
+    text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
     padding: 50px;
+    margin-top: 234px;
 }
 
 .main {
@@ -104,7 +105,7 @@
         left: calc(50% - 130px);
     }
     &.finish {
-        top: -13px;
+        top: 55px;
         left: calc(50% - 130px);
     }
 }
