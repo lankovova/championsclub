@@ -8,7 +8,7 @@ class Gulliver extends Game {
     public static $reelsAmount = 5;
     public static $scatter = [8, 2, 3];
     public static $joker = 10;
-    public static $freeSpinsAmount = 45;
+    public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 12;
     public static $paytable = [
         [0,2,4,30,100], //PAYTABLE FOR SYMBOL 0
