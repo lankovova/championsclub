@@ -10,7 +10,16 @@ trait WinChecker {
      *
      * @return array
      */
+    private $switcher = true;
     private function checkForWinCombosScatterAsJoker(): array {
+        if ($this->switcher) {
+            $this->switcher = false;
+            $this->finalSymbols = [
+                [1,2,3,8,8],
+                [9,9,9,4,5],
+                [1,1,1,4,5]
+            ];
+        }
         $spinResult = [
             'won_points' => 0,
             "spin_result" => []

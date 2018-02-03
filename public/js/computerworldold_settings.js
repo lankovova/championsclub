@@ -23,10 +23,10 @@ var settings = {
 
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
-    
+
     "imagesPath": "public/img/games/bookofwinner/",
-    "symbolsImagesPath": "public/img/games/bookofra/symbols/",
-    "symbolsAnimationsPath": "public/img/games/bookofra/symbols/animations/",
+    "symbolsImagesPath": "public/img/games/computerworldold/symbols/",
+    "symbolsAnimationsPath": "public/img/games/computerworldold/symbols/animations/",
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
@@ -37,10 +37,10 @@ var settings = {
         {"image": "4.png"},
         {"image": "5.png"},
         {"image": "6.png"},
-        {"image": "7.png"},
+        {"image": "7.png", "isScatter": true},
         {"image": "8.png"},
         {"image": "9.png"},
-        {"image": "10.png", "isScatter": true}
+        {"image": "10.png"}
     ],
     "linePresenter": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
