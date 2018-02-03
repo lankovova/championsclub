@@ -1,0 +1,57 @@
+@import "../game_types/old_game";
+.header {
+    position: absolute;
+    top: 62px;
+    background: url('../img/games/gulliver/header_bg.png');
+    height: 119px;
+    width: 1313px;
+    left: 182px;
+    background-size: 100% 100%;
+}
+
+.alert .content {
+    background: url('../img/games/bananas/images/freeSpinBg.png');
+    background-size: 100% 100%;
+    width: 867px;
+    height: 695px;
+    font-size: 44px;
+    color: #FDEA52;
+    text-shadow: -2px -2px 2px #4D1907, 2px 2px 2px #4D1907, -2px 2px 2px #4D1907, 2px -2px 2px #4D1907;
+    font-weight: 600;
+    text-align: center;
+    font-family: Oswald;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+.main {
+    background: url("../img/games/gulliver/game_bg.png") center center;
+    background-color: #130b03;
+}
+.line_presenters_container {
+    height: 513px;
+
+    &.left {
+        top: 0px;
+    }
+    &.right {
+        top: 0px;
+        right: 1px;
+    }
+}
+.line_presenter {
+    width: 57px;
+    height: 45px;
+    border-radius: 0px;
+}
+.gamble {
+    background-image: url('../img/games/gulliver/gamble/gamble_bg.png');
+}
+.panel {
+    background-image: url("../img/games/gulliver/panel_bg.png");
+    background-position:  center center;
+}
