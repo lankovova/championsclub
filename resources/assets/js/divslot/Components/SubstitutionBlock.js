@@ -119,12 +119,14 @@ export default class SubstitutionBlock {
         // Get symbol paytable
         const symbolPaytable = settings.symbols[substitutionSymbol].paytable;
 
-        // Write symbol paytable
-        for (let i = symbolPaytable.length - 1; i >= 0; i--) {
-            // Skip if win is zero
-            if (symbolPaytable[i] === 0) continue;
+        if (symbolPaytable) {
+            // Write symbol paytable
+            for (let i = symbolPaytable.length - 1; i >= 0; i--) {
+                // Skip if win is zero
+                if (symbolPaytable[i] === 0) continue;
 
-            this.paytableNode.innerHTML += `${i + 1} - ${symbolPaytable[i]}<br />`;
+                this.paytableNode.innerHTML += `${i + 1} - ${symbolPaytable[i]}<br />`;
+            }
         }
 
         return new Promise(resolve => setTimeout(resolve, SLEEP_DURATION_AFTER_RANDOMIZING));
