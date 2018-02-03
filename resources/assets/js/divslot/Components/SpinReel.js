@@ -25,14 +25,29 @@ export default class Reel {
         this.reelNode.className = 'reel';
         this.reelNode.style.transition = `transform ${settings.spinAnimationTimeInMs}ms ${settings.spinAnimTimingFunc}`;
 
-        // Init starting symbols
+        // Spawn initial symbols
+        let spawnedSymbols = [];
         for (let i = 0; i < settings.numOfRows; i++) {
             let symbol;
-            // Generate no scatters at all
-            do {
-                symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
-            } while (symbol.isScatter);
+            let symbolCanPass;
 
+            // Generate only uniqe and no scatters at all
+            do {
+                symbolCanPass = true;
+                symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
+                // Rerandom if symbol is scatter
+                if (symbol.isScatter) {
+                    symbolCanPass = false;
+                    continue;
+                }
+                // Rerandom if randomed symbol is not unique in reel
+                const notUniqeSymbol = spawnedSymbols.find(el => el.symbolNum === symbol.symbolNum);
+                if (notUniqeSymbol) {
+                    symbolCanPass = false;
+                }
+            } while (!symbolCanPass);
+
+            spawnedSymbols.push(symbol);
             this.finalSymbols.push(symbol);
             // Add symbol into reel node
             this.reelNode.appendChild(symbol.node);
@@ -73,10 +88,7 @@ export default class Reel {
     }
 
     addSpinningSymbols() {
-        let spinningSymbolsArr = [];
-
-        // TODO: Spawn scatter with some chance
-        let isScatterSpawnedInReel = false;
+        let spawnedSymbols = [];
 
         for (let i = 0; i < settings.numOfSpinsBeforeStop * settings.numOfRows; i++) {
             let symbol;
@@ -85,28 +97,26 @@ export default class Reel {
             // Generate no scatters at all while spinning
             do {
                 symbolCanPass = true;
-
                 symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
-
+                // Rerandom if symbol is scatter
                 if (symbol.isScatter) {
                     symbolCanPass = false;
                     continue;
                 }
-
                 // Rerandom if randomed symbol in not uniqe in 3 or less symbols generated before
-                for (let i = spinningSymbolsArr.length - 1; i > spinningSymbolsArr.length - 4; i--) {
+                for (let i = spawnedSymbols.length - 1; i > spawnedSymbols.length - 4; i--) {
                     if (i < 0) break;
 
-                    if (spinningSymbolsArr[i].symbolNum === symbol.symbolNum) {
+                    if (spawnedSymbols[i].symbolNum === symbol.symbolNum) {
                         symbolCanPass = false;
                     }
                 }
             } while (!symbolCanPass);
 
-            spinningSymbolsArr.push(symbol);
+            spawnedSymbols.push(symbol);
         }
 
-        this.addSymbols(spinningSymbolsArr);
+        this.addSymbols(spawnedSymbols);
     }
 
     /**

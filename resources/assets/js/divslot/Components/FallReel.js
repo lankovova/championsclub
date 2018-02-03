@@ -26,16 +26,31 @@ export default class FallReel {
         this.reelNode.style.height = `${settings.symbolHeight * (settings.numOfRows + 1)}px`; // + bonus slot for hidden symbol
         this.reelNode.style.width = `${settings.symbolWidth}px`;
 
-        // Init starting symbols
+        // Spawn initial symbols
+        let spawnedSymbols = [];
         for (let i = 0; i < settings.numOfRows; i++) {
             let symbol;
-            // Generate no scatters at all
+            let symbolCanPass;
+
+            // Generate only uniqe and no scatters at all
             do {
+                symbolCanPass = true;
                 symbol = new Symbol(Math.floor(Math.random() * settings.symbols.length));
-            } while (symbol.isScatter);
+                // Rerandom if symbol is scatter
+                if (symbol.isScatter) {
+                    symbolCanPass = false;
+                    continue;
+                }
+                // Rerandom if randomed symbol is not unique in reel
+                const notUniqeSymbol = spawnedSymbols.find(el => el.symbolNum === symbol.symbolNum);
+                if (notUniqeSymbol) {
+                    symbolCanPass = false;
+                }
+            } while (!symbolCanPass);
 
             symbol.node.style.transform = `translateY(${settings.symbolHeight * (settings.numOfRows - i)}px)`;
 
+            spawnedSymbols.push(symbol);
             this.finalSymbols.unshift(symbol);
             // Add symbol into reel node
             this.reelNode.prepend(symbol.node);
