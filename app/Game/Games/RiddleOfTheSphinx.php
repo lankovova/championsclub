@@ -30,11 +30,11 @@ class RiddleOfTheSphinx extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWinCombosScatterAsJoker");
+        return $this->game->spin("checkForWinCombosTrippleScatter", "generateFinalSymbolsTrippleScatter");
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("Substitution");
+        return $this->game->bonusSpin("FreeSpinsTrippleScatter");
     }
 
     public function areBonusSpins() {
