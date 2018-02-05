@@ -37,7 +37,7 @@ var settings = {
                 "frames": 34
             },
             "isScatter": true,
-            "paytable": [0, 0, 5, 25, 100]
+            "paytable": [0, 0, 3, 30, 300]
         }, {
             "image": "2.png",
             "animation": {
@@ -51,7 +51,7 @@ var settings = {
                 "image": "3.png",
                 "frames": 22
             },
-            "paytable": [0, 0, 3, 30, 300]
+            "paytable": [0, 0, 5, 25, 100]
         }, {
             "image": "4.png",
             "animation": {
@@ -86,7 +86,7 @@ var settings = {
                 "image": "8.png",
                 "frames": 11
             },
-            "paytable": [0, 0, 3, 30, 300]
+            "paytable": [0, 0, 5, 25, 100]
         }, {
             "image": "9.png",
             "animation": {

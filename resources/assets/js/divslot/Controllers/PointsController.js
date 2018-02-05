@@ -43,10 +43,10 @@ export default class PointsController {
         return Math.floor(coins / (this._denomination * 100));
     }
     kupsToPoints(kups) {
-        return Math.floor(kups/ this._denomination);
+        return Math.floor(kups / this._denomination);
     }
     kupsToCoins(kups) {
-        return kups * 100;
+        return +(kups * 100).toFixed(0);
     }
     coinsToKups(coins) {
         return coins / 100;
