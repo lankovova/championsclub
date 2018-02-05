@@ -45,7 +45,7 @@ export default class Symbol {
         this.stopAnimation();
 
         raf(() => {
-            if (settings.gameType === 'old') {
+            if (settings.gameType === 'old' && settings.animationType !== 'fall') {
                 this.symbolNode.style.animation = `oldSymbolAnimation 1000ms infinite`;
                 return;
             }
