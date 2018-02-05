@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 
 .alert .content {
     background: url('../img/games/tropicalfruit/images/freeSpinBg.png');
@@ -42,4 +42,71 @@
     top: 153px;
     width: 1365px;
     height: 677px;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+    display: none;
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+    display: none;
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/tropicalfruit/help/slide_bg_1.png');
+}
+
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 63px;
+    }
+    &[data-symbols='4'] {
+        top: 161px;
+        left: 228px;
+    }
+    
+    &[data-symbols='5 0'] {
+        top: 380px;
+        left: 228px;
+       
+    }
+    
+    &[data-symbols='7'] {
+        top: 148px;
+        left: 671px;
+    }
+    
+    
+    &[data-symbols='6']{
+        top: 367px;
+        left: 672px;
+        
+    }
+    &[data-symbols='3'] {
+        top: 161px;
+        left: 947px;
+       
+        }
+    &[data-symbols='2 1'] {
+        top: 383px;
+        left: 949px;
+        }
+    
+    
+      
 }
