@@ -30,8 +30,8 @@ var settings = {
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
+        {"image": "1.png" "isScatter": true},
+        {"image": "2.png" "isScatter": true},
         {"image": "3.png"},
         {"image": "4.png"},
         {"image": "5.png"},

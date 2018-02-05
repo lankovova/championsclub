@@ -6,7 +6,7 @@ use App\Game\Games\Game;
 
 class RiddleOfTheSphinx extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = [7,8,9];
+    public static $scatter = [7,6,8];
     public static $joker = 12;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 12;
