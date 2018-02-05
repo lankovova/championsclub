@@ -66,13 +66,7 @@ export default class LinesController {
     // Activate dark layer on all symbols
     blurAllSymbols() {
         this.props.reels.forEach(reel => {
-            reel.finalSymbols.forEach(symbol => {
-                symbol.blurDark();
-
-                // FIXME: Stop symbol animation when line has showed
-                // HOTFIXME: Do not animate blured symbol
-                symbol.stopAnimation();
-            });
+            reel.finalSymbols.forEach(symbol => symbol.blurDark());
         });
     }
 
@@ -80,6 +74,19 @@ export default class LinesController {
     unblurAllSymbols() {
         this.props.reels.forEach(reel => {
             reel.finalSymbols.forEach(symbol => symbol.unblur());
+        });
+    }
+
+    // Remove svg lines
+    removeWinningLines() {
+        // Delete all lines
+        this.winningLines.forEach(line => line.remove());
+    }
+
+    // Stop all symbols animation
+    stopSymbolsAnim() {
+        this.props.reels.forEach(reel => {
+            reel.finalSymbols.forEach(symbol => symbol.stopAnimation());
         });
     }
 
@@ -92,7 +99,7 @@ export default class LinesController {
         this.cycleWinningLines = false;
 
         // Delete all lines
-        this.winningLines.forEach(line => line.remove());
+        this.removeWinningLines();
     }
 
     // Cycle showing winnning lines until user has took win

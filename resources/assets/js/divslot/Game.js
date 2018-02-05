@@ -21,12 +21,6 @@ export default class Game {
         this.gameName = gameName;
         this.gameNode = document.querySelector('#game');
 
-        // FIXME:
-        // Set symbol height and width if set only symbol square side size
-        if (settings.symbolSize) {
-            settings.symbolHeight = settings.symbolWidth = settings.symbolSize;
-        }
-
         // Store for spin response data
         this.spinResponse = {};
 
@@ -401,6 +395,11 @@ export default class Game {
                 // Show win lines and transfer win from regular spin
                 await this.showWinningLines(this.spinResponse.spin_result);
 
+                // Remove svg lines nodes when bonus spins just dropped
+                this.linesController.removeWinningLines();
+                // And stop symbols animations before bonus spins alert showed up
+                this.linesController.stopSymbolsAnim();
+
                 // Show alert and wait for user to press start btn
                 // Based on bonus spins type
                 if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
@@ -435,6 +434,7 @@ export default class Game {
 
                 // Unblur all symbols
                 this.linesController.unblurAllSymbols();
+                this.linesController.removeWinningLines();
             }
 
             // If bonus spins are not substitution
@@ -461,8 +461,14 @@ export default class Game {
 
             // If bonus spins type is substitution
             if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
-                // Replace symbols in reel
-                await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
+                // If there is substitution
+                if (this.reelsController.isThereSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol)) {
+                    // Stop symbols animation while substituting other symbols
+                    this.linesController.stopSymbolsAnim();
+
+                    // Replace symbols in reel
+                    await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
+                }
 
                 // Count win
                 if (previousBonusSpin.substitution.won) {
@@ -470,6 +476,7 @@ export default class Game {
 
                     // Unblur all symbols
                     this.linesController.unblurAllSymbols();
+                    this.linesController.removeWinningLines();
                 }
             }
 
