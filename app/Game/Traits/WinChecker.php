@@ -209,11 +209,6 @@ trait WinChecker {
      * @return array
      */
     private function checkForWinCombosFromAnyPosition(): array {
-        $this->finalSymbols = [
-            [1,1,1,1,1],
-            [1,7,7,7,1],
-            [2,2,2,2,2]
-        ];
         $result = [
             'won_points' => 0,
             "spin_result" => []
