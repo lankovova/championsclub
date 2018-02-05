@@ -108,8 +108,6 @@ export default class GambleModal {
 
             // Add more fields to store
             Object.assign(this.valuesFields, toWinSuitField);
-
-            console.log(toWinSuitField);
         }
 
         this._initializePreviousCards();

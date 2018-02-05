@@ -17,23 +17,48 @@ var settings = {
     // due to the slow browsers perfomance
     "delayBeforeStartReelsSpin": 200,
     "spinAnimationTimeInMs": 1000,
-    "spinAnimTimingFunc": "ease-in-out",
-    "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": true,
+
+    "helpDisabled": true,
 
     "symbolsImagesPath": "public/img/games/kingofjewels/symbols/",
     "symbolsAnimationsPath": "public/img/games/kingofjewels/symbols/animations/",
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png", "isScatter": true},
-        {"image": "5.png"},
-        {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"}
+        {
+            "image": "1.png",
+            "paytable": [0,0,15,50,200]
+        },
+        {
+            "image": "2.png",
+            "paytable": [0,0,50,500,5000]
+        },
+        {
+            "image": "3.png",
+            "paytable": [0,0,30,150,500]
+        },
+        {
+            "image": "4.png",
+            "paytable": [0,0,2,10,50],
+            "isScatter": true,
+        },
+        {
+            "image": "5.png",
+            "paytable": [0,0,30,150,500]
+        },
+        {
+            "image": "6.png",
+            "paytable": [0,0,10,25,150]
+        },
+        {
+            "image": "7.png",
+            "paytable": [0,0,10,25,150]
+        },
+        {
+            "image": "8.png",
+            "paytable": [0,0,15,50,200]
+        }
     ]
 }
