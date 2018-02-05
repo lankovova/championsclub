@@ -410,6 +410,7 @@ export default class Game {
                     this.interfaceController.displaySubstitutionStart();
 
                     // Wait for user to start spin
+                    this.interfaceController.disableInterface();
                     this.interfaceController.enableSpin();
                 } else {
                     this.interfaceController.showAlert(`${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.bonusSpins}`);
@@ -419,6 +420,7 @@ export default class Game {
                     await this.transferWin();
 
                     // Enable spin btn to start bonus spins
+                    this.interfaceController.disableInterface();
                     this.interfaceController.enableSpin();
                 }
 
