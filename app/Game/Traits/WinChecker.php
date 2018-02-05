@@ -254,7 +254,7 @@ trait WinChecker {
                     $lineSymbol = $currSymbol;
                 }
                 
-                if ($symbolsInLine >= 3 && $currSymbol !== $lineSymbol || $symMapIndex === ($this->reelsAmount - 1)) {
+                if ($symbolsInLine >= 3 && $currSymbol !== $lineSymbol || $symbolsInLine >= 3 && $symMapIndex === ($this->reelsAmount - 1)) {
                     $comboPay = $this->paytable[ $lineSymbol ][ $symbolsInLine - 1 ];
 
                     if ($comboPay > 0) {
