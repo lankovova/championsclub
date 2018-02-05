@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 .alert .content {
     background: url('../img/games/luckyladysglamor/images/freeSpinBg.png');
     width: 1015px;
@@ -47,4 +47,138 @@
     height: 679px;
     background-size: 100% 100%;
     border-radius: 20px;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/luckyladysglamor/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/luckyladysglamor/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 31px;
+    }
+    &[data-symbols='4 3'] {
+        top: 321px;
+        left: 13px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    &[data-symbols='4 3'][data-joker] {
+        top: 320px;
+        left: 217px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    &[data-symbols='9 2'] {
+        top: 560px;
+        left: 12px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    &[data-symbols='9 2'][data-joker] {
+        top: 558px;
+        left: 215px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    &[data-symbols='1 8 10'] {
+        top: 792px;
+        left: 99px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    
+    &[data-symbols='1 8 10'][data-joker] {
+        top: 792px;
+        left: 290px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    &[data-symbols='5']{
+        top: 199px;
+        left: 678px;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+    &[data-symbols='11'] {
+        top: 539px;
+        left: 555px;
+        div {
+            margin-bottom: 12px;
+        }
+        }
+    &[data-symbols='6 12'] {
+        top: 316px;
+        left: 1138px;
+        div {
+            margin-bottom: 12px;
+        }
+        }
+    &[data-symbols='6 12'][data-joker] {
+        top: 316px;
+        left: 952px;
+        div {
+            margin-bottom: 12px;
+        }
+        }
+    &[data-symbols='7'] {
+        top: 556px;
+        right: 10px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='7'][data-joker] {
+        top: 556px;
+        right: 206px;
+    div {
+        margin-bottom: 3px;
+    }
+    }
+    &[data-symbols='0'] {
+        top: 759px;
+        right: 93px;
+        div {
+            margin-bottom: 12px;
+        }
+    }
+    &[data-symbols='0'][data-joker] {
+        top: 759px;
+        right: 283px;
+        div {
+            margin-bottom: 12px;
+        }
+    }
+    
+    
 }
