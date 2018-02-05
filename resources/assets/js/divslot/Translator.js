@@ -9,19 +9,25 @@ function getTranslation() {
     return (settings.gameType === 'old') ? translations['en'] : translations[lang];
 }
 
+export default getTranslation();
+
 // TODO:
-class Translator {
-    constructor() {
-        const langFromCookie = CookieController.get('lang');
-        const lang = langFromCookie ? langFromCookie : 'en';
+// Language
+const LANG = CookieController.get('lang') ? CookieController.get('lang') : 'en';
+// Always return english translation if it is old game
+const PHRASES = (settings.gameType === 'old') ? translations['en'] : translations[LANG];
 
-        // Always return english translation if it is old game
-        this.phrases = (settings.gameType === 'old') ? translations['en'] : translations[lang];
-    }
-
-    static bonusSpinsEnded(spins, win) {
-        // return this.phrases. ...
+export class Translator {
+    static userWonPoints(points) {
+        switch (LANG) {
+            case 'ru':
+            case 'ua': {
+                return `${PHRASES.win} ${points} ${PHRASES.credits}`;
+                break;
+            }
+            default: {
+                return `${points} ${PHRASES.credits} ${PHRASES.won}`;
+            }
+        }
     }
 }
-
-export default getTranslation();

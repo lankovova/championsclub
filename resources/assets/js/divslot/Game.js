@@ -11,6 +11,8 @@ import APIController from './Controllers/APIController';
 import Translator from './Translator';
 import CookieController from './Controllers/CookieController';
 
+import {Translator as Speaker} from './Translator';
+
 const BONUS_SPINS_TYPES = {
     freeSpin: 'free_spin',
     substitution: 'substitution',
@@ -376,7 +378,8 @@ export default class Game {
     async showWinningLines(spinResult) {
         await this.linesController.showWinningLines(spinResult, winCashInLine => {
             this.pointsController.userWin += winCashInLine;
-            this.interfaceController.panel.notifier.text = `${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits}`;
+            // TODO: Change speaker to Translator
+            this.interfaceController.panel.notifier.text = Speaker.userWonPoints(this.pointsController.userWin);
         });
 
         return new Promise(resolve => resolve());

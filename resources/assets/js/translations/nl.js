@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "zwart of rood kiezen om te winnen",
     "previousCards": "voorafgaande kaarten",
     "win": "uitbetaling",
+    "won": "won",
 
     // Buttons
     "start": "start",

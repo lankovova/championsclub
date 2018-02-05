@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "nyeremény piros vagy fekete kiválasztása esetén",
     "previousCards": "előző kártyák",
     "win": "kifizetés",
+    "won": "won",
 
     // Buttons
     "start": "start",

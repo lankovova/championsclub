@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "color de juego para ganar",
     "previousCards": "cartas anteriores",
     "win": "pemio",
+    "won": "won",
 
     // Buttons
     "start": "inicio",

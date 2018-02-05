@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "выигрыш при выборе цвета",
     "previousCards": "предыдущие карты",
     "win": "выигрыш",
+    "won": "выиграно",
 
     // Buttons
     "start": "старт",

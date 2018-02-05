@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "câştig la alegerea culorii cărţii",
     "previousCards": "cărţi presedente",
     "win": "plata",
+    "won": "won",
 
     // Buttons
     "start": "start",

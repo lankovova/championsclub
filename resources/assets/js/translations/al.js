@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "fitim nё zgjidhjen e ngjyrёs",
     "previousCards": "letrat e mёparshme",
     "win": "pagesa",
+    "won": "won",
 
     // Buttons
     "start": "fillo",

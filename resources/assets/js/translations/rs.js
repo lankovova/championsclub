@@ -29,6 +29,7 @@ export default {
     "colorGambleToWin": "igraj na boju za dobitak",
     "previousCards": "prethodne karte",
     "win": "plaćeno",
+    "won": "won",
 
     // Buttons
     "start": "početak",
