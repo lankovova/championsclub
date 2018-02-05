@@ -5,15 +5,9 @@
     </div>
 
     <div class="gamble__to-win">
-        <div class="gamble__to-win-suit" id="gambleToWinSuit">
-            <span class="title"></span>
-            <span class="value"></span>
-            (x4)
-        </div>
         <div class="gamble__to-win-color" id="gambleToWinColor">
             <span class="title"></span>
             <span class="value"></span>
-            (x2)
         </div>
     </div>
 
