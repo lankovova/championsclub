@@ -49,10 +49,6 @@ export default class GambleModal {
             toWinColor: new TitleValue({
                 node: this.node.querySelector('#gambleToWinColor'),
                 title: Translator.colorGambleToWin
-            }),
-            toWinSuit: new TitleValue({
-                node: this.node.querySelector('#gambleToWinSuit'),
-                title: Translator.suitGambleToWin
             })
         }
 
@@ -102,6 +98,18 @@ export default class GambleModal {
 
             // Add suit buttons to btns store
             Object.assign(this.btns, suitBtns);
+
+            const toWinSuitField = {
+                toWinSuit: new TitleValue({
+                    node: this.node.querySelector('#gambleToWinSuit'),
+                    title: Translator.suitGambleToWin
+                })
+            };
+
+            // Add more fields to store
+            Object.assign(this.valuesFields, toWinSuitField);
+
+            console.log(toWinSuitField);
         }
 
         this._initializePreviousCards();
@@ -231,8 +239,10 @@ export default class GambleModal {
     }
 
     setValues(points) {
-        this.valuesFields.amount.value     = points;
-        this.valuesFields.toWinColor.value = points * 2;
-        this.valuesFields.toWinSuit.value  = points * 4;
+        this.valuesFields.amount.value        = points;
+        this.valuesFields.toWinColor.value    = points * 2;
+        if (settings.gambleExtended) {
+            this.valuesFields.toWinSuit.value = points * 4;
+        }
     }
 }
