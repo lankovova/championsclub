@@ -11,16 +11,16 @@ class RollOfRamses extends Game {
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [
-        [0, 0, 5, 25, 100],         // Symbol 1
-        [0, 0, 5, 40, 150],         // Symbol 2
-        [0, 0, 3, 30, 300],         // Symbol 3
-        [0, 5, 30, 100, 750],       // Symbol 4
-        [0, 0, 5, 25, 100],         // Symbol 5
-        [0, 0, 5, 40, 150],         // Symbol 6
-        [0, 10, 100, 1000, 5000],   // Symbol 7
-        [0, 0, 5, 25, 100],         // Symbol 8
-        [0, 5, 40, 400, 2000],      // Symbol 9
-        [0, 5, 30, 100, 750]        // Symbol 10
+        [0, 0, 5, 25, 100],         // Symbol 0
+        [0, 0, 5, 40, 150],         // Symbol 1
+        [0, 5, 30, 100, 750],       // Symbol 2
+        [0, 5, 40, 400, 2000],      // Symbol 3
+        [0, 0, 5, 25, 100],         // Symbol 4
+        [0, 0, 5, 40, 150],         // Symbol 5
+        [0, 10, 100, 1000, 5000],   // Symbol 6
+        [0, 0, 5, 25, 100],         // Symbol 7
+        [0, 0, 3, 30, 300],         // Symbol 8
+        [0, 5, 30, 100, 750]        // Symbol 9
     ];
 
     function __construct($game) {
