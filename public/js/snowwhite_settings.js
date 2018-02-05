@@ -29,95 +29,46 @@ var settings = {
     "symbols": [
         {
             "image": "1.png",
-            "animation": {
-                "image": "1.png",
-                "frames": 34
-            },
             "paytable":[ 0, 0, 10, 40, 150 ],
         }, {
             "image": "2.png",
-            "animation": {
-                "image": "2.png",
-                "frames": 10
-            },
             "paytable": [ 0, 0, 10, 40, 150 ],
         }, {
             "image": "3.png",
-            "animation": {
-                "image": "3.png",
-                "frames": 22
-            },
             "paytable": [ 0, 0, 10, 40, 150 ],
         }, {
             "image": "4.png",
-            "animation": {
-                "image": "4.png",
-                "frames": 23
-            },
             "paytable": [ 0, 0, 5, 20, 100 ],
         }, {
             "image": "5.png",
-            "animation": {
-                "image": "5.png",
-                "frames": 9
-            },
-            
             "paytable": [ 0, 0, 5, 20, 100 ],
         }, {
             "image": "6.png",
-			"isScatter": true,
-            "animation": {
-                "image": "6.png",
-                "frames": 11
-            },
+            "isScatter": true,
             "paytable": [ 0, 10, 100, 1000, 5000 ],
         }, {
             "image": "7.png",
-			"isScatter": true,
-            "animation": {
-                "image": "7.png",
-                "frames": 34
-            },
+            "isScatter": true,
             "paytable": [ 0, 0, 0, 0, 0 ],
         }, {
             "image": "8.png",
-            "animation": {
-                "image": "8.png",
-                "frames": 11
-            },
             "paytable": [ 0, 0, 0, 0, 0 ],
         },
         {
             "image": "9.png",
-            "animation": {
-                "image": "9.png",
-                "frames": 11
-            },
             "paytable": [ 0, 5, 50, 200, 1000 ],
         },
         {
             "image": "10.png",
-			"isScatter": true,
-            "animation": {
-                "image": "10.png",
-                "frames": 11
-            },
+            "isScatter": true,
             "paytable": [ 0, 5, 15, 75, 250 ],
         },
         {
             "image": "11.png",
-            "animation": {
-                "image": "11.png",
-                "frames": 11
-            },
             "paytable": [ 0, 0, 0, 0, 0 ],
         },
         {
             "image": "12.png",
-            "animation": {
-                "image": "12.png",
-                "frames": 11
-            },
             "paytable": [ 0, 5, 25, 100, 500 ],
         },
     ]
