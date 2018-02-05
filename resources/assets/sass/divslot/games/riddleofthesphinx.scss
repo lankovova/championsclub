@@ -66,9 +66,11 @@
 }
 .help__btn_next {
     background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+    display: none;
 }
 .help__btn_prev {
     background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+    display: none;
 }
 .help__btn_close {
     background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
@@ -90,95 +92,44 @@
         letter-spacing: 3px;
         text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
         width: 177px;
-        height: 43px;
+        height: 45px;
     }
-    &[data-symbols='12 11'] {
-        top: 310px;
-        left: 29px;
+    &[data-symbols='5'] {
+        top: 82px;
+        left: 237px;
     }
-    &[data-symbols='12 11'][data-joker] {
-        top: 311px;
-        left: 231px;
+    
+    &[data-symbols='10'] {
+        top: 358px;
+        left: 238px;
+       
     }
-    &[data-symbols='2 7'] {
-        top: 625px;
-        left: 31px;
-    div {
-        margin-bottom: 3px;
+    
+    &[data-symbols='11'] {
+        top: 135px;
+        left: 701px;
     }
-    }
-    &[data-symbols='2 7'][data-joker] {
-        top: 628px;
-    left: 224px;
-    div {
-        margin-bottom: 3px;
-    }
+    
+    
+    &[data-symbols='3 9 1']{
+        top: 369px;
+        left: 659px;
+        div {
+            margin-bottom: 17px;
+        }
+        
     }
     &[data-symbols='4'] {
-        top: 808px;
-        left: 265px;
-        div {
-            margin-bottom: 1px;
+        top: 76px;
+        left: 1139px;
+       
         }
+    &[data-symbols='0 2'] {
+        top: 366px;
+        left: 1101px;
+            div {
+                margin-bottom: 17px;
+            }  
     }
-    
-    &[data-symbols='9'] {
-        top: 293px;
-        left: 479px;
-    }
-    &[data-symbols='9'][data-joker]{
-        top: 293px;
-        left: 676px;
-    }
-    &[data-symbols='3'] {
-        top: 469px;
-        left: 671px;
-        div {
-            margin-bottom: 0px;
-        }
-    }
-    &[data-symbols='1 6 10'] {
-        top: 788px;
-        left: 476px;
-        div {
-            margin-bottom: 0px;
-        }
-    }
-    &[data-symbols='1 6 10'][data-joker] {
-        top: 788px;
-        left: 676px;
-        div {
-            margin-bottom: 0px;
-        }
-    }
-    &[data-symbols='5 8'] {
-        top: 305px;
-        right: 212px;
-    div {
-        margin-bottom: 3px;
-    }
-    }
-    &[data-symbols='5 8'][data-joker] {
-        top: 305px;
-        right: 15px;
-    div {
-        margin-bottom: 3px;
-    }
-    }
-    &[data-symbols='0'] {
-        top: 581px;
-        right: 224px;
-        div {
-            margin-bottom: 3px;
-        }
-    }
-    &[data-symbols='0'][data-joker] {
-        top: 581px;
-        right: 17px;
-        div {
-            margin-bottom: 3px;
-        }
-    }
-    
     
 }
