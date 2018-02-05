@@ -30,6 +30,16 @@
     height: 427px;
     padding: 40px 15px 0 20px;
     box-sizing: border-box;
+    position: relative;
+}
+.calculator__close {
+    background: url('../img/calculator/champion/close_btn_bg.png');
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 50%;
 }
 .calculator__input {
     background: url('../img/calculator/champion/input_bg.png');

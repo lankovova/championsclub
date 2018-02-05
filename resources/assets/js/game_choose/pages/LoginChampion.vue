@@ -4,6 +4,7 @@
             <div class="error-modal__button" @click="hideErrorModal"></div>
         </div>
         <div class="calculator">
+            <div class="calculator__close"></div>
             <div class="calculator__input">
                 <template v-for="(number, key) in login">
                     <div :key="key" class="number">{{ number }}</div>

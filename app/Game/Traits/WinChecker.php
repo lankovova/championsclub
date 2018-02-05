@@ -209,6 +209,11 @@ trait WinChecker {
      * @return array
      */
     private function checkForWinCombosFromAnyPosition(): array {
+        $this->finalSymbols = [
+            [1,1,1,1,1],
+            [1,7,7,7,1],
+            [2,2,2,2,2]
+        ];
         $result = [
             'won_points' => 0,
             "spin_result" => []
@@ -245,14 +250,16 @@ trait WinChecker {
                             'value' => $this->finalSymbols[ $line[ $symMapIndex - 1 ][ 0 ] ][ $line[ $symMapIndex - 1 ][ 1 ] ]
                         ];
                     }
-                } elseif ($symbolsInLine <= 2) { // for 2 symbols no cashpay
+                }
+
+                if ($symbolsInLine <= 2 && $currSymbol !== $lineSymbol) { // for 2 symbols no cashpay
                     // reset
                     $list = [];
                     $symbolsInLine = 0;
                     $lineSymbol = $currSymbol;
                 }
-                // 3 symbols - minimum cashpay
-                if ($symbolsInLine > 2 && $symMapIndex === ($this->reelsAmount - 1)) {
+                
+                if ($symbolsInLine >= 3 && $currSymbol !== $lineSymbol || $symMapIndex === ($this->reelsAmount - 1)) {
                     $comboPay = $this->paytable[ $lineSymbol ][ $symbolsInLine - 1 ];
 
                     if ($comboPay > 0) {
@@ -267,6 +274,7 @@ trait WinChecker {
                             'points' => $comboPay
                         ];
                     }
+                    break;
                 }
             }
         }
