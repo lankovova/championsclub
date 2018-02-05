@@ -6,7 +6,7 @@ use App\Game\Games\Game;
 
 class Mariner extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = [2,3,4];
+    public static $scatter = [3,2,4];
     public static $joker = 5;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 12;

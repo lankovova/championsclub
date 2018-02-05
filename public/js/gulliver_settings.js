@@ -31,14 +31,14 @@ var settings = {
 
     "symbols": [
         {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png"},
+        {"image": "2.png" "isScatter": true},
+        {"image": "3.png" "isScatter": true},
+        {"image": "4.png" "isScatter": true},
         {"image": "5.png"},
         {"image": "6.png"},
         {"image": "7.png"},
         {"image": "8.png"},
-        {"image": "9.png", "isScatter": true},
+        {"image": "9.png"},
         {"image": "10.png"},
         {"image": "11.png"},
         {"image": "12.png"},

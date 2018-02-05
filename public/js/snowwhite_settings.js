@@ -61,10 +61,11 @@ var settings = {
                 "image": "5.png",
                 "frames": 9
             },
-            "isScatter": true,
+            
             "paytable": [ 0, 0, 5, 20, 100 ],
         }, {
             "image": "6.png",
+			"isScatter": true,
             "animation": {
                 "image": "6.png",
                 "frames": 11
@@ -72,6 +73,7 @@ var settings = {
             "paytable": [ 0, 10, 100, 1000, 5000 ],
         }, {
             "image": "7.png",
+			"isScatter": true,
             "animation": {
                 "image": "7.png",
                 "frames": 34
@@ -95,6 +97,7 @@ var settings = {
         },
         {
             "image": "10.png",
+			"isScatter": true,
             "animation": {
                 "image": "10.png",
                 "frames": 11

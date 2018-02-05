@@ -59,7 +59,7 @@ var settings = {
             //     "image": "5.png",
             //     "frames": 9
             // },
-            "isScatter": true,
+           
             "paytable": [0,5,25,100,500],
         }, {
             "image": "6.png",
@@ -67,6 +67,7 @@ var settings = {
             //     "image": "6.png",
             //     "frames": 11
             // },
+			 "isScatter": true,
             "paytable": [0,5,50,200,1000],
         }, {
             "image": "7.png",
@@ -74,6 +75,7 @@ var settings = {
             //     "image": "7.png",
             //     "frames": 34
             // },
+			 "isScatter": true,
             "paytable": [0,0,0,0,0],
         }, {
             "image": "8.png",
@@ -81,6 +83,7 @@ var settings = {
             //     "image": "8.png",
             //     "frames": 11
             // },
+			 "isScatter": true,
             "paytable": [0,0,0,0,0],
         },
         {

@@ -40,6 +40,7 @@ var settings = {
             //     "image": "2.png",
             //     "frames": 10
             // },
+			"isScatter": true,
             "paytable": [0,0,10,40,150],
         }, {
             "image": "3.png",
@@ -47,6 +48,7 @@ var settings = {
             //     "image": "3.png",
             //     "frames": 22
             // },
+			"isScatter": true,
             "paytable": [0,0,0,0,0],
         }, {
             "image": "4.png",
@@ -54,6 +56,7 @@ var settings = {
             //     "image": "4.png",
             //     "frames": 23
             // },
+			"isScatter": true,
             "paytable": [0,0,0,0,0],
         }, {
             "image": "5.png",
@@ -61,7 +64,7 @@ var settings = {
             //     "image": "5.png",
             //     "frames": 9
             // },
-            "isScatter": true,
+            
             "paytable": [0,0,0,0,0],
         }, {
             "image": "6.png",
