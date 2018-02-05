@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {substitution as mockSpinSubstitution} from './../MockAPI/spin';
 
 const playerInfoAPIUrl = '/getplayerinfo';
 const spinAPIUrl = '/spin';
@@ -36,6 +37,7 @@ export default class APIController {
                     denomination: denomination,
                     game: gameName
                 });
+                // const responseData = mockSpinSubstitution;
                 const responseData = response.data;
 
                 console.log(responseData);

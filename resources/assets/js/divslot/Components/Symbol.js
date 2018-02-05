@@ -1,3 +1,5 @@
+import { raf } from "../Helpers/windowHelper";
+
 const ANIMATION_FPS = 13;
 
 export default class Symbol {
@@ -21,6 +23,8 @@ export default class Symbol {
         this.symbolNode.style.height = `${settings.symbolHeight}px`;
         this.symbolNode.style.backgroundImage = `url('${settings.symbolsImagesPath + settings.symbols[this.symbolNum].image}')`;
         this.symbolNode.style.backgroundSize = '100% 100%';
+        this.symbolNode.style.backgroundPosition = 'center center';
+        this.symbolNode.style.backgroundRepeat = 'no-repeat';
 
         this.overflowLayer = document.createElement('div');
         this.overflowLayer.style.position = 'absolute';
@@ -37,17 +41,33 @@ export default class Symbol {
     }
 
     animate() {
-        // If animation for this symbol exists then apply it
-        if (settings.symbols[this.symbolNum].animation) {
-            // Get symbol animation data
-            const symbolAnimationData = settings.symbols[this.symbolNum].animation;
+        // FIXME: Stop symbol animation when line has showed
+        // Stop animation here to synchronize with other symbols in line
+        this.stopAnimation();
 
-            // Calculate animation duration in ms
-            const animDuration = 1000 * symbolAnimationData.frames / ANIMATION_FPS;
+        raf(() => {
+            if (settings.gameType === 'old') {
+                this.symbolNode.style.animation = `oldSymbolAnimation 1000ms infinite`;
+                return;
+            }
 
-            this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + symbolAnimationData.image}')`;
-            this.symbolNode.style.animation = `symbolAnimation ${animDuration}ms steps(${symbolAnimationData.frames}) infinite`;
-        }
+            // If animation for this symbol exists then apply it
+            if (settings.symbols[this.symbolNum].animation) {
+                // Get symbol animation data
+                const symbolAnimationData = settings.symbols[this.symbolNum].animation;
+
+                // Calculate animation duration in ms
+                const animDuration = 1000 * symbolAnimationData.frames / ANIMATION_FPS;
+
+                this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + symbolAnimationData.image}')`;
+                this.symbolNode.style.animation = `symbolAnimation ${animDuration}ms steps(${symbolAnimationData.frames}) infinite`;
+            }
+        });
+
+    }
+
+    stopAnimation() {
+        this.symbolNode.style.animation = '';
     }
 
     blurDark() {
