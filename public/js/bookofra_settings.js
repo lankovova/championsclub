@@ -23,7 +23,9 @@ var settings = {
 
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
-    
+
+    "helpDisabled": true,
+
     "imagesPath": "public/img/games/bookofra/",
     "symbolsImagesPath": "public/img/games/bookofra/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofra/symbols/animations/",
@@ -33,43 +35,43 @@ var settings = {
     "symbols": [
         {
             "image": "1.png",
-            "paytable": [0, 0, 5, 25, 100], 
+            "paytable": [0, 10, 100, 1000, 5000],
         },
         {
             "image": "2.png",
-            "paytable": [0, 0, 5, 40, 150],
+            "paytable": [0, 5, 40, 400, 2000],
         },
         {
             "image": "3.png",
-            "paytable": [0, 0, 3, 30, 300], 
+            "paytable": [0, 5, 30, 100, 750],
         },
         {
             "image": "4.png",
-            "paytable": [0, 5, 30, 100, 750], 
+            "paytable": [0, 5, 30, 100, 750],
         },
         {
             "image": "5.png",
-            "paytable": [0, 0, 5, 25, 100],
+            "paytable": [0, 0, 5, 40, 150],
         },
         {
             "image": "6.png",
-            "paytable": [0, 0, 5, 40, 150], 
+            "paytable": [0, 0, 5, 40, 150],
         },
         {
             "image": "7.png",
-            "paytable": [0, 10, 100, 1000, 5000], 
+            "paytable": [0, 0, 5, 25, 100],
         },
         {
             "image": "8.png",
-            "paytable": [0, 0, 3, 30, 300], 
+            "paytable": [0, 0, 5, 25, 100],
         },
         {
             "image": "9.png",
-            "paytable": [0, 5, 40, 400, 2000], 
+            "paytable": [0, 0, 5, 25, 100],
         },
         {
-            "image": "10.png", 
-            "paytable": [0, 5, 30, 100, 750],  
+            "image": "10.png",
+            "paytable": [0, 0, 3, 30, 300],
             "isScatter": true
         }
     ],
