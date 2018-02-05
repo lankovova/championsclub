@@ -77,6 +77,7 @@ var settings = {
             //     "image": "7.png",
             //     "frames": 34
             // },
+            "isScatter": true,
             "paytable": [0,0,2,10,50],
         }, {
             "image": "8.png",
