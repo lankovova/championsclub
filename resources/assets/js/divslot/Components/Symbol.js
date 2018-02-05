@@ -41,8 +41,7 @@ export default class Symbol {
     }
 
     animate() {
-        // FIXME: Stop symbol animation when line has showed
-        // Stop animation here to synchronize with other symbols in line
+        // Stop animation here to play it from start
         this.stopAnimation();
 
         raf(() => {

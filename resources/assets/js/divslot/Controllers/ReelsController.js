@@ -104,6 +104,12 @@ export default class ReelsContorller {
         });
     }
 
+    isThereSubstitution(finalSymbolsMap, substitutionSymbolNumber) {
+        const reelsToSubstitute = this.getReelsWhereFoundSpecificSymbolInRow(finalSymbolsMap, substitutionSymbolNumber);
+
+        return (reelsToSubstitute.length === 0) ? false : true;
+    }
+
     // Make substitution on symbols map with substitution symbols
     async makeSubstitution(finalSymbolsMap, substitutionSymbolNumber) {
         // Get reels where found symbstitution symbol in center row
