@@ -24,6 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/dolphinspearl/symbols/",
     "symbolsAnimationsPath": "public/img/games/dolphinspearl/symbols/animations/",
 

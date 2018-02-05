@@ -24,6 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
     "symbolsAnimationsPath": "public/img/games/bananasgobahamas/symbols/animations/",
 

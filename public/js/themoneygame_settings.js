@@ -26,6 +26,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/themoneygame/symbols/",
     "symbolsAnimationsPath": "public/img/games/themoneygame/symbols/animations/",
 

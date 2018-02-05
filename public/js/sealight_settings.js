@@ -24,6 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/sealight/symbols/",
     "symbolsAnimationsPath": "public/img/games/sealight/symbols/animations/",
 

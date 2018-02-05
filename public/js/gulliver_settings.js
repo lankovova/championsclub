@@ -24,6 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
+    "helpDisabled": true,
+
     "symbolsImagesPath": "public/img/games/gulliver/symbols/",
     "symbolsAnimationsPath": "public/img/games/gulliver/symbols/animations/",
 
@@ -31,9 +33,9 @@ var settings = {
 
     "symbols": [
         {"image": "1.png"},
-        {"image": "2.png" "isScatter": true},
-        {"image": "3.png" "isScatter": true},
-        {"image": "4.png" "isScatter": true},
+        {"image": "2.png", "isScatter": true},
+        {"image": "3.png", "isScatter": true},
+        {"image": "4.png", "isScatter": true},
         {"image": "5.png"},
         {"image": "6.png"},
         {"image": "7.png"},
