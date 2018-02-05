@@ -16,11 +16,11 @@ class Translator {
         const lang = langFromCookie ? langFromCookie : 'en';
 
         // Always return english translation if it is old game
-        this.words = (settings.gameType === 'old') ? translations['en'] : translations[lang];
+        this.phrases = (settings.gameType === 'old') ? translations['en'] : translations[lang];
     }
 
-    bonusSpinsEnded(spins, win) {
-        // return this.words. ...
+    static bonusSpinsEnded(spins, win) {
+        // return this.phrases. ...
     }
 }
 
