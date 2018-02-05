@@ -11,6 +11,7 @@ export default {
     "gambleOver": "game over - gamble completed, place your bet",
     "bonusSpin": "bonus spin",
     "bonusSpins": "bonus spins",
+    "bonusSpinsIm": "bonus spins",
     "withSubstitution": "with substitution",
     "more": "more",
     "of": "of",

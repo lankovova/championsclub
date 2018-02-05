@@ -482,10 +482,10 @@ export default class Game {
 
             // If no more bonus spins
             if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
-                this.interfaceController.panel.notifier.text = `${Translator.bonusSpins} ${Translator.ended}. ${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits}`;
+                this.interfaceController.panel.notifier.text = `${Translator.bonusSpinsIm} ${Translator.ended}. ${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits}`;
 
                 // Show alert
-                this.interfaceController.showAlert(`${Translator.bonusSpins} ${Translator.ended}, ${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits} ${Translator.in} ${this.bonusSpins.amount} ${Translator.spins}`);
+                this.interfaceController.showAlert(`${Translator.bonusSpinsIm} ${Translator.ended}, ${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits} ${Translator.in} ${this.bonusSpins.amount} ${Translator.spins}`);
 
                 // Tun off bonus spins
                 this.bonusSpins.on = false;
