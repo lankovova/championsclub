@@ -4,6 +4,10 @@
     <link href="{{asset('public/css/pepperseven.css')}}" rel=stylesheet type=text/css>
 @endsection
 
+@section('gamble')
+    @include('games.parts.gamble')
+@endsection
+
 @section('help')
 
     @component('games.parts.help')

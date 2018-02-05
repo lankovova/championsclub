@@ -18,9 +18,6 @@ var settings = {
     "delayBeforeStartReelsSpin": 200,
     "spinAnimationTimeInMs": 1000,
 
-    "spinAnimTimingFunc": "cubic-bezier(1,1.26,.66,.93)",
-    "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
-
     "gamblePreviousCardsAmount": 7,
     "gambleExtended": false,
 
