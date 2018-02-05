@@ -37,10 +37,10 @@ export default class LinesController {
                 // Get winning symbol
                 const symbol = reel.finalSymbols[reel.finalSymbols.length - sCoor.row - 1];
                 symbol.highlighted = true;
+
                 symbol.animate();
                 highlightedSymbols.push(symbol);
 
-                // reel.finalSymbols[symbol].blurDark();
                 symbol.unblur();
 
                 // Add symbol highlite to line
@@ -66,7 +66,13 @@ export default class LinesController {
     // Activate dark layer on all symbols
     blurAllSymbols() {
         this.props.reels.forEach(reel => {
-            reel.finalSymbols.forEach(symbol => symbol.blurDark());
+            reel.finalSymbols.forEach(symbol => {
+                symbol.blurDark();
+
+                // FIXME: Stop symbol animation when line has showed
+                // HOTFIXME: Do not animate blured symbol
+                symbol.stopAnimation();
+            });
         });
     }
 
