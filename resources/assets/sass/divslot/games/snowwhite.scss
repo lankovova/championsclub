@@ -1,5 +1,5 @@
 @import "../game_types/with_borders";
-
+@import "../help_types/help_substitution";
 
 .alert .content {
     background: url('../img/games/snowwhite/images/freeSpinBg.png');
@@ -45,4 +45,75 @@
 .gamble {
     background: url('../img/games/snowwhite/gamble/gamble_bg.png');
     background-size: 100% 100%;
+}
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/snowwhite/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/snowwhite/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 32px;
+    }
+    &[data-symbols='8'] {
+        top: 216px;
+        left: 272px;
+    }
+    
+    &[data-symbols='9'] {
+        top: 486px;
+        left: 209px;
+       
+    }
+    
+    &[data-symbols='5'] {
+        top: 214px;
+        left: 689px;
+    }
+    
+    
+    &[data-symbols='0 1 2']{
+        top: 486px;
+        left: 641px;
+        div {
+            margin-bottom: 17px;
+        }
+        
+    }
+    &[data-symbols='11'] {
+        top: 216px;
+        left: 1081px;
+       
+        }
+    &[data-symbols='3 4'] {
+        top: 485px;
+        left: 1089px;
+            div {
+                margin-bottom: 17px;
+            }  
+    }
+    
 }
