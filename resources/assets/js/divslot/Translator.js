@@ -47,6 +47,11 @@ export default class Translator {
 
     static wonSubstitution(spinsAmount) {
         switch (LANG) {
+            case 'ru':
+            case 'ua': {
+                return `${spinsAmount} ${PHRASES.bonusSpins} ${PHRASES.withSubstitution}`;
+                break;
+            }
             default: {
                 return `${PHRASES.youWon} ${spinsAmount} ${PHRASES.bonusSpins} ${PHRASES.withSubstitution}`;
             }
@@ -64,7 +69,7 @@ export default class Translator {
     static bonusSpinsEndedExtended(points, spinsAmount) {
         switch (LANG) {
             default: {
-                return `${PHRASES.bonusSpinsIm} ${PHRASES.ended}, ${PHRASES.youWon} ${points} ${PHRASES.credits} ${PHRASES.in} ${spinsAmount} ${PHRASES.spins}`;
+                return `${PHRASES.won} ${points} ${PHRASES.credits} ${PHRASES.in} ${spinsAmount} ${PHRASES.bonusSpins}`;
             }
         }
     }

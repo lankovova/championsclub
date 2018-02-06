@@ -485,10 +485,9 @@ export default class Game {
 
             // If no more bonus spins
             if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
-                this.interfaceController.panel.notifier.text = Translator.bonusSpinsEnded(this.pointsController.userWin);
-
                 // Show alert
                 this.interfaceController.showAlert(Translator.bonusSpinsEndedExtended(this.pointsController.userWin, this.bonusSpins.amount));
+                this.interfaceController.panel.notifier.text = Translator.bonusSpinsEnded(this.pointsController.userWin);
 
                 // Tun off bonus spins
                 this.bonusSpins.on = false;

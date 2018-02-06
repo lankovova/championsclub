@@ -6,6 +6,9 @@ var commonSettings = {
     "spinAnimTimingFunc": "cubic-bezier(1,1.26,.66,.93)",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
+    // In ms
+    "delayBetweenSymbolsSubstitute": 400,
+
     "lineTypes": [
         [ [1, 0], [1, 1], [1, 2], [1, 3], [1, 4] ],
         [ [0, 0], [0, 1], [0, 2], [0, 3], [0, 4] ],
