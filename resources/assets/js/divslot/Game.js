@@ -376,7 +376,6 @@ export default class Game {
     async showWinningLines(spinResult) {
         await this.linesController.showWinningLines(spinResult, winCashInLine => {
             this.pointsController.userWin += winCashInLine;
-            // TODO: Change Translator to Translator
             this.interfaceController.panel.notifier.text = Translator.userWonPoints(this.pointsController.userWin);
         });
 
@@ -391,7 +390,8 @@ export default class Game {
         if (this.bonusSpins.on) {
             // If bonus spins just dropped
             if (this.bonusSpins.currentSpinIndex === 0) {
-                this.bonusSpins.on = true;
+                // Turn of auto spins
+                this.autoSpinIsOn = false;
 
                 // Show win lines and transfer win from regular spin
                 await this.showWinningLines(this.spinResponse.spin_result);
