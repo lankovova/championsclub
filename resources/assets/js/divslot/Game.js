@@ -445,17 +445,15 @@ export default class Game {
                 // If dropped more bonus spins then increase counter
                 // Also show alert and notify user about more bonus spins
                 if (this.reelsController.isThereBonusSpins()) {
-                    await (() => {
-                        return new Promise(resolve => {
-                            this.interfaceController.showAlert(Translator.wonMoreBonusSpins(this.bonusSpins.standartSpinsAmount));
-                            this.interfaceController.panel.notifier.text = Translator.wonMoreBonusSpins(this.bonusSpins.standartSpinsAmount);
+                    await new Promise(resolve => {
+                        this.interfaceController.showAlert(Translator.wonMoreBonusSpins(this.bonusSpins.standartSpinsAmount));
+                        this.interfaceController.panel.notifier.text = Translator.wonMoreBonusSpins(this.bonusSpins.standartSpinsAmount);
 
-                            setTimeout(() => {
-                                this.interfaceController.hideAlert();
-                                resolve();
-                            }, 1500);
-                        });
-                    })();
+                        setTimeout(() => {
+                            this.interfaceController.hideAlert();
+                            resolve();
+                        }, 1500);
+                    });
 
                     // Increase
                     this.bonusSpins.amount += this.bonusSpins.standartSpinsAmount;
