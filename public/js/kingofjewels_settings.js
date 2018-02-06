@@ -19,9 +19,7 @@ var settings = {
     "spinAnimationTimeInMs": 1000,
 
     "gamblePreviousCardsAmount": 7,
-    "gambleExtended": true,
-
-    "helpDisabled": true,
+    "gambleExtended": false,
 
     "symbolsImagesPath": "public/img/games/kingofjewels/symbols/",
     "symbolsAnimationsPath": "public/img/games/kingofjewels/symbols/animations/",

@@ -1,4 +1,5 @@
 @import "../game_types/without_borders";
+@import "../help_types/help_substitution";
 
 .main {
     background: url('../img/games/kingofjewels/game_bg.gif') center center;
@@ -43,4 +44,73 @@
     width: 1406px;
     border-radius: 20px;
     background-size: 100% 100%;
+}
+
+.help {
+    background-image: url('../img/games/bookofwinner/help/border_bg.png');
+    z-index:3;
+}
+.help__btn_next {
+    background-image: url('../img/games/bookofwinner/help/next_btn_bg.gif');
+    display: none;
+}
+.help__btn_prev {
+    background-image: url('../img/games/bookofwinner/help/prev_btn_bg.gif');
+    display: none;
+}
+.help__btn_close {
+    background-image: url('../img/games/bookofwinner/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/kingofjewels/help/slide_bg_1.png');
+}
+
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='4'] {
+        top: 277px;
+        left: 247px;
+    }
+    
+    &[data-symbols='0 7'] {
+        top: 446px;
+        left: 247px;
+        div {
+            margin-bottom: 0;
+        }
+    }
+    
+    &[data-symbols='1'] {
+        top: 259px;
+        left: 654px;
+    }
+    
+    
+    &[data-symbols='3']{
+        top: 425px;
+        left: 656px;
+        
+    }
+    &[data-symbols='2'] {
+        top: 277px;
+        left: 1056px;    
+    }
+    &[data-symbols='5 6'] {
+        top: 446px;
+        left: 1056px;
+    }
+    
+    
+      
 }
