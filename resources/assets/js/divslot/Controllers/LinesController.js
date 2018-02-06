@@ -29,6 +29,7 @@ export default class LinesController {
             const lineColor = this._getLineColorBasedOnItsIndex(res.line_index);
             const line = new Line(this.gameWrapperNode, lineColor, res.line_index, res.points, this.props.reels);
 
+            // FIXME:
             let highlightedSymbols = [];
 
             for (const sCoor of res.list) {
@@ -53,11 +54,14 @@ export default class LinesController {
                 line.connectHighlites();
             }
 
+            line.addLinePointsToFirstHighlight();
+
             winningLines.push(line);
 
             for (const symbol of highlightedSymbols) {
                 symbol.highlighted = false;
             }
+            // FIXME: END
         }
 
         return winningLines;

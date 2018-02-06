@@ -37,9 +37,7 @@ export default class APIController {
                     denomination: denomination,
                     game: gameName
                 });
-                // const responseData = mockSpinAPI.substitution;
-                // const responseData = mockSpinAPI.freeSpinsInFreeSpins;
-                // const responseData = mockSpinAPI.substitution20Lines;
+                // const responseData = mockSpinAPI...;
                 const responseData = response.data;
 
                 console.log(responseData);

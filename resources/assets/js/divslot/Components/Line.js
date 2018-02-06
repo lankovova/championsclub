@@ -51,7 +51,8 @@ export default class Line {
         let rectNode = document.createElementNS(this.namespaceURI, 'rect');
         this.svgNode.appendChild(rectNode);
         this.rectNodes.push(rectNode);
-
+        // Write data-reel attr for points block
+        rectNode.setAttributeNS(null, "data-reel", reel);
         rectNode.setAttributeNS(null, "width", settings.symbolWidth - this.strokeWidth);
         rectNode.setAttributeNS(null, "height", settings.symbolHeight - this.strokeWidth);
         rectNode.setAttributeNS(null, "x", reel * (settings.symbolWidth + settings.spaceBetweenReels) + (this.strokeWidth / 2));
@@ -87,8 +88,63 @@ export default class Line {
 
                 this._createConnection(sPrev, symbol);
             }
-
         }
+    }
+
+    addLinePointsToFirstHighlight() {
+        // Get first highlighted svg node
+        const reelsIndexes = this.rectNodes.map(node => +node.getAttribute("data-reel"));
+        const firstHighlight = this.rectNodes.find(node => Math.min(...reelsIndexes) === +node.getAttribute("data-reel"));
+
+        // If no highlight - do nothing
+        if (!firstHighlight) return;
+
+        const highlight = {
+            x: +firstHighlight.getAttribute('x'),
+            y: +firstHighlight.getAttribute('y')
+        }
+
+
+        let pointsBlock = {
+            pos: {
+                x: highlight.x + 10,
+                y: (highlight.y - 12.5 >= 0) ? highlight.y - 12.5 : 0,
+            },
+            width: 55,
+            height: 25,
+            strokeWidth: 2,
+            get centerX() { return this.pos.x + this.width / 2 },
+            get centerY() { return this.pos.y + this.strokeWidth + this.height / 2 }
+        };
+
+        // Create rect node
+        const rectNode = document.createElementNS(this.namespaceURI, 'rect');
+        rectNode.setAttributeNS(null, "x", pointsBlock.pos.x);
+        rectNode.setAttributeNS(null, "y", pointsBlock.pos.y);
+        rectNode.setAttributeNS(null, "width", pointsBlock.width);
+        rectNode.setAttributeNS(null, "height", pointsBlock.height);
+        rectNode.setAttributeNS(null, "stroke-width", pointsBlock.strokeWidth);
+        rectNode.setAttributeNS(null, "fill", "rgb(0,0,0)");
+        rectNode.setAttributeNS(null, "stroke", this.strokeColor);
+
+        // Create text node
+        const textNode = document.createElementNS(this.namespaceURI, 'text');
+        textNode.setAttributeNS(null, "x", pointsBlock.centerX);
+        textNode.setAttributeNS(null, "y", pointsBlock.centerY);
+        textNode.setAttributeNS(null, "font-size", "18");
+        textNode.setAttributeNS(null, "font-weight", "900");
+        textNode.setAttributeNS(null, "alignment-baseline", "middle");
+        textNode.setAttributeNS(null, "text-anchor", "middle");
+        textNode.setAttributeNS(null, "fill", "rgb(255,255,255)");
+        textNode.innerHTML = this.points;
+
+        // Group nodes up
+        const pointsGroupNode = document.createElementNS(this.namespaceURI, 'g');
+        pointsGroupNode.appendChild(rectNode);
+        pointsGroupNode.appendChild(textNode);
+
+        // Add to svg layer
+        this.svgNode.appendChild(pointsGroupNode);
     }
 
     _createFirstConnection() {
