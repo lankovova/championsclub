@@ -104,7 +104,6 @@ export default class Line {
             y: +firstHighlight.getAttribute('y')
         }
 
-
         let pointsBlock = {
             pos: {
                 x: highlight.x + 10,
