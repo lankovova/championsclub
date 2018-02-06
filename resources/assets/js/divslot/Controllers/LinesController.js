@@ -149,8 +149,6 @@ export default class LinesController {
         line.show();
 
         return new Promise(resolve => {
-            console.log(duration);
-
             setTimeout(() => {
                 line.hide();
                 resolve();
