@@ -462,25 +462,26 @@ export default class Game {
                 }
             }
 
-            // If bonus spins type is substitution
-            if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
+            if (
+                // If bonus spins type is substitution
+                this.bonusSpins.type === BONUS_SPINS_TYPES.substitution
                 // If there is substitution
-                if (this.reelsController.isThereSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol)) {
+                && this.reelsController.isThereSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol)
+                // If user won
+                && previousBonusSpin.substitution.won
+            ) {
                     // Stop symbols animation while substituting other symbols
                     this.linesController.stopSymbolsAnim();
 
                     // Replace symbols in reel
                     await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
-                }
 
-                // Count win
-                if (previousBonusSpin.substitution.won) {
+                    // Count win
                     await this.showWinningLines(previousBonusSpin.substitution.spin_result);
 
                     // Unblur all symbols
                     this.linesController.unblurAllSymbols();
                     this.linesController.removeWinningLines();
-                }
             }
 
             // If no more bonus spins
