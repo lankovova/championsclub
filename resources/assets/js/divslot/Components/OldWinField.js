@@ -7,12 +7,12 @@ export default class OldWinField extends TitleValue {
     }
 
     setWin(value) {
-        this.title = Translator.win;
+        this.title = Translator.get('win');
         this.value = value;
     }
 
     setPreviousWin(value) {
-        this.title = Translator.paid;
+        this.title = Translator.get('paid');
         this.value = value;
     }
 }

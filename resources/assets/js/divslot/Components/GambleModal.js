@@ -12,7 +12,7 @@ class PreviousCards {
         this.titleNode = this.node.querySelector('.title');
         this.suitsNode = this.node.querySelector('.suits');
 
-        this.title = Translator.previousCards;
+        this.title = Translator.get('previousCards');
     }
 
     set title(title) {
@@ -44,11 +44,11 @@ export default class GambleModal {
         this.valuesFields = {
             amount: new TitleValue({
                 node: this.node.querySelector('#gambleAmount'),
-                title: Translator.gambleAmount
+                title: Translator.get('gambleAmount')
             }),
             toWinColor: new TitleValue({
                 node: this.node.querySelector('#gambleToWinColor'),
-                title: Translator.colorGambleToWin
+                title: Translator.get('colorGambleToWin')
             })
         }
 
@@ -61,13 +61,13 @@ export default class GambleModal {
                 node: this.node.querySelector('#red'),
                 onClick: this.props.pickSuit('red'),
                 overlayClass: 'red',
-                title: Translator.red
+                title: Translator.get('red')
             }),
             black: new GambleModalButton({
                 node: this.node.querySelector('#black'),
                 onClick: this.props.pickSuit('black'),
                 overlayClass: 'black',
-                title: Translator.black
+                title: Translator.get('black')
             })
         }
 
@@ -102,7 +102,7 @@ export default class GambleModal {
             const toWinSuitField = {
                 toWinSuit: new TitleValue({
                     node: this.node.querySelector('#gambleToWinSuit'),
-                    title: Translator.suitGambleToWin
+                    title: Translator.get('suitGambleToWin')
                 })
             };
 

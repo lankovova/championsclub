@@ -1,5 +1,4 @@
 import OldMultipleStatesBtn from "./OldMultipleStatesBtn";
-import Translator from './../../Translator';
 
 export default class OldBetOneBtn extends OldMultipleStatesBtn {
     constructor(props) {

@@ -8,7 +8,7 @@ export default class GambleBtn extends MultipleStatesBtn {
         const self = this;
 
         // Set initial text
-        self.text = Translator.gamble;
+        self.text = Translator.get('gamble');
 
         this.state = {
             _gamble: false,
@@ -16,7 +16,7 @@ export default class GambleBtn extends MultipleStatesBtn {
             get gamble() { return this._gamble; },
             set gamble(newState) {
                 if (newState)
-                    self.text = Translator.gamble;
+                    self.text = Translator.get('gamble');
 
                 this._gamble = newState;
                 self._handleDisabling();
@@ -24,7 +24,7 @@ export default class GambleBtn extends MultipleStatesBtn {
             get red() { return this._red; },
             set red(newState) {
                 if (newState)
-                    self.text = Translator.red;
+                    self.text = Translator.get('red');
 
                 this._red = newState;
                 self._handleDisabling();

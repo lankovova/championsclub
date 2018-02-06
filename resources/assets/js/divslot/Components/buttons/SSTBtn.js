@@ -15,7 +15,7 @@ export default class SSTBtn extends MultipleStatesBtn {
             get spin() { return this._spin; },
             set spin(newState) {
                 if (newState)
-                    self.text = Translator.start;
+                    self.text = Translator.get('start');
 
                 this._spin = newState;
                 self._handleDisabling();
@@ -23,7 +23,7 @@ export default class SSTBtn extends MultipleStatesBtn {
             get stop() { return this._stop; },
             set stop(newState) {
                 if (newState)
-                    self.text = Translator.stop;
+                    self.text = Translator.get('stop');
 
                 this._stop = newState;
                 self._handleDisabling();
@@ -31,7 +31,7 @@ export default class SSTBtn extends MultipleStatesBtn {
             get takeWin() { return this._takeWin; },
             set takeWin(newState) {
                 if (newState)
-                    self.text = Translator.take;
+                    self.text = Translator.get('take');
 
                 this._takeWin = newState;
                 self._handleDisabling();
@@ -39,7 +39,7 @@ export default class SSTBtn extends MultipleStatesBtn {
             get speedUpTakeWin() { return this._speedUpTakeWin; },
             set speedUpTakeWin(newState) {
                 if (newState)
-                    self.text = Translator.take;
+                    self.text = Translator.get('take');
 
                 this._speedUpTakeWin = newState;
                 self._handleDisabling();

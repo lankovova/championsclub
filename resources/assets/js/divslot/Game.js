@@ -11,8 +11,6 @@ import APIController from './Controllers/APIController';
 import Translator from './Translator';
 import CookieController from './Controllers/CookieController';
 
-import {Translator as Speaker} from './Translator';
-
 const BONUS_SPINS_TYPES = {
     freeSpin: 'free_spin',
     substitution: 'substitution',
@@ -150,10 +148,10 @@ export default class Game {
     // Disables/enables spin possibility depending on user's bet/cash
     setSpinPossibility = () => {
         if (this.pointsController.totalBet > this.pointsController.userCashInPoints) {
-            this.interfaceController.panel.notifier.text = Translator.notEnoughCash;
+            this.interfaceController.panel.notifier.text = Translator.get('notEnoughCash');
             this.interfaceController.disableSpinAndAuto();
         } else {
-            this.interfaceController.panel.notifier.text = Translator.gameOver;
+            this.interfaceController.panel.notifier.text = Translator.get('gameOver');
             this.interfaceController.setIdle();
         }
     }
@@ -225,7 +223,7 @@ export default class Game {
         this.interfaceController.setGamble(this.pointsController.userWin);
     }
     gambleWin = async (wonCoins) => {
-        this.interfaceController.panel.notifier.text = Translator.win;
+        this.interfaceController.panel.notifier.text = Translator.get('win');
 
         // Update win field
         this.pointsController.userWin = this.pointsController.coinsToPoints(wonCoins);
@@ -345,7 +343,7 @@ export default class Game {
         // FIXME:
         this.linesController.unblurAllSymbols();
 
-        this.interfaceController.panel.notifier.text = `${Translator.bonusSpin} ${this.bonusSpins.currentSpinIndex} ${Translator.of} ${this.bonusSpins.amount}`;
+        this.interfaceController.panel.notifier.text = Translator.currentBonusSpin(this.bonusSpins.currentSpinIndex, this.bonusSpins.amount);
 
         // Spin reels to given final symbols
         this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
@@ -378,8 +376,8 @@ export default class Game {
     async showWinningLines(spinResult) {
         await this.linesController.showWinningLines(spinResult, winCashInLine => {
             this.pointsController.userWin += winCashInLine;
-            // TODO: Change speaker to Translator
-            this.interfaceController.panel.notifier.text = Speaker.userWonPoints(this.pointsController.userWin);
+            // TODO: Change Translator to Translator
+            this.interfaceController.panel.notifier.text = Translator.userWonPoints(this.pointsController.userWin);
         });
 
         return new Promise(resolve => resolve());
@@ -407,8 +405,8 @@ export default class Game {
                 // Based on bonus spins type
                 if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
                     // Show substitution alert
-                    this.interfaceController.showAlert(`${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.bonusSpins} ${Translator.withSubstitution}`);
-                    this.interfaceController.panel.notifier.text = `${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.bonusSpins} ${Translator.withSubstitution}`;
+                    this.interfaceController.showAlert(Translator.wonSubstitution(this.bonusSpins.standartSpinsAmount));
+                    this.interfaceController.panel.notifier.text = Translator.wonSubstitution(this.bonusSpins.standartSpinsAmount);
 
                     this.interfaceController.displaySubstitutionStart();
 
@@ -416,8 +414,8 @@ export default class Game {
                     this.interfaceController.disableInterface();
                     this.interfaceController.enableSpin();
                 } else {
-                    this.interfaceController.showAlert(`${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.bonusSpins}`);
-                    this.interfaceController.panel.notifier.text = `${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.bonusSpins}`;
+                    this.interfaceController.showAlert(Translator.wonBonusSpins(this.bonusSpins.standartSpinsAmount));
+                    this.interfaceController.panel.notifier.text = Translator.wonBonusSpins(this.bonusSpins.standartSpinsAmount);
 
                     // Transfer user regular spin win
                     await this.transferWin();
@@ -449,8 +447,8 @@ export default class Game {
                 if (this.reelsController.isThereBonusSpins()) {
                     await (() => {
                         return new Promise(resolve => {
-                            this.interfaceController.showAlert(`${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.more} ${Translator.bonusSpins}`);
-                            this.interfaceController.panel.notifier.text = `${Translator.youWon} ${this.bonusSpins.standartSpinsAmount} ${Translator.more} ${Translator.bonusSpins}`;
+                            this.interfaceController.showAlert(Translator.wonMoreBonusSpins(this.bonusSpins.standartSpinsAmount));
+                            this.interfaceController.panel.notifier.text = Translator.wonMoreBonusSpins(this.bonusSpins.standartSpinsAmount);
 
                             setTimeout(() => {
                                 this.interfaceController.hideAlert();
@@ -487,10 +485,10 @@ export default class Game {
 
             // If no more bonus spins
             if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
-                this.interfaceController.panel.notifier.text = `${Translator.bonusSpinsIm} ${Translator.ended}. ${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits}`;
+                this.interfaceController.panel.notifier.text = Translator.bonusSpinsEnded(this.pointsController.userWin);
 
                 // Show alert
-                this.interfaceController.showAlert(`${Translator.bonusSpinsIm} ${Translator.ended}, ${Translator.youWon} ${this.pointsController.userWin} ${Translator.credits} ${Translator.in} ${this.bonusSpins.amount} ${Translator.spins}`);
+                this.interfaceController.showAlert(Translator.bonusSpinsEndedExtended(this.pointsController.userWin, this.bonusSpins.amount));
 
                 // Tun off bonus spins
                 this.bonusSpins.on = false;
@@ -543,7 +541,7 @@ export default class Game {
             } else { // Normal spin case
                 // Enable possibility to take win or gamble
                 this.interfaceController.setTakeWin();
-                this.interfaceController.panel.notifier.text = Translator.gambleUpOrTakeWin;
+                this.interfaceController.panel.notifier.text = Translator.get('gambleUpOrTakeWin');
 
                 // Cycle lines showing while user decides to take win or gamble
                 this.linesController.cycleShowingWinningLines();

@@ -22,27 +22,27 @@ export default class Panel {
             lines: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#linesBtn'),
                 onClick: this.props.toggleLinesBlock,
-                title: Translator.lines
+                title: Translator.get('lines')
             }),
             betPerLine: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#betPerLineBtn'),
                 onClick: this.props.toggleBetPerLineBlock,
-                title: Translator.betPerLine
+                title: Translator.get('betPerLine')
             }),
             denomination: new Buttons.ButtonWithNumber({
                 node: document.querySelector('#denominationBtn'),
                 onClick: this.props.toggleDenominationBlock,
-                title: Translator.credit
+                title: Translator.get('credit')
             }),
             auto: new Buttons.AutoBtn({
                 node: document.querySelector('#autoBtn'),
                 onClick: this.props.autoSpinClick,
-                title: Translator.auto
+                title: Translator.get('auto')
             }),
             menu: new Buttons.Button({
                 node: document.querySelector('#menuBtn'),
                 onClick: this.props.menuClickHandler,
-                title: Translator.menu
+                title: Translator.get('menu')
             }),
             help: new Buttons.Button({
                 node: document.querySelector('#helpBtn'),
@@ -65,7 +65,7 @@ export default class Panel {
 
         // FIXME:
         // Translate history btn
-        document.querySelector('#serviceBtn').innerText = Translator.service;
+        document.querySelector('#serviceBtn').innerText = Translator.get('service');
 
         this.notifier = new Notifier();
 
@@ -83,7 +83,7 @@ export default class Panel {
             this.points = this.node.querySelector('.points');
             this.kups = this.node.querySelector('.kups');
 
-            this.title.innerText = Translator.credit;
+            this.title.innerText = Translator.get('credit');
         };
         this.userInsurance = new function() {
             this.node = document.querySelector('#userInsurance');
@@ -91,11 +91,11 @@ export default class Panel {
             this.points = this.node.querySelector('.points');
             this.kups = this.node.querySelector('.kups');
 
-            this.title.innerText = Translator.insurance;
+            this.title.innerText = Translator.get('insurance');
         };
         this.betBlock = new TNBlock({
             node: document.querySelector('#betBlock'),
-            title: Translator.bet
+            title: Translator.get('bet')
         });
         this.winBlock = new TNWinBlock({
             node: document.querySelector('#winBlock')
