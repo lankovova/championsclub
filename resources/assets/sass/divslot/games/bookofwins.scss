@@ -78,42 +78,66 @@
         height: 43px;
     }
     &[data-symbols='3'] {
-        top: 215px;
+        top: 264px;
         left: 276px;
+        div {
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 3px;
+        }
     }
     &[data-symbols='0'] {
         top: 510px;
-        left: 255px;
+        left: 216px;
+        div {
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 3px;
+        }
     }
     &[data-symbols='2 3'] {
-        top: 798px;
-         left: 315px;
+        top: 750px;
+        left: 230px;
         div {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
     }
 
     &[data-symbols='5'] {
-        top: 180px;
-        left: 704px;
+        top: 288px;
+        left: 670px;
         div {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
     }
 
     &[data-symbols='4'] {
-        top: 217px;
-        right: 23px;
+        top: 264px;
+        right: 70px;
+        div {
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 3px;
+        }
     }
     &[data-symbols='9'] {
-        top: 513px;
-        right: 27px;
+        top: 510px;
+        right: 55px;
+        div {
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 3px;
+        }
     }
     &[data-symbols='6 7 8'] {
-        top: 795px;
-        right: 200px;
+        top: 750px;
+        right: 150px;
         div {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
     }
 }
