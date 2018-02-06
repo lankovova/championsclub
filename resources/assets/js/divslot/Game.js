@@ -483,7 +483,7 @@ export default class Game {
                 this.linesController.removeWinningLines();
             }
 
-            // If no more bonus spins
+            // If last bonus spin done
             if (this.bonusSpins.currentSpinIndex === this.bonusSpins.amount) {
                 // Show alert
                 this.interfaceController.showAlert(Translator.bonusSpinsEndedExtended(this.pointsController.userWin, this.bonusSpins.amount));
@@ -497,9 +497,9 @@ export default class Game {
                     this.interfaceController.hideAndResetSubstitutionBlock();
                 }
 
-                // Check if user won
+                // If user won something
                 if (this.pointsController.userWin > 0) {
-                    // If user won something
+                    // Enable take win
                     this.interfaceController.setTakeWin();
                 } else {
                     // If no win at all
