@@ -68,7 +68,7 @@ export default {
                     {class:'nautilus-old', url:'nautilusold'},
                 ],
                 [
-                    {class:'crazy-barmen', url:'crazybarmen'},
+                    {class:'crazy-barmen-old', url:'crazybarmenold'},
                     {class:'snow-white', url:'snowwhite'},
                     {class:'mariner', url:'mariner'},
                     {class:'riddle-of-the-sphinx', url:'riddleofthesphinx'},
