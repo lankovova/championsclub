@@ -189,7 +189,7 @@ export default class NormalInterfaceController {
         // Enable take win posibillity
         this.enableTakeWin();
 
-        this.panel.notifier.text = Translator.gambleChoose;
+        this.panel.notifier.text = Translator.get('gambleChoose');
     }
 
     gambleOver = () => {
@@ -197,7 +197,7 @@ export default class NormalInterfaceController {
         this.setIdle();
 
         // FIXME: Write correct notifier text based on setSpinPossibility answer
-        this.panel.notifier.text = Translator.gambleOver;
+        this.panel.notifier.text = Translator.get('gambleOver');
         this.props.setSpinPossibility();
     }
 
@@ -339,7 +339,7 @@ export default class NormalInterfaceController {
         this.linesBlock = new ToggleBlock({
             node: document.querySelector('#linesBlock'),
             items: settings.lines,
-            title: Translator.selectLine
+            title: Translator.get('selectLine')
         }, {
             setValue: this.props.setLines,
             setInterfaceIdle: this.setIdle,
@@ -351,7 +351,7 @@ export default class NormalInterfaceController {
         this.betPerLineBlock = new ToggleBlock({
             node: document.querySelector('#betPerLineBlock'),
             items: settings.betPerLine,
-            title: Translator.selectBet
+            title: Translator.get('selectBet')
         }, {
             setValue: this.props.setBetPerLine,
             setInterfaceIdle: this.setIdle,
@@ -363,7 +363,7 @@ export default class NormalInterfaceController {
         this.denominationBlock = new ToggleBlock({
             node: document.querySelector('#denominationBlock'),
             items: settings.denominations.map(item => item.toFixed(2)),
-            title: Translator.selectDenomination
+            title: Translator.get('selectDenomination')
         }, {
             setValue: this.props.setDenomination,
             setInterfaceIdle: this.setIdle,
@@ -375,7 +375,7 @@ export default class NormalInterfaceController {
         this.langBlock = new ToggleLanguageBlock({
             node: document.querySelector('#languageBlock'),
             items: ['en', 'ru', 'es', 'hr', 'cz', 'fr', 'it', 'de', 'hu', 'pl', 'pt', 'ro', 'gr', 'nl', 'al', 'ua', 'rs'],
-            title: Translator.selectLanguage
+            title: Translator.get('selectLanguage')
         }, {
             setValue: this.setLanguage,
             setInterfaceIdle: this.setIdle,

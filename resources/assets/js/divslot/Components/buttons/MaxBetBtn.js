@@ -12,7 +12,7 @@ export default class MaxBetBtn extends MultipleStatesBtn {
             get maxbet() { return this._maxbet; },
             set maxbet(newState) {
                 if (newState)
-                    self.text = Translator.maxbet;
+                    self.text = Translator.get('maxbet');
 
                 this._maxbet = newState;
                 self._handleDisabling();
@@ -20,7 +20,7 @@ export default class MaxBetBtn extends MultipleStatesBtn {
             get black() { return this._black; },
             set black(newState) {
                 if (newState)
-                    self.text = Translator.black;
+                    self.text = Translator.get('black');
 
                 this._black = newState;
                 self._handleDisabling();

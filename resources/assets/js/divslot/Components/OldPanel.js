@@ -27,12 +27,12 @@ export default class OldPanel {
             auto: new Buttons.OldAutoBtn({
                 node: document.querySelector('#autoBtn'),
                 onClick: this.props.autoSpinClick,
-                title: Translator.auto
+                title: Translator.get('auto')
             }),
             menu: new Buttons.OldButton({
                 node: document.querySelector('#menuBtn'),
                 onClick: this.props.menuClickHandler,
-                title: Translator.menu
+                title: Translator.get('menu')
             }),
             help: new Buttons.OldButton({
                 node: document.querySelector('#helpBtn'),
@@ -61,23 +61,23 @@ export default class OldPanel {
 
         this.lines = new TitleValue({
             node: document.querySelector('#lines'),
-            title: Translator.lines
+            title: Translator.get('lines')
         });
         this.betPerLine = new TitleValue({
             node: document.querySelector('#betPerLine'),
-            title: Translator.betPerLine
+            title: Translator.get('betPerLine')
         });
         this.denomination = new TitleValue({
             node: document.querySelector('#denomination'),
-            title: Translator.credit
+            title: Translator.get('credit')
         });
         this.userCash = new TitleValue({
             node: document.querySelector('#userCash'),
-            title: Translator.credit
+            title: Translator.get('credit')
         });
         this.betBlock = new TitleValue({
             node: document.querySelector('#bet'),
-            title: Translator.bet
+            title: Translator.get('bet')
         });
         this.winBlock = new OldWinField({
             node: document.querySelector('#win')

@@ -24,6 +24,7 @@ export default class Help {
             const symbols = container.dataset.symbols.split(' ');
             const paytable = settings.symbols[symbols[0]].paytable;
             const isScatter = settings.symbols[symbols[0]].isScatter;
+            const isJoker = container.hasAttribute('data-joker');
 
             // clear prev values
             while (container.firstChild) {
@@ -33,8 +34,9 @@ export default class Help {
             for (const pay of paytable) {
                 if (+pay !== 0) {
                     const payEl = document.createElement('div');
-                    payEl.innerText = isScatter ?
-                        pay * this.betPerLine * this.linesAmount : pay * this.betPerLine;
+                    payEl.innerText = isScatter
+                                        ? pay * this.betPerLine * this.linesAmount * (isJoker ? 2 : 1)
+                                        : pay * this.betPerLine * (isJoker ? 2 : 1);
                     container.prepend(payEl);
                 }
             }

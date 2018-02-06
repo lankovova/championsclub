@@ -117,8 +117,9 @@ export default class LinesController {
      * Show all winning lines
      * @param {Number[][]} gameResult Game result
      * @param {Function} addUserWin Function
+     * @param {Number=} duration Duration of line show
      */
-    async showWinningLines(gameResult, addUserWin) {
+    async showWinningLines(gameResult, addUserWin, duration) {
         // Activate dark layer on all symbols
         this.blurAllSymbols();
 
@@ -128,7 +129,11 @@ export default class LinesController {
             // Add new win points for each line
             addUserWin(line.points);
 
-            await this.showWinningLine(line);
+            // Set dynamic duration
+            const lineShowDuration = (duration) ? duration : this.getLineShowDuration(line.points);
+
+            // Show win line
+            await this.showWinningLine(line, lineShowDuration);
         }
 
         // Resolve promise when all lines has shown
@@ -136,17 +141,18 @@ export default class LinesController {
     }
 
     /**
-     * Show specific line and hide after delay
+     * Show specific line some amount of time
      * @param {Line} line Line to show
+     * @param {Number=} [duration=800] Duration how long to show line
      */
-    showWinningLine(line) {
+    showWinningLine(line, duration=800) {
         line.show();
 
         return new Promise(resolve => {
             setTimeout(() => {
                 line.hide();
                 resolve();
-            }, settings.delayBetweenShowingWinningLines);
+            }, duration);
         });
     }
 
@@ -188,6 +194,27 @@ export default class LinesController {
             line.hide();
         }
         this.lines[lineIndex].show();
+    }
+
+    /**
+     * Get line show duration based on its points
+     * @param {Number} points
+     * @returns {Number} Returns duration in milliseconds
+     */
+    getLineShowDuration(points) {
+        if (points < 10) {
+            return 1000;
+        } else if (points < 50) {
+            return 1200;
+        } else if (points < 100) {
+            return 1500;
+        } else if (points < 500) {
+            return 2000;
+        } else if (points < 1000) {
+            return 3000;
+        } else {
+            return 3500;
+        }
     }
 
     _createStaticLines() {

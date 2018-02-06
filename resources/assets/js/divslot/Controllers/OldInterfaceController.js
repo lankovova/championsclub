@@ -200,7 +200,7 @@ export default class OldInterfaceController {
         // Enable take win posibillity
         this.enableTakeWin();
 
-        this.panel.notifier.text = Translator.gambleChoose;
+        this.panel.notifier.text = Translator.get('gambleChoose');
     }
 
     gambleOver = () => {
@@ -208,7 +208,7 @@ export default class OldInterfaceController {
         this.setIdle();
 
         // FIXME: Write correct notifier text based on setSpinPossibility answer
-        this.panel.notifier.text = Translator.gambleOver;
+        this.panel.notifier.text = Translator.get('gambleOver');
         this.props.setSpinPossibility();
     }
 
