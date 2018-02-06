@@ -223,7 +223,6 @@ export default class Line {
         lineNode.setAttributeNS(null, "stroke", this.strokeColor);
         lineNode.setAttributeNS(null, "stroke-width", this.strokeWidth);
         lineNode.setAttributeNS(null, "stroke-linecap", 'round');
-        lineNode.setAttributeNS(null, "opacity", '0.8');
     }
 
     _lineWidth() {
