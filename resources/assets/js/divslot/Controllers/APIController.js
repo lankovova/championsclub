@@ -39,6 +39,7 @@ export default class APIController {
                 });
                 // const responseData = mockSpinAPI.substitution;
                 // const responseData = mockSpinAPI.freeSpinsInFreeSpins;
+                // const responseData = mockSpinAPI.substitution20Lines;
                 const responseData = response.data;
 
                 console.log(responseData);

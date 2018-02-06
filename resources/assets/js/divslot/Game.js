@@ -372,12 +372,13 @@ export default class Game {
     /**
      * Show winning lines of passed spin result and add win
      * @param {[]} spinResult Spin result of lines
+     * @param {Number} duration Duration of line show
      */
-    async showWinningLines(spinResult) {
+    async showWinningLines(spinResult, duration) {
         await this.linesController.showWinningLines(spinResult, winCashInLine => {
             this.pointsController.userWin += winCashInLine;
             this.interfaceController.panel.notifier.text = Translator.userWonPoints(this.pointsController.userWin);
-        });
+        }, duration);
 
         return new Promise(resolve => resolve());
     }
@@ -475,7 +476,7 @@ export default class Game {
                 await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
 
                 // Count win
-                await this.showWinningLines(previousBonusSpin.substitution.spin_result);
+                await this.showWinningLines(previousBonusSpin.substitution.spin_result, 500);
 
                 this.linesController.unblurAllSymbols();
                 this.linesController.removeWinningLines();
