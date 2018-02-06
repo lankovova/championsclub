@@ -470,18 +470,17 @@ export default class Game {
                 // If user won
                 && previousBonusSpin.substitution.won
             ) {
-                    // Stop symbols animation while substituting other symbols
-                    this.linesController.stopSymbolsAnim();
+                // Stop symbols animation while substituting other symbols
+                this.linesController.stopSymbolsAnim();
 
-                    // Replace symbols in reel
-                    await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
+                // Replace symbols in reel
+                await this.reelsController.makeSubstitution(previousBonusSpin.substitution.final_symbols, this.spinResponse.bonus_spins.substitution_symbol);
 
-                    // Count win
-                    await this.showWinningLines(previousBonusSpin.substitution.spin_result);
+                // Count win
+                await this.showWinningLines(previousBonusSpin.substitution.spin_result);
 
-                    // Unblur all symbols
-                    this.linesController.unblurAllSymbols();
-                    this.linesController.removeWinningLines();
+                this.linesController.unblurAllSymbols();
+                this.linesController.removeWinningLines();
             }
 
             // If no more bonus spins
