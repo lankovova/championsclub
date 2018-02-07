@@ -51,9 +51,10 @@ class Game {
      * Return bonus spin result accoding to $bonusType.
      *
      * @param string $bonusType
+     * @param array $params will be passed to bonus instance
      * @return array
      */
-    public function bonusSpin(string $bonusType): array {
+    public function bonusSpin(string $bonusType, array $params=[]): array {
         $bonusClass = "App\\Game\\Bonus\\$bonusType";
         $freeSpinsObj = new $bonusClass([
             "symbolsAmount" => $this->symbolsAmount,
@@ -67,7 +68,7 @@ class Game {
             "paytable" => $this->paytable,
             "betPerLine" => $this->betPerLine,
             "denomination" => $this->denomination
-        ]);
+        ], $params);
 
         return $freeSpinsObj->getResult();
     }
