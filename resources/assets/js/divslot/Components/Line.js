@@ -14,8 +14,9 @@ export default class Line {
         this.lineTypeNumber = lineTypeNumber;
         this.lineType = settings.lineTypes[lineTypeNumber];
         this.reels = reels;
-
         this.points = points;
+
+        this.offset = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber).offset;
 
         this.svgNode = document.createElementNS(this.namespaceURI, 'svg');
         this.container.appendChild(this.svgNode);
@@ -213,6 +214,9 @@ export default class Line {
     _setLineAttrs(start, end) {
         let lineNode = document.createElementNS(this.namespaceURI, 'line');
         this.svgNode.appendChild(lineNode);
+
+        start.y += this.offset
+        end.y += this.offset
 
         lineNode.setAttributeNS(null, "x1", start.x);
         lineNode.setAttributeNS(null, "y1", start.y);
