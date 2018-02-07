@@ -23,7 +23,7 @@ export default class FallReel {
         this.reelNode = document.createElement('div');
         this.reelNode.className = 'reel';
         this.reelNode.style.transition = `transform ${settings.spinAnimationTimeInMs}ms ${settings.spinAnimTimingFunc}`;
-        this.reelNode.style.height = `${settings.symbolHeight * (settings.numOfRows + 1)}px`; // + bonus slot for hidden symbol
+        this.reelNode.style.height = `${settings.symbolHeight * settings.numOfRows}px`;
         this.reelNode.style.width = `${settings.symbolWidth}px`;
 
         // Spawn initial symbols
@@ -48,7 +48,7 @@ export default class FallReel {
                 }
             } while (!symbolCanPass);
 
-            symbol.node.style.transform = `translateY(${settings.symbolHeight * (settings.numOfRows - i)}px)`;
+            symbol.node.style.transform = `translateY(${(settings.numOfRows - 1 - i) * 100}%)`;
 
             spawnedSymbols.push(symbol);
             this.finalSymbols.unshift(symbol);
@@ -118,8 +118,7 @@ export default class FallReel {
         }
 
         this.finalSymbols = finalSymbols.slice().reverse();
-
-        this._addSymbols(finalSymbols);
+        this._addSymbols(this.finalSymbols);
     }
 
     /**
@@ -128,6 +127,7 @@ export default class FallReel {
      */
     _addSymbols(symbolsArr) {
         for (let i = 0; i < symbolsArr.length; i++) {
+            symbolsArr[i].node.style.transform = `translateY(-${(i + 1) * 100}%)`;
             this.reelNode.appendChild(symbolsArr[i].node);
         }
     }
