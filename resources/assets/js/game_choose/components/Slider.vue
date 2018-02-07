@@ -23,7 +23,7 @@ export default {
         return {
             start: 1,
             current: 1,
-            trasitionTime: 500,
+            trasitionTime: 700,
             slides: [
                 [
                     {class:'book-of-winner', url:'bookofwinner'},

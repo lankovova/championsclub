@@ -55,8 +55,6 @@ class Player {
             $cashPool = 0.10;
         }
 
-        // TODO: remove static cash pool
-        $cashPool = 1000;
         return $cashPool;
     }
 

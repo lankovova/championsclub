@@ -60,7 +60,9 @@ class GameController extends Controller
 
         $result = $this->getResults($game, $reqData);
         $this->saveResult($result);
-
+        
+        // TODO turn off cash poll field
+        $result['CASH_POOL'] = $this->player->getCashPool() * 100;
         return response()->json($result);
     }
 
