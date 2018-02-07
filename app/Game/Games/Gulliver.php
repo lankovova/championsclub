@@ -7,7 +7,7 @@ use App\Game\Games\Game;
 class Gulliver extends Game {
     public static $reelsAmount = 5;
     public static $scatter = [3, 2, 4];
-    public static $joker = 10;
+    public static $joker = 5;
     public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 12;
     public static $paytable = [
@@ -22,7 +22,7 @@ class Gulliver extends Game {
         [0,5,15,75,250],     //PAYTABLE FOR SYMBOL 9
         [0,5,25,100,500],     //PAYTABLE FOR SYMBOL 10
         [0,5,50,200,1000],     //PAYTABLE FOR SYMBOL 11
-        [0,0,10,40,150],    //PAYTABLE FOR SYMBOL 123
+        [0,0,10,40,150],    //PAYTABLE FOR SYMBOL 12
     ];
 
     function __construct($game) {

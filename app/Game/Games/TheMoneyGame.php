@@ -6,7 +6,7 @@ use App\Game\Games\Game;
 
 class TheMoneyGame extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 9;
+    public static $scatter = 8;
     public static $joker = 12;
     public static $freeSpinsAmount = 15;
     public static $symbolsAmount = 13;

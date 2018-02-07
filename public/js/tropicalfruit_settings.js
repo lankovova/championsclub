@@ -62,7 +62,7 @@ var settings = {
             //     "image": "5.png",
             //     "frames": 9
             // },
-            "isScatter": true,
+            
             "paytable": [0,0,30,150,500],
         }, {
             "image": "6.png",

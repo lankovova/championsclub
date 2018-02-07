@@ -29,12 +29,14 @@ var settings = {
     "symbolsImagesPath": "public/img/games/gulliver/symbols/",
     "symbolsAnimationsPath": "public/img/games/gulliver/symbols/animations/",
 
+    "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+
     "symbols": [
         {"image": "1.png"},
-        {"image": "2.png", "isScatter": true},
+        {"image": "2.png"},
         {"image": "3.png", "isScatter": true},
         {"image": "4.png", "isScatter": true},
-        {"image": "5.png"},
+        {"image": "5.png", "isScatter": true},
         {"image": "6.png"},
         {"image": "7.png"},
         {"image": "8.png"},

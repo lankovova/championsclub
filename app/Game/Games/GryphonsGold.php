@@ -13,7 +13,7 @@ class GryphonsGold extends Game {
     public static $paytable = [
         [0,0,15,75,250], //PAYTABLE FOR SYMBOL 1
         [0,0,5,25,100],  //PAYTABLE FOR SYMBOL 2
-        [0,5,25,125,750],  //PAYTABLE FOR SYMBOL 3
+        [0,2,25,125,750],  //PAYTABLE FOR SYMBOL 3
         [0,0,10,50,125],  //PAYTABLE FOR SYMBOL 4
         [0,5,25,125,750],    //PAYTABLE FOR SYMBOL 5
         [0,0,5,25,100],    //PAYTABLE FOR SYMBOL 6
