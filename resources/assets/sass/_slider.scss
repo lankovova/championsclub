@@ -1,4 +1,4 @@
-.slider {
+.slider-overlay {
     display: block;
     position: relative;
     width: 100vw;
@@ -10,6 +10,10 @@
     display: flex;
     align-items: center;
     height: 500px;
+}
+.slider {
+    width: 100%;
+    height: 100%;
     -webkit-mask-image: -webkit-gradient( linear, left center, right center,
         color-stop(0.00, rgba(0,0,0,0.3)),
         color-stop(0.10, rgba(0,0,0,1)),
