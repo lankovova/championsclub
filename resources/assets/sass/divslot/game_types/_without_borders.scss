@@ -93,7 +93,8 @@ body {
 }
 
 .reel_wrapper {
-    background-size: cover;
+    // Because background rewrites it in every game
+    background-size: 100% 100% !important;
     position: relative;
     overflow: hidden;
 }
