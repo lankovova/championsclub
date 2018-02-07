@@ -22,16 +22,10 @@ export default class Symbol {
         this.symbolNode.style.width = `${settings.symbolWidth}px`;
         this.symbolNode.style.height = `${settings.symbolHeight}px`;
         this.symbolNode.style.backgroundImage = `url('${settings.symbolsImagesPath + settings.symbols[this.symbolNum].image}')`;
-        this.symbolNode.style.backgroundSize = '100% 100%';
-        this.symbolNode.style.backgroundPosition = 'center center';
-        this.symbolNode.style.backgroundRepeat = 'no-repeat';
+        this.symbolNode.className = 'symbol';
 
         this.overflowLayer = document.createElement('div');
-        this.overflowLayer.style.position = 'absolute';
-        this.overflowLayer.style.top = '0';
-        this.overflowLayer.style.left = '0';
-        this.overflowLayer.style.width = '100%';
-        this.overflowLayer.style.height = '100%';
+        this.overflowLayer.classList.add('overflow', 'off');
         this.symbolNode.appendChild(this.overflowLayer);
     }
 
@@ -70,10 +64,12 @@ export default class Symbol {
     }
 
     blurDark() {
-        this.overflowLayer.style.backgroundColor = 'rgba(0,0,0,0.6)';
+        this.overflowLayer.classList.add('on');
+        this.overflowLayer.classList.remove('off');
     }
     unblur() {
-        this.overflowLayer.style.backgroundColor = '';
+        this.overflowLayer.classList.add('off');
+        this.overflowLayer.classList.remove('on');
     }
 
     get node() {

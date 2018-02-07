@@ -130,6 +130,25 @@ body {
     height: 1050px;
 }
 
+.symbol {
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    .overflow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        &.on {
+            background-color: rgba(0,0,0,0.6);
+        }
+        &.off {
+            background-color: transparent;
+        }
+    }
+}
+
 .panel_row-top {
     background: none;
 }
