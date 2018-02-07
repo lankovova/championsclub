@@ -1,20 +1,20 @@
 <template>
     <div class="slider-overlay">
-    <div class="slider" >
-        <div class="slider__tracker" ref="sliderTracker">
-            <div v-for="(slide, key) in slides" :key="key" class="slide">
-                <div class="slide__part-container">
-                    <a v-for="(item, key) in slide" 
-                        :key="key" 
-                        :class="'slide__part slide__part--' + item.class"
-                        :href="'/' + item.url"
-                    ></a>
+        <div class="slider" >
+            <div class="slider__tracker" ref="sliderTracker">
+                <div v-for="(slide, key) in slides" :key="key" class="slide">
+                    <div class="slide__part-container">
+                        <a v-for="(item, key) in slide" 
+                            :key="key" 
+                            :class="'slide__part slide__part--' + item.class"
+                            :href="'/' + item.url"
+                        ></a>
+                    </div>
                 </div>
             </div>
+            
         </div>
-        
-    </div>
-    <div class="slider__counter">{{ $t("slide_count", {current: curr, amount: slides.length}) }}</div>
+        <div class="slider__counter">{{ $t("slide_count", {current: curr, amount: slides.length}) }}</div>
     </div>
 </template>
 
