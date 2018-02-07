@@ -237,18 +237,19 @@ export default class LinesController {
      * @returns Returns line color in any available css format (rgb, rgba, hex, etc.)
      */
     _getLineColorBasedOnItsIndex(lineIndex) {
-        let presenterArr;
-        if (settings.gameType === 'old') {
-            presenterArr = settings.linePresenter;
-        } else {
-            presenterArr = lineIndex < 10 ? settings.linePresenterLeftLines : settings.linePresenterRightLines;
-        }
+        const presenterArr = (settings.gameType === 'old')
+                                // FIXME:
+                                ? settings.linePresenter
+                                : settings.linePresenterLeftLines.concat(settings.linePresenterRightLines);
 
+        // And search for line color in merged presenters array
         for (const presenter of presenterArr) {
-            if (presenter.lineIndex === lineIndex)
+            if (presenter.lineIndex === lineIndex) {
                 return presenter.color;
+            }
         }
 
+        // If line not found return default white color
         return 'rgb(255, 255, 255)';
     }
 }

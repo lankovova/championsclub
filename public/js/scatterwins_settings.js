@@ -74,7 +74,7 @@ var settings = {
         {lineIndex: 12, color: "rgb(255, 199, 0)"},
         {lineIndex: 16, color: "rgb(255, 199, 0)"},
         {lineIndex: 10, color: "rgb(255, 199, 0)"},
-        {lineIndex: 9, color: "rgb(255, 199, 0)"},
+        {lineIndex: 9,  color: "rgb(255, 199, 0)"},
         {lineIndex: 15, color: "rgb(255, 199, 0)"},
         {lineIndex: 11, color: "rgb(255, 199, 0)"},
         {lineIndex: 13, color: "rgb(255, 199, 0)"},
