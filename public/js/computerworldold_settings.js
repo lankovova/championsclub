@@ -8,7 +8,7 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 5,
 
-    "animationType": "fall",
+    "animationType": "spin",
 
     "numOfSpinsBeforeStop": 3,
 
