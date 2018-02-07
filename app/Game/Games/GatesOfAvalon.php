@@ -8,6 +8,7 @@ class GatesOfAvalon extends Game {
     public static $reelsAmount = 5;
     public static $scatter = 0;
     public static $joker = 0;
+    public static $bonusSpinJoker = 1;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 10;
     public static $paytable = [
@@ -32,7 +33,7 @@ class GatesOfAvalon extends Game {
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpinsAnotherJoker", ["bonusSpinJoker" => 1]);
+        return $this->game->bonusSpin("FreeSpinsAnotherJoker", ["bonusSpinJoker" => $this->bonusSpinJoker]);
     }
 
     public function areBonusSpins() {

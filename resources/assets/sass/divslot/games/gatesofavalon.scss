@@ -1,78 +1,8 @@
-@import "../reset";
-@import "../fonts";
-@import "../animations";
-@import "../media/media";
-@import "../preloader";
-@import "../panel";
+@import "../game_types/without_borders";
+@import "../help_types/help_substitution";
 
-* {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-body {
-    font-family: "Oswald",  sans-serif;
-    overflow: hidden;
-}
-
-.game_wrapper {
-    position: fixed;
-    width: 1680px;
-    height: 1050px;
-}
-
-#game {
-    width: 1680px;
-    height: 1050px;
-    background: #080200;
-    overflow: hidden;
-    position: absolute;
-}
-.alert {
-    display: none;
-
-    position: absolute;
-    z-index: 600;
-    width: 100%;
-    height: 100%;
-
-    align-items: center;
-    justify-content: center;
-}
-.alert .content {
-    width: 50%;
-    min-width: 300px;
-    height: 50%;
-    min-height: 200px;
-    background: lightseagreen;
-    border-radius: 10px;
-}
 .main {
-
-    width: 1680px;
-    height: 731px;
-    background: url('../img/games/gatesofaualon/game_bg.png') center center;
-    background-size: contain;
-    position: absolute;
-}
-
-.reels_wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    z-index: 1;
-    padding-top: 10px;
-    box-sizing: border-box;
-}
-
-.line_presenters_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 4px 13px 0;
-    height: 692px;
+    background: url('../img/games/gatesofavalon/game_bg.gif') center center;
 }
 
 .line_presenter {
@@ -90,28 +20,146 @@ body {
     align-items: center;
 }
 
-.reels_container {
-    display: flex;
-    position: relative;
-}
-
 .reel_wrapper {
-    background: url('../img/games/gatesofaualon/reel_bg.png');
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-}
-
-.reel {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    background: url('../img/games/gatesofavalon/reel_bg.png');
 }
 
 .header {
-    width: 100%;
-    height: 105px;
-    background: url('../img/games/gatesofaualon/header.png');
+    background: url('../img/games/gatesofavalon/header.gif');
+}
+.alert .content {
+    background-image: url("../img/games/gatesofavalon/freeSpinBg.png");
     background-size: 100% 100%;
+    width: 950px;
+    height: 500px;
+    padding: 50px 100px 100px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(233, 251, 0);
+    text-shadow: 2px 2px 5px darkslategrey;
+    text-transform: uppercase;
+}
+.gamble {
+    background-image: url('../img/games/gatesofavalon/gamble/gamble_bg.png');
+    background-size: 100% 100%;
+    border-radius: 20px;
+    width: 1402px;
 }
 
+.substitutionBlock-wrapper {
+    display: none;
+
+    position: absolute;
+    z-index: 51;
+    width: 260px;
+    height: 130px;
+
+    background-size: 100% 100%;
+
+    transition: top    1000ms ease-in-out,
+                bottom 1000ms ease-in-out,
+                left   1000ms ease-in-out,
+                right  1000ms ease-in-out;
+
+    & .substitutionBlock {
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        & .substitutionSymbol-container {
+            width: 50%;
+            padding: 25px 28px 31px;
+            box-sizing: border-box;
+
+            & .substitutionSymbol {
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        & .substitutionPaytable-container {
+            width: 50%;
+            padding: 25px 10px 31px;
+            box-sizing: border-box;
+
+            & .substitutionPaytable {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    &.start {
+        top: 50%;
+        left: calc(50% - 130px);
+    }
+    &.finish {
+        top: -13px;
+        left: calc(50% - 130px);
+    }
+}
+.help {
+    background-image: url('../img/games/gatesofavalon/help/border_bg.png');
+}
+.help__btn_next {
+    background-image: url('../img/games/gatesofavalon/help/next_btn_bg.gif');
+}
+.help__btn_prev {
+    background-image: url('../img/games/gatesofavalon/help/prev_btn_bg.gif');
+}
+.help__btn_close {
+    background-image: url('../img/games/gatesofavalon/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/gatesofavalon/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/gatesofavalon/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='6'] {
+        top: 270px;
+        left: 255px;
+    }
+    &[data-symbols='3'] {
+        top: 510px;
+        left: 255px;
+    }
+    &[data-symbols='1 5'] {
+        top: 750px;
+        left: 255px;
+    }
+
+    &[data-symbols='0'] {
+        top: 326px;
+        left: 674px;
+    }
+
+    &[data-symbols='8'] {
+        top: 270px;
+        right: 255px;
+    }
+    &[data-symbols='9'] {
+        top: 510px;
+        right: 255px;
+    }
+    &[data-symbols='2 4'] {
+        top: 750px;
+        right: 255px;
+    }
+}
