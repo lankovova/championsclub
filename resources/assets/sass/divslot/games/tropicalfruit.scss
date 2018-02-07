@@ -1,11 +1,25 @@
 @import "../game_types/with_borders";
 @import "../help_types/help_substitution";
 
-.alert .content {
-    background: url('../img/games/tropicalfruit/images/freeSpinBg.png');
-    width: 541px;
-    height: 497px;
+#preloader {
+    background: url('../img/games/tropicalfruit/symbols/1.png'),
+                url('../img/games/tropicalfruit/symbols/2.png'),
+                url('../img/games/tropicalfruit/symbols/3.png'),
+                url('../img/games/tropicalfruit/symbols/4.png'),
+                url('../img/games/tropicalfruit/symbols/5.png'),
+                url('../img/games/tropicalfruit/symbols/6.png'),
+                url('../img/games/tropicalfruit/symbols/7.png'),
+                url('../img/games/tropicalfruit/symbols/8.png'),
+                url('../img/games/tropicalfruit/symbols/animations/1.png'),
+                url('../img/games/tropicalfruit/symbols/animations/2.png'),
+                url('../img/games/tropicalfruit/symbols/animations/3.png'),
+                url('../img/games/tropicalfruit/symbols/animations/4.png'),
+                url('../img/games/tropicalfruit/symbols/animations/5.png'),
+                url('../img/games/tropicalfruit/symbols/animations/6.png'),
+                url('../img/games/tropicalfruit/symbols/animations/7.png'),
+                url('../img/games/tropicalfruit/symbols/animations/8.png'),
 }
+
 .main {
     background: url('../img/games/tropicalfruit/game_bg.png') center center;
 }
