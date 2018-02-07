@@ -1,5 +1,6 @@
 var settings = {
-    "symbolSize": 233,
+    "symbolWidth": 367,
+    "symbolHeight": 233,
     "spaceBetweenReels": 77,
 
     "numOfRows": 3,
