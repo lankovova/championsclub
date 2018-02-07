@@ -17,7 +17,8 @@ export default class Line {
         this.points = points;
 
         this.offset = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber).offset;
-
+        this.offset = settings.gameType === 'old' ? 0 : this.offset;
+        
         this.svgNode = document.createElementNS(this.namespaceURI, 'svg');
         this.container.appendChild(this.svgNode);
 
