@@ -1,4 +1,5 @@
 <template>
+    <div class="slider-overlay">
     <div class="slider" >
         <div class="slider__tracker" ref="sliderTracker">
             <div v-for="(slide, key) in slides" :key="key" class="slide">
@@ -11,7 +12,9 @@
                 </div>
             </div>
         </div>
-        <div class="slider__counter">{{ $t("slide_count", {current: curr, amount: slides.length}) }}</div>
+        
+    </div>
+    <div class="slider__counter">{{ $t("slide_count", {current: curr, amount: slides.length}) }}</div>
     </div>
 </template>
 
@@ -23,7 +26,7 @@ export default {
         return {
             start: 1,
             current: 1,
-            trasitionTime: 700,
+            trasitionTime: 500,
             slides: [
                 [
                     {class:'book-of-winner', url:'bookofwinner'},

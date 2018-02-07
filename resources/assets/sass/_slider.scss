@@ -12,8 +12,8 @@
     height: 500px;
     -webkit-mask-image: -webkit-gradient( linear, left center, right center,
         color-stop(0.00, rgba(0,0,0,0.3)),
-        color-stop(0.20, rgba(0,0,0,1)),
-        color-stop(0.80, rgba(0,0,0,1)),
+        color-stop(0.10, rgba(0,0,0,1)),
+        color-stop(0.90, rgba(0,0,0,1)),
         color-stop(1.00, rgba(0,0,0,0.3)));
 
     &__tracker {
