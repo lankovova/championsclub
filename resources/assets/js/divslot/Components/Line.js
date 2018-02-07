@@ -104,21 +104,19 @@ export default class Line {
         }
 
         let pointsBlock = {
-            pos: {
-                x: highlight.x + 10,
-                y: (highlight.y - 12.5 >= 0) ? highlight.y - 12.5 : 0,
-            },
             width: 55,
             height: 25,
             strokeWidth: 2,
-            get centerX() { return this.pos.x + this.width / 2 },
-            get centerY() { return this.pos.y + this.strokeWidth + this.height / 2 }
+            get x() { return highlight.x + 10 },
+            get y() { return (highlight.y - this.height / 2 >= 0) ? highlight.y - this.height / 2 : 0 },
+            get centerX() { return this.x + this.width / 2 },
+            get centerY() { return this.y + this.strokeWidth + this.height / 2 }
         };
 
         // Create rect node
         const rectNode = document.createElementNS(this.namespaceURI, 'rect');
-        rectNode.setAttributeNS(null, "x", pointsBlock.pos.x);
-        rectNode.setAttributeNS(null, "y", pointsBlock.pos.y);
+        rectNode.setAttributeNS(null, "x", pointsBlock.x);
+        rectNode.setAttributeNS(null, "y", pointsBlock.y);
         rectNode.setAttributeNS(null, "width", pointsBlock.width);
         rectNode.setAttributeNS(null, "height", pointsBlock.height);
         rectNode.setAttributeNS(null, "stroke-width", pointsBlock.strokeWidth);
