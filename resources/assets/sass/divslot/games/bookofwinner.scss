@@ -1,6 +1,29 @@
 @import "../game_types/without_borders";
 @import "../help_types/help_substitution";
 
+#preloader {
+    background: url('../img/games/bookofwinner/symbols/1.png'),
+                url('../img/games/bookofwinner/symbols/2.png'),
+                url('../img/games/bookofwinner/symbols/3.png'),
+                url('../img/games/bookofwinner/symbols/4.png'),
+                url('../img/games/bookofwinner/symbols/5.png'),
+                url('../img/games/bookofwinner/symbols/6.png'),
+                url('../img/games/bookofwinner/symbols/7.png'),
+                url('../img/games/bookofwinner/symbols/8.png'),
+                url('../img/games/bookofwinner/symbols/9.png'),
+                url('../img/games/bookofwinner/symbols/10.png'),
+                url('../img/games/bookofwinner/symbols/animations/1.png'),
+                url('../img/games/bookofwinner/symbols/animations/2.png'),
+                url('../img/games/bookofwinner/symbols/animations/3.png'),
+                url('../img/games/bookofwinner/symbols/animations/4.png'),
+                url('../img/games/bookofwinner/symbols/animations/5.png'),
+                url('../img/games/bookofwinner/symbols/animations/6.png'),
+                url('../img/games/bookofwinner/symbols/animations/7.png'),
+                url('../img/games/bookofwinner/symbols/animations/8.png'),
+                url('../img/games/bookofwinner/symbols/animations/9.png'),
+                url('../img/games/bookofwinner/symbols/animations/10.png'),
+}
+
 .main {
     background: url('../img/games/bookofwinner/game_bg.gif') center center;
 }
