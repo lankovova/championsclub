@@ -13,9 +13,6 @@ export default class OldInterfaceController {
     constructor(props) {
         this.props = props;
 
-        // FIXME: DEV TEMP
-        this._showControls();
-
         this.helpWindow = new Help({
             node: document.querySelector('#help'),
             onClose: this.onCloseHelp
@@ -53,17 +50,6 @@ export default class OldInterfaceController {
 
         // Init handler on keyboard actions
         this._initKeyboardListeners();
-    }
-
-    _showControls() {
-        console.log(
-        `Controls:
-            space - Spin
-            < - Increase lines
-            > - Increase bet per line
-            m - Set max bet
-            Esc - Menu`
-        );
     }
 
     setLines = (linesAmount) => {
@@ -317,17 +303,20 @@ export default class OldInterfaceController {
                 case 32: // Space
                     this.spinStopTakeClickHandler();
                     break;
-                case 188: // <
-                    this.setLines();
-                    break;
-                case 190: // >
+                case 27: // ESC
                     this.setBetPerLine();
                     break;
-                case 77: // m
+                case 48: // 0
+                    this.setLines();
+                    break;
+                case 49: // 1
                     this.maxBetClickHandler();
                     break;
-                case 27: // ESC
+                case 51: // 3
                     this.panel.btns.menu.onClick();
+                    break;
+                case 53: // 5
+                    this.autoSpinClick();
                     break;
                 default: {}
             }

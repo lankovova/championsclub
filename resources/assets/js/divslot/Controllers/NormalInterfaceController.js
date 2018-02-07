@@ -13,9 +13,6 @@ export default class NormalInterfaceController {
     constructor(props) {
         this.props = props;
 
-        // FIXME: DEV TEMP
-        this._showControls();
-
         this.helpWindow = new Help({
             node: document.querySelector('#help'),
             onClose: this.onCloseHelp
@@ -59,18 +56,6 @@ export default class NormalInterfaceController {
 
         // Init handler on keyboard actions
         this._initKeyboardListeners();
-    }
-
-    _showControls() {
-        console.log(
-        `Controls:
-            space - Spin
-            < - Increase lines
-            > - Increase bet per line
-            d - Increase denomination
-            m - Set max bet
-            Esc - Menu`
-        );
     }
 
     // TODO: Move state into component in multi state component
@@ -315,20 +300,23 @@ export default class NormalInterfaceController {
                 case 32: // Space
                     this.spinStopTake();
                     break;
-                case 188: // <
-                    this.linesBlock.setValue();
-                    break;
-                case 190: // >
-                    this.betPerLineBlock.setValue();
-                    break;
-                case 77: // m
-                    this.maxBetClickHandler();
-                    break;
                 case 68: // d
                     this.denominationBlock.setValue();
                     break;
                 case 27: // ESC
+                    this.betPerLineBlock.setValue();
+                    break;
+                case 48: // 0
+                    this.linesBlock.setValue();
+                    break;
+                case 49: // 1
+                    this.maxBetClickHandler();
+                    break;
+                case 51: // 3
                     this.panel.btns.menu.onClick();
+                    break;
+                case 53: // 5
+                    this.autoSpinClick();
                     break;
                 default: {}
             }
