@@ -46,7 +46,18 @@ var settings = {
         {"image": "12.png", "isScatter": true},
         {"image": "13.png"}
     ],
-    "linePresenter": [
+    "linePresenterLeftLines": [
+        {lineIndex: 3, color: "rgb(252, 252, 0)"},
+        {lineIndex: 1, color: "rgb(255, 0, 0)"},
+        {lineIndex: 7, color: "rgb(255, 181, 0)"},
+        {lineIndex: 5, color: "rgb(139, 251, 155)"},
+        {lineIndex: 0, color: "rgb(133, 213, 254)"},
+        {lineIndex: 6, color: "rgb(252, 252, 252)"},
+        {lineIndex: 8, color: "rgb(142, 252, 252)"},
+        {lineIndex: 2, color: "rgb(0, 213, 0)"},
+        {lineIndex: 4, color: "#de20ff"}
+    ],
+    "linePresenterRightLines": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
         {lineIndex: 1, color: "rgb(255, 0, 0)"},
         {lineIndex: 7, color: "rgb(255, 181, 0)"},

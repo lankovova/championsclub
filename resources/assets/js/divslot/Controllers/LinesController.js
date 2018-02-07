@@ -237,10 +237,7 @@ export default class LinesController {
      * @returns Returns line color in any available css format (rgb, rgba, hex, etc.)
      */
     _getLineColorBasedOnItsIndex(lineIndex) {
-        const presenterArr = (settings.gameType === 'old')
-                                // FIXME:
-                                ? settings.linePresenter
-                                : settings.linePresenterLeftLines.concat(settings.linePresenterRightLines);
+        const presenterArr = settings.linePresenterLeftLines.concat(settings.linePresenterRightLines);
 
         // And search for line color in merged presenters array
         for (const presenter of presenterArr) {

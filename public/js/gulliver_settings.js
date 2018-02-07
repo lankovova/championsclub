@@ -29,8 +29,6 @@ var settings = {
     "symbolsImagesPath": "public/img/games/gulliver/symbols/",
     "symbolsAnimationsPath": "public/img/games/gulliver/symbols/animations/",
 
-    "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-
     "symbols": [
         {"image": "1.png"},
         {"image": "2.png"},
@@ -44,17 +42,6 @@ var settings = {
         {"image": "10.png"},
         {"image": "11.png"},
         {"image": "12.png"},
-    ],
-    "linePresenter": [
-        {lineIndex: 3, color: "rgb(252, 252, 0)"},
-        {lineIndex: 1, color: "rgb(255, 0, 0)"},
-        {lineIndex: 7, color: "rgb(255, 181, 0)"},
-        {lineIndex: 5, color: "rgb(139, 251, 155)"},
-        {lineIndex: 0, color: "rgb(133, 213, 254)"},
-        {lineIndex: 6, color: "rgb(252, 252, 252)"},
-        {lineIndex: 8, color: "rgb(142, 252, 252)"},
-        {lineIndex: 2, color: "rgb(0, 213, 0)"},
-        {lineIndex: 4, color: "#de20ff"}
     ],
 
     "presentersDefaultColor": "#535353"

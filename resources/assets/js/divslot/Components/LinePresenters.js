@@ -7,14 +7,9 @@ export default class LinePresenters {
         this.lines = lines;
         this.container = containerNode;
 
-        if (settings.gameType === 'old') {
-            this.linePresenterLeftLines = settings.linePresenter;
-            this.linePresenterRightLines = settings.linePresenter;
-        } else {
-            this.linePresenterLeftLines = settings.linePresenterLeftLines;
-            this.linePresenterRightLines = settings.linePresenterRightLines;
-        }
-        
+        this.linePresenterLeftLines = settings.linePresenterLeftLines;
+        this.linePresenterRightLines = settings.linePresenterRightLines;
+
         this._init();
     }
 
