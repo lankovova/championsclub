@@ -16,9 +16,10 @@ export default class Line {
         this.reels = reels;
         this.points = points;
 
-        this.offset = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber).offset;
-        this.offset = settings.gameType === 'old' ? 0 : this.offset;
-        
+        this.lockedOffset = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber).offset;
+        this.lockedOffset = settings.gameType === 'old' ? 0 : this.lockedOffset;
+        this.offsetEnd = this.offsetStart = this.lockedOffset;
+
         this.svgNode = document.createElementNS(this.namespaceURI, 'svg');
         this.container.appendChild(this.svgNode);
 
@@ -194,6 +195,7 @@ export default class Line {
             } else if (symbol.symbolIndex < sPrev.symbolIndex) {
                 end.y += settings.symbolHeight / 4;
             }
+            this.offsetEnd = 0;
             // fix so lines cross pretty
             end.x += 3;
         }
@@ -205,6 +207,7 @@ export default class Line {
             } else if (symbol.symbolIndex < sPrev.symbolIndex) {
                 start.y -= settings.symbolHeight / 4;
             }
+            this.offsetStart = 0;
             // fix so lines cross pretty
             start.x -= 3;
         }
@@ -216,8 +219,9 @@ export default class Line {
         let lineNode = document.createElementNS(this.namespaceURI, 'line');
         this.svgNode.appendChild(lineNode);
 
-        start.y += this.offset
-        end.y += this.offset
+        start.y += this.offsetStart;
+        end.y += this.offsetEnd;
+        this.offsetEnd = this.offsetStart = this.lockedOffset;
 
         lineNode.setAttributeNS(null, "x1", start.x);
         lineNode.setAttributeNS(null, "y1", start.y);
