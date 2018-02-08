@@ -1,6 +1,7 @@
 @import "../reset";
 @import "../fonts_old";
 @import "../loading";
+@import "../help_types/help_old";
 @import "../media/media_old_game";
 * {
     -webkit-user-select: none;
@@ -119,28 +120,6 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-}
-.jackpot-bonus {
-    position: absolute;
-    z-index: 1;
-    top: -1px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    background-image: url("../img/old_game/jackpot_bonus_bg.png");
-    width: 1639px;
-    height: 64px;
-
-    .grid {
-        position: absolute;
-        background-image: url("../img/old_game/grid.png");
-        right: 0;
-        left: 0;
-        top: 0;
-        margin: auto;
-        width: 1611px;
-        height: 52px;
-    }
 }
 
 .notifier {
@@ -394,9 +373,27 @@ body {
     text-transform: uppercase;
     font-family: Ponderosa;
     letter-spacing: 2px;
-    z-index: 2;
-}
+    position: absolute;
+    z-index: 4;
+    top: -1px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-image: url("../img/old_game/jackpot_bonus_bg.png");
+    width: 1639px;
+    height: 64px;
 
+    .grid {
+        position: absolute;
+        background-image: url("../img/old_game/grid.png");
+        right: 0;
+        left: 0;
+        top: 0;
+        margin: auto;
+        width: 1611px;
+        height: 52px;
+    }
+}
 .jackpot {
     position: absolute;
     display: flex;

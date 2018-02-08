@@ -24,7 +24,7 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "helpDisabled": true,
+    // "helpDisabled": true,
 
     "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
     "symbolsAnimationsPath": "public/img/games/bananasgobahamas/symbols/animations/",
@@ -32,19 +32,19 @@ var settings = {
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png"},
-        {"image": "5.png"},
-        {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png", "isScatter": true},
-        {"image": "10.png"},
-        {"image": "11.png"},
-        {"image": "12.png"},
-        {"image": "13.png"}
+        {"image": "1.png", "paytable": [0,0,4,30,100]},
+        {"image": "2.png", "paytable": [0,0,4,30,100]},
+        {"image": "3.png", "paytable": [0,0,4,30,100]},
+        {"image": "4.png", "paytable": [0,0,4,30,100]},
+        {"image": "5.png", "paytable": [0,0,4,30,100]},
+        {"image": "6.png", "paytable": [0,0,4,30,100]},
+        {"image": "7.png", "paytable": [0,0,4,30,100]},
+        {"image": "8.png", "paytable": [0,0,4,30,100]},
+        {"image": "9.png", "paytable": [0,0,4,30,100], "isScatter": true},
+        {"image": "10.png", "paytable": [0,0,4,30,100]},
+        {"image": "11.png", "paytable": [0,0,4,30,100]},
+        {"image": "12.png", "paytable": [0,0,4,30,100]},
+        {"image": "13.png", "paytable": [0,0,4,30,100]}
     ],
     "linePresenterLeftLines": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
