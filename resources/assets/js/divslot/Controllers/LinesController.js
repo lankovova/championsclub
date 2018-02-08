@@ -222,7 +222,7 @@ export default class LinesController {
     }
 
     _createStaticLines() {
-        for (let i = 0; i < settings.lineTypes.length; i++) {
+        for (let i = 0; i < settings.lines.length; i++) {
             const lineColor = this._getLineColorBasedOnItsIndex(i);
 
             const line = new Line(this.gameWrapperNode, lineColor, i, 0, this.props.reels);

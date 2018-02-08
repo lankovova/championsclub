@@ -57,17 +57,14 @@ var settings = {
         }, {
             "image": "10.png",
             "paytable": [0, 0, 10, 50, 125],
-        },
-        {
+        }, {
             "image": "11.png",
             "paytable": [0, 0, 5, 25, 100],
-        },
-        {
+        }, {
             "image": "12.png",
             "paytable": [0, 2, 5, 20, 500],
             "isScatter": true,
-        },
-        {
+        }, {
             "image": "13.png",
             "paytable": [0, 2, 25, 125, 750]
         },

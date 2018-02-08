@@ -17,7 +17,6 @@ export default class Line {
         this.points = points;
 
         this.lockedOffset = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber).offset;
-        this.lockedOffset = settings.gameType === 'old' ? 0 : this.lockedOffset;
         this.offsetEnd = this.offsetStart = this.lockedOffset;
 
         this.svgNode = document.createElementNS(this.namespaceURI, 'svg');
