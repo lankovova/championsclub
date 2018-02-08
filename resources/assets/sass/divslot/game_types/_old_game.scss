@@ -440,6 +440,9 @@ body {
     }
 }
 
+.header {
+    transition: background, background-image 800ms linear;
+}
 
 .gamble {
     transform: translateX(114%);
