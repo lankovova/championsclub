@@ -54,6 +54,7 @@ body {
 }
 
 .line_presenters_container {
+    z-index: 1;
     top: 9px;
     position: absolute;
     display: flex;

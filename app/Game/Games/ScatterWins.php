@@ -11,13 +11,13 @@ class ScatterWins extends Game {
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 7;
     public static $paytable = [
-        [0, 0, 10], //PAYTABLE FOR SYMBOL 1
-        [0, 0, 4],  //PAYTABLE FOR SYMBOL 2
-        [0, 0, 10],  //PAYTABLE FOR SYMBOL 3
-        [0, 0, 250],  //PAYTABLE FOR SYMBOL 4
-        [0, 0, 4],    //PAYTABLE FOR SYMBOL 5
-        [0, 0, 20],    //PAYTABLE FOR SYMBOL 6
-        [0, 0, 4],     //PAYTABLE FOR SYMBOL 7
+        [0, 0, 250], //PAYTABLE FOR SYMBOL 0
+        [0, 0, 5],  //PAYTABLE FOR SYMBOL 1
+        [0, 0, 10],  //PAYTABLE FOR SYMBOL 2
+        [0, 0, 100],  //PAYTABLE FOR SYMBOL 3
+        [0, 0, 20],    //PAYTABLE FOR SYMBOL 4
+        [0, 0, 10],    //PAYTABLE FOR SYMBOL 5
+        [0, 0, 500],     //PAYTABLE FOR SYMBOL 6
     ];
 
     public static $linesTypes = [
