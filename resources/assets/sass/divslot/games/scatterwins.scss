@@ -77,5 +77,11 @@
     height: 626px;
 }
 .gamble {
-    background: url('../img/games/scatterwins/gamble/gamble_bg.png');
+    background-image: url('../img/games/scatterwins/gamble/gamble_bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 1402px;
+    height: 725px;
+    border-radius: 20px;
+    top: 110px;
 }

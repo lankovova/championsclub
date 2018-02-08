@@ -6,7 +6,7 @@ var settings = {
     "numOfRows": 3,
     "numOfReels": 3,
 
-    "animationType": 'fall',
+    "animationType": "fall",
 
     "numOfSpinsBeforeStop": 3,
 
@@ -28,14 +28,16 @@ var settings = {
     "symbolsAnimationsPath": "public/img/games/scatterwins/symbols/animations/",
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png"},
-        {"image": "5.png"},
-        {"image": "6.png", "isScatter": true},
-        {"image": "7.png"}
+        {"image": "1.png", "paytable": [0, 0, 250]},
+        {"image": "2.png", "paytable": [0, 0, 5]},
+        {"image": "3.png", "paytable": [0, 0, 10]},
+        {"image": "4.png", "paytable": [0, 0, 100]},
+        {"image": "5.png", "paytable": [0, 0, 20]},
+        {"image": "6.png", "paytable": [0, 0, 10], "isScatter": true},
+        {"image": "7.png", "paytable": [0, 0, 500]}
     ],
+
+    "helpDisabled": true,
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
 
@@ -58,6 +60,27 @@ var settings = {
         [ [2, 0], [2, 1], [1, 2] ],
         [ [0, 0], [0, 1], [1, 2] ],
     ],
+
+    "linePositionCorrection": [
+        {lineIndex: 0, offset: 0},
+        {lineIndex: 1, offset: 0},
+        {lineIndex: 2, offset: 0},
+        {lineIndex: 3, offset: -60},
+        {lineIndex: 4, offset: 70},
+        {lineIndex: 5, offset: 75},
+        {lineIndex: 6, offset: -65},
+        {lineIndex: 7, offset: -60},
+        {lineIndex: 8, offset: 70},
+        {lineIndex: 9, offset: 35},
+        {lineIndex: 10, offset: -30},
+        {lineIndex: 11, offset: -20},
+        {lineIndex: 12, offset: 20},
+        {lineIndex: 13, offset: 50},
+        {lineIndex: 14, offset: -50},
+        {lineIndex: 15, offset: 90},
+        {lineIndex: 16, offset: -90}
+    ],
+
     "linePresenterLeftLines": [
         {lineIndex: 3, color: "rgb(255, 199, 0)"},
         {lineIndex: 1, color: "rgb(255, 199, 0)"},
