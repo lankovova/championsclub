@@ -59,9 +59,9 @@ class GameController extends Controller
         ]);
 
         $result = $this->getResults($game, $reqData);
-        $this->saveResult($result);
+        $this->saveResult($result, $reqData);
         
-        // TODO turn off cash poll field
+        // TODO turn off cash pull field
         $result['CASH_POOL'] = $this->player->getCashPool() * 100;
         return response()->json($result);
     }
@@ -96,7 +96,7 @@ class GameController extends Controller
         $spinResult["total_won_coins"] = $spinResult["won_coins"] + ((isset($spinResult["bonus_spins"])) ? $spinResult["bonus_spins"]["won_coins"] : 0);
         $spinResult["total_won_points"] = $spinResult["won_points"] + ((isset($spinResult["bonus_spins"])) ? $spinResult["bonus_spins"]["won_points"] : 0);
         $spinResult["bet"] = $reqData["lines_amount"] * $reqData["bet_per_line"];
-        $spinResult["player_cash"] = $this->player->getCash() + ($spinResult["total_won_coins"] -$spinResult["bet"] * $reqData["denomination"]) / 100;
+        $spinResult["player_cash"] = $this->player->getCash() + ($spinResult["total_won_coins"] - $spinResult["bet"] * $reqData["denomination"]) / 100;
         $spinResult["player_coins"] = (int)($this->player->getCash() * 100) + $spinResult["total_won_coins"] - ($spinResult["bet"] * $reqData["denomination"]);
         $spinResult["game"] = $reqData["game"];
 
@@ -109,19 +109,18 @@ class GameController extends Controller
      * @param array $result
      * @return void
      */
-    private function saveResult(array $result) {
+    private function saveResult(array $result, $reqData) {
         $date = date("Y-m-d H:i:s");
         $playerCash = $result["player_cash"];
         $action = $result["won"] ? "game bet, win" : "game bet, no win";
         $login = Auth::getParam("login");
         $game = $result["game"];
         $bet = $result["bet"];
-
         History::writeGameAction($date, $playerCash, $action, $login, $game, $bet);
 
         $this->player->setCash($result["player_cash"]);
         $this->player->setLastWinCash($result["total_won_coins"] / 100);
-        $this->player->setMaxWinCash($this->player->getMaxWinCash() - $result["total_won_coins"] / 100);
+        $this->player->setMaxWinCash($this->player->getMaxWinCash() - ($result["total_won_coins"] - $bet * $reqData["denomination"]) / 100);
         $this->player->update();
     }
 
