@@ -55,6 +55,10 @@ class Player {
             $cashPool = 0.10;
         }
 
+        if ($cashPool > $this->maxWinCash) {
+            $cashPool = $this->maxWinCash;
+        }
+
         return $cashPool;
     }
 

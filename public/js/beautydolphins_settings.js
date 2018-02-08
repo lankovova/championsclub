@@ -1,5 +1,5 @@
 var settings = {
-    "symbolSize": 220,
+    "symbolSize": 219,
     "spaceBetweenReels": 30,
 
     "numOfRows": 3,
