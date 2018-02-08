@@ -16,7 +16,8 @@ export default class Line {
         this.reels = reels;
         this.points = points;
 
-        this.lockedOffset = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber).offset;
+        this.lineCorrection = settings.linePositionCorrection.find((el) => el.lineIndex === this.lineTypeNumber);
+        this.lockedOffset = (this.lineCorrection) ? this.lineCorrection.offset : 0;
         this.offsetEnd = this.offsetStart = this.lockedOffset;
 
         this.svgNode = document.createElementNS(this.namespaceURI, 'svg');
