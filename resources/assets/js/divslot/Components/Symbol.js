@@ -39,11 +39,6 @@ export default class Symbol {
         this.stopAnimation();
 
         raf(() => {
-            if (settings.gameType === 'old' && settings.animationType !== 'fall') {
-                this.symbolNode.style.animation = `oldSymbolAnimation 1000ms infinite`;
-                return;
-            }
-
             // If animation for this symbol exists then apply it
             if (settings.symbols[this.symbolNum].animation) {
                 // Get symbol animation data
@@ -54,6 +49,8 @@ export default class Symbol {
 
                 this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + symbolAnimationData.image}')`;
                 this.symbolNode.style.animation = `symbolAnimation ${animDuration}ms steps(${symbolAnimationData.frames}) infinite`;
+            } else if (settings.animationType !== 'fall') {
+                this.symbolNode.style.animation = 'oldSymbolAnimation 1000ms infinite';
             }
         });
 
