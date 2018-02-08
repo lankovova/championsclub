@@ -29,8 +29,6 @@ var settings = {
     "symbolsImagesPath": "public/img/games/bananasgobahamas/symbols/",
     "symbolsAnimationsPath": "public/img/games/bananasgobahamas/symbols/animations/",
 
-    "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-
     "symbols": [
         {"image": "1.png", "paytable": [0,0,4,30,100]},
         {"image": "2.png", "paytable": [0,0,4,30,100]},
@@ -46,13 +44,28 @@ var settings = {
         {"image": "12.png", "paytable": [0,0,4,30,100]},
         {"image": "13.png", "paytable": [0,0,4,30,100]}
     ],
+
+    "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+
+    "linePositionCorrection": [
+        {lineIndex: 0, offset: 0},
+        {lineIndex: 1, offset: 0},
+        {lineIndex: 2, offset: 0},
+        {lineIndex: 3, offset: -60},
+        {lineIndex: 4, offset: 65},
+        {lineIndex: 5, offset: 60},
+        {lineIndex: 6, offset: -55},
+        {lineIndex: 7, offset: 55},
+        {lineIndex: 8, offset: -50}
+    ],
+
     "linePresenterLeftLines": [
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
         {lineIndex: 1, color: "rgb(255, 0, 0)"},
         {lineIndex: 7, color: "rgb(255, 181, 0)"},
-        {lineIndex: 5, color: "rgb(139, 251, 155)"},
+        {lineIndex: 6, color: "rgb(139, 251, 155)"},
         {lineIndex: 0, color: "rgb(133, 213, 254)"},
-        {lineIndex: 6, color: "rgb(252, 252, 252)"},
+        {lineIndex: 5, color: "rgb(252, 252, 252)"},
         {lineIndex: 8, color: "rgb(142, 252, 252)"},
         {lineIndex: 2, color: "rgb(0, 213, 0)"},
         {lineIndex: 4, color: "#de20ff"}
@@ -61,9 +74,9 @@ var settings = {
         {lineIndex: 3, color: "rgb(252, 252, 0)"},
         {lineIndex: 1, color: "rgb(255, 0, 0)"},
         {lineIndex: 7, color: "rgb(255, 181, 0)"},
-        {lineIndex: 5, color: "rgb(139, 251, 155)"},
+        {lineIndex: 6, color: "rgb(139, 251, 155)"},
         {lineIndex: 0, color: "rgb(133, 213, 254)"},
-        {lineIndex: 6, color: "rgb(252, 252, 252)"},
+        {lineIndex: 5, color: "rgb(252, 252, 252)"},
         {lineIndex: 8, color: "rgb(142, 252, 252)"},
         {lineIndex: 2, color: "rgb(0, 213, 0)"},
         {lineIndex: 4, color: "#de20ff"}

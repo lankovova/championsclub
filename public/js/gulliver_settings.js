@@ -44,5 +44,28 @@ var settings = {
         {"image": "12.png"},
     ],
 
+    "linePositionCorrection": [
+        {lineIndex: 0, offset: 25},
+        {lineIndex: 1, offset: -10},
+        {lineIndex: 2, offset: 15},
+        {lineIndex: 3, offset: -60},
+        {lineIndex: 4, offset: 65},
+        {lineIndex: 5, offset: -60},
+        {lineIndex: 6, offset: 65},
+        {lineIndex: 7, offset: 45},
+        {lineIndex: 8, offset: -40},
+        {lineIndex: 9, offset: -25},
+        {lineIndex: 10, offset: 40},
+        {lineIndex: 11, offset: -25},
+        {lineIndex: 12, offset: -10},
+        {lineIndex: 13, offset: 10},
+        {lineIndex: 14, offset: -75},
+        {lineIndex: 15, offset: 80},
+        {lineIndex: 16, offset: -60},
+        {lineIndex: 17, offset: 60},
+        {lineIndex: 18, offset: 45},
+        {lineIndex: 19, offset: -40}
+    ],
+
     "presentersDefaultColor": "#535353"
 }
