@@ -3,7 +3,6 @@
 @section('content')
     <div id="preloader"></div>
     <div class="game_wrapper" id="game_wrapper">
-        @yield('help')
         @include('games.parts.loading')
         <div id="game">
             <div class="substitutionBlock-wrapper start" id="substitutionBlock">
@@ -16,6 +15,8 @@
                     </div>
                 </div>
             </div>
+
+            @yield('help')
 
             <div class="jackpot-bonus">
                 <div class="jackpot">
