@@ -42,7 +42,7 @@ var settings = {
         {
             "image": "2.png",
             "animation": {
-                "image": "1.png",
+                "image": "2.png",
                 "frames": 34
             },
             "paytable": [0, 5, 40, 400, 2000],
@@ -50,7 +50,7 @@ var settings = {
         {
             "image": "3.png",
             "animation": {
-                "image": "1.png",
+                "image": "3.png",
                 "frames": 34
             },
             "paytable": [0, 5, 30, 100, 750],
