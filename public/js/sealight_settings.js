@@ -29,6 +29,12 @@ var settings = {
     "symbolsImagesPath": "public/img/games/sealight/symbols/",
     "symbolsAnimationsPath": "public/img/games/sealight/symbols/animations/",
 
+    "bonusSpinAnimation": "reveal",
+    "revealAnimation": {
+        "image": "reveal.png",
+        "frames": 8
+    },
+
     "symbols": [
         {"image": "1.png"},
         {"image": "2.png"},

@@ -29,6 +29,12 @@ var settings = {
     "symbolsImagesPath": "public/img/games/gulliver/symbols/",
     "symbolsAnimationsPath": "public/img/games/gulliver/symbols/animations/",
 
+    "bonusSpinAnimation": "reveal",
+    "revealAnimation": {
+        "image": "reveal.png",
+        "frames": 9
+    },
+
     "symbols": [
         {"image": "1.png"},
         {"image": "2.png"},

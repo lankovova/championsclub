@@ -1,4 +1,6 @@
 import Reel from '../Components/ReelPicker';
+import { getAnimDuration } from './../Helpers/utils';
+import { ANIMATION_FPS } from './../Components/Symbol';
 
 let stoppedReelsCounter = 0;
 
@@ -79,7 +81,6 @@ export default class ReelsContorller {
 
         // For each reel
         for (let i = 0; i < this.reels.length; i++) {
-
             // Wait previous reel to resolve before spinning next
             await this.spinReel(this.reels[i]);
         }
@@ -94,19 +95,12 @@ export default class ReelsContorller {
 
         // Resolve promise after delay between reels spin
         return new Promise(resolve => {
-            if (this.shouldStopReels) {
-                resolve();
-            } else {
-                setTimeout(() => {
-                    resolve();
-                }, settings.delayBetweenReelsSpin);
-            }
+            (this.shouldStopReels) ? resolve() : setTimeout(resolve, settings.delayBetweenReelsSpin);
         });
     }
 
     isThereSubstitution(finalSymbolsMap, substitutionSymbolNumber) {
         const reelsToSubstitute = this.getReelsWhereFoundSpecificSymbolInRow(finalSymbolsMap, substitutionSymbolNumber);
-
         return (reelsToSubstitute.length === 0) ? false : true;
     }
 
@@ -120,11 +114,42 @@ export default class ReelsContorller {
             const reelIndex = reelsToSubstitute[i];
 
             // Wait for reel to substitute
-            await this.reels[reelIndex].substitute(substitutionSymbolNumber);
+            await this.reels[reelIndex].substitute(
+                [
+                    substitutionSymbolNumber,
+                    substitutionSymbolNumber,
+                    substitutionSymbolNumber
+                ]
+            );
         }
 
         // Resolve after all reels have done substitution
         return new Promise(resolve => resolve());
+    }
+
+    // Use reveal animation to given final symbols
+    async revealReels(finalSymbols) {
+        // Place specific bg in all reels symbols
+        await Promise.all(this.reels.map(async (reel) => await reel.conceal()));
+
+        // Reveal all symbols to final symbols in reels
+        // with some delay
+        for (let i = 0; i < this.reels.length; i++) {
+            // Extract reel symbols from symbols map
+            const extractedReelSymbols = this.getReelSymbolsFromSymbolsMap(finalSymbols, i);
+
+            // Reveal specific symbols in reel
+            this.reels[i].reveal(extractedReelSymbols);
+
+            // Calculate dynamic delay between reels
+            const revealAnimDuration = getAnimDuration(settings.revealAnimation.frames, ANIMATION_FPS);
+            const dynamicDelayBeforeNextReel = revealAnimDuration * 1.25;
+
+            // Resolve promise after delay between reels spin
+            await new Promise(resolve => {
+                (this.shouldStopReels) ? resolve() : setTimeout(resolve, dynamicDelayBeforeNextReel);
+            });
+        }
     }
 
     /**

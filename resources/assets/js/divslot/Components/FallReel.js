@@ -1,22 +1,14 @@
 import Symbol from './SymbolFallAnimation';
+import Reel from './Reel';
 
-export default class FallReel {
+export default class FallReel extends Reel {
     /**
      * Create reel with starting symbols in it
      * @param {Number} reelIndex Index of reel in Game
      * @param {Function} onStop Function to call when reel has stopped
      */
     constructor(reelIndex, onStop) {
-        this.finalSymbols = [];
-
-        this.reelNode;
-        this.reelIndex = reelIndex;
-
-        this.props = {
-            onStop
-        };
-
-        this._init();
+        super(reelIndex, onStop);
     }
 
     _init() {
@@ -71,30 +63,6 @@ export default class FallReel {
         for (let i = 0; i < this.finalSymbols.length; i++) {
             await this.finalSymbols[i].fall(i);
         }
-    }
-
-    /**
-     * Change all symbols in reel with given symbol
-     * @param {Number} symbolNum Number of substitution symbol
-     */
-    async substitute(symbolNum) {
-        // Gradually substitute all symbols in reel with given symbol with delay between
-        for (let i = this.finalSymbols.length - 1; i >= 0; i--) {
-            // Skip already placed symbol
-            if (this.finalSymbols[i].symbolNum === symbolNum) continue;
-
-            await (() => {
-                return new Promise(resolve => {
-                    this.finalSymbols[i].changeSymbol(symbolNum);
-
-                    setTimeout(() => {
-                        resolve();
-                    }, settings.delayBetweenSymbolsSubstitute);
-                });
-            })();
-        }
-
-        return new Promise(resolve => resolve());
     }
 
     /**

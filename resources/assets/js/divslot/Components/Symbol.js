@@ -1,6 +1,7 @@
-import { raf } from "../Helpers/windowHelper";
+import { raf } from '../Helpers/windowHelper';
+import { getAnimDuration } from './../Helpers/utils';
 
-const ANIMATION_FPS = 13;
+export const ANIMATION_FPS = 13;
 
 export default class Symbol {
     constructor(symbolNumber) {
@@ -45,7 +46,7 @@ export default class Symbol {
                 const symbolAnimationData = settings.symbols[this.symbolNum].animation;
 
                 // Calculate animation duration in ms
-                const animDuration = 1000 * symbolAnimationData.frames / ANIMATION_FPS;
+                const animDuration = getAnimDuration(symbolAnimationData.frames, ANIMATION_FPS);
 
                 this.symbolNode.style.background = `url('${settings.symbolsAnimationsPath + symbolAnimationData.image}')`;
                 this.symbolNode.style.animation = `symbolAnimation ${animDuration}ms steps(${symbolAnimationData.frames}) infinite`;
@@ -58,6 +59,38 @@ export default class Symbol {
 
     stopAnimation() {
         this.symbolNode.style.animation = '';
+    }
+
+    conceal() {
+        // Add conceled image
+        this.overflowLayer.style.background = `url(${settings.symbolsAnimationsPath + settings.revealAnimation.image})`;
+        this.overflowLayer.style.backgroundSize = `${(settings.revealAnimation.frames + 1) * 100}% 100%`;
+    }
+
+    reveal() {
+        return new Promise(resolve => {
+            const onAminEnd = (event) => {
+                // Get event fired element
+                const el = event.target;
+                // Remove reveal image
+                el.style.background = '';
+                el.style.backgroundSize = '';
+                // Remove animation
+                el.style.animation = '';
+                // Remove animation listener
+                el.removeEventListener('animationend', onAminEnd);
+                // Resolve when animation has ended
+                // and browser is ready to draw next frame
+                raf(() => resolve());
+            }
+
+            // Add animation end listener
+            this.overflowLayer.addEventListener('animationend', onAminEnd);
+            // Count animation duration
+            const animDuration = getAnimDuration(settings.revealAnimation.frames, ANIMATION_FPS);
+            // Start revealing animation
+            this.overflowLayer.style.animation = `symbolAnimation ${animDuration}ms steps(${settings.revealAnimation.frames}, end)`;
+        });
     }
 
     blurDark() {

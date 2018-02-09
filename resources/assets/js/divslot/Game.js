@@ -16,6 +16,10 @@ const BONUS_SPINS_TYPES = {
     substitution: 'substitution',
 }
 
+const BONUS_SPIN_ANIMATIONS = {
+    reveal: 'reveal'
+}
+
 export default class Game {
     constructor(gameName) {
         this.gameName = gameName;
@@ -345,8 +349,26 @@ export default class Game {
 
         this.interfaceController.panel.notifier.text = Translator.currentBonusSpin(this.bonusSpins.currentSpinIndex, this.bonusSpins.amount);
 
-        // Spin reels to given final symbols
-        this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
+        if (settings.bonusSpinAnimation === BONUS_SPIN_ANIMATIONS.reveal) {
+            // Start reveal bonus spin amimation
+            this.revealReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
+        } else {
+            // Spin reels to given final symbols
+            this.startReels(this.bonusSpins.spins[this.bonusSpins.currentSpinIndex - 1].final_symbols);
+        }
+    }
+
+    /**
+     * Start reels
+     * @param {Array<Number>} finalSymbols Two dimensional array of final symbol
+     */
+    revealReels(finalSymbols) {
+        // Hide all lines
+        this.linesController.hideAllLines();
+        // Start reveal bonus spin animation
+        this.reelsController.revealReels(finalSymbols);
+        // Enable stop
+        this.interfaceController.enableStop();
     }
 
     /**
@@ -356,9 +378,8 @@ export default class Game {
     startReels(finalSymbols) {
         // Hide all lines
         this.linesController.hideAllLines();
-
+        // Start normal reels spin
         this.reelsController.startReels(finalSymbols);
-
         // Enable stop
         this.interfaceController.enableStop();
     }
@@ -387,6 +408,9 @@ export default class Game {
     reelsHasStopped = async () => {
         this.interfaceController.disableStop();
 
+        // Wait 200ms when all reels has stopped
+        await new Promise(resolve => setTimeout(resolve, 200));
+
         // Checking is there bonus spins
         if (this.bonusSpins.on) {
             // If bonus spins just dropped
@@ -394,13 +418,15 @@ export default class Game {
                 // Turn of auto spins
                 this.autoSpinIsOn = false;
 
-                // Show win lines and transfer win from regular spin
-                await this.showWinningLines(this.spinResponse.spin_result);
+                if (this.spinResponse.won) {
+                    // Show win lines and transfer win from regular spin
+                    await this.showWinningLines(this.spinResponse.spin_result);
+                    // Remove svg lines nodes when bonus spins just dropped
+                    this.linesController.removeWinningLines();
+                    // And stop symbols animations before bonus spins alert showed up
+                    this.linesController.stopSymbolsAnim();
+                }
 
-                // Remove svg lines nodes when bonus spins just dropped
-                this.linesController.removeWinningLines();
-                // And stop symbols animations before bonus spins alert showed up
-                this.linesController.stopSymbolsAnim();
 
                 // Show alert and wait for user to press start btn
                 // Based on bonus spins type

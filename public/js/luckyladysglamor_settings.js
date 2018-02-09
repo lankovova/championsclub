@@ -26,6 +26,12 @@ var settings = {
     "symbolsImagesPath": "public/img/games/luckyladysglamor/symbols/",
     "symbolsAnimationsPath": "public/img/games/luckyladysglamor/symbols/animations/",
 
+    "bonusSpinAnimation": "reveal",
+    "revealAnimation": {
+        "image": "reveal.png",
+        "frames": 8
+    },
+
     "symbols": [
         {
             "image": "1.png",
