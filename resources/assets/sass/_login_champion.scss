@@ -16,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    z-index: 2;
 }
 .error-modal__button {
     background: url('../img/calculator/error_btn_bg.png');

@@ -2,7 +2,7 @@
     <div class="app">
         <Loading :shouldHide="hideLoading"/>
         <GameChoosePage/>
-        <LoginChampionPage v-show="!authed"/>
+        <LoginChampionPage v-if="!authed"/>
         
     </div>
 </template>

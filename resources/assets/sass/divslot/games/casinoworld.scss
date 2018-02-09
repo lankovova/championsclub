@@ -49,14 +49,227 @@
 .header {
     background: url('../img/games/casinoworld/header.gif');
 }
-.gamble {
-    background: url('../img/games/casinoworld/gamble/gamble_bg.png');
-    top: 155px;
-    width: 1481px;
-    height: 680px;
 
-    border-radius: 20px;
+/// Gamble
+.gamble {
+    transform: translateX(114%);
+    transition: .5s linear;
+    position: absolute;
+    top: 151px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 682px;
+    width: 1487px;
+    z-index: 1;
+    background-size: 100% 100%;
+    background-image: url('../img/games/casinoworld/gamble/gamble_bg.png');
+
+    .button__suit-color {
+        cursor: pointer;
+        top: 379px;
+        position: absolute;
+        width: 328px;
+        height: 211px;
+        text-align: center;
+        line-height: 211px;
+        font-size: 31px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 7px;
+        .overflow-layer {
+            border-radius: 50%;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            &.red {
+                background-color: rgba(255,0,0,0.3);
+            }
+            &.black {
+                background-color: rgba(0,0,0,0.3);
+            }
+        }
+    }
+    .button__red {
+        left: 120px;
+        background: url('../img/gamble/buttons/suit_color_1.png');
+        color: #cc0000;
+    }
+    .button__black {
+        right: 120px;
+        background: url('../img/gamble/buttons/suit_color_1.png');
+        color: #000;
+    }
+    .button__suit {
+        cursor: pointer;
+        position: absolute;
+        top: 397px;
+        width: 173px;
+        height: 114px;
+        & .overflow-layer {
+            border-radius: 30px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            &.red {
+                background-color: rgba(255,0,0,0.3);
+            }
+            &.black {
+                background-color: rgba(0,0,0,0.3);
+            }
+        }
+    }
+    .button__spade {
+        right: 77px;
+        background: url('../img/gamble/buttons/spade_old.png');
+    }
+    .button__club {
+        right: 286px;
+        background: url('../img/gamble/buttons/club_old.png');
+    }
+    .button__diamond {
+        left: 286px;
+        background: url('../img/gamble/buttons/diamond_old.png');
+    }
+    .button__heart {
+        left: 77px;
+        background: url('../img/gamble/buttons/heart_old.png');
+    }
 }
+.gamble__amount {
+    color: #00fcfc;
+    width: 50%;
+    position: absolute;
+    left: 193px;
+    top: 50px;
+    text-transform: uppercase;
+    font-size: 33px;
+    letter-spacing: 3px;
+    text-shadow: 4px 3px #000;
+
+    &-value {
+        width: 230px;
+        text-align: center;
+        margin-top: 18px;
+    }
+}
+.gamble__to-win {
+    width: 50%;
+    position: absolute;
+    right: 193px;
+    top: 50px;
+    color: #00fcfc;
+    text-transform: uppercase;
+    font-size: 33px;
+    letter-spacing: 3px;
+    text-shadow: 4px 3px #000;
+    text-align: right;
+
+    &-suit {
+        display: none;
+    }
+
+}
+.gamble__to-win-color {
+    margin-top: 0;
+}
+.card {
+    background: url('../img/gamble/cards/card_1.gif');
+    width: 221px;
+    height: 326px;
+    position: absolute;
+    z-index: 1;
+    top: 293px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 11px;
+    box-shadow: 10px 10px 10px 2px #000;
+}
+.card__suit {
+    position: absolute;
+    width: 221px;
+    height: 326px;
+    top: 293px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-size: 100% 100%;
+}
+.card__spade {
+    background-image: url('../img/gamble/cards/spade_old.png');
+}
+.card__club {
+    background-image: url('../img/gamble/cards/club_old.png');
+}
+.card__heart {
+    background-image: url('../img/gamble/cards/heart_old.png');
+}
+.card__diamond {
+    background-image: url('../img/gamble/cards/diamond_old.png');
+}
+.previous-cards {
+    background: none;
+    width: 1210px;
+    height: 86px;
+    position: absolute;
+    top: 120px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+}
+.previous-cards__text {
+    height: 100%;
+    width: 50%;
+    font-size: 33px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 30px;
+    box-sizing: border-box;
+    color: #00fcfc;
+    text-shadow: 4px 3px #000;
+}
+.previous-cards__suits {
+    height: 100%;
+    width: 55%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+.suit-back,
+.suit-spade,
+.suit-club,
+.suit-heart,
+.suit-diamond {
+    background-size: 100% 100%;
+    background-position: center center;
+    width: 89px;
+    height: 70px;
+    margin-right: 7px;
+}
+.suit-back {
+    background-image: url('../img/gamble/suits/back_old.png');
+}
+.suit-spade {
+    background-image: url('../img/gamble/suits/spade_old.png');
+}
+.suit-club {
+    background-image: url('../img/gamble/suits/club_old.png');
+}
+.suit-heart {
+    background-image: url('../img/gamble/suits/heart_old.png');
+}
+.suit-diamond {
+    background-image: url('../img/gamble/suits/diamond_old.png');
+}
+
+/// Help
 .help {
     background-image: url('../img/games/bookofwinner/help/border_bg.png');
     z-index:3;
