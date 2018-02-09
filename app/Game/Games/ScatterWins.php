@@ -8,11 +8,12 @@ class ScatterWins extends Game {
     public static $reelsAmount = 3;
     public static $scatter = 5;
     public static $joker = -1;
+    public static $bonusSpinJoker = 6;
     public static $freeSpinsAmount = 10;
     public static $symbolsAmount = 7;
     public static $paytable = [
         [0, 0, 250], //PAYTABLE FOR SYMBOL 0
-        [0, 0, 5],  //PAYTABLE FOR SYMBOL 1
+        [0, 0, 5],   //PAYTABLE FOR SYMBOL 1
         [0, 0, 10],  //PAYTABLE FOR SYMBOL 2
         [0, 0, 100],  //PAYTABLE FOR SYMBOL 3
         [0, 0, 20],    //PAYTABLE FOR SYMBOL 4
@@ -49,7 +50,7 @@ class ScatterWins extends Game {
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpins");
+        return $this->game->bonusSpin("FreeSpinsAnotherJoker", ["bonusSpinJoker" => self::$bonusSpinJoker]);
     }
 
     public function areBonusSpins() {
