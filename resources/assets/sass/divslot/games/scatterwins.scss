@@ -1,4 +1,5 @@
 @import "../game_types/without_borders";
+@import "../help_types/help_substitution";
 
 .main {
     background: url('../img/games/scatterwins/game_bg.gif') center center;
@@ -72,9 +73,17 @@
     background: url('../img/games/scatterwins/header.gif');
 }
 .alert .content {
-    background: url("../img/games/scatterwins/freeSpinBg.png");
-    width: 1184px;
-    height: 626px;
+    background: url("../img/games/scatterwins/images/freeSpinBg.png");
+    width: 1123px;
+    height: 445px;
+    color: #fae84f;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-shadow: 4px 5px 5px #000;
+    font-size: 50px;
+    padding: 50px 100px;
+    box-sizing: border-box;
+    animation: soar 5s ease-in-out infinite;
 }
 .gamble {
     background-image: url('../img/games/scatterwins/gamble/gamble_bg.png');
@@ -84,4 +93,55 @@
     height: 725px;
     border-radius: 20px;
     top: 110px;
+}
+.help {
+    background-image: url('../img/games/scatterwins/help/border_bg.png');
+}
+.help__btn_close {
+    background-image: url('../img/games/scatterwins/help/close_btn_bg.gif');
+}
+.help__slide_1 {
+    background-image: url('../img/games/scatterwins/help/slide_bg_1.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 80px;
+        line-height: 43px;
+        text-align: center;
+        color: #fae84f;
+        letter-spacing: 3px;
+        text-shadow: 4px 5px 5px #000;
+        width: 177px;
+        height: 43px;
+    }
+    &[data-symbols='0'] {
+        top: 360px;
+        left: 182px;
+    }
+    &[data-symbols='1'] {
+        top: 602px;
+        right: 183px;
+    }
+    &[data-symbols='2'] {
+        top: 853px;
+        left: 226px;
+    }
+    &[data-symbols='3'] {
+        top: 360px;
+        right: 182px;
+    }
+    &[data-symbols='4'] {
+        top: 602px;
+        left: 576px;
+    }
+    &[data-symbols='5'] {
+        top: 602px;
+        left: 183px;
+    }
+    &[data-symbols='6'] {
+        top: 360px;
+        left: 578px;
+    }
 }

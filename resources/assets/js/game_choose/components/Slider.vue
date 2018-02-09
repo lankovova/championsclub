@@ -79,7 +79,7 @@ export default {
                 ],
                 [
                     {class:'gulliver', url:'gulliver'},
-                    {class:''},
+                    {class:'scatter-wins', url:'scatterwins'},
                     {class:''},
                     {class:''},
                     {class:''}

@@ -252,9 +252,12 @@ body {
 
 }
 .card {
-    background: url('../img/gamble/cards/card.gif');
+    background-image: url('../img/gamble/cards/card.gif');
     width: 221px;
-    height: 326px;
+    height: 328px;
+    background-size: 100% 100%;
+    box-shadow: 10px 10px 10px 0px #000;
+    border-radius: 10px;
     position: absolute;
     z-index: 1;
     top: 169px;
@@ -264,24 +267,24 @@ body {
 }
 .card__suit {
     position: absolute;
-    width: 242px;
-    height: 327px;
-    top: 169px;
+    width: 235px;
+    height: 339px;
+    top: 164px;
     right: 0;
     left: 0;
     margin: auto;
 }
 .card__spade {
-    background: url('../img/gamble/cards/spade.png');
+    background: url('../img/gamble/cards/spade.png') top left;
 }
 .card__club {
-    background: url('../img/gamble/cards/club.png');
+    background: url('../img/gamble/cards/club.png') top left;
 }
 .card__heart {
-    background: url('../img/gamble/cards/heart.png');
+    background: url('../img/gamble/cards/heart.png') top left;
 }
 .card__diamond {
-    background: url('../img/gamble/cards/diamond.png');
+    background: url('../img/gamble/cards/diamond.png') top left;
 }
 .previous-cards {
     width: 1084px;

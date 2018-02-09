@@ -81,7 +81,6 @@ class GameController extends Controller
             case "PepperSeven":
             case "MagicSecret":
             case "BookOfWins":
-            case "ScatterWins":
                 while ($game->areBonusSpins()) {
                     $spinResult = $game->spin();
                 }

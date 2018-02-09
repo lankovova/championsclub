@@ -33,7 +33,7 @@ class GatesOfAvalon extends Game {
     }
 
     public function bonusSpin() {
-        return $this->game->bonusSpin("FreeSpinsAnotherJoker", ["bonusSpinJoker" => $this->bonusSpinJoker]);
+        return $this->game->bonusSpin("FreeSpinsAnotherJoker", ["bonusSpinJoker" => self::$bonusSpinJoker]);
     }
 
     public function areBonusSpins() {

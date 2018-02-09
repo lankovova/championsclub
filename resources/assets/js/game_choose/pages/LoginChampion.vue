@@ -15,7 +15,7 @@
             
             <div class="calculator__buttons">
                 <template v-for="(btn, key) in buttons">
-                    <button 
+                    <div 
                         v-if="btn.class == 'calculator__button-delete'"
                         :class="'calculator__button ' + btn.class" 
                         @click="deleteLastChar()"
@@ -24,9 +24,9 @@
                         @mouseleave="removeMyClass(btn.class, 'calculator__button--pressed')"
                         :ref="btn.class"
                         :key="key"
-                    ></button>
+                    ></div>
 
-                    <button
+                    <div
                         v-else-if="btn.class == 'calculator__button-ok'" 
                         :class="'calculator__button ' + btn.class" 
                         @click="makeLogin()"
@@ -35,9 +35,9 @@
                         @mouseleave="removeMyClass(btn.class, 'calculator__button--pressed')"
                         :ref="btn.class"
                         :key="key"
-                    ></button>
+                    ></div>
 
-                    <button
+                    <div
                         v-else
                         :class="'calculator__button ' + btn.class" 
                         @click="writeLogin(btn.val)"
@@ -46,7 +46,7 @@
                         @mouseleave="removeMyClass(btn.class, 'calculator__button--pressed')"
                         :ref="btn.class"
                         :key="key"
-                    ></button>
+                    ></div>
                 </template>
             </div>
         </div>
@@ -145,10 +145,7 @@ export default {
             this.login = []
             this.enableButtons()
         },
-    },
-    mounted() {
-        this.checkButtonsState()
-        document.onkeyup = (e) => {
+        onKeyDown(e) {
             switch (e.keyCode) {
                 case 13:
                     this.makeLogin()
@@ -157,8 +154,14 @@ export default {
                     this.writeLogin(parseInt(e.key))
                 break
             }
-            
         }
+    },
+    mounted() {
+        this.checkButtonsState()
+        document.addEventListener('keydown', e => this.onKeyDown(e));
+    },
+    beforeDestroy() {
+        document.removeEventListener('keydown', () => this.onKeyDown(), false);
     }
 }
 </script>

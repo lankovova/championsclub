@@ -20,8 +20,19 @@ export default {
             if (this.$el.classList.contains("button--disabled")) return;
             EventBus.$emit("show-next-slide")
         },
+        onKeyDown(e) {
+            if(e.keyCode === 32) {
+                this.showNextSlide()
+            }
+        }
     },
     mixins: [buttonEvents],
+    mounted() {
+        document.addEventListener('keydown', e => this.onKeyDown(e));
+    },
+    beforeDestroy() {
+        document.removeEventListener('keydown', this.onKeyDown(), false);
+    }
 
 }
 </script>
