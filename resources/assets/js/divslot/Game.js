@@ -415,8 +415,11 @@ export default class Game {
         if (this.bonusSpins.on) {
             // If bonus spins just dropped
             if (this.bonusSpins.currentSpinIndex === 0) {
-                // Turn of auto spins
+                // FIXME: Turn of auto spins
                 this.autoSpinIsOn = false;
+                this.interfaceController.panel.btns.auto.state = false;
+                this.interfaceController.panel.btns.auto.isOn = false;
+                // FIXME: END
 
                 if (this.spinResponse.won) {
                     // Show win lines and transfer win from regular spin
