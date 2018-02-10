@@ -25,7 +25,6 @@
                         :ref="btn.class"
                         :key="key"
                     ></div>
-
                     <div
                         v-else-if="btn.class == 'calculator__button-ok'" 
                         :class="'calculator__button ' + btn.class" 
@@ -36,7 +35,6 @@
                         :ref="btn.class"
                         :key="key"
                     ></div>
-
                     <div
                         v-else
                         :class="'calculator__button ' + btn.class" 

@@ -33,82 +33,82 @@ var settings = {
     "symbols": [
         {
             "image": "1.png",
-            "animation": {
-                "image": "1.png",
-                "frames": 29
-            },
+            // "animation": {
+            //     "image": "1.png",
+            //     "frames": 29
+            // },
             "paytable": [0, 10, 100, 1000, 5000],
         },
         {
             "image": "2.png",
-            "animation": {
-                "image": "2.png",
-                "frames": 34
-            },
+            // "animation": {
+            //     "image": "2.png",
+            //     "frames": 34
+            // },
             "paytable": [0, 5, 40, 400, 2000],
         },
         {
             "image": "3.png",
-            "animation": {
-                "image": "3.png",
-                "frames": 34
-            },
+            // "animation": {
+            //     "image": "3.png",
+            //     "frames": 34
+            // },
             "paytable": [0, 5, 30, 100, 750],
         },
         {
             "image": "4.png",
-            "animation": {
-                "image": "4.png",
-                "frames": 20
-            },
+            // "animation": {
+            //     "image": "4.png",
+            //     "frames": 20
+            // },
             "paytable": [0, 5, 30, 100, 750],
         },
         {
             "image": "5.png",
-            "animation": {
-                "image": "5.png",
-                "frames": 1
-            },
+            // "animation": {
+            //     "image": "5.png",
+            //     "frames": 1
+            // },
             "paytable": [0, 0, 5, 40, 150],
         },
         {
             "image": "6.png",
-            "animation": {
-                "image": "6.png",
-                "frames": 1
-            },
+            // "animation": {
+            //     "image": "6.png",
+            //     "frames": 1
+            // },
             "paytable": [0, 0, 5, 40, 150],
         },
         {
             "image": "7.png",
-            "animation": {
-                "image": "7.png",
-                "frames": 1
-            },
+            // "animation": {
+            //     "image": "7.png",
+            //     "frames": 1
+            // },
             "paytable": [0, 0, 5, 25, 100],
         },
         {
             "image": "8.png",
-            "animation": {
-                "image": "8.png",
-                "frames": 1
-            },
+            // "animation": {
+            //     "image": "8.png",
+            //     "frames": 1
+            // },
             "paytable": [0, 0, 5, 25, 100],
         },
         {
             "image": "9.png",
-            "animation": {
-                "image": "9.png",
-                "frames": 1
-            },
+            // "animation": {
+            //     "image": "9.png",
+            //     "frames": 1
+            // },
             "paytable": [0, 0, 5, 25, 100],
         },
         {
             "image": "10.png",
-            "animation": {
-                "image": "10.png",
-                "frames": 48
-            },
+            // "animation": {
+            //     "image": "10.png",
+            //     "frames": 48
+            // },
             "paytable": [0, 0, 3, 30, 300],
             "isScatter": true
         }
