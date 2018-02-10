@@ -53,3 +53,95 @@
     background-image: url("../img/games/themoneygame/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/themoneygame/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/themoneygame/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 28px;
+    }
+    &[data-symbols='3 4'] {
+        top: 181px;
+        left: 101px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='3 4'][data-joker] {
+        top: 181px;
+        left: 264px;    
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='1 2'] {
+        top: 454px;
+        left: 43px;
+        div {margin-bottom: 10px;}
+    }
+    &[data-symbols='1 2'][data-joker] {
+        top: 454px;
+        left: 207px;
+        div {margin-bottom: 16px;} 
+    }
+
+    &[data-symbols='0 10 11']{
+        top: 665px;
+        left: 254px;
+        div {margin-bottom: 11px;}
+    }
+    &[data-symbols='0 10 11'][data-joker] {
+        top: 665px;
+        left: 416px;
+        div {margin-bottom: 11px;}
+    }
+    &[data-symbols='12'] {
+        top: 27px;
+        left: 690px;
+        div {margin-bottom: 5px;}
+    }
+    &[data-symbols='8'] {
+        top: 229px;
+        left: 683px;
+        div {margin-bottom: 8px;}
+    }
+    &[data-symbols='6 7'] {
+        top: 171px;
+        left: 1045px;
+        div {margin-bottom: 6px;}
+    }
+    &[data-symbols='6 7'][data-joker] {
+        top: 171px;
+        left: 883px;
+        div {margin-bottom: 6px;}
+    }
+    &[data-symbols='5'] {
+        top: 453px;
+        left: 1101px;
+        div {margin-bottom: 9px;}
+    }
+    &[data-symbols='5'][data-joker] {
+        top: 449px;
+        left: 938px;
+        div {margin-bottom: 9px;}
+    }
+    &[data-symbols='9'] {
+        top: 652px;
+        right: 250px;
+        div {margin-bottom: 7px;}
+    }
+    &[data-symbols='9'][data-joker] {
+        top: 652px;
+        right: 412px;
+        div {margin-bottom: 7px;}
+    }
+        
+}

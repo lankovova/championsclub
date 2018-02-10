@@ -54,3 +54,95 @@
     background-image: url("../img/games/sealight/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/sealight/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/sealight/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 28px;
+    }
+    &[data-symbols='3 12'] {
+        top: 193px;
+        left: 24px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='3 12'][data-joker] {
+        top: 193px;
+        left: 282px;    
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='2 8'] {
+        top: 417px;
+        left: 24px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='2 8'][data-joker] {
+        top: 417px;
+        left: 283px;
+        div {margin-bottom: 16px;} 
+    }
+
+    &[data-symbols='1 6 10']{
+        top: 612px;
+        left: 170px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='1 6 10'][data-joker] {
+        top: 613px;
+        left: 425px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='7'] {
+        top: 14px;
+        left: 586px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='11'] {
+        top: 316px;
+        left: 535px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='5 9'] {
+        top: 127px;
+        left: 1121px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='5 9'][data-joker] {
+        top: 127px;
+        left: 872px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='4'] {
+        top: 413px;
+        left: 1123px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='4'][data-joker] {
+        top: 413px;
+        left: 871px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='0'] {
+        top: 609px;
+        right: 85px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='0'][data-joker] {
+        top: 609px;
+        right: 325px;
+        div {margin-bottom: 16px;}
+    }
+        
+}

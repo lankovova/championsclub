@@ -54,3 +54,53 @@
     background-image: url("../img/games/columbus/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/columbus/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/columbus/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height:40px;
+    }
+    &[data-symbols='10'] {
+        top: 60px;
+        left: 227px;
+        }
+    &[data-symbols='8']{
+        top: 288px;
+        left: 231px;
+        }
+    &[data-symbols='3']{
+        top: 49px;
+        left: 707px;
+        div {margin-bottom: 5px;}
+    }
+    &[data-symbols='0 5 6'] {
+        top: 303px;
+        left: 682px;
+        div {margin-bottom: 3px;}
+    }
+
+    &[data-symbols='4']{
+        top: 63px;
+        left: 1121px;
+    }
+
+    &[data-symbols='7 11'] {
+        top: 302px;
+        left: 1109px;
+        div {margin-bottom: 3px;}
+        }
+            
+}

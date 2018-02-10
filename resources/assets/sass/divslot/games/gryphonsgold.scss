@@ -54,3 +54,96 @@
     background-image: url("../img/games/gryphonsgold/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/gryphonsgold/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/gryphonsgold/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height:27px;
+    }
+    &[data-symbols='2 4'] {
+        top: 170px;
+        left: 61px;
+    }
+    &[data-symbols='2 4'][data-joker] {
+        top: 170px;
+        left: 242px;
+    }
+    
+    &[data-symbols='3 7'] {
+        top: 459px;
+        left: 43px;
+        div {margin-bottom: 3px;}
+    }
+    &[data-symbols='3 7'][data-joker]{
+        top: 459px;
+        left: 212px;
+        div {margin-bottom: 3px;}
+     
+    }
+    &[data-symbols='6'] {
+        top: 639px;
+        left: 276px;
+        div {margin-bottom: 12px;}
+    }
+
+    &[data-symbols='10']{
+        top: 159px;
+        left: 495px;
+        div {margin-bottom: 3px;}
+    }
+
+    &[data-symbols='10'][data-joker] {
+        top: 159px;
+        left: 673px;
+        div {margin-bottom: 3px;}
+        
+    }
+    &[data-symbols='11']{
+        top: 315px;
+        left: 721px;
+        div {margin-bottom: 13px;}
+    }
+    &[data-symbols='8']{
+        top: 516px;
+        left: 472px;
+    }
+    &[data-symbols='8'][data-joker] {
+        top: 516px;
+        left: 725px;
+        
+    }
+    &[data-symbols='0 9']{
+        top: 173px;
+        left: 928px;
+        div {margin-bottom: 3px;}
+    }
+    &[data-symbols='0 9'][data-joker] {
+        top: 173px;
+        left: 1109px;
+        div {margin-bottom: 3px;}
+        
+    }
+    &[data-symbols='1 5 12']{
+        top: 458px;
+        left: 951px;
+        div {margin-bottom: 3px;}
+    }
+    &[data-symbols='1 5 12'][data-joker] {
+        top: 458px;
+        left: 1119px;
+        div {margin-bottom: 3px;}
+    }          
+}

@@ -26,25 +26,25 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "helpDisabled": true,
+    // "helpDisabled": true,
 
     "symbolsImagesPath": "public/img/games/themoneygame/symbols/",
     "symbolsAnimationsPath": "public/img/games/themoneygame/symbols/animations/",
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png"},
-        {"image": "4.png"},
-        {"image": "5.png"},
-        {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png" , "isScatter": true},
-        {"image": "10.png"},
-        {"image": "11.png"},
-        {"image": "12.png"},
-        {"image": "13.png"}
+        {"image": "1.png", "paytable": [0,0,5,25,100]},
+        {"image": "2.png", "paytable": [0,0,10,50,125]},
+        {"image": "3.png", "paytable": [0,0,10,50,125]},
+        {"image": "4.png", "paytable": [0,0,15,75,250]},
+        {"image": "5.png", "paytable": [0,0,15,75,250]},
+        {"image": "6.png", "paytable": [0,0,20,100,400]},
+        {"image": "7.png", "paytable": [0,2,25,125,750]},
+        {"image": "8.png", "paytable": [0,2,25,125,750]},
+        {"image": "9.png" , "isScatter": true, "paytable": [0,2,5,20,500]},
+        {"image": "10.png", "paytable": [0,2,5,25,100]},
+        {"image": "11.png", "paytable": [0,0,5,25,100]},
+        {"image": "12.png", "paytable": [0,0,5,25,100]},
+        {"image": "13.png", "paytable": [0,10,250,2500,9000]}
     ],
 
     "lines": [1, 2, 3, 4, 5, 6, 7, 8, 9],

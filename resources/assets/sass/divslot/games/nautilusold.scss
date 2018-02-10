@@ -54,3 +54,95 @@
     background-image: url("../img/games/nautilusold/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/nautilusold/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/nautilusold/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 28px;
+    }
+    &[data-symbols='7 9'] {
+        top: 188px;
+        left: 113px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='7 9'][data-joker] {
+        top: 188px;
+        left: 260px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='5 11'] {
+        top: 415px;
+        left: 30px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='5 11'][data-joker] {
+        top: 415px;
+        left: 279px;
+        div {margin-bottom: 16px;} 
+    }
+
+    &[data-symbols='3 4 6']{
+        top: 603px;
+        left: 151px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='3 4 6'][data-joker] {
+        top: 602px;
+        left: 395px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='12'] {
+        top: 7px;
+        left: 586px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='8'] {
+        top: 314px;
+        left: 535px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='0 1'] {
+        top: 122px;
+        left: 1121px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='0 1'][data-joker] {
+        top: 122px;
+        left: 872px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='10'] {
+        top: 413px;
+        left: 1123px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='10'][data-joker] {
+        top: 413px;
+        left: 871px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='2'] {
+        top: 601px;
+        right: 85px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='2'][data-joker] {
+        top: 601px;
+        right: 325px;
+        div {margin-bottom: 16px;}
+    }
+        
+}

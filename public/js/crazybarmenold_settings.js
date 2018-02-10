@@ -24,7 +24,7 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "helpDisabled": true,
+    // "helpDisabled": true,
 
     "symbolsImagesPath": "public/img/games/crazybarmenold/symbols/",
     "symbolsAnimationsPath": "public/img/games/crazybarmenold/symbols/animations/",

@@ -24,11 +24,11 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "helpDisabled": true,
+    // "helpDisabled": true,
 
     "symbolsImagesPath": "public/img/games/gulliver/symbols/",
     "symbolsAnimationsPath": "public/img/games/gulliver/symbols/animations/",
-
+    
     "bonusSpinAnimation": "reveal",
     "revealAnimation": {
         "image": "reveal.png",
@@ -36,18 +36,18 @@ var settings = {
     },
 
     "symbols": [
-        {"image": "1.png"},
-        {"image": "2.png"},
-        {"image": "3.png", "isScatter": true},
-        {"image": "4.png", "isScatter": true},
-        {"image": "5.png", "isScatter": true},
-        {"image": "6.png"},
-        {"image": "7.png"},
-        {"image": "8.png"},
-        {"image": "9.png"},
-        {"image": "10.png"},
-        {"image": "11.png"},
-        {"image": "12.png"},
+        {"image": "1.png","paytable": [0,0,5,20,100]},
+        {"image": "2.png","paytable": [0,0,10,40,150]},
+        {"image": "3.png", "isScatter": true,"paytable": [0,0,0,0,0]},
+        {"image": "4.png", "isScatter": true,"paytable": [0,0,0,0,0]},
+        {"image": "5.png", "isScatter": true,"paytable": [0,0,0,0,0]},
+        {"image": "6.png","paytable": [0,10,100,1000,5000]},
+        {"image": "7.png","paytable": [0,0,5,20,100]},
+        {"image": "8.png","paytable": [0,0,10,40,150]},
+        {"image": "9.png","paytable": [0,5,15,75,250]},
+        {"image": "10.png","paytable": [0,5,25,100,500]},
+        {"image": "11.png","paytable": [0,5,50,200,1000]},
+        {"image": "12.png","paytable": [0,0,10,40,150]},
     ],
 
     "linePositionCorrection": [

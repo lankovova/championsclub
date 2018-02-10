@@ -10,11 +10,12 @@
 }
 
 .alert .content {
-    background: url('../img/games/gulliver/images/freeSpinBg.png');
-    width: 820px;
-    height: 295px;
+    background: url('../img/games/bananas/images/freeSpinBg.png');
+    background-size: 100% 100%;
+    width: 867px;
+    height: 695px;
     font-size: 44px;
-    color: #836638;
+    color: #FDEA52;
     text-shadow: -2px -2px 2px #4D1907, 2px 2px 2px #4D1907, -2px 2px 2px #4D1907, 2px -2px 2px #4D1907;
     font-weight: 600;
     text-align: center;
@@ -53,4 +54,54 @@
 .panel {
     background-image: url("../img/games/gulliver/panel_bg.png");
     background-position:  center center;
+}
+.help__slide_1 {
+    background-image: url('../img/games/gulliver/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/gulliver/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height:32px;
+    }
+    &[data-symbols='10'] {
+        top: 60px;
+        left: 227px;
+        }
+    &[data-symbols='8']{
+        top: 288px;
+        left: 231px;
+        }
+    &[data-symbols='5']{
+        top: 49px;
+        left: 707px;
+        div {margin-bottom: 5px;}
+    }
+    &[data-symbols='7 11 1'] {
+        top: 297px;
+        left: 682px;
+        div {margin-bottom: 10px;}
+    }
+
+    &[data-symbols='9']{
+        top: 63px;
+        left: 1121px;
+    }
+
+    &[data-symbols='0 6'] {
+        top: 295px;
+    left: 1109px;
+        div {margin-bottom: 10px;}
+        }
+            
 }

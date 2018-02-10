@@ -112,3 +112,60 @@
         left: calc(50% - 130px);
     }
 }
+.help__slide_1 {
+    background-image: url('../img/games/computerworldold/help/slide_bg_1.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 34px;
+    }
+    &[data-symbols='3'] {
+        top: 182px;
+        left: 276px;
+        
+    }
+    &[data-symbols='8'] {
+        top: 419px;
+        left: 248px;
+       
+    }
+    &[data-symbols='1 5'] {
+        top: 645px;
+        left: 321px;
+        div {margin-bottom: 16px;}
+       
+    }
+    &[data-symbols='6'] {
+        top: 151px;
+        left: 701px;
+        div {margin-bottom: 16px;}
+    }
+    &[data-symbols='2'] {
+        top: 183px;
+        left: 1118px;
+        
+    }
+    &[data-symbols='7'] {
+        top: 420px;
+        left: 1121px;
+        
+    }
+
+    &[data-symbols='0 4 9'] {
+        top: 645px;
+        left: 938px;
+        div {margin-bottom: 16px;}
+        
+    }
+    
+        
+}

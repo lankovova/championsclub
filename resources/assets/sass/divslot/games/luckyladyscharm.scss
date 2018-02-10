@@ -53,3 +53,92 @@
     background-image: url("../img/games/luckyladyscharm/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/luckyladyscharm/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/luckyladyscharm/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 28px;
+    }
+    &[data-symbols='7 8'] {
+        top: 188px;
+        left: 113px;
+        div {margin-bottom: 9px;}
+    }
+    &[data-symbols='7 8'][data-joker] {
+        top: 188px;
+        left: 260px;
+        div {margin-bottom: 9px;}
+    }
+    &[data-symbols='5 6'] {
+        top: 449px;
+        left: 59px;
+        div {margin-bottom: 9px;}
+    }
+    &[data-symbols='5 6'][data-joker] {
+        top: 449px;
+        left: 222px;
+        div {margin-bottom: 9px;}  
+    }
+
+    &[data-symbols='2 3 4']{
+        top: 680px;
+        left: 260px;
+        div {margin-bottom: 9px;}  
+    }
+    &[data-symbols='2 3 4'][data-joker] {
+        top: 680px;
+        left: 414px;
+        div {margin-bottom: 9px;}  
+    }
+    &[data-symbols='12'] {
+        top: 29px;
+        left: 691px;
+        div {margin-bottom: 2px;}
+    }
+    &[data-symbols='0'] {
+        top: 218px;
+        left: 675px;
+        div {margin-bottom: 5px;}
+    }
+    &[data-symbols='10 11'] {
+        top: 178px;
+        left: 1025px;
+    }
+    &[data-symbols='10 11'][data-joker] {
+        top: 178px;
+        left: 872px;
+    }
+    &[data-symbols='9'] {
+        top: 449px;
+        left: 1088px;
+        div {margin-bottom: 12px;}
+    }
+    &[data-symbols='9'][data-joker] {
+        top: 451px;
+        left: 929px;
+    }
+    &[data-symbols='1'] {
+        top: 673px;
+        right: 257px;
+        div {margin-bottom: 2px;}
+    }
+    &[data-symbols='1'][data-joker] {
+        top: 673px;
+        right: 405px;
+        div {margin-bottom: 2px;}
+    }
+        
+}

@@ -24,7 +24,7 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    "helpDisabled": true,
+    // "helpDisabled": true,
 
     "imagesPath": "public/img/games/bookofra/",
     "symbolsImagesPath": "public/img/games/bookofra/symbols/",

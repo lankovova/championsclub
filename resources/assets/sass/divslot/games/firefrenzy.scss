@@ -53,3 +53,94 @@
     background-image: url("../img/games/firefrenzy/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/firefrenzy/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/firefrenzy/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 42px;
+    }
+    &[data-symbols='6'] {
+        top: 26px;
+        left: 411px;
+        
+    }
+    
+    &[data-symbols='3 4'] {
+        top: 243px;
+        left: 141px;
+        
+    }
+    &[data-symbols='3 4'][data-joker] {
+        top: 243px;
+        left: 404px;
+        
+    }
+    &[data-symbols='2 10'] {
+        top: 415px;
+        left: 149px;
+        
+    }
+    
+    &[data-symbols='2 10'][data-joker]{
+        top: 415px;
+        left: 400px;
+        
+    }
+    &[data-symbols='1 9 12'] {
+        top: 590px;
+        left: 148px;
+        
+    }
+    &[data-symbols='1 9 12'][data-joker] {
+        top: 590px;
+        left: 400px;
+        }
+    &[data-symbols='7 8'] {
+        top: 587px;
+        left: 676px;
+        
+        }
+    &[data-symbols='7 8'][data-joker] {
+        top: 46px;
+        left: 1103px;
+        }
+    &[data-symbols='5'] {
+        top: 257px;
+        right: 32px;
+    
+    }
+    &[data-symbols='5'][data-joker] {
+        top: 257px;
+        right: 285px;
+    
+    }
+    &[data-symbols='0'] {
+        top: 432px;
+        right: 27px;
+        
+    }
+    &[data-symbols='0'][data-joker] {
+        top: 432px;
+        right: 283px;
+        
+    }
+    &[data-symbols='11'] {
+        top: 623px;
+        right: 301px;
+        
+    }
+        
+}

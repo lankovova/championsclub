@@ -109,3 +109,56 @@
         left: calc(50% - 130px);
     }
 }
+.help__slide_1 {
+    background-image: url('../img/games/bookofra/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/bookofra/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 33px;
+    }
+    &[data-symbols='0'] {
+        top: 185px;
+        left: 245px;
+        }
+    &[data-symbols='2']{
+        top: 424px;
+        left: 253px;
+        }
+    &[data-symbols='4 5'] {
+        top: 661px;
+        left: 282px;
+       
+    }
+    &[data-symbols='9']{
+        top: 172px;
+        left: 676px;
+        div {margin-bottom: 13px;}
+        
+    }
+    &[data-symbols='1'] {
+        top: 185px;
+        left: 1109px;
+          }
+    
+    &[data-symbols='3']{
+        top: 423px;
+        left: 1106px;
+         }
+    &[data-symbols='6 7 8']{
+        top: 661px;
+        left: 925px;
+         }
+            
+}

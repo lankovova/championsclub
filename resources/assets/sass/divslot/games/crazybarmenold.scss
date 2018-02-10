@@ -55,3 +55,83 @@
     background-image: url("../img/games/crazybarmenold/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/crazybarmenold/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/crazybarmenold/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 46px;
+    }
+    &[data-symbols='6 10'] {
+        top: 187px;
+        left: 29px;
+        }
+    &[data-symbols='6 10'][data-joker] {
+        top: 188px;
+        left: 286px; 
+    }
+    &[data-symbols='7 12'] {
+        top: 415px;
+        left: 27px;
+    }
+    &[data-symbols='7 12'][data-joker] {
+        top: 415px;
+        left: 288px;
+
+    }
+    &[data-symbols='1 4 8'] {
+        top: 607px;
+        left: 28px;
+    }
+    
+    &[data-symbols='1 4 8'][data-joker]{
+        top: 607px;
+        left: 280px;
+    }
+    &[data-symbols='11'] {
+        top: 2px;
+        left: 587px;
+    }
+    &[data-symbols='9'] {
+        top: 310px;
+        left: 533px;
+    }
+    &[data-symbols='0 2'] {
+        top: 120px;
+        left: 1116px;
+        }
+    &[data-symbols='0 2'][data-joker] {
+        top: 120px;
+        left: 868px;
+        }
+    &[data-symbols='5']{
+        top: 412px;
+        left: 1118px;
+    }
+    &[data-symbols='5'][data-joker]{
+        top: 412px;
+        left: 867px;
+    }
+    &[data-symbols='3'] {
+        top: 607px;
+        left: 1119px;
+    }
+    &[data-symbols='3'][data-joker] {
+        top: 607px;
+        left: 867px;
+}
+   
+        
+}

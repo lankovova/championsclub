@@ -55,3 +55,83 @@
     background-image: url("../img/games/dolphinspearl/panel_bg.png");
     background-position:  center center;
 }
+.help__slide_1 {
+    background-image: url('../img/games/dolphinspearl/help/slide_bg_1.png');
+}
+.help__slide_2 {
+    background-image: url('../img/games/dolphinspearl/help/slide_bg_2.png');
+}
+.help__prize_container {
+    position: absolute;
+
+    div {
+        font-size: 26px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
+        width: 177px;
+        height: 30px;
+    }
+    &[data-symbols='0'] {
+        top: 118px;
+        left: 236px;
+        }
+    &[data-symbols='1 2'] {
+        top: 316px;
+        left: 407px;
+    }
+    &[data-symbols='1 2'][data-joker] {
+        top: 316px;
+        left: 535px;
+    }
+    &[data-symbols='6 7'] {
+        top: 524px;
+        left: 374px;
+
+    }
+    &[data-symbols='6 7'][data-joker] {
+        top: 524px;
+        left: 497px;
+    }
+    
+    &[data-symbols='8 10 11']{
+        top: 686px;
+        left: 522px;
+    }
+    &[data-symbols='8 10 11'][data-joker] {
+        top: 686px;
+        left: 647px;
+    }
+    &[data-symbols='12'] {
+        top: 18px;
+        left: 1105px;
+    }
+    &[data-symbols='3'] {
+        top: 337px;
+        left: 888px;
+        }
+    &[data-symbols='3'][data-joker] {
+        top: 337px;
+        left: 1009px;
+        }
+    &[data-symbols='4 5']{
+        top: 494px;
+        left: 1037px;
+    }
+    &[data-symbols='4 5'][data-joker]{
+        top: 493px;
+        left: 1157px;
+    }
+    &[data-symbols='9'] {
+        top: 678px;
+        left: 1003px;
+    }
+    &[data-symbols='9'][data-joker] {
+        top: 678px;
+        left: 1125px;  
+}
+   
+        
+}

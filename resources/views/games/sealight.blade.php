@@ -5,22 +5,26 @@
 @endsection
     
 @section('help')
+@component('games.parts.help')
+    @slot('helpValues')
+        <div data-symbols="3 12" class="help__prize_container"></div>
+        <div data-symbols="3 12" data-joker class="help__prize_container"></div>
+        <div data-symbols="2 8" class="help__prize_container"></div>
+        <div data-symbols="2 8" data-joker class="help__prize_container"></div>
+        <div data-symbols="1 6 10" class="help__prize_container"></div>
+        <div data-symbols="1 6 10" data-joker class="help__prize_container"></div>
+        <div data-symbols="7" class="help__prize_container"></div>
+        <div data-symbols="11" data-joker class="help__prize_container"></div>
+        <div data-symbols="5 9" class="help__prize_container"></div>
+        <div data-symbols="5 9" data-joker class="help__prize_container"></div>
+        <div data-symbols="4" class="help__prize_container"></div>
+        <div data-symbols="4" data-joker class="help__prize_container"></div>
+        <div data-symbols="0" class="help__prize_container"></div>
+        <div data-symbols="0" data-joker class="help__prize_container"></div>
 
-    @component('games.parts.help')
-        @slot('helpValues')
-            {{--  <div data-symbols="6" class="help__prize_container"></div>
-            <div data-symbols="3" class="help__prize_container"></div>
-            <div data-symbols="1 5" class="help__prize_container"></div>
-
-            <div data-symbols="0" class="help__prize_container"></div>
-
-            <div data-symbols="8" class="help__prize_container"></div>
-            <div data-symbols="9" class="help__prize_container"></div>
-            <div data-symbols="2 4" class="help__prize_container"></div>  --}}
-        @endslot
-    @endcomponent
-
-@endsection
+    @endslot
+@endcomponent
+@endsection 
 
 @section('js')
     @parent
