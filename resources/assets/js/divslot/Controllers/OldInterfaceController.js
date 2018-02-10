@@ -7,7 +7,7 @@ import SubstitutionBlock from './../Components/SubstitutionBlock';
 import OldGambleModal from '../Components/OldGambleModal';
 import Translator from '../Translator';
 import CookieController from './CookieController';
-import Help from './../Components/Help';
+import Help from './../Components/OldHelp';
 
 export default class OldInterfaceController {
     constructor(props) {
@@ -15,7 +15,8 @@ export default class OldInterfaceController {
 
         this.helpWindow = new Help({
             node: document.querySelector('#help'),
-            onClose: this.onCloseHelp
+            onClose: this.onCloseHelp,
+            onTransitionEnd: () => {}
         });
 
         this.linePresenters = new LinePresenters({
@@ -259,7 +260,7 @@ export default class OldInterfaceController {
     }
 
     openHelp = () => {
-        this.disableInterface();
+        // this.disableInterface();
         this.helpWindow.open();
     }
 
