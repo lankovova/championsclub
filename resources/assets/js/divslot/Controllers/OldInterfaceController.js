@@ -16,7 +16,7 @@ export default class OldInterfaceController {
         this.helpWindow = new Help({
             node: document.querySelector('#help'),
             onClose: this.onCloseHelp,
-            onTransitionEnd: () => {}
+            enableSelf: () => { this.panel.btns.help.enable(); }
         });
 
         this.linePresenters = new LinePresenters({
@@ -260,7 +260,7 @@ export default class OldInterfaceController {
     }
 
     openHelp = () => {
-        // this.disableInterface();
+        this.disableInterface();
         this.helpWindow.open();
     }
 

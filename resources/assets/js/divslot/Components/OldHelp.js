@@ -1,3 +1,5 @@
+import {transitionEnd} from '../events';
+
 export default class OldHelp {
 
     constructor(props) {
@@ -6,7 +8,7 @@ export default class OldHelp {
         this.slidesAmount = this.slides.length;
         this.currentSlide = 0;
         for (const slide of this.slides) {
-            slide.addEventListener("transitionend", () => this.onTransitionEndHandler(), false);
+            slide.addEventListener(transitionEnd, () => this.onTransitionEndHandler(), false);
         }
     }
 
@@ -16,7 +18,7 @@ export default class OldHelp {
             return;
         }
         this.slides[this.currentSlide].style.transform = "translateY(0)";
-        this.currentSlide++
+        this.currentSlide++;
     }
 
     reset() {
@@ -27,7 +29,13 @@ export default class OldHelp {
     }
 
     onTransitionEndHandler() {
-        this.props.onTransitionEnd();
+        // Enable self invoking button
+        this.props.enableSelf();
+
+        // If help window is fully closed
+        if (this.currentSlide === 0) {
+            this.props.onClose();
+        }
     }
 
     initPaytable() {
