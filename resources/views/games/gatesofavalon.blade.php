@@ -4,25 +4,24 @@
     <link href="{{asset('public/css/gatesofavalon.css')}}" rel=stylesheet type=text/css>
 @endsection
 
-@component('games.parts.help')
-    @slot('helpValues')
-        <div data-symbols="12 11" class="help__prize_container"></div>
-        <div data-symbols="12 11" data-joker class="help__prize_container"></div>
-        <div data-symbols="2 7" class="help__prize_container"></div>
-        <div data-symbols="2 7" data-joker class="help__prize_container"></div>
-        <div data-symbols="4" class="help__prize_container"></div>
-        <div data-symbols="9"  class="help__prize_container"></div>
-        <div data-symbols="9" data-joker class="help__prize_container"></div>
-        <div data-symbols="3" class="help__prize_container"></div>
-        <div data-symbols="1 6 10" class="help__prize_container"></div>
-        <div data-symbols="1 6 10" data-joker class="help__prize_container"></div>
-        <div data-symbols="5 8" class="help__prize_container"></div>
-        <div data-symbols="5 8" data-joker class="help__prize_container"></div>
-        <div data-symbols="0" class="help__prize_container"></div>
-        <div data-symbols="0" data-joker class="help__prize_container"></div>
+@section('help')
 
-    @endslot
-@endcomponent
+    @component('games.parts.help')
+        @slot('helpValues')
+            <div data-symbols="3" class="help__prize_container"></div>
+            <div data-symbols="5" class="help__prize_container"></div>
+            <div data-symbols="1 8 11" class="help__prize_container"></div>
+
+            <div data-symbols="10" class="help__prize_container"></div>
+
+            <div data-symbols="6 9" class="help__prize_container"></div>
+            <div data-symbols="4" class="help__prize_container"></div>
+            <div data-symbols="2" class="help__prize_container"></div>
+            <div data-symbols="0 7" class="help__prize_container"></div>
+        @endslot
+    @endcomponent
+
+@endsection
 
 @section('js')
     @parent

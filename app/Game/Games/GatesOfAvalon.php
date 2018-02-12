@@ -6,22 +6,24 @@ use App\Game\Games\Game;
 
 class GatesOfAvalon extends Game {
     public static $reelsAmount = 5;
-    public static $scatter = 0;
-    public static $joker = 0;
-    public static $bonusSpinJoker = 1;
-    public static $freeSpinsAmount = 10;
-    public static $symbolsAmount = 10;
+    public static $scatter = 10;
+    public static $joker = -1;
+    public static $bonusSpinJoker = 4;
+    public static $freeSpinsAmount = 15;
+    public static $symbolsAmount = 12;
     public static $paytable = [
-        [0, 0, 3, 30, 300],         // Symbol 0
-        [0, 0, 5, 40, 150],         // Symbol 1
-        [0, 0, 5, 25, 100],         // Symbol 2
-        [0, 5, 30, 100, 750],       // Symbol 3
-        [0, 0, 5, 25, 100],         // Symbol 4
-        [0, 0, 5, 40, 150],         // Symbol 5
-        [0, 10, 100, 1000, 5000],   // Symbol 6
-        [0, 0, 5, 25, 100],         // Symbol 7
-        [0, 5, 40, 400, 2000],      // Symbol 8
-        [0, 5, 30, 100, 750]        // Symbol 9
+        [0,0,5,20,100],         // Symbol 0
+        [0,0,10,50,100],         // Symbol 1
+        [0,0,20,100,600],         // Symbol 2
+        [0,10,300,3000,10000],       // Symbol 3
+        [0,5,50,300,1000],         // Symbol 4
+        [0,0,25,200,800],         // Symbol 5
+        [0,0,15,75,400],   // Symbol 6
+        [0,0,5,20,100],         // Symbol 7
+        [0,0,10,50,100],      // Symbol 8
+        [0,0,15,75,400],       // Symbol 9
+        [0,2,5,20,500], //10
+        [0,0,10,50,100] //11
     ];
 
     function __construct($game) {
@@ -29,7 +31,7 @@ class GatesOfAvalon extends Game {
     }
 
     public function spin() {
-        return $this->game->spin("checkForWin");
+        return $this->game->spin("checkForWinCombos");
     }
 
     public function bonusSpin() {

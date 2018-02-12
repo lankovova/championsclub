@@ -28,17 +28,18 @@
     background: url('../img/games/gatesofavalon/header.gif');
 }
 .alert .content {
-    background-image: url("../img/games/gatesofavalon/freeSpinBg.png");
+    background-image: url("../img/games/gatesofavalon/images/freeSpinBg.png");
     background-size: 100% 100%;
     width: 950px;
     height: 500px;
-    padding: 50px 100px 100px;
+    padding: 131px 266px 208px;
     box-sizing: border-box;
     text-align: center;
-    font-size: 50px;
-    color: rgb(233, 251, 0);
-    text-shadow: 2px 2px 5px darkslategrey;
+    font-size: 40px;
+    color: #fbdd63;
+    text-shadow: -2px -2px 2px #000, 2px 2px 2px #000, -2px 2px 2px #000, 2px -2px 2px #000;
     text-transform: uppercase;
+    animation: soar 5s ease-in-out infinite;
 }
 .gamble {
     background-image: url('../img/games/gatesofavalon/gamble/gamble_bg.png');
@@ -106,18 +107,17 @@
 }
 .help__btn_next {
     background-image: url('../img/games/gatesofavalon/help/next_btn_bg.gif');
+    display: none;
 }
 .help__btn_prev {
     background-image: url('../img/games/gatesofavalon/help/prev_btn_bg.gif');
+    display: none;
 }
 .help__btn_close {
     background-image: url('../img/games/gatesofavalon/help/close_btn_bg.gif');
 }
 .help__slide_1 {
     background-image: url('../img/games/gatesofavalon/help/slide_bg_1.png');
-}
-.help__slide_2 {
-    background-image: url('../img/games/gatesofavalon/help/slide_bg_2.png');
 }
 .help__prize_container {
     position: absolute;
@@ -132,34 +132,38 @@
         width: 177px;
         height: 43px;
     }
-    &[data-symbols='6'] {
-        top: 270px;
-        left: 255px;
-    }
     &[data-symbols='3'] {
-        top: 510px;
-        left: 255px;
+        top: 150px;
+        left: 259px;
     }
-    &[data-symbols='1 5'] {
-        top: 750px;
-        left: 255px;
+    &[data-symbols='5'] {
+        top: 573px;
+        left: 282px;
+    }
+    &[data-symbols='1 8 11'] {
+        top: 826px;
+        left: 221px;
     }
 
-    &[data-symbols='0'] {
-        top: 326px;
-        left: 674px;
+    &[data-symbols='10'] {
+        top: 334px;
+        left: 634px;
     }
 
-    &[data-symbols='8'] {
-        top: 270px;
+    &[data-symbols='6 9'] {
+        top: 748px;
+        right: 572px;
+    }
+    &[data-symbols='4'] {
+        top: 152px;
         right: 255px;
     }
-    &[data-symbols='9'] {
-        top: 510px;
-        right: 255px;
+    &[data-symbols='2'] {
+        top: 570px;
+        right: 268px;
     }
-    &[data-symbols='2 4'] {
-        top: 750px;
-        right: 255px;
+    &[data-symbols='0 7'] {
+        top: 827px;
+        right: 210px;
     }
 }
