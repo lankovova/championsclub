@@ -37,6 +37,7 @@
 .header {
     background: url('../img/games/bookofwins/header.gif');
 }
+// Gamble
 .gamble {
     background: url('../img/games/bookofwins/gamble/gamble_bg.png');
     background-size: 100% 100%;
@@ -44,6 +45,24 @@
     height: 681px;
     top: 152px;
 }
+.gamble__to-win-color .value {
+    position: absolute;
+    top: 47px;
+    right: 136px;
+}
+.gamble__to-win,
+.gamble__amount {
+    text-shadow: 3px 3px 2px #000;
+}
+.button__suit-color .title {
+    text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff, 2px -2px 2px #fff, -2px 2px 2px #fff, 4px 4px 2px #000
+}
+.previous-cards__text{
+    text-shadow: 3px 3px 2px #000;
+    color: #fef669;
+}
+
+// Help
 .help {
     background-image: url('../img/games/bookofwinner/help/border_bg.png');
     z-index:3;
