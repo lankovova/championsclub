@@ -33,9 +33,9 @@ var commonSettings = {
         [ [2, 0], [1, 1], [1, 2], [1, 3], [2, 4] ]
     ],
     "linePositionCorrection": [
-        {lineIndex: 0, offset: 40},
-        {lineIndex: 1, offset: -15},
-        {lineIndex: 2, offset: 15},
+        {lineIndex: 0, offset: 0},
+        {lineIndex: 1, offset: 0},
+        {lineIndex: 2, offset: 0},
         {lineIndex: 3, offset: -80},
         {lineIndex: 4, offset: 80},
         {lineIndex: 5, offset: -90},
