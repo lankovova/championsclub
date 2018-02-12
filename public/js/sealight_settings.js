@@ -24,11 +24,11 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    // "helpDisabled": true,
+    "backSuitInPreviousCards": true,
 
     "symbolsImagesPath": "public/img/games/sealight/symbols/",
     "symbolsAnimationsPath": "public/img/games/sealight/symbols/animations/",
-    
+
     "bonusSpinAnimation": "reveal",
     "revealAnimation": {
         "image": "reveal.png",

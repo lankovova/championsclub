@@ -24,7 +24,7 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    // "helpDisabled": true,
+    "backSuitInPreviousCards": true,
 
     "imagesPath": "public/img/games/computerworldold/",
     "symbolsImagesPath": "public/img/games/computerworldold/symbols/",

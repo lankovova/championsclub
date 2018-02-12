@@ -24,7 +24,7 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    // "helpDisabled": true,
+    "backSuitInPreviousCards": true,
 
     "symbolsImagesPath": "public/img/games/nautilusold/symbols/",
     "symbolsAnimationsPath": "public/img/games/nautilusold/symbols/animations/",

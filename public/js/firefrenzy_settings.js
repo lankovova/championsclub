@@ -24,6 +24,8 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
+    "backSuitInPreviousCards": true,
+
     "symbolsImagesPath": "public/img/games/firefrenzy/symbols/",
     "symbolsAnimationsPath": "public/img/games/firefrenzy/symbols/animations/",
 

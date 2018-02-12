@@ -24,7 +24,7 @@ var settings = {
     "gamblePreviousCardsAmount": 5,
     "gambleExtended": false,
 
-    // "helpDisabled": true,
+    "backSuitInPreviousCards": true,
 
     "symbolsImagesPath": "public/img/games/columbus/symbols/",
     "symbolsAnimationsPath": "public/img/games/columbus/symbols/animations/",

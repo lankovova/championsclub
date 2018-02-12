@@ -26,6 +26,8 @@ var settings = {
     "imagesPath": "public/img/games/bookofwinner/",
     "helpType": "slider",
 
+    "backSuitInPreviousCards": true,
+
     "symbolsImagesPath": "public/img/games/bookofwins/symbols/",
     "symbolsAnimationsPath": "public/img/games/bookofwins/symbols/animations/",
 
@@ -64,7 +66,7 @@ var settings = {
             //     "image": "5.png",
             //     "frames": 9
             // },
-            
+
             "paytable": [0,5,40,400,2000]
         }, {
             "image": "6.png",
