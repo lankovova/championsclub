@@ -127,6 +127,11 @@ export default class GambleModal {
             const randomedCardSuitIndex = Math.floor(Math.random() * cardsSuits.length);
             this.previousCards.add(cardsSuits[randomedCardSuitIndex]);
         }
+
+        if (settings.backSuitInPreviousCards) {
+            // Add suit back card after all
+            this.previousCards.add('back');
+        }
     }
 
     _initListeners() {
@@ -171,8 +176,15 @@ export default class GambleModal {
         // Change flipping card suit
         this.bigCardNode.style.zIndex = 1;
 
-        // Add randomed card to previous cards
-        this.previousCards.add(randomSuit);
+        if (settings.backSuitInPreviousCards) {
+            // Add randomed card to previous cards
+            const suitBackNode = this.previousCards.node.querySelector('.suit-back');
+            // Set suit back card bg ro randomed card
+            suitBackNode.className = `suit-${randomSuit}`;
+        } else {
+            // Add randomed card to previous cards
+            this.previousCards.add(randomSuit);
+        }
     }
 
     hideDroppedCard() {
@@ -181,6 +193,11 @@ export default class GambleModal {
 
         // Start flipping card
         this.bigCardNode.style.zIndex = '';
+
+        if (settings.backSuitInPreviousCards) {
+            // Add suit back card after all
+            this.previousCards.add('back');
+        }
     }
 
     pickCard = async (cardSuit) => {
