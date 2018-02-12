@@ -354,6 +354,7 @@ body {
     padding-right: 78px;
     box-sizing: border-box;
 }
+.suit-back,
 .suit-spade,
 .suit-club,
 .suit-heart,
@@ -361,6 +362,9 @@ body {
     width: 51px;
     height: 46px;
     margin-right: 7px;
+}
+.suit-back {
+    background-image: url('../img/gamble/suits/back_old.png');
 }
 .suit-spade {
     background: url('../img/gamble/suits/spade.png');
