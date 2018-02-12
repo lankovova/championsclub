@@ -247,8 +247,6 @@ export default class Game {
 
     spin = async () => {
         if (this.bonusSpins.on) {
-            console.log('Bonus spins starts');
-
             // If it is substitution bonus spins type
             if (this.bonusSpins.type === BONUS_SPINS_TYPES.substitution) {
                 // If it is substitution pre start
