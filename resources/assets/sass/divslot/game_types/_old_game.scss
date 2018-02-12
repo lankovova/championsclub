@@ -436,9 +436,6 @@ body {
     &__text {
         padding-right: 10px;
     }
-    &__value {
-
-    }
 }
 
 .header {
@@ -470,6 +467,7 @@ body {
         text-transform: uppercase;
         font-weight: 700;
         letter-spacing: 7px;
+        background-image: url('../img/gamble/buttons/suit_color_old.png');
         .overflow-layer {
             border-radius: 50%;
             position: absolute;
@@ -485,12 +483,10 @@ body {
     }
     .button__red {
         left: 120px;
-        background: url('../img/gamble/buttons/suit_color_old.png');
         color: #cc0000;
     }
     .button__black {
         right: 120px;
-        background: url('../img/gamble/buttons/suit_color_old.png');
         color: #000;
     }
     .button__suit {

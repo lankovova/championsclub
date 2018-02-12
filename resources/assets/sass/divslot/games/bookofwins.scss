@@ -61,6 +61,77 @@
     text-shadow: 3px 3px 2px #000;
     color: #fef669;
 }
+.gamble .button__suit-color {
+    background-image: url('../img/games/bookofwins/gamble/red_black.png');
+    background-position: top left;
+    width: 307px;
+    height: 99px;
+    top: 304px;
+    overflow: hidden;
+    border-radius: 30px;
+
+    &:hover {
+        background-position: top right;
+    }
+}
+.gamble .button__black {
+    right: 180px;
+}
+.gamble .button__red {
+    left: 180px;
+}
+.previous-cards {
+    background-image: url('../img/games/bookofwins/gamble/previous.png');
+    width: 1033px;
+    height: 83px;
+    top: 525px;
+}
+.suit-back,
+.suit-spade,
+.suit-club,
+.suit-heart,
+.suit-diamond {
+    background-size: 100% 100%;
+    background-position: center center;
+}
+.suit-spade {
+    background-image: url('../img/gamble/suits/spade_old.png');
+}
+.suit-club {
+    background-image: url('../img/gamble/suits/club_old.png');
+}
+.suit-heart {
+    background-image: url('../img/gamble/suits/heart_old.png');
+}
+.suit-diamond {
+    background-image: url('../img/gamble/suits/diamond_old.png');
+}
+
+.card,
+.card__spade,
+.card__club,
+.card__heart,
+.card__diamond {
+    top: 164px;
+    width: 215px;
+    height: 311px;
+    border-radius: 15px;
+}
+.card {
+    background-image: url('../img/games/bookofwins/gamble/card.gif');
+}
+.card__spade {
+    background-image: url('../img/games/bookofwins/gamble/spade.png');
+}
+.card__club {
+    background-image: url('../img/games/bookofwins/gamble/club.png');
+}
+.card__heart {
+    background-image: url('../img/games/bookofwins/gamble/heart.png');
+}
+.card__diamond {
+    background-image: url('../img/games/bookofwins/gamble/diamond.png');
+}
 
 // Help
 .help {

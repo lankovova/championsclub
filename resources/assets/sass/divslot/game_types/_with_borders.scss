@@ -190,6 +190,7 @@ body {
         text-transform: uppercase;
         font-weight: 700;
         letter-spacing: 7px;
+        background-image: url('../img/gamble/buttons/suit_color.png');
         .overflow-layer {
             border-radius: 20px;
             position: absolute;
@@ -205,12 +206,10 @@ body {
     }
     .button__red {
         left: 57px;
-        background: url('../img/gamble/buttons/suit_color.png');
         color: #cc0000;
     }
     .button__black {
         right: 57px;
-        background: url('../img/gamble/buttons/suit_color.png');
         color: #000;
     }
     .button__suit {
@@ -365,6 +364,7 @@ body {
 }
 .suit-back {
     background-image: url('../img/gamble/suits/back_old.png');
+    background-size: 100% 100%;
 }
 .suit-spade {
     background: url('../img/gamble/suits/spade.png');
