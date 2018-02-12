@@ -22,7 +22,8 @@ var settings = {
     "gambleExtended": false,
 
     "helpType": "slider",
-
+    "backSuitInPreviousCards": true,
+    
     "symbolsImagesPath": "public/img/games/casinoandstars/symbols/",
     "symbolsAnimationsPath": "public/img/games/casinoandstars/symbols/animations/",
 
