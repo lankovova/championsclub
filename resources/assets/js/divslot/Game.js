@@ -151,13 +151,17 @@ export default class Game {
 
     // Disables/enables spin possibility depending on user's bet/cash
     setSpinPossibility = () => {
-        if (this.pointsController.totalBet > this.pointsController.userCashInPoints) {
-            this.interfaceController.panel.notifier.text = Translator.get('notEnoughCash');
-            this.interfaceController.disableSpinAndAuto();
-        } else {
+        if (this.userCanSpin()) {
             this.interfaceController.panel.notifier.text = Translator.get('gameOver');
             this.interfaceController.setIdle();
+        } else {
+            this.interfaceController.panel.notifier.text = Translator.get('notEnoughCash');
+            this.interfaceController.disableSpinAndAuto();
         }
+    }
+
+    userCanSpin() {
+        return this.pointsController.totalBet <= this.pointsController.userCashInPoints;
     }
 
     takeWinClickHandler = async () => {
@@ -417,7 +421,6 @@ export default class Game {
             if (this.bonusSpins.currentSpinIndex === 0) {
                 // FIXME: Turn of auto spins
                 this.autoSpinIsOn = false;
-                this.interfaceController.panel.btns.auto.state = false;
                 this.interfaceController.panel.btns.auto.isOn = false;
                 // FIXME: END
 
@@ -578,7 +581,16 @@ export default class Game {
             this.pointsController.userWin = 0;
 
             if (this.autoSpinIsOn) { // If auto spin is on
-                this.getDataAndSpin();
+                if (this.userCanSpin()) {
+                    this.getDataAndSpin();
+                } else {
+                    // Disable auto spin
+                    this.autoSpinIsOn = false;
+                    this.interfaceController.panel.btns.auto.isOn = false;
+                    // Set interface to idle
+                    this.interfaceController.setIdle();
+                    this.setSpinPossibility();
+                }
             } else { // Normal spin case
                 // FIXME: Rethink abount set idle here
                 this.interfaceController.setIdle();
