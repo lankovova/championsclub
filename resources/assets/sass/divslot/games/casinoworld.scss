@@ -91,12 +91,12 @@
         }
     }
     .button__red {
-        left: 120px;
+        left: 164px;
         background: url('../img/gamble/buttons/suit_color_1.png');
         color: #cc0000;
     }
     .button__black {
-        right: 120px;
+        right: 164px;
         background: url('../img/gamble/buttons/suit_color_1.png');
         color: #000;
     }
@@ -173,6 +173,11 @@
 .gamble__to-win-color {
     margin-top: 0;
 }
+.gamble__to-win-color .value {
+    position: absolute;
+    top: 47px;
+    right: 136px;
+}
 .card {
     background: url('../img/gamble/cards/card_1.gif');
     width: 221px;
@@ -213,7 +218,7 @@
     width: 1210px;
     height: 86px;
     position: absolute;
-    top: 120px;
+    top: 176px;
     right: 0;
     left: 0;
     margin: auto;
@@ -241,6 +246,7 @@
     justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
+    padding-right: 0;
 }
 .suit-back,
 .suit-spade,
@@ -249,9 +255,9 @@
 .suit-diamond {
     background-size: 100% 100%;
     background-position: center center;
-    width: 89px;
-    height: 70px;
-    margin-right: 7px;
+    width: 90px;
+    height: 90px;
+    margin-right: 0;
 }
 .suit-back {
     background-image: url('../img/gamble/suits/back_old.png');

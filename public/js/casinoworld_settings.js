@@ -20,8 +20,9 @@ var settings = {
     "spinAnimTimingFunc": "cubic-bezier(1,1.26,.66,.93)",
     "fallAnimTimingFunc": "cubic-bezier(.79,1.51,.74,.84)",
 
-    "gamblePreviousCardsAmount": 7,
+    "gamblePreviousCardsAmount": 6,
     // "gambleExtended": true,
+    "backSuitInPreviousCards": true,
 
     "helpType": "slider",
 
