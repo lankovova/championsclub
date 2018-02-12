@@ -45,6 +45,8 @@
 }
 .gamble {
     background-image: url('../img/games/goldenharvest/gamble/gamble_bg.png');
+    background-size: 100% 100%;
+    border-radius: 20px;
 }
 .help {
     background-image: url('../img/games/bookofwinner/help/border_bg.png');
@@ -116,9 +118,9 @@
     }
     &[data-symbols='8'] {
         top: 113px;
-        left: 679px; 
+        left: 679px;
     }
-  
+
     &[data-symbols='10'] {
         top: 333px;
     left: 645px;
@@ -126,7 +128,7 @@
             margin-bottom: 0px;
         }
     }
-   
+
     &[data-symbols='3 7'] {
         top: 246px;
         right: 258px;
